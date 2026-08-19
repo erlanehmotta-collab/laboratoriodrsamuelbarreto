@@ -1,12 +1,15 @@
 // ===== DADOS OFICIAIS DO LABORATÓRIO DR. SAMUEL BARRETO =====
 // Razão Social: Análises Clínicas Gomes e Barreto Ltda. (Fundado em 1999)
 // Endereço: Praça Ferreira Leal, 713 - Centro, Coração de Jesus - MG
-// Telefone: (38) 3228-1828 | CNES / DataSUS Ativo
+// Telefone / WhatsApp: (38) 99205-1001 (553892051001) | Instagram: @laboratoriodrsamuelbarreto
+// CNES / DataSUS Ativo
 
 const defaultSettings = {
   city: 'Praça Ferreira Leal, 713 - Centro, Coração de Jesus - MG',
-  whatsapp: '553832281828',
-  phone: '(38) 3228-1828',
+  whatsapp: '553892051001',
+  phone: '(38) 99205-1001',
+  instagram: 'laboratoriodrsamuelbarreto',
+  instagramUrl: 'https://www.instagram.com/laboratoriodrsamuelbarreto/',
   announcement: '🔬 ATENDIMENTO EM CORAÇÃO DE JESUS - MG | DESDE 1999 COM RIGOR CIENTÍFICO E QUALIDADE',
   adminPass: 'admin123'
 };
@@ -138,6 +141,15 @@ let lockoutUntil = parseInt(sessionStorage.getItem('sb_lockout_until') || '0', 1
 let products = JSON.parse(localStorage.getItem('sb_products')) || defaultProducts;
 let posts = JSON.parse(localStorage.getItem('sb_posts')) || defaultPosts;
 let settings = JSON.parse(localStorage.getItem('sb_settings')) || defaultSettings;
+
+// Migração e Atualização de Contato Oficial (55 3892051001 e @laboratoriodrsamuelbarreto)
+if (!settings.whatsapp || settings.whatsapp === '553832281828' || settings.whatsapp.length < 11) {
+  settings.whatsapp = '553892051001';
+  settings.phone = '(38) 99205-1001';
+  settings.instagram = 'laboratoriodrsamuelbarreto';
+  settings.instagramUrl = 'https://www.instagram.com/laboratoriodrsamuelbarreto/';
+  localStorage.setItem('sb_settings', JSON.stringify(settings));
+}
 let activeCategory = 'todos';
 let isAdminLogged = false;
 

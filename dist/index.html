@@ -96,7 +96,13 @@
       </nav>
 
       <!-- Ações da Direita -->
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-3">
+        <!-- Botão Instagram Oficial -->
+        <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-amber-500/10 border border-pink-500/30 text-pink-600 hover:text-pink-700 text-xs font-bold transition shadow-sm hover:scale-105" title="Siga @laboratoriodrsamuelbarreto no Instagram">
+          <i data-lucide="instagram" class="w-4 h-4 text-pink-600"></i>
+          <span>@laboratoriodrsamuelbarreto</span>
+        </a>
+
         <!-- Botão Admin Mais Discreto -->
         <button onclick="openAdminModal()" class="hidden md:flex items-center gap-1.5 px-2.5 py-1.5 rounded text-[11px] font-semibold text-slate-400 hover:text-petrol opacity-60 hover:opacity-100 transition-all" title="Área Administrativa">
           <i data-lucide="lock" class="w-3.5 h-3.5"></i>
@@ -104,7 +110,7 @@
         </button>
 
         <!-- Botão de Agendamento Direto Centralizado -->
-        <a href="#agendar" class="hidden sm:inline-flex items-center justify-center gap-2 bg-petrol hover:bg-petrol-dark text-white text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-xl shadow-md transition-all text-center">
+        <a href="#agendar" class="hidden sm:inline-flex items-center justify-center gap-2 bg-petrol hover:bg-petrol-dark text-white text-xs font-bold uppercase tracking-wider px-5 py-3 rounded-xl shadow-md transition-all text-center">
           <i data-lucide="calendar" class="w-4 h-4"></i>
           <span>Agendar Exame</span>
         </a>
@@ -120,6 +126,9 @@
       <a href="#artigos" class="block text-sm font-bold uppercase tracking-wider text-petrol-dark py-2 border-b border-slate-100 text-center">Artigos & Dicas Médicas</a>
       <a href="#sobre" class="block text-sm font-bold uppercase tracking-wider text-petrol-dark py-2 border-b border-slate-100 text-center">Dr. Samuel Barreto</a>
       <a href="#contato" class="block text-sm font-bold uppercase tracking-wider text-petrol-dark py-2 border-b border-slate-100 text-center">Atendimento & Coleta</a>
+      <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="w-full text-center text-xs font-bold text-pink-600 hover:text-pink-700 py-2.5 flex items-center justify-center gap-2 bg-pink-50 rounded-xl border border-pink-200">
+        <i data-lucide="instagram" class="w-4 h-4"></i> Seguir @laboratoriodrsamuelbarreto
+      </a>
       <button onclick="openAdminModal()" class="w-full text-center text-xs font-medium text-slate-400 hover:text-petrol py-2 flex items-center justify-center gap-1.5 opacity-60">
         <i data-lucide="lock" class="w-3.5 h-3.5"></i> Acesso Administrativo
       </button>
@@ -569,7 +578,7 @@
           <i data-lucide="chevron-down" class="w-5 h-5 text-petrol group-open:rotate-180 transition-transform"></i>
         </summary>
         <p class="text-sm text-slate-600 mt-3 leading-relaxed">
-          Basta enviar o nome dos exames solicitados no nosso WhatsApp oficial (38) 3228-1828. Nossa equipe técnica envia o guia exato de preparo e jejum na hora.
+          Basta enviar o nome dos exames solicitados no nosso WhatsApp oficial <strong>(38) 99205-1001</strong>. Nossa equipe técnica envia o guia exato de preparo e jejum na hora.
         </p>
       </details>
 
@@ -579,7 +588,7 @@
           <i data-lucide="chevron-down" class="w-5 h-5 text-petrol group-open:rotate-180 transition-transform"></i>
         </summary>
         <p class="text-sm text-slate-600 mt-3 leading-relaxed">
-          Nossa equipe de enfermagem comparece na sua residência ou empresa no horário marcado com material 100% estéril e transporte biológico controlado.
+          Nossa equipe de enfermagem comparece na sua residência ou empresa no horário marcado com material 100% estéril e transporte biológico controlado em Coração de Jesus - MG.
         </p>
       </details>
 
@@ -589,20 +598,25 @@
           <i data-lucide="chevron-down" class="w-5 h-5 text-petrol group-open:rotate-180 transition-transform"></i>
         </summary>
         <p class="text-sm text-slate-600 mt-3 leading-relaxed">
-          Os laudos autenticados são entregues de forma ágil diretamente no seu WhatsApp, e-mail ou na recepção da nossa unidade na Praça Ferreira Leal, 713.
+          Os laudos autenticados são entregues de forma ágil diretamente no seu WhatsApp (38) 99205-1001, e-mail ou na recepção da nossa unidade na Praça Ferreira Leal, 713.
         </p>
       </details>
     </div>
 
-    <!-- Banner WhatsApp Centralizado -->
-    <div id="agendar" class="rounded-2xl bg-petrol-dark text-white p-8 sm:p-12 text-center space-y-5 shadow-2xl border border-petrol/40">
+    <!-- Banner WhatsApp e Redes Sociais Centralizado -->
+    <div id="agendar" class="rounded-2xl bg-petrol-dark text-white p-8 sm:p-12 text-center space-y-6 shadow-2xl border border-petrol/40">
       <h3 class="font-heading text-2xl sm:text-3xl font-extrabold uppercase text-center">Agende Seus Exames Diretamente</h3>
       <p class="text-sm text-slate-300 max-w-md mx-auto text-center">
-        Envie sua foto da guia médica ou solicite seu check-up preventivo diretamente pelo nosso WhatsApp oficial.
+        Envie a foto da sua guia médica ou solicite seu check-up preventivo diretamente pelo nosso WhatsApp oficial.
       </p>
-      <a id="whatsappCtaLink" href="https://wa.me/553832281828" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-petrol-light hover:bg-petrol-accent text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-colors shadow-lg text-center mx-auto">
-        <i data-lucide="message-circle" class="w-4 h-4"></i> <span>Iniciar Atendimento no WhatsApp</span>
-      </a>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
+        <a id="whatsappCtaLink" href="https://wa.me/553892051001" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-petrol-light hover:bg-petrol-accent text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-colors shadow-lg text-center">
+          <i data-lucide="message-circle" class="w-4 h-4"></i> <span>WhatsApp: (38) 99205-1001</span>
+        </a>
+        <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-purple-600 via-pink-600 to-amber-600 hover:opacity-95 text-white rounded-xl text-xs font-bold uppercase tracking-wider transition shadow-lg text-center">
+          <i data-lucide="instagram" class="w-4 h-4"></i> <span>Instagram Oficial</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -610,17 +624,22 @@
   <footer class="bg-petrol-dark text-slate-400 py-12 border-t border-petrol/30">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-petrol/30 text-center md:text-left">
-        <div>
+        <div class="space-y-1">
           <span class="font-heading text-2xl font-black uppercase text-white block">DR. SAMUEL BARRETO</span>
           <span class="text-[11px] tracking-wider uppercase text-cyan-300 font-bold">Análises Clínicas Gomes e Barreto Ltda. • Desde 1999</span>
-          <span class="block text-xs text-slate-400 mt-1">Praça Ferreira Leal, 713 - Centro, Coração de Jesus - MG • Tel: (38) 3228-1828</span>
+          <span class="block text-xs text-slate-400 mt-1">Praça Ferreira Leal, 713 - Centro, Coração de Jesus - MG • Tel / WhatsApp: (38) 99205-1001</span>
+          <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-pink-400 hover:text-pink-300 font-bold mt-1 transition">
+            <i data-lucide="instagram" class="w-3.5 h-3.5"></i> @laboratoriodrsamuelbarreto
+          </a>
         </div>
         <div class="flex flex-wrap justify-center gap-6 text-xs uppercase font-bold tracking-wider">
           <a href="#exames" class="hover:text-white transition">Exames</a>
           <a href="#checkups" class="hover:text-white transition">Check-ups</a>
           <a href="#artigos" class="hover:text-white transition">Artigos Científicos</a>
           <a href="#sobre" class="hover:text-white transition">Dr. Samuel Barreto</a>
-          <a href="#contato" class="hover:text-white transition">Contato</a>
+          <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="text-pink-400 hover:text-pink-300 transition flex items-center gap-1">
+            <i data-lucide="instagram" class="w-3 h-3"></i> Instagram
+          </a>
           <button onclick="openAdminModal()" class="text-slate-400 hover:text-cyan-300 transition flex items-center gap-1 opacity-70 hover:opacity-100">
             <i data-lucide="lock" class="w-3 h-3"></i> Admin
           </button>
@@ -1019,6 +1038,24 @@
     <i data-lucide="check-circle" class="w-4 h-4 text-cyan-300"></i>
     <span id="toastMsg">Alterações salvas com sucesso!</span>
   </div>
+
+  <!-- BOTÕES DE AÇÃO RÁPIDA FLUTUANTES (WHATSAPP + INSTAGRAM) -->
+  <aside aria-label="Atendimento Rápido e Redes Sociais" class="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3 pointer-events-auto">
+    <!-- Botão Flutuante Instagram -->
+    <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2 p-3.5 bg-gradient-to-tr from-purple-600 via-pink-600 to-amber-500 hover:scale-110 text-white rounded-full shadow-2xl transition-all duration-300 border border-white/20" title="Siga @laboratoriodrsamuelbarreto no Instagram">
+      <i data-lucide="instagram" class="w-5 h-5"></i>
+      <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 text-xs font-bold px-0 group-hover:px-1">@laboratoriodrsamuelbarreto</span>
+    </a>
+
+    <!-- Botão Flutuante WhatsApp -->
+    <a href="https://wa.me/553892051001?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20exames%20e%20agendamento." target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2.5 px-4 py-3.5 bg-emerald-600 hover:bg-emerald-500 hover:scale-105 text-white rounded-full shadow-2xl transition-all duration-300 border border-emerald-400/40" title="Fale conosco no WhatsApp Oficial">
+      <i data-lucide="message-circle" class="w-6 h-6 text-white animate-bounce"></i>
+      <div class="flex flex-col text-left">
+        <span class="text-[10px] uppercase font-extrabold tracking-wider text-emerald-200 leading-none">Agendamento & Dúvidas</span>
+        <span class="text-xs font-bold leading-tight">(38) 99205-1001</span>
+      </div>
+    </a>
+  </aside>
 
   <script src="script.js"></script>
 </body>

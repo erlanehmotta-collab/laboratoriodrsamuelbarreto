@@ -87,44 +87,52 @@
 
   <!-- ===== CABEÇALHO / NAVEGAÇÃO PRINCIPAL FIXO E PERFEITO ===== -->
   <header id="header" class="sticky top-0 z-40 bg-white border-b border-slate-200 transition-all duration-300 shadow-sm">
-    <div class="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+    <div class="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col md:flex-row items-center justify-between gap-3">
       
-      <!-- Botão Menu Mobile Hambúrguer -->
-      <button id="mobileMenuBtn" class="md:hidden flex items-center gap-1.5 p-2 text-slate-900 hover:text-petrol font-bold uppercase text-xs rounded-lg border border-slate-200 hover:bg-slate-50 transition" aria-label="Menu de Navegação">
-        <i data-lucide="menu" class="w-5 h-5 text-petrol"></i>
-        <span>Menu</span>
-      </button>
+      <!-- Topo do Header: Logo + Redes + Ações -->
+      <div class="w-full md:w-auto flex items-center justify-between gap-4">
+        <!-- Logotipo Robusto em Laranja Âmbar -->
+        <a href="#" class="flex items-center gap-2.5 sm:gap-3 group flex-shrink-0">
+          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-petrol flex items-center justify-center text-white shadow-md group-hover:bg-petrol-accent transition-colors flex-shrink-0">
+            <i data-lucide="activity" class="w-5 h-5 sm:w-6 sm:h-6 text-white"></i>
+          </div>
+          <div>
+            <span class="block font-heading text-lg sm:text-2xl font-black uppercase tracking-tight text-slate-900 leading-tight">
+              DR. SAMUEL BARRETO
+            </span>
+            <span class="block text-[10px] sm:text-[11px] tracking-[0.18em] uppercase text-petrol font-bold -mt-0.5">
+              Laboratório & Medicina Diagnóstica
+            </span>
+          </div>
+        </a>
 
-      <!-- Logotipo Robusto em Laranja Âmbar -->
-      <a href="#" class="flex items-center gap-2.5 sm:gap-3 group flex-shrink-0">
-        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-petrol flex items-center justify-center text-white shadow-md group-hover:bg-petrol-accent transition-colors flex-shrink-0">
-          <i data-lucide="activity" class="w-5 h-5 sm:w-6 sm:h-6 text-white"></i>
+        <!-- Botões de Ação Direita Mobile -->
+        <div class="flex items-center gap-2 md:hidden">
+          <button onclick="openAdminModal()" class="p-2 text-slate-400 hover:text-petrol text-xs font-semibold" title="Área Administrativa">
+            <i data-lucide="lock" class="w-4 h-4"></i>
+          </button>
+          <a href="https://wa.me/553892051001" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 bg-petrol text-white text-xs font-bold uppercase rounded-xl flex items-center gap-1 shadow-sm">
+            <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+            <span>Agendar</span>
+          </a>
         </div>
-        <div>
-          <span class="block font-heading text-lg sm:text-2xl font-black uppercase tracking-tight text-slate-900 leading-tight">
-            DR. SAMUEL BARRETO
-          </span>
-          <span class="block text-[10px] sm:text-[11px] tracking-[0.18em] uppercase text-petrol font-bold -mt-0.5">
-            Laboratório & Medicina Diagnóstica
-          </span>
-        </div>
-      </a>
+      </div>
 
-      <!-- Links de Navegação Desktop & Tablet (Menu Escrito Principal) -->
-      <nav class="hidden md:flex items-center gap-4 lg:gap-7 text-xs font-bold uppercase tracking-wider text-slate-700">
-        <a href="#exames" class="hover:text-petrol transition-colors">Exames</a>
-        <a href="#checkups" class="hover:text-petrol transition-colors">Check-ups</a>
-        <a href="#cartao-saude" class="text-petrol font-extrabold hover:text-petrol-accent transition-colors flex items-center gap-1 bg-orange-50 px-2.5 py-1 rounded-lg">
+      <!-- Links de Navegação Escritos (Sempre Visíveis em Destaque) -->
+      <nav id="mainNav" class="flex flex-wrap items-center justify-center gap-2 sm:gap-4 lg:gap-6 text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-slate-800 py-1">
+        <a href="#exames" class="hover:text-petrol transition-colors py-1 px-2 rounded-lg hover:bg-slate-50">Exames</a>
+        <a href="#checkups" class="hover:text-petrol transition-colors py-1 px-2 rounded-lg hover:bg-slate-50">Check-ups</a>
+        <a href="#cartao-saude" class="text-petrol font-black hover:text-petrol-accent transition-colors flex items-center gap-1 bg-orange-50/80 border border-orange-200/60 px-2.5 py-1 rounded-lg">
           <span class="w-1.5 h-1.5 rounded-full bg-petrol"></span> Cartão Saúde
         </a>
-        <a href="#quiz" class="hover:text-petrol transition-colors">Orientador</a>
-        <a href="#artigos" class="hover:text-petrol transition-colors">Artigos</a>
-        <a href="#sobre" class="hover:text-petrol transition-colors">Nossa História</a>
-        <a href="#estrutura" class="hover:text-petrol transition-colors">Tecnologia</a>
+        <a href="#quiz" class="hover:text-petrol transition-colors py-1 px-2 rounded-lg hover:bg-slate-50">Orientador</a>
+        <a href="#artigos" class="hover:text-petrol transition-colors py-1 px-2 rounded-lg hover:bg-slate-50">Artigos</a>
+        <a href="#sobre" class="hover:text-petrol transition-colors py-1 px-2 rounded-lg hover:bg-slate-50">Nossa História</a>
+        <a href="#estrutura" class="hover:text-petrol transition-colors py-1 px-2 rounded-lg hover:bg-slate-50">Tecnologia</a>
       </nav>
 
-      <!-- Ações da Direita com Instagram Fixo e Botão Agendar -->
-      <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+      <!-- Ações da Direita Desktop -->
+      <div class="hidden md:flex items-center gap-3 flex-shrink-0">
         <!-- Instagram Fixo Destacado -->
         <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:text-rose-600 bg-slate-50 hover:bg-rose-50 border border-slate-200 transition" title="Instagram Oficial">
           <i data-lucide="instagram" class="w-4 h-4 text-rose-500"></i>
@@ -134,7 +142,7 @@
         <!-- Botão Admin Mais Discreto -->
         <button onclick="openAdminModal()" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-petrol opacity-80 hover:opacity-100 transition-all" title="Área Administrativa">
           <i data-lucide="lock" class="w-3.5 h-3.5"></i>
-          <span class="hidden sm:inline">Admin</span>
+          <span>Admin</span>
         </button>
 
         <!-- Botão de Agendamento Direto Centralizado e Harmônico -->
@@ -143,23 +151,6 @@
           <span>Agendar</span>
         </a>
       </div>
-
-    </div>
-
-    <!-- Barra de Navegação Horizontal Permanente para Dispositivos Móveis -->
-    <div class="bg-slate-50/95 border-t border-slate-200/80 px-4 py-2 overflow-x-auto scrollbar-none flex items-center md:hidden">
-      <nav class="w-full flex items-center justify-start gap-2.5 text-[11px] font-bold uppercase tracking-wider text-slate-700 whitespace-nowrap">
-        <a href="#exames" class="hover:text-petrol transition-colors py-1 px-2 rounded-lg bg-white border border-slate-200 shadow-2xs">Exames</a>
-        <a href="#checkups" class="hover:text-petrol transition-colors py-1 px-2 rounded-lg bg-white border border-slate-200 shadow-2xs">Check-ups</a>
-        <a href="#cartao-saude" class="text-petrol font-extrabold hover:text-petrol-accent transition-colors py-1 px-2 rounded-lg bg-orange-100/80 border border-orange-200 shadow-2xs flex items-center gap-1">
-          <span class="w-1.5 h-1.5 rounded-full bg-petrol"></span> Cartão Saúde
-        </a>
-        <a href="#quiz" class="hover:text-petrol transition-colors py-1 px-2 rounded-lg bg-white border border-slate-200 shadow-2xs">Orientador</a>
-        <a href="#artigos" class="hover:text-petrol transition-colors py-1 px-2 rounded-lg bg-white border border-slate-200 shadow-2xs">Artigos</a>
-        <a href="#sobre" class="hover:text-petrol transition-colors py-1 px-2 rounded-lg bg-white border border-slate-200 shadow-2xs">História</a>
-        <a href="#estrutura" class="hover:text-petrol transition-colors py-1 px-2 rounded-lg bg-white border border-slate-200 shadow-2xs">Tecnologia</a>
-      </nav>
-    </div>
 
     <!-- Gaveta / Drawer Mobile com Links Escritos Completos -->
     <div id="mobileDrawer" class="hidden md:hidden bg-white border-t border-b border-slate-200 px-6 py-5 space-y-3 shadow-xl">

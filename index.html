@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Laboratório Dr. Samuel Barreto | Análises Clínicas & Medicina Diagnóstica de Precisão</title>
-  <meta name="description" content="Laboratório Dr. Samuel Barreto — Análises clínicas de alta complexidade, check-ups preventivos, coleta domiciliar e laudos com rigor técnico e humanização." />
+  <title>Laboratório Dr. Samuel Barreto | Medicina Diagnóstica & Análises Clínicas</title>
+  <meta name="description" content="Laboratório Dr. Samuel Barreto — Medicina diagnóstica de alta complexidade, automação laboratorial, coleta domiciliar e precisão em análises clínicas." />
   
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
-  <!-- Google Fonts: Cormorant Garamond + Plus Jakarta Sans -->
+  <!-- Google Fonts: Plus Jakarta Sans + Outfit (Tipografia Masculina, Moderna e Robusta) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -22,21 +22,24 @@
       theme: {
         extend: {
           colors: {
-            linen: '#F9FAF8',
-            'linen-dark': '#F0F4F1',
-            sage: '#E3EBE6',
-            emerald: {
-              DEFAULT: '#0D382B',
-              dark: '#08241B',
-              light: '#1B5644',
+            slateBg: '#F8FAFC',
+            slateDark: '#0B1523',
+            slateCard: '#112233',
+            navy: {
+              DEFAULT: '#0A2540',
+              dark: '#061626',
+              light: '#133E68',
             },
-            gold: '#C5A880',
-            'gold-light': '#EFE5D8',
-            champagne: '#A47D4E',
-            muted: '#5F6C66',
+            cyanAccent: {
+              DEFAULT: '#0284C7',
+              hover: '#0369A1',
+              light: '#E0F2FE',
+            },
+            steel: '#475569',
+            steelLight: '#E2E8F0',
           },
           fontFamily: {
-            serif: ['"Cormorant Garamond"', 'serif'],
+            heading: ['"Outfit"', 'sans-serif'],
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
           }
         }
@@ -50,142 +53,145 @@
   <!-- Custom Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="bg-linen text-emerald-dark font-sans antialiased selection:bg-gold selection:text-emerald-dark">
+<body class="bg-slateBg text-slateDark font-sans antialiased selection:bg-cyanAccent selection:text-white">
 
   <!-- ===== BARRA DE AVISOS SUPERIOR ===== -->
-  <div id="announcementBar" class="bg-emerald text-gold-light text-xs tracking-widest uppercase py-2.5 px-4 text-center border-b border-gold/20 flex items-center justify-center gap-3">
-    <span id="announcementText">🔬 COLETA DOMICILIAR SEM TAXA PARA IDOSOS E GESTANTES | LAUDOS DE ALTA PRECISÃO</span>
+  <div id="announcementBar" class="bg-navy-dark text-slate-300 text-xs tracking-wider font-semibold py-2.5 px-4 text-center border-b border-navy-light/40 flex items-center justify-center gap-3">
+    <span id="announcementText">🔬 COLETA DOMICILIAR E CORPORATIVA | LAUDOS ÁGEIS COM RIGOR BIOMÉDICO</span>
   </div>
 
   <!-- ===== CABEÇALHO / NAVEGAÇÃO PRINCIPAL ===== -->
-  <header id="header" class="sticky top-0 z-40 bg-linen/90 backdrop-blur-md border-b border-gold/20 transition-all duration-300">
+  <header id="header" class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-steelLight transition-all duration-300 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
       <!-- Botão Menu Mobile -->
-      <button id="mobileMenuBtn" class="lg:hidden p-2 text-emerald hover:text-champagne" aria-label="Menu de Navegação">
+      <button id="mobileMenuBtn" class="lg:hidden p-2 text-navy hover:text-cyanAccent" aria-label="Menu de Navegação">
         <i data-lucide="menu" class="w-6 h-6"></i>
       </button>
 
-      <!-- Links de Navegação Desktop -->
-      <nav class="hidden lg:flex items-center gap-7 text-xs font-semibold uppercase tracking-wider text-emerald/80">
-        <a href="#servicos" class="hover:text-champagne transition-colors">Exames</a>
-        <a href="#catalogo" class="hover:text-champagne transition-colors">Check-ups</a>
-        <a href="#quiz" class="hover:text-champagne transition-colors">Orientador de Saúde</a>
-        <a href="#posts" class="hover:text-champagne transition-colors">Artigos & Dicas</a>
-        <a href="#sobre" class="hover:text-champagne transition-colors">O Laboratório</a>
-        <a href="#estrutura" class="hover:text-champagne transition-colors">Estrutura</a>
-      </nav>
-
-      <!-- Logotipo Central -->
-      <a href="#" class="text-center group">
-        <span class="block font-serif text-2xl sm:text-3xl tracking-widest font-semibold uppercase text-emerald group-hover:text-champagne transition-colors">
-          DR. SAMUEL BARRETO
-        </span>
-        <span class="block text-[10px] tracking-[0.3em] uppercase text-gold font-medium -mt-1">
-          Laboratório • Análises Clínicas
-        </span>
+      <!-- Logotipo Robusto & Imponente -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-xl bg-navy flex items-center justify-center text-cyanAccent-light shadow-md group-hover:bg-cyanAccent transition-colors">
+          <i data-lucide="activity" class="w-6 h-6 text-white"></i>
+        </div>
+        <div>
+          <span class="block font-heading text-xl sm:text-2xl font-black uppercase tracking-tight text-navy">
+            DR. SAMUEL BARRETO
+          </span>
+          <span class="block text-[11px] tracking-[0.18em] uppercase text-cyanAccent font-bold -mt-0.5">
+            Laboratório & Medicina Diagnóstica
+          </span>
+        </div>
       </a>
 
+      <!-- Links de Navegação Desktop -->
+      <nav class="hidden lg:flex items-center gap-7 text-xs font-bold uppercase tracking-wider text-slate-700">
+        <a href="#exames" class="hover:text-cyanAccent transition-colors">Exames</a>
+        <a href="#checkups" class="hover:text-cyanAccent transition-colors">Check-ups</a>
+        <a href="#quiz" class="hover:text-cyanAccent transition-colors">Orientador</a>
+        <a href="#artigos" class="hover:text-cyanAccent transition-colors">Artigos</a>
+        <a href="#sobre" class="hover:text-cyanAccent transition-colors">O Laboratório</a>
+        <a href="#estrutura" class="hover:text-cyanAccent transition-colors">Tecnologia</a>
+      </nav>
+
       <!-- Ações da Direita -->
-      <div class="flex items-center gap-4 sm:gap-6">
-        <!-- Botão Admin no Topo -->
-        <button onclick="openAdminModal()" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gold/40 text-[11px] font-semibold text-emerald hover:bg-gold/20 transition-all" title="Painel do Dr. Samuel Barreto">
-          <i data-lucide="lock" class="w-3.5 h-3.5 text-champagne"></i>
+      <div class="flex items-center gap-4">
+        <!-- Botão Admin -->
+        <button onclick="openAdminModal()" class="hidden md:flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-steelLight bg-slate-50 text-[11px] font-bold text-slate-700 hover:bg-slate-100 hover:text-navy transition-all" title="Painel do Dr. Samuel Barreto">
+          <i data-lucide="lock" class="w-3.5 h-3.5 text-cyanAccent"></i>
           <span>Admin</span>
         </button>
 
-        <!-- Botão da Sacola de Exames com Contador -->
-        <button id="cartBtn" class="relative p-2 text-emerald hover:text-champagne transition-colors" title="Ver Exames Selecionados">
-          <i data-lucide="clipboard-list" class="w-5 h-5"></i>
-          <span id="cartCount" class="absolute top-0 right-0 w-4 h-4 bg-champagne text-white text-[10px] font-bold rounded-full flex items-center justify-center">0</span>
-        </button>
-
-        <!-- Botão de Agendamento Rápido -->
-        <a href="#agendar" class="hidden sm:inline-flex items-center gap-2 bg-emerald text-white text-xs font-semibold uppercase tracking-widest px-4 py-2.5 rounded-full hover:bg-champagne transition-colors">
-          <span>Agendar Coleta</span>
+        <!-- Botão de Agendamento Direto -->
+        <a href="#agendar" class="hidden sm:inline-flex items-center gap-2 bg-navy hover:bg-cyanAccent text-white text-xs font-bold uppercase tracking-wider px-5 py-3 rounded-xl shadow-md transition-all">
+          <i data-lucide="calendar" class="w-4 h-4"></i>
+          <span>Agendar Exame</span>
         </a>
       </div>
 
     </div>
 
     <!-- Menu Lateral Mobile -->
-    <div id="mobileDrawer" class="hidden lg:hidden bg-linen border-b border-gold/20 px-6 py-6 space-y-4">
-      <a href="#servicos" class="block text-sm font-semibold uppercase tracking-wider text-emerald py-2 border-b border-sage">Exames & Especialidades</a>
-      <a href="#catalogo" class="block text-sm font-semibold uppercase tracking-wider text-emerald py-2 border-b border-sage">Check-ups & Painéis</a>
-      <a href="#quiz" class="block text-sm font-semibold uppercase tracking-wider text-emerald py-2 border-b border-sage">Orientador de Saúde</a>
-      <a href="#posts" class="block text-sm font-semibold uppercase tracking-wider text-emerald py-2 border-b border-sage">Artigos Médicos</a>
-      <a href="#sobre" class="block text-sm font-semibold uppercase tracking-wider text-emerald py-2 border-b border-sage">Sobre o Dr. Samuel</a>
-      <a href="#contato" class="block text-sm font-semibold uppercase tracking-wider text-emerald py-2 border-b border-sage">Atendimento & Coleta Domiciliar</a>
-      <button onclick="openAdminModal()" class="w-full text-left text-sm font-bold uppercase tracking-wider text-champagne py-2 flex items-center gap-2">
-        <i data-lucide="lock" class="w-4 h-4"></i> Painel do Dr. Samuel (Publicar)
+    <div id="mobileDrawer" class="hidden lg:hidden bg-white border-b border-steelLight px-6 py-6 space-y-4 shadow-lg">
+      <a href="#exames" class="block text-sm font-bold uppercase tracking-wider text-navy py-2 border-b border-slate-100">Exames & Especialidades</a>
+      <a href="#checkups" class="block text-sm font-bold uppercase tracking-wider text-navy py-2 border-b border-slate-100">Check-ups Preventivos</a>
+      <a href="#quiz" class="block text-sm font-bold uppercase tracking-wider text-navy py-2 border-b border-slate-100">Orientador de Exames</a>
+      <a href="#artigos" class="block text-sm font-bold uppercase tracking-wider text-navy py-2 border-b border-slate-100">Artigos & Dicas Médicas</a>
+      <a href="#sobre" class="block text-sm font-bold uppercase tracking-wider text-navy py-2 border-b border-slate-100">Sobre o Dr. Samuel</a>
+      <a href="#contato" class="block text-sm font-bold uppercase tracking-wider text-navy py-2 border-b border-slate-100">Atendimento & Coleta</a>
+      <button onclick="openAdminModal()" class="w-full text-left text-sm font-bold uppercase tracking-wider text-cyanAccent py-2 flex items-center gap-2">
+        <i data-lucide="lock" class="w-4 h-4"></i> Painel do Dr. Samuel (Publicar Artigos)
       </button>
     </div>
   </header>
 
-  <!-- ===== HERO SECTION (EDITORIAL DE MEDICINA DIAGNÓSTICA) ===== -->
-  <section class="relative overflow-hidden bg-gradient-to-b from-linen-dark to-linen pt-12 pb-20 lg:py-28 border-b border-gold/20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- ===== HERO SECTION (MODERNO, MASCULINO, TECNOLÓGICO) ===== -->
+  <section class="relative overflow-hidden bg-navy-dark text-white pt-16 pb-24 lg:py-28 border-b border-navy-light/40">
+    <div class="absolute inset-0 bg-[radial-gradient(#1E3E62_1px,transparent_1px)] [background-size:24px_24px] opacity-20"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
         
         <!-- Conteúdo Textual -->
         <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sage/80 border border-gold/30 text-xs font-medium tracking-widest uppercase text-champagne">
-            <span class="w-1.5 h-1.5 rounded-full bg-champagne"></span>
-            Medicina Diagnóstica & Análises Clínicas
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-navy-light/80 border border-cyanAccent/30 text-xs font-bold tracking-wider uppercase text-cyanAccent-light">
+            <span class="w-2 h-2 rounded-full bg-cyanAccent animate-pulse"></span>
+            Medicina Diagnóstica Avançada
           </div>
           
-          <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.1] text-emerald font-normal">
-            Sua saúde com rigor científico e <em class="italic font-light text-champagne">cuidado humano.</em>
+          <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl leading-[1.08] font-extrabold uppercase tracking-tight text-white">
+            Precisão Absoluta em <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-sky-200">Análises Clínicas</span>.
           </h1>
           
-          <p class="text-base sm:text-lg text-muted max-w-xl mx-auto lg:mx-0 font-light leading-relaxed">
-            Tecnologia laboratorial automatizada, equipe biomédica de alta performance e laudos de máxima precisão para você e sua família.
+          <p class="text-base sm:text-lg text-slate-300 max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
+            Automação laboratorial de última geração, rigor científico e atendimento técnico especializado sob a direção do <strong>Dr. Samuel Barreto</strong>.
           </p>
 
           <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-            <a href="#catalogo" class="w-full sm:w-auto px-8 py-4 bg-emerald hover:bg-champagne text-white rounded-full text-xs font-bold uppercase tracking-widest shadow-lg shadow-emerald/20 transition-all text-center">
-              Ver Check-ups & Exames
+            <a href="#exames" class="w-full sm:w-auto px-8 py-4 bg-cyanAccent hover:bg-cyanAccent-hover text-white rounded-xl text-xs font-bold uppercase tracking-wider shadow-lg shadow-cyanAccent/30 transition-all text-center flex items-center justify-center gap-2">
+              <i data-lucide="file-text" class="w-4 h-4"></i>
+              <span>Consultar Exames & Preparo</span>
             </a>
-            <a href="#quiz" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-emerald/30 hover:border-emerald text-emerald rounded-full text-xs font-bold uppercase tracking-widest transition-all text-center">
-              Descobrir Check-up Ideal →
+            <a href="#agendar" class="w-full sm:w-auto px-8 py-4 bg-navy hover:bg-slateCard border border-steelLight/20 text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-center flex items-center justify-center gap-2">
+              <i data-lucide="calendar" class="w-4 h-4 text-cyanAccent"></i>
+              <span>Agendar Coleta no WhatsApp</span>
             </a>
           </div>
 
-          <!-- Estatísticas Clínicas -->
-          <div class="pt-8 border-t border-gold/20 grid grid-cols-3 gap-4 text-center lg:text-left">
+          <!-- Estatísticas Técnicas -->
+          <div class="pt-8 border-t border-navy-light/60 grid grid-cols-3 gap-4 text-center lg:text-left">
             <div>
-              <span class="block font-serif text-2xl sm:text-3xl text-emerald font-semibold">15+ Anos</span>
-              <span class="text-[11px] uppercase tracking-wider text-muted">De Excelência Médica</span>
+              <span class="block font-heading text-3xl sm:text-4xl text-white font-extrabold">15+</span>
+              <span class="text-[11px] uppercase font-bold tracking-wider text-slate-400">Anos de Experiência</span>
             </div>
             <div>
-              <span class="block font-serif text-2xl sm:text-3xl text-emerald font-semibold">ISO 15189</span>
-              <span class="text-[11px] uppercase tracking-wider text-muted">Qualidade Auditada</span>
+              <span class="block font-heading text-3xl sm:text-4xl text-cyan-400 font-extrabold">ISO 15189</span>
+              <span class="text-[11px] uppercase font-bold tracking-wider text-slate-400">Padrão de Qualidade</span>
             </div>
             <div>
-              <span class="block font-serif text-2xl sm:text-3xl text-emerald font-semibold">99.8%</span>
-              <span class="text-[11px] uppercase tracking-wider text-muted">Precisão Analítica</span>
+              <span class="block font-heading text-3xl sm:text-4xl text-white font-extrabold">99.8%</span>
+              <span class="text-[11px] uppercase font-bold tracking-wider text-slate-400">Precisão dos Laudos</span>
             </div>
           </div>
         </div>
 
-        <!-- Demonstração Visual de Alta Tecnologia -->
+        <!-- Painel Visual de Tecnologia -->
         <div class="lg:col-span-5 relative">
-          <div class="relative mx-auto max-w-md rounded-2xl bg-sage/60 p-6 border border-gold/30 shadow-2xl backdrop-blur-sm">
-            <div class="aspect-[4/5] rounded-xl overflow-hidden bg-emerald/5 relative flex items-center justify-center">
-              <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Laboratório Dr Samuel Barreto" class="w-full h-full object-cover" />
-              <div class="absolute inset-0 bg-gradient-to-t from-emerald-dark/70 via-transparent to-transparent"></div>
+          <div class="relative mx-auto max-w-md rounded-2xl bg-slateCard p-6 border border-cyanAccent/30 shadow-2xl">
+            <div class="aspect-[4/5] rounded-xl overflow-hidden bg-navy-dark relative flex items-center justify-center">
+              <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Dr Samuel Barreto Laboratorio" class="w-full h-full object-cover opacity-90" />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-dark via-transparent to-transparent"></div>
               
-              <!-- Cartão Flutuante de Laudo -->
-              <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-linen/95 backdrop-blur-md border border-gold/30 space-y-2">
+              <!-- Card Flutuante de Monitoramento -->
+              <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-navy-dark/95 backdrop-blur-md border border-cyanAccent/40 space-y-3">
                 <div class="flex items-center justify-between">
-                  <span class="text-[10px] tracking-widest uppercase text-champagne font-bold">Rastreamento de Coleta</span>
-                  <span class="text-[10px] px-2 py-0.5 rounded-full bg-green-100 text-green-800 font-bold">Automação 100%</span>
+                  <span class="text-[10px] tracking-widest uppercase text-cyan-400 font-extrabold">Automação em Tempo Real</span>
+                  <span class="text-[10px] px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/40">100% Calibrado</span>
                 </div>
-                <div class="space-y-1 text-xs">
-                  <div class="flex justify-between"><span>Hemograma Completo</span><strong class="text-emerald">Liberado</strong></div>
-                  <div class="w-full h-1 bg-sage rounded-full overflow-hidden"><div class="h-full bg-emerald w-full"></div></div>
-                  <div class="flex justify-between"><span>Perfil Lipídico & Glicemia</span><strong class="text-emerald">Liberado</strong></div>
-                  <div class="w-full h-1 bg-sage rounded-full overflow-hidden"><div class="h-full bg-emerald w-full"></div></div>
+                <div class="space-y-2 text-xs">
+                  <div class="flex justify-between text-slate-200"><span>Hemograma Digital</span><strong class="text-cyan-300">Liberado</strong></div>
+                  <div class="w-full h-1.5 bg-slate-700 rounded-full overflow-hidden"><div class="h-full bg-cyan-400 w-full"></div></div>
+                  <div class="flex justify-between text-slate-200"><span>Perfil Lipídico & Glicêmico</span><strong class="text-cyan-300">Liberado</strong></div>
+                  <div class="w-full h-1.5 bg-slate-700 rounded-full overflow-hidden"><div class="h-full bg-cyan-400 w-full"></div></div>
                 </div>
               </div>
             </div>
@@ -196,17 +202,17 @@
     </div>
   </section>
 
-  <!-- ===== SERVIÇOS & ESPECIALIDADES DE ANÁLISES CLÍNICAS ===== -->
-  <section id="servicos" class="py-20 bg-linen border-b border-gold/20">
+  <!-- ===== MENU DE EXAMES & ESPECIALIDADES ===== -->
+  <section id="exames" class="py-20 bg-white border-b border-steelLight">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto space-y-3 mb-16">
-        <span class="text-xs font-bold uppercase tracking-[0.25em] text-champagne">Medicina Laboratorial Completa</span>
-        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-emerald font-normal">
-          Especialidades & <em class="italic font-light">Serviços Diagnósticos</em>
+        <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-cyanAccent">Capacidade Analítica Completa</span>
+        <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy uppercase tracking-tight">
+          Especialidades & <span class="text-cyanAccent">Setores Diagnósticos</span>
         </h2>
-        <p class="text-sm text-muted">
-          Amplo menu de exames com metodologia moderna, controle de qualidade diário e emissão ágil de laudos.
+        <p class="text-sm text-slate-600">
+          Metodologia avançada e controle de qualidade diário em todas as fases da análise biológica.
         </p>
       </div>
 
@@ -214,133 +220,133 @@
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         
         <!-- 1: Hematologia & Coagulação -->
-        <div class="p-8 rounded-3xl bg-white border border-gold/30 shadow-sm hover:shadow-xl transition-all space-y-5 flex flex-col justify-between group">
+        <div class="p-8 rounded-2xl bg-slate-50 border border-steelLight hover:border-cyanAccent shadow-sm hover:shadow-xl transition-all space-y-5 flex flex-col justify-between group">
           <div class="space-y-4">
-            <div class="w-14 h-14 rounded-2xl bg-gold/20 flex items-center justify-center text-champagne group-hover:scale-110 transition-transform">
+            <div class="w-14 h-14 rounded-xl bg-navy flex items-center justify-center text-cyanAccent group-hover:bg-cyanAccent group-hover:text-white transition-all shadow-sm">
               <i data-lucide="activity" class="w-7 h-7"></i>
             </div>
-            <span class="inline-block px-3 py-1 rounded-full bg-sage text-emerald text-[10px] font-bold uppercase tracking-wider">Rotina & Precisão</span>
-            <h3 class="font-serif text-2xl font-bold text-emerald">Hematologia & Coagulação</h3>
-            <p class="text-xs text-muted leading-relaxed">
-              Hemogramas digitais completos, contagem de plaquetas e testes de coagulação com microscopia de alta fidelidade.
+            <span class="inline-block px-3 py-1 rounded-md bg-cyanAccent-light text-navy text-[11px] font-extrabold uppercase tracking-wider">Rotina & Precisão</span>
+            <h3 class="font-heading text-2xl font-extrabold text-navy uppercase">Hematologia & Coagulação</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Hemogramas digitais com contagem automatizada de leucócitos, plaquetas e tempo de coagulação sanguínea.
             </p>
-            <ul class="text-xs text-emerald/80 space-y-2 pt-2 border-t border-sage">
-              <li class="flex items-center gap-2"><span class="text-gold">✓</span> Hemograma Completo com Leucograma</li>
-              <li class="flex items-center gap-2"><span class="text-gold">✓</span> Coagulograma e Tempo de Protrombina</li>
-              <li class="flex items-center gap-2"><span class="text-gold">✓</span> Contagem de Reticulócitos</li>
+            <ul class="text-xs text-slate-700 space-y-2 pt-2 border-t border-slate-200 font-medium">
+              <li class="flex items-center gap-2"><span class="text-cyanAccent font-bold">✓</span> Hemograma Completo com Índices Hematimétricos</li>
+              <li class="flex items-center gap-2"><span class="text-cyanAccent font-bold">✓</span> Coagulograma e Tempo de Protrombina (TAP/TTPA)</li>
+              <li class="flex items-center gap-2"><span class="text-cyanAccent font-bold">✓</span> Velocidade de Hemossedimentação (VHS)</li>
             </ul>
           </div>
-          <a href="https://wa.me/5500000000000?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20um%20Hemograma/Exame%20Hematol%C3%B3gico." target="_blank" class="w-full py-3 bg-emerald hover:bg-champagne text-white rounded-full text-xs font-bold uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2">
-            <i data-lucide="calendar" class="w-4 h-4"></i> Solicitar Agendamento
+          <a href="https://wa.me/5500000000000?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20um%20Hemograma/Exame%20Hematol%C3%B3gico." target="_blank" class="w-full py-3.5 bg-navy hover:bg-cyanAccent text-white rounded-xl text-xs font-bold uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2">
+            <i data-lucide="calendar" class="w-4 h-4"></i> Agendar no WhatsApp
           </a>
         </div>
 
-        <!-- 2: Bioquímica & Metabolismo -->
-        <div class="p-8 rounded-3xl bg-white border border-gold/30 shadow-sm hover:shadow-xl transition-all space-y-5 flex flex-col justify-between group">
+        <!-- 2: Bioquímica & Função Orgânica -->
+        <div class="p-8 rounded-2xl bg-slate-50 border border-steelLight hover:border-cyanAccent shadow-sm hover:shadow-xl transition-all space-y-5 flex flex-col justify-between group">
           <div class="space-y-4">
-            <div class="w-14 h-14 rounded-2xl bg-gold/20 flex items-center justify-center text-champagne group-hover:scale-110 transition-transform">
+            <div class="w-14 h-14 rounded-xl bg-navy flex items-center justify-center text-cyanAccent group-hover:bg-cyanAccent group-hover:text-white transition-all shadow-sm">
               <i data-lucide="flask-conical" class="w-7 h-7"></i>
             </div>
-            <span class="inline-block px-3 py-1 rounded-full bg-sage text-emerald text-[10px] font-bold uppercase tracking-wider">Avaliação Metabólica</span>
-            <h3 class="font-serif text-2xl font-bold text-emerald">Bioquímica Clínica</h3>
-            <p class="text-xs text-muted leading-relaxed">
-              Avaliação abrangente de órgãos vitais: função renal, hepática, perfil lipídico e marcadores cardíacos.
+            <span class="inline-block px-3 py-1 rounded-md bg-cyanAccent-light text-navy text-[11px] font-extrabold uppercase tracking-wider">Avaliação de Órgãos</span>
+            <h3 class="font-heading text-2xl font-extrabold text-navy uppercase">Bioquímica Clínica</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Mapeamento de funções renais, hepáticas, perfil glicêmico e lipídico para prevenção cardiovascular.
             </p>
-            <ul class="text-xs text-emerald/80 space-y-2 pt-2 border-t border-sage">
-              <li class="flex items-center gap-2"><span class="text-gold">✓</span> Glicemia em Jejum & Hemoglobina Glicada</li>
-              <li class="flex items-center gap-2"><span class="text-gold">✓</span> Colesterol Total, HDL, LDL e Triglicerídeos</li>
-              <li class="flex items-center gap-2"><span class="text-gold">✓</span> Creatinina, Ureia, TGO e TGP</li>
+            <ul class="text-xs text-slate-700 space-y-2 pt-2 border-t border-slate-200 font-medium">
+              <li class="flex items-center gap-2"><span class="text-cyanAccent font-bold">✓</span> Glicemia de Jejum & Hemoglobina Glicada</li>
+              <li class="flex items-center gap-2"><span class="text-cyanAccent font-bold">✓</span> Perfil Lipídico (Colesterol Total, HDL, LDL, Triglicérides)</li>
+              <li class="flex items-center gap-2"><span class="text-cyanAccent font-bold">✓</span> Creatinina, Ureia, TGO, TGP e Gama GT</li>
             </ul>
           </div>
-          <a href="https://wa.me/5500000000000?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20Exames%20Bioqu%C3%ADmicos." target="_blank" class="w-full py-3 bg-emerald hover:bg-champagne text-white rounded-full text-xs font-bold uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2">
-            <i data-lucide="calendar" class="w-4 h-4"></i> Solicitar Agendamento
+          <a href="https://wa.me/5500000000000?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20Exames%20Bioqu%C3%ADmicos." target="_blank" class="w-full py-3.5 bg-navy hover:bg-cyanAccent text-white rounded-xl text-xs font-bold uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2">
+            <i data-lucide="calendar" class="w-4 h-4"></i> Agendar no WhatsApp
           </a>
         </div>
 
-        <!-- 3: Endocrinologia & Hormônios -->
-        <div class="p-8 rounded-3xl bg-white border border-gold/30 shadow-sm hover:shadow-xl transition-all space-y-5 flex flex-col justify-between group">
+        <!-- 3: Hormônios & Endocrinologia -->
+        <div class="p-8 rounded-2xl bg-slate-50 border border-steelLight hover:border-cyanAccent shadow-sm hover:shadow-xl transition-all space-y-5 flex flex-col justify-between group">
           <div class="space-y-4">
-            <div class="w-14 h-14 rounded-2xl bg-gold/20 flex items-center justify-center text-champagne group-hover:scale-110 transition-transform">
+            <div class="w-14 h-14 rounded-xl bg-navy flex items-center justify-center text-cyanAccent group-hover:bg-cyanAccent group-hover:text-white transition-all shadow-sm">
               <i data-lucide="heart-pulse" class="w-7 h-7"></i>
             </div>
-            <span class="inline-block px-3 py-1 rounded-full bg-sage text-emerald text-[10px] font-bold uppercase tracking-wider">Equilíbrio Hormonal</span>
-            <h3 class="font-serif text-2xl font-bold text-emerald">Painel Hormonal</h3>
-            <p class="text-xs text-muted leading-relaxed">
-              Dosagens hormonais de alta sensibilidade para tireoide, fertilidade, menopausa, testosterona e estresse.
+            <span class="inline-block px-3 py-1 rounded-md bg-cyanAccent-light text-navy text-[11px] font-extrabold uppercase tracking-wider">Equilíbrio Hormonal</span>
+            <h3 class="font-heading text-2xl font-extrabold text-navy uppercase">Painel Hormonal</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Dosagens por quimioluminescência para tireoide, fertilidade, testosterona, cortisol e metabolismo.
             </p>
-            <ul class="text-xs text-emerald/80 space-y-2 pt-2 border-t border-sage">
-              <li class="flex items-center gap-2"><span class="text-gold">✓</span> TSH Ultra Sensível e T4 Livre</li>
-              <li class="flex items-center gap-2"><span class="text-gold">✓</span> Cortisol Salivar e Sérico</li>
-              <li class="flex items-center gap-2"><span class="text-gold">✓</span> Testosterona Total/Livre e Estradiol</li>
+            <ul class="text-xs text-slate-700 space-y-2 pt-2 border-t border-slate-200 font-medium">
+              <li class="flex items-center gap-2"><span class="text-cyanAccent font-bold">✓</span> TSH Ultra Sensível e T4 Livre</li>
+              <li class="flex items-center gap-2"><span class="text-cyanAccent font-bold">✓</span> Testosterona Total e Livre, DHEA, Estradiol</li>
+              <li class="flex items-center gap-2"><span class="text-cyanAccent font-bold">✓</span> Cortisol, Insulina e Prolactina</li>
             </ul>
           </div>
-          <a href="https://wa.me/5500000000000?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20Exames%20Hormonais." target="_blank" class="w-full py-3 bg-emerald hover:bg-champagne text-white rounded-full text-xs font-bold uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2">
-            <i data-lucide="calendar" class="w-4 h-4"></i> Solicitar Agendamento
+          <a href="https://wa.me/5500000000000?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20Exames%20Hormonais." target="_blank" class="w-full py-3.5 bg-navy hover:bg-cyanAccent text-white rounded-xl text-xs font-bold uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2">
+            <i data-lucide="calendar" class="w-4 h-4"></i> Agendar no WhatsApp
           </a>
         </div>
 
-        <!-- 4: Coleta Domiciliar Exclusiva -->
-        <div class="p-8 rounded-3xl bg-white border border-gold/30 shadow-sm hover:shadow-xl transition-all space-y-5 flex flex-col justify-between group">
+        <!-- 4: Coleta Domiciliar & Corporativa -->
+        <div class="p-8 rounded-2xl bg-slate-50 border border-steelLight hover:border-cyanAccent shadow-sm hover:shadow-xl transition-all space-y-5 flex flex-col justify-between group">
           <div class="space-y-4">
-            <div class="w-14 h-14 rounded-2xl bg-gold/20 flex items-center justify-center text-champagne group-hover:scale-110 transition-transform">
+            <div class="w-14 h-14 rounded-xl bg-navy flex items-center justify-center text-cyanAccent group-hover:bg-cyanAccent group-hover:text-white transition-all shadow-sm">
               <i data-lucide="home" class="w-7 h-7"></i>
             </div>
-            <span class="inline-block px-3 py-1 rounded-full bg-sage text-emerald text-[10px] font-bold uppercase tracking-wider">Conforto VIP</span>
-            <h3 class="font-serif text-2xl font-bold text-emerald">Coleta Domiciliar Humanizada</h3>
-            <p class="text-xs text-muted leading-relaxed">
-              Nossa equipe de enfermagem especializada vai até sua residência ou empresa com total assepsia e pontualidade.
+            <span class="inline-block px-3 py-1 rounded-md bg-cyanAccent-light text-navy text-[11px] font-extrabold uppercase tracking-wider">Atendimento Móvel</span>
+            <h3 class="font-heading text-2xl font-extrabold text-navy uppercase">Coleta Domiciliar</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Equipe técnica de enfermagem vai até sua residência ou empresa com total assepsia e agilidade.
             </p>
-            <ul class="text-xs text-emerald/80 space-y-2 pt-2 border-t border-sage">
-              <li class="flex items-center gap-2"><span class="text-gold">✓</span> Ideal para Idosos, Crianças e Gestantes</li>
-              <li class="flex items-center gap-2"><span class="text-gold">✓</span> Coleta no Conforto da Sua Casa</li>
-              <li class="flex items-center gap-2"><span class="text-gold">✓</span> Horários Flexíveis a Partir das 06:30h</li>
+            <ul class="text-xs text-slate-700 space-y-2 pt-2 border-t border-slate-200 font-medium">
+              <li class="flex items-center gap-2"><span class="text-cyanAccent font-bold">✓</span> Ideal para Idosos, Crianças e Gestantes</li>
+              <li class="flex items-center gap-2"><span class="text-cyanAccent font-bold">✓</span> Horários a partir das 06:30h da manhã</li>
+              <li class="flex items-center gap-2"><span class="text-cyanAccent font-bold">✓</span> Atendimento para Empresas e Check-ups Corporativos</li>
             </ul>
           </div>
-          <a href="https://wa.me/5500000000000?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20uma%20Coleta%20Domiciliar." target="_blank" class="w-full py-3 bg-emerald hover:bg-champagne text-white rounded-full text-xs font-bold uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2">
-            <i data-lucide="calendar" class="w-4 h-4"></i> Agendar em Casa
+          <a href="https://wa.me/5500000000000?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20uma%20Coleta%20Domiciliar." target="_blank" class="w-full py-3.5 bg-navy hover:bg-cyanAccent text-white rounded-xl text-xs font-bold uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2">
+            <i data-lucide="calendar" class="w-4 h-4"></i> Agendar em Domicílio
           </a>
         </div>
 
         <!-- 5: Genética & Sexagem Fetal -->
-        <div class="p-8 rounded-3xl bg-white border border-gold/30 shadow-sm hover:shadow-xl transition-all space-y-5 flex flex-col justify-between group">
+        <div class="p-8 rounded-2xl bg-slate-50 border border-steelLight hover:border-cyanAccent shadow-sm hover:shadow-xl transition-all space-y-5 flex flex-col justify-between group">
           <div class="space-y-4">
-            <div class="w-14 h-14 rounded-2xl bg-gold/20 flex items-center justify-center text-champagne group-hover:scale-110 transition-transform">
+            <div class="w-14 h-14 rounded-xl bg-navy flex items-center justify-center text-cyanAccent group-hover:bg-cyanAccent group-hover:text-white transition-all shadow-sm">
               <i data-lucide="dna" class="w-7 h-7"></i>
             </div>
-            <span class="inline-block px-3 py-1 rounded-full bg-sage text-emerald text-[10px] font-bold uppercase tracking-wider">Biológica Avançada</span>
-            <h3 class="font-serif text-2xl font-bold text-emerald">Genética & Sexagem Fetal</h3>
-            <p class="text-xs text-muted leading-relaxed">
-              Descubra o sexo do bebê a partir da 8ª semana de gestação e realize testes de DNA e intolerâncias genéticas.
+            <span class="inline-block px-3 py-1 rounded-md bg-cyanAccent-light text-navy text-[11px] font-extrabold uppercase tracking-wider">Biológica Molecular</span>
+            <h3 class="font-heading text-2xl font-extrabold text-navy uppercase">Genética & Sexagem</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Descubra o sexo fetal a partir da 8ª semana com 99.9% de precisão e testes de paternidade (DNA).
             </p>
-            <ul class="text-xs text-emerald/80 space-y-2 pt-2 border-t border-sage">
-              <li class="flex items-center gap-2"><span class="text-gold">✓</span> Sexagem Fetal com 99.9% de Acerto</li>
-              <li class="flex items-center gap-2"><span class="text-gold">✓</span> Testes de Paternidade (DNA)</li>
-              <li class="flex items-center gap-2"><span class="text-gold">✓</span> Painel de Intolerâncias Alimentares</li>
+            <ul class="text-xs text-slate-700 space-y-2 pt-2 border-t border-slate-200 font-medium">
+              <li class="flex items-center gap-2"><span class="text-cyanAccent font-bold">✓</span> Sexagem Fetal sem necessidade de jejum</li>
+              <li class="flex items-center gap-2"><span class="text-cyanAccent font-bold">✓</span> Teste de Paternidade (DNA) com sigilo total</li>
+              <li class="flex items-center gap-2"><span class="text-cyanAccent font-bold">✓</span> Painel de Marcadores Genéticos</li>
             </ul>
           </div>
-          <a href="https://wa.me/5500000000000?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20Sexagem%20Fetal/DNA." target="_blank" class="w-full py-3 bg-emerald hover:bg-champagne text-white rounded-full text-xs font-bold uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2">
-            <i data-lucide="calendar" class="w-4 h-4"></i> Agendar Sexagem
+          <a href="https://wa.me/5500000000000?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20Sexagem%20Fetal/DNA." target="_blank" class="w-full py-3.5 bg-navy hover:bg-cyanAccent text-white rounded-xl text-xs font-bold uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2">
+            <i data-lucide="calendar" class="w-4 h-4"></i> Agendar Sexagem / DNA
           </a>
         </div>
 
-        <!-- 6: Exame Toxicológico CNH & Concursos -->
-        <div class="p-8 rounded-3xl bg-white border border-gold/30 shadow-sm hover:shadow-xl transition-all space-y-5 flex flex-col justify-between group">
+        <!-- 6: Exame Toxicológico CNH & CLT -->
+        <div class="p-8 rounded-2xl bg-slate-50 border border-steelLight hover:border-cyanAccent shadow-sm hover:shadow-xl transition-all space-y-5 flex flex-col justify-between group">
           <div class="space-y-4">
-            <div class="w-14 h-14 rounded-2xl bg-gold/20 flex items-center justify-center text-champagne group-hover:scale-110 transition-transform">
+            <div class="w-14 h-14 rounded-xl bg-navy flex items-center justify-center text-cyanAccent group-hover:bg-cyanAccent group-hover:text-white transition-all shadow-sm">
               <i data-lucide="shield-check" class="w-7 h-7"></i>
             </div>
-            <span class="inline-block px-3 py-1 rounded-full bg-sage text-emerald text-[10px] font-bold uppercase tracking-wider">Detran & Admissional</span>
-            <h3 class="font-serif text-2xl font-bold text-emerald">Exame Toxicológico</h3>
-            <p class="text-xs text-muted leading-relaxed">
-              Coleta de queratina (cabelo ou pelos) credenciada pelo DENATRAN para renovação de CNH (C, D, E) e concursos públicos.
+            <span class="inline-block px-3 py-1 rounded-md bg-cyanAccent-light text-navy text-[11px] font-extrabold uppercase tracking-wider">Credenciado Denatran</span>
+            <h3 class="font-heading text-2xl font-extrabold text-navy uppercase">Exame Toxicológico</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Coleta rápida de queratina para renovação de CNH (Categorias C, D e E), admissões CLT e concursos.
             </p>
-            <ul class="text-xs text-emerald/80 space-y-2 pt-2 border-t border-sage">
-              <li class="flex items-center gap-2"><span class="text-gold">✓</span> Renovação de CNH Categorias C, D e E</li>
-              <li class="flex items-center gap-2"><span class="text-gold">✓</span> Concursos Públicos e CLT</li>
-              <li class="flex items-center gap-2"><span class="text-gold">✓</span> Resultado Direto no Sistema Renach</li>
+            <ul class="text-xs text-slate-700 space-y-2 pt-2 border-t border-slate-200 font-medium">
+              <li class="flex items-center gap-2"><span class="text-cyanAccent font-bold">✓</span> Integração Direta com o Sistema Renach</li>
+              <li class="flex items-center gap-2"><span class="text-cyanAccent font-bold">✓</span> Laudo Rápido com Validade Nacional</li>
+              <li class="flex items-center gap-2"><span class="text-cyanAccent font-bold">✓</span> Não requer jejum nem agendamento prévio</li>
             </ul>
           </div>
-          <a href="https://wa.me/5500000000000?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20Exame%20Toxicol%C3%B3gico." target="_blank" class="w-full py-3 bg-emerald hover:bg-champagne text-white rounded-full text-xs font-bold uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2">
+          <a href="https://wa.me/5500000000000?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20Exame%20Toxicol%C3%B3gico." target="_blank" class="w-full py-3.5 bg-navy hover:bg-cyanAccent text-white rounded-xl text-xs font-bold uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2">
             <i data-lucide="calendar" class="w-4 h-4"></i> Agendar Toxicológico
           </a>
         </div>
@@ -350,50 +356,50 @@
     </div>
   </section>
 
-  <!-- ===== ORIENTADOR INTERATIVO DE SAÚDE (QUIZ DE CHECK-UP) ===== -->
-  <section id="quiz" class="py-16 bg-sage/40 border-b border-gold/20">
+  <!-- ===== ORIENTADOR INTERATIVO DE EXAMES ===== -->
+  <section id="quiz" class="py-16 bg-slate-100 border-b border-steelLight">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <div class="rounded-3xl bg-linen border border-gold/30 p-8 sm:p-12 shadow-xl relative overflow-hidden">
+      <div class="rounded-2xl bg-white border border-steelLight p-8 sm:p-12 shadow-xl relative overflow-hidden">
         
         <div class="text-center max-w-2xl mx-auto space-y-3 mb-8">
-          <span class="text-xs font-semibold uppercase tracking-[0.25em] text-champagne">Medicina Preventiva Personalizada</span>
-          <h2 class="font-serif text-3xl sm:text-4xl text-emerald font-normal">
-            Descubra o <em class="italic font-light">Check-up Ideal</em> para Você
+          <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-cyanAccent">Orientador Clínico Preventivo</span>
+          <h2 class="font-heading text-3xl sm:text-4xl text-navy font-extrabold uppercase">
+            Identifique o <span class="text-cyanAccent">Check-up Recomendado</span>
           </h2>
-          <p class="text-sm text-muted">
-            Responda em 30 segundos e nosso protocolo clínico identificará o painel laboratorial recomendado para o seu perfil e momento de vida.
+          <p class="text-sm text-slate-600">
+            Selecione seu objetivo principal para visualizar o protocolo de exames sugerido pela equipe biomédica.
           </p>
         </div>
 
         <!-- Estrutura do Orientador -->
         <div id="quizBox" class="space-y-6">
           <div class="space-y-3">
-            <label class="block text-xs font-bold uppercase tracking-wider text-emerald">1. Qual é o seu foco preventivo hoje?</label>
+            <label class="block text-xs font-bold uppercase tracking-wider text-navy">1. Qual é a sua prioridade de saúde hoje?</label>
             <div class="grid sm:grid-cols-3 gap-3">
-              <button onclick="selectQuiz(1, 'mulher', this)" class="quiz-btn p-4 rounded-xl border border-gold/30 text-left hover:border-champagne transition-all bg-white/80">
-                <span class="block font-semibold text-sm">Saúde da Mulher</span>
-                <span class="text-xs text-muted">Hormônios, tireoide e metabolismo</span>
+              <button onclick="selectQuiz(1, 'homem', this)" class="quiz-btn p-5 rounded-xl border border-steelLight text-left hover:border-cyanAccent transition-all bg-slate-50">
+                <span class="block font-bold text-sm text-navy">Saúde do Homem & Próstata</span>
+                <span class="text-xs text-slate-500">PSA, Testosterona e Cardiovascular</span>
               </button>
-              <button onclick="selectQuiz(1, 'homem', this)" class="quiz-btn p-4 rounded-xl border border-gold/30 text-left hover:border-champagne transition-all bg-white/80">
-                <span class="block font-semibold text-sm">Saúde do Homem</span>
-                <span class="text-xs text-muted">Próstata (PSA), cardíaco e energia</span>
+              <button onclick="selectQuiz(1, 'mulher', this)" class="quiz-btn p-5 rounded-xl border border-steelLight text-left hover:border-cyanAccent transition-all bg-slate-50">
+                <span class="block font-bold text-sm text-navy">Saúde da Mulher & Hormônios</span>
+                <span class="text-xs text-slate-500">Tireoide, Vitaminas e Hormônios</span>
               </button>
-              <button onclick="selectQuiz(1, 'rotina', this)" class="quiz-btn p-4 rounded-xl border border-gold/30 text-left hover:border-champagne transition-all bg-white/80">
-                <span class="block font-semibold text-sm">Check-up Geral Completo</span>
-                <span class="text-xs text-muted">Imunidade, vitaminas e rotina anual</span>
+              <button onclick="selectQuiz(1, 'rotina', this)" class="quiz-btn p-5 rounded-xl border border-steelLight text-left hover:border-cyanAccent transition-all bg-slate-50">
+                <span class="block font-bold text-sm text-navy">Check-up Geral Completo</span>
+                <span class="text-xs text-slate-500">Metabolismo, Rins, Fígado e Sangue</span>
               </button>
             </div>
           </div>
 
-          <!-- Área de Recomendação do Check-up -->
-          <div id="quizResult" class="hidden pt-6 border-t border-gold/20 text-center space-y-4">
-            <div class="inline-block px-4 py-1.5 rounded-full bg-gold/20 text-emerald text-xs font-bold uppercase tracking-wider">
-              Prescrição Preventiva Recomendada
+          <!-- Área de Resultado do Check-up -->
+          <div id="quizResult" class="hidden pt-6 border-t border-slate-200 text-center space-y-4">
+            <div class="inline-block px-4 py-1.5 rounded bg-cyanAccent-light text-navy text-xs font-extrabold uppercase tracking-wider">
+              Protocolo Sugerido
             </div>
-            <h3 id="quizResultTitle" class="font-serif text-2xl text-emerald font-semibold"></h3>
-            <p id="quizResultDesc" class="text-sm text-muted max-w-lg mx-auto"></p>
-            <button id="quizAddBtn" class="px-8 py-3.5 bg-emerald text-white rounded-full text-xs font-bold uppercase tracking-widest shadow-md hover:bg-champagne transition-colors">
-              Adicionar Check-up à Lista de Coleta
+            <h3 id="quizResultTitle" class="font-heading text-2xl text-navy font-bold"></h3>
+            <p id="quizResultDesc" class="text-sm text-slate-600 max-w-lg mx-auto leading-relaxed"></p>
+            <button id="quizAddBtn" class="px-8 py-4 bg-navy hover:bg-cyanAccent text-white rounded-xl text-xs font-bold uppercase tracking-wider shadow-md transition-colors flex items-center justify-center gap-2 mx-auto">
+              <i data-lucide="calendar" class="w-4 h-4"></i> Agendar Este Check-up no WhatsApp
             </button>
           </div>
         </div>
@@ -402,37 +408,37 @@
     </div>
   </section>
 
-  <!-- ===== CATÁLOGO DE CHECK-UPS & PAINÉIS PREVENTIVOS ===== -->
-  <section id="catalogo" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- ===== CATÁLOGO DE CHECK-UPS PREVENTIVOS (SEM PREÇOS) ===== -->
+  <section id="checkups" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Cabeçalho do Catálogo -->
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
       <div class="space-y-2">
-        <span class="text-xs font-bold uppercase tracking-[0.25em] text-champagne">Painéis Laboratoriais</span>
-        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-emerald font-normal">
-          Check-ups & <em class="italic font-light">Exames Preventivos</em>
+        <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-cyanAccent">Medicina Preventiva</span>
+        <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy uppercase tracking-tight">
+          Painéis de <span class="text-cyanAccent">Check-up Clínico</span>
         </h2>
-        <p class="text-sm text-muted max-w-lg">
-          Pacotes completos com valores acessíveis, orientações de jejum claras e opção de agendamento presencial ou domiciliar.
+        <p class="text-sm text-slate-600 max-w-lg">
+          Exames agrupados de forma inteligente com instruções detalhadas de preparo para facilitar o seu dia.
         </p>
       </div>
 
       <!-- Filtros por Categoria -->
       <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-        <button onclick="filterCategory('todos', this)" class="filter-pill active-pill px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider border border-gold/40 transition-all">
+        <button onclick="filterCategory('todos', this)" class="filter-pill active-pill px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider border border-steelLight transition-all">
           Todos os Painéis
         </button>
-        <button onclick="filterCategory('checkups', this)" class="filter-pill px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider border border-gold/40 text-muted hover:text-emerald transition-all">
-          Check-ups Gerais
+        <button onclick="filterCategory('homem', this)" class="filter-pill px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider border border-steelLight text-slate-600 hover:text-navy transition-all">
+          Saúde Masculina
         </button>
-        <button onclick="filterCategory('mulher', this)" class="filter-pill px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider border border-gold/40 text-muted hover:text-emerald transition-all">
-          Mulher & Gestante
+        <button onclick="filterCategory('mulher', this)" class="filter-pill px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider border border-steelLight text-slate-600 hover:text-navy transition-all">
+          Saúde Feminina
         </button>
-        <button onclick="filterCategory('homem', this)" class="filter-pill px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider border border-gold/40 text-muted hover:text-emerald transition-all">
-          Homem 40+
+        <button onclick="filterCategory('checkups', this)" class="filter-pill px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider border border-steelLight text-slate-600 hover:text-navy transition-all">
+          Rotina Geral
         </button>
-        <button onclick="filterCategory('especiais', this)" class="filter-pill px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider border border-gold/40 text-muted hover:text-emerald transition-all">
-          Especiais & Genética
+        <button onclick="filterCategory('especiais', this)" class="filter-pill px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider border border-steelLight text-slate-600 hover:text-navy transition-all">
+          Especiais / DNA
         </button>
       </div>
     </div>
@@ -445,20 +451,20 @@
   </section>
 
   <!-- ===== BLOG / ARTIGOS MÉDICOS & DICAS DO DR. SAMUEL ===== -->
-  <section id="posts" class="py-20 bg-sage/30 border-y border-gold/20">
+  <section id="artigos" class="py-20 bg-slate-100 border-y border-steelLight">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
         <div class="space-y-2">
-          <span class="text-xs font-bold uppercase tracking-[0.25em] text-champagne">Canal de Saúde Preventiva</span>
-          <h2 class="font-serif text-3xl sm:text-4xl text-emerald font-normal">
-            Artigos & Orientações do <em class="italic font-light">Dr. Samuel Barreto</em>
+          <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-cyanAccent">Canal de Informação Médica</span>
+          <h2 class="font-heading text-3xl sm:text-4xl text-navy font-extrabold uppercase">
+            Orientações do <span class="text-cyanAccent">Dr. Samuel Barreto</span>
           </h2>
-          <p class="text-sm text-muted">Informações científicas claras para você cuidar da sua saúde com consciência.</p>
+          <p class="text-sm text-slate-600">Artigos científicos em linguagem prática para cuidar da saúde com precisão.</p>
         </div>
 
-        <button onclick="openAdminModal('posts')" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald hover:bg-champagne text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-sm self-start sm:self-auto">
-          <i data-lucide="plus-circle" class="w-4 h-4 text-gold"></i>
+        <button onclick="openAdminModal('posts')" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-navy hover:bg-cyanAccent text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-sm self-start sm:self-auto">
+          <i data-lucide="plus-circle" class="w-4 h-4 text-cyan-300"></i>
           <span>Novo Artigo</span>
         </button>
       </div>
@@ -472,40 +478,40 @@
   </section>
 
   <!-- ===== SOBRE O DR. SAMUEL BARRETO & MANIFESTO ===== -->
-  <section id="sobre" class="py-20 bg-linen">
+  <section id="sobre" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-12 gap-12 items-center">
         
         <div class="lg:col-span-5 relative">
-          <div class="rounded-2xl overflow-hidden border border-gold/30 shadow-2xl aspect-[4/5] bg-emerald/10">
+          <div class="rounded-2xl overflow-hidden border border-steelLight shadow-xl aspect-[4/5] bg-navy-dark">
             <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80" alt="Dr. Samuel Barreto Biomédico" class="w-full h-full object-cover" />
           </div>
-          <div class="absolute -bottom-6 -right-6 p-6 rounded-2xl bg-linen border border-gold/30 shadow-xl hidden sm:block">
-            <span class="font-serif text-3xl font-bold text-champagne">15+ Anos</span>
-            <span class="block text-xs uppercase tracking-wider text-muted">Dedicados à Medicina Diagnóstica</span>
+          <div class="absolute -bottom-6 -right-6 p-6 rounded-2xl bg-navy text-white border border-cyanAccent/40 shadow-2xl hidden sm:block">
+            <span class="font-heading text-3xl font-extrabold text-cyan-400 block">15+ Anos</span>
+            <span class="block text-xs uppercase tracking-wider text-slate-300 font-bold">De Liderança Biomédica</span>
           </div>
         </div>
 
         <div class="lg:col-span-7 space-y-6 lg:pl-8">
-          <span class="text-xs font-bold uppercase tracking-[0.25em] text-champagne">Direção Técnica</span>
-          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-emerald font-normal">
-            Por trás de cada laudo existe uma vida. <em class="italic font-light">E nós cuidamos da sua.</em>
+          <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-cyanAccent">Direção Técnica</span>
+          <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy uppercase tracking-tight">
+            Compromisso com a Verdade Biológica e o <span class="text-cyanAccent">Cuidado Humano</span>.
           </h2>
-          <p class="text-base text-muted font-light leading-relaxed">
-            O <strong>Laboratório Dr. Samuel Barreto</strong> nasceu com o propósito inegociável de aliar a mais alta tecnologia de automação analítica com o atendimento verdadeiramente acolhedor.
+          <p class="text-base text-slate-700 font-normal leading-relaxed">
+            Fundado pelo <strong>Dr. Samuel Barreto</strong>, biomédico especialista em análises clínicas de alta complexidade, o laboratório alia processos automatizados de precisão analítica a um atendimento técnico humanizado.
           </p>
-          <p class="text-base text-muted font-light leading-relaxed">
-            Com mais de 15 anos de trajetória biomédica, investimos continuamente em equipamentos de rastreabilidade digital, controle de qualidade certificado e profissionais treinados para tornar a sua experiência o mais tranquila possível.
+          <p class="text-base text-slate-700 font-normal leading-relaxed">
+            Cada exame passa por rigorosa dupla checagem com padrões internacionais de calibração, oferecendo aos médicos assistentes e pacientes a máxima confiabilidade no diagnóstico.
           </p>
 
           <div class="pt-4 grid grid-cols-2 gap-6">
-            <div class="p-4 rounded-xl bg-sage/40 border border-gold/20">
-              <h4 class="font-serif font-bold text-lg text-emerald mb-1">Rigor ISO 15189</h4>
-              <p class="text-xs text-muted">Controles de calibração diários com padrões internacionais.</p>
+            <div class="p-5 rounded-xl bg-slate-50 border border-steelLight">
+              <h4 class="font-heading font-extrabold text-lg text-navy mb-1">Acreditação ISO 15189</h4>
+              <p class="text-xs text-slate-600">Controles analíticos diários e calibração permanente.</p>
             </div>
-            <div class="p-4 rounded-xl bg-sage/40 border border-gold/20">
-              <h4 class="font-serif font-bold text-lg text-emerald mb-1">Coleta Sem Traumas</h4>
-              <p class="text-xs text-muted">Técnicas especiais para veias difíceis, idosos e crianças.</p>
+            <div class="p-5 rounded-xl bg-slate-50 border border-steelLight">
+              <h4 class="font-heading font-extrabold text-lg text-navy mb-1">Coleta Eficiente</h4>
+              <p class="text-xs text-slate-600">Equipe treinada para punção precisa e sem desconforto.</p>
             </div>
           </div>
         </div>
@@ -517,241 +523,145 @@
   <!-- ===== ESTRUTURA & TECNOLOGIA ===== -->
   <section id="estrutura" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto space-y-3 mb-16">
-      <span class="text-xs font-bold uppercase tracking-[0.25em] text-champagne">Infraestrutura Médica</span>
-      <h2 class="font-serif text-3xl sm:text-4xl text-emerald font-normal">Ambiente Seguro & Humanizado</h2>
+      <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-cyanAccent">Infraestrutura Médica</span>
+      <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-navy uppercase">Ambiente Seguro & Confortável</h2>
     </div>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      <div class="p-6 rounded-2xl bg-sage/40 border border-gold/20 space-y-3 text-center">
-        <div class="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center mx-auto text-champagne">
+      <div class="p-6 rounded-2xl bg-white border border-steelLight shadow-sm space-y-3 text-center">
+        <div class="w-12 h-12 rounded-xl bg-navy flex items-center justify-center mx-auto text-cyanAccent">
           <i data-lucide="shield-check" class="w-6 h-6"></i>
         </div>
-        <h3 class="font-serif text-xl font-semibold text-emerald">Automação Total</h3>
-        <p class="text-xs text-muted">Tubos com código de barras digital que eliminam qualquer erro manual.</p>
+        <h3 class="font-heading text-lg font-bold text-navy uppercase">Automação Total</h3>
+        <p class="text-xs text-slate-600">Rastreabilidade com código de barras digital que elimina risco de erro humano.</p>
       </div>
 
-      <div class="p-6 rounded-2xl bg-sage/40 border border-gold/20 space-y-3 text-center">
-        <div class="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center mx-auto text-champagne">
-          <i data-lucide="baby" class="w-6 h-6"></i>
+      <div class="p-6 rounded-2xl bg-white border border-steelLight shadow-sm space-y-3 text-center">
+        <div class="w-12 h-12 rounded-xl bg-navy flex items-center justify-center mx-auto text-cyanAccent">
+          <i data-lucide="home" class="w-6 h-6"></i>
         </div>
-        <h3 class="font-serif text-xl font-semibold text-emerald">Espaço Kids Lúdico</h3>
-        <p class="text-xs text-muted">Sala de coleta infantil decorada e equipe com certificado de carinho.</p>
+        <h3 class="font-heading text-lg font-bold text-navy uppercase">Coleta Móvel</h3>
+        <p class="text-xs text-slate-600">Atendimento domiciliar para maior comodidade de sua família.</p>
       </div>
 
-      <div class="p-6 rounded-2xl bg-sage/40 border border-gold/20 space-y-3 text-center">
-        <div class="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center mx-auto text-champagne">
+      <div class="p-6 rounded-2xl bg-white border border-steelLight shadow-sm space-y-3 text-center">
+        <div class="w-12 h-12 rounded-xl bg-navy flex items-center justify-center mx-auto text-cyanAccent">
           <i data-lucide="clock" class="w-6 h-6"></i>
         </div>
-        <h3 class="font-serif text-xl font-semibold text-emerald">Laudos Rápidos</h3>
-        <p class="text-xs text-muted">Resultados liberados com agilidade e total segurança técnica.</p>
+        <h3 class="font-heading text-lg font-bold text-navy uppercase">Agilidade no Laudo</h3>
+        <p class="text-xs text-slate-600">Liberação rápida de resultados com total validação biomédica.</p>
       </div>
 
-      <div class="p-6 rounded-2xl bg-sage/40 border border-gold/20 space-y-3 text-center">
-        <div class="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center mx-auto text-champagne">
+      <div class="p-6 rounded-2xl bg-white border border-steelLight shadow-sm space-y-3 text-center">
+        <div class="w-12 h-12 rounded-xl bg-navy flex items-center justify-center mx-auto text-cyanAccent">
           <i data-lucide="coffee" class="w-6 h-6"></i>
         </div>
-        <h3 class="font-serif text-xl font-semibold text-emerald">Desjejum Cortesia</h3>
-        <p class="text-xs text-muted">Café balanceado servido após a sua coleta em jejum na nossa recepção.</p>
+        <h3 class="font-heading text-lg font-bold text-navy uppercase">Desjejum Cortesia</h3>
+        <p class="text-xs text-slate-600">Café completo após a sua coleta em jejum na nossa unidade.</p>
       </div>
     </div>
   </section>
 
-  <!-- ===== CONVÊNIOS & ATENDIMENTO ===== -->
-  <section class="py-12 bg-emerald text-linen">
+  <!-- ===== CONVÊNIOS MÉDICOS ===== -->
+  <section class="py-12 bg-navy text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-      <span class="text-xs font-bold uppercase tracking-[0.25em] text-gold">Convênios Médicos & Parcerias</span>
-      <h3 class="font-serif text-2xl sm:text-3xl font-normal">Aceitamos os Principais Planos de Saúde</h3>
-      <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-12 opacity-80 text-sm font-semibold tracking-wider">
+      <span class="text-xs font-bold uppercase tracking-[0.2em] text-cyan-300">Planos & Convênios Atendidos</span>
+      <h3 class="font-heading text-2xl sm:text-3xl font-extrabold uppercase">Ampla Cobertura Médica</h3>
+      <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-12 opacity-85 text-xs font-extrabold uppercase tracking-wider">
         <span>UNIMED</span>
         <span>BRADESCO SAÚDE</span>
         <span>SULAMÉRICA</span>
         <span>AMIL</span>
         <span>CASSI</span>
         <span>IPSEMG</span>
-        <span>PARTICULAR COM VALOR ACESSÍVEL</span>
+        <span>PARTICULAR ACESSÍVEL</span>
       </div>
     </div>
   </section>
 
-  <!-- ===== DÚVIDAS FREQUENTES & ATENDIMENTO ===== -->
+  <!-- ===== CONTATO & AGENDAMENTO DIRETO ===== -->
   <section id="contato" class="py-20 max-w-4xl mx-auto px-4 sm:px-6">
     <div class="text-center space-y-3 mb-12">
-      <span class="text-xs font-bold uppercase tracking-[0.25em] text-champagne">Orientações & Contato</span>
-      <h2 class="font-serif text-3xl sm:text-4xl text-emerald font-normal">Como podemos ajudar você?</h2>
-      <p class="text-sm text-muted">Tire dúvidas sobre tempo de jejum, preparo de exames ou agendamento de coleta.</p>
+      <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-cyanAccent">Atendimento</span>
+      <h2 class="font-heading text-3xl sm:text-4xl text-navy font-extrabold uppercase">Fale com a Nossa Equipe</h2>
+      <p class="text-sm text-slate-600">Tire dúvidas sobre preparo de exames, jejum ou agende sua coleta presencial/domiciliar.</p>
     </div>
 
     <!-- Acordeão FAQ -->
     <div class="space-y-4 mb-16">
-      <details class="group p-6 rounded-2xl bg-sage/40 border border-gold/20 cursor-pointer">
-        <summary class="flex items-center justify-between font-serif text-lg font-semibold text-emerald">
-          <span>Preciso de jejum para fazer exames de sangue?</span>
-          <i data-lucide="chevron-down" class="w-5 h-5 text-gold group-open:rotate-180 transition-transform"></i>
+      <details class="group p-6 rounded-2xl bg-white border border-steelLight shadow-sm cursor-pointer">
+        <summary class="flex items-center justify-between font-heading text-base font-bold text-navy">
+          <span>Como receber as instruções de jejum e preparo?</span>
+          <i data-lucide="chevron-down" class="w-5 h-5 text-cyanAccent group-open:rotate-180 transition-transform"></i>
         </summary>
-        <p class="text-sm text-muted mt-3 font-light leading-relaxed">
-          Para a maioria dos exames (como Hemograma e TSH), o jejum prolongado já não é obrigatório. Exames como Perfil Lipídico e Glicemia exigem de 8 a 12 horas. Nossa equipe informa as orientações exatas no seu WhatsApp.
+        <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+          Basta enviar o nome dos exames solicitados no nosso WhatsApp oficial. Nossa equipe médica envia o guia exato de preparo e jejum na hora.
         </p>
       </details>
 
-      <details class="group p-6 rounded-2xl bg-sage/40 border border-gold/20 cursor-pointer">
-        <summary class="flex items-center justify-between font-serif text-lg font-semibold text-emerald">
+      <details class="group p-6 rounded-2xl bg-white border border-steelLight shadow-sm cursor-pointer">
+        <summary class="flex items-center justify-between font-heading text-base font-bold text-navy">
           <span>Como funciona a Coleta Domiciliar?</span>
-          <i data-lucide="chevron-down" class="w-5 h-5 text-gold group-open:rotate-180 transition-transform"></i>
+          <i data-lucide="chevron-down" class="w-5 h-5 text-cyanAccent group-open:rotate-180 transition-transform"></i>
         </summary>
-        <p class="text-sm text-muted mt-3 font-light leading-relaxed">
-          Basta solicitar pelo nosso WhatsApp informando seu endereço. Nossa enfermeira comparece no horário agendado com todo o material estéril necessário.
+        <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+          Nossa equipe de enfermagem comparece na sua residência ou empresa no horário marcado com material 100% estéril e transporte biológico controlado.
         </p>
       </details>
 
-      <details class="group p-6 rounded-2xl bg-sage/40 border border-gold/20 cursor-pointer">
-        <summary class="flex items-center justify-between font-serif text-lg font-semibold text-emerald">
-          <span>Como posso retirar meus laudos?</span>
-          <i data-lucide="chevron-down" class="w-5 h-5 text-gold group-open:rotate-180 transition-transform"></i>
+      <details class="group p-6 rounded-2xl bg-white border border-steelLight shadow-sm cursor-pointer">
+        <summary class="flex items-center justify-between font-heading text-base font-bold text-navy">
+          <span>Como retirar os resultados dos exames?</span>
+          <i data-lucide="chevron-down" class="w-5 h-5 text-cyanAccent group-open:rotate-180 transition-transform"></i>
         </summary>
-        <p class="text-sm text-muted mt-3 font-light leading-relaxed">
-          Você pode retirar o laudo impresso diretamente na nossa recepção ou receber em formato PDF autenticado diretamente no seu WhatsApp e e-mail.
+        <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+          Os laudos autenticados são entregues de forma ágil diretamente no seu WhatsApp, e-mail ou na recepção da nossa unidade central.
         </p>
       </details>
     </div>
 
     <!-- Banner WhatsApp -->
-    <div id="agendar" class="rounded-3xl bg-gradient-to-r from-emerald to-emerald-dark text-white p-8 sm:p-10 text-center space-y-4">
-      <h3 class="font-serif text-2xl sm:text-3xl">Deseja agendar seus exames agora?</h3>
-      <p class="text-sm text-gold-light/80 max-w-md mx-auto">
-        Envie sua guia médica ou solicite seu check-up diretamente pelo WhatsApp oficial do laboratório.
+    <div id="agendar" class="rounded-2xl bg-navy text-white p-8 sm:p-12 text-center space-y-5 shadow-2xl">
+      <h3 class="font-heading text-2xl sm:text-3xl font-extrabold uppercase">Agende Seus Exames Diretamente</h3>
+      <p class="text-sm text-slate-300 max-w-md mx-auto">
+        Envie sua foto da guia médica ou solicite seu check-up preventivo diretamente com nosso atendimento.
       </p>
-      <a id="whatsappCtaLink" href="https://wa.me/5500000000000" target="_blank" class="inline-flex items-center gap-2 px-8 py-4 bg-champagne hover:bg-champagne/90 text-white rounded-full text-xs font-bold uppercase tracking-widest transition-colors shadow-lg">
-        <i data-lucide="message-circle" class="w-4 h-4"></i> Agendar pelo WhatsApp
+      <a id="whatsappCtaLink" href="https://wa.me/5500000000000" target="_blank" class="inline-flex items-center gap-2 px-8 py-4 bg-cyanAccent hover:bg-cyanAccent-hover text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-colors shadow-lg">
+        <i data-lucide="message-circle" class="w-4 h-4"></i> Iniciar Atendimento no WhatsApp
       </a>
     </div>
   </section>
 
-  <!-- ===== RODAPÉ (FOOTER) ===== -->
-  <footer class="bg-emerald-dark text-gold-light py-12 border-t border-gold/20">
+  <!-- ===== RODAPÉ ===== -->
+  <footer class="bg-navy-dark text-slate-400 py-12 border-t border-navy-light/40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-gold/20 text-center md:text-left">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-navy-light/40 text-center md:text-left">
         <div>
-          <span class="font-serif text-2xl tracking-widest font-semibold uppercase text-white block">DR. SAMUEL BARRETO</span>
-          <span class="text-[10px] tracking-[0.3em] uppercase text-gold">Laboratório de Análises Clínicas & Medicina Diagnóstica</span>
+          <span class="font-heading text-2xl font-black uppercase text-white block">DR. SAMUEL BARRETO</span>
+          <span class="text-[11px] tracking-wider uppercase text-cyanAccent font-bold">Laboratório de Análises Clínicas & Medicina Diagnóstica</span>
         </div>
-        <div class="flex flex-wrap justify-center gap-6 text-xs uppercase tracking-wider">
-          <a href="#servicos" class="hover:text-white transition">Exames</a>
-          <a href="#catalogo" class="hover:text-white transition">Check-ups</a>
-          <a href="#posts" class="hover:text-white transition">Artigos</a>
+        <div class="flex flex-wrap justify-center gap-6 text-xs uppercase font-bold tracking-wider">
+          <a href="#exames" class="hover:text-white transition">Exames</a>
+          <a href="#checkups" class="hover:text-white transition">Check-ups</a>
+          <a href="#artigos" class="hover:text-white transition">Artigos</a>
           <a href="#sobre" class="hover:text-white transition">O Laboratório</a>
           <a href="#contato" class="hover:text-white transition">Contato</a>
-          <button onclick="openAdminModal()" class="text-gold hover:text-white transition font-bold flex items-center gap-1">
+          <button onclick="openAdminModal()" class="text-cyanAccent hover:text-white transition flex items-center gap-1">
             <i data-lucide="lock" class="w-3.5 h-3.5"></i> Área Médica
           </button>
         </div>
       </div>
-      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gold-light/60 gap-4">
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
         <p>© 2026 Laboratório Dr. Samuel Barreto. Todos os direitos reservados.</p>
-        <p>Responsável Técnico: Dr. Samuel Barreto (CRBM) • Rigor Científico & Humanização</p>
+        <p>Responsável Técnico: Dr. Samuel Barreto (CRBM)</p>
       </div>
     </div>
   </footer>
 
-  <!-- ===== SACOLA DE EXAMES / AGENDAMENTO LATERAL (DRAWER) ===== -->
-  <div id="cartDrawerBackdrop" class="fixed inset-0 bg-emerald-dark/60 backdrop-blur-sm z-50 hidden transition-opacity">
-    <div id="cartDrawer" class="absolute top-0 right-0 h-full w-full max-w-md bg-linen shadow-2xl flex flex-col justify-between p-6 overflow-y-auto">
-      
-      <!-- Cabeçalho da Sacola -->
-      <div>
-        <div class="flex items-center justify-between pb-4 border-b border-gold/20">
-          <div class="flex items-center gap-2">
-            <i data-lucide="clipboard-list" class="w-5 h-5 text-champagne"></i>
-            <h3 class="font-serif text-xl font-bold text-emerald">Lista de Exames & Check-ups</h3>
-          </div>
-          <button id="closeCartBtn" class="p-2 text-muted hover:text-emerald" aria-label="Fechar Sacola">
-            <i data-lucide="x" class="w-5 h-5"></i>
-          </button>
-        </div>
-
-        <!-- Barra de Benefício de Coleta Domiciliar Grátis -->
-        <div class="py-4 border-b border-gold/20">
-          <div class="flex justify-between text-xs font-semibold mb-1">
-            <span id="shippingText">Coleta Domiciliar Grátis acima de R$ 190</span>
-            <span id="shippingPercent">80%</span>
-          </div>
-          <div class="w-full h-1.5 bg-sage rounded-full overflow-hidden">
-            <div id="shippingBar" class="h-full bg-champagne rounded-full transition-all duration-500" style="width: 80%"></div>
-          </div>
-        </div>
-
-        <!-- Lista de Exames Selecionados -->
-        <div id="cartItemsList" class="py-4 space-y-4">
-          <!-- Preenchido via script.js -->
-        </div>
-      </div>
-
-      <!-- Resumo Financeiro, Métodos Seguros e Agendamento -->
-      <div class="pt-4 border-t border-gold/20 space-y-4">
-        <div class="flex justify-between text-sm">
-          <span class="text-muted">Valor Total dos Exames:</span>
-          <span id="cartSubtotal" class="font-serif font-bold text-emerald text-lg">R$ 0,00</span>
-        </div>
-
-        <!-- Seleção de Forma de Pagamento Segura -->
-        <div class="space-y-2">
-          <label class="block text-[11px] font-bold uppercase tracking-wider text-emerald flex items-center justify-between">
-            <span>Forma de Pagamento Segura</span>
-            <span class="text-[10px] text-champagne font-semibold flex items-center gap-1">
-              <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> 100% Criptografado
-            </span>
-          </label>
-          <div class="grid grid-cols-2 gap-2 text-xs">
-            <label class="flex items-center gap-2 p-2.5 rounded-xl border border-gold/30 bg-white cursor-pointer hover:border-champagne transition has-[:checked]:border-champagne has-[:checked]:bg-gold/10">
-              <input type="radio" name="paymentMethod" value="pix" checked onchange="updatePaymentMethod()" class="text-champagne focus:ring-champagne" />
-              <div>
-                <span class="font-bold block text-emerald">PIX (5% OFF)</span>
-                <span class="text-[10px] text-muted">Aprovação Imediata</span>
-              </div>
-            </label>
-            <label class="flex items-center gap-2 p-2.5 rounded-xl border border-gold/30 bg-white cursor-pointer hover:border-champagne transition has-[:checked]:border-champagne has-[:checked]:bg-gold/10">
-              <input type="radio" name="paymentMethod" value="cartao" onchange="updatePaymentMethod()" class="text-champagne focus:ring-champagne" />
-              <div>
-                <span class="font-bold block text-emerald">Cartão até 6x</span>
-                <span class="text-[10px] text-muted">Link Oficial Seguro</span>
-              </div>
-            </label>
-          </div>
-        </div>
-
-        <!-- Box Informativo PIX -->
-        <div id="pixDiscountBox" class="p-3 rounded-xl bg-green-50 border border-green-200 text-xs text-green-900 flex items-center justify-between">
-          <span class="flex items-center gap-1.5 font-medium">
-            <i data-lucide="zap" class="w-4 h-4 text-green-600"></i> Desconto no PIX aplicado:
-          </span>
-          <span id="pixDiscountValue" class="font-bold text-green-700">- R$ 0,00</span>
-        </div>
-
-        <!-- Botão Principal de Agendamento Seguro -->
-        <button onclick="checkoutWhatsApp()" class="w-full py-4 bg-emerald hover:bg-champagne text-white rounded-full text-xs font-bold uppercase tracking-widest shadow-lg transition-colors flex items-center justify-center gap-2">
-          <i data-lucide="lock" class="w-4 h-4 text-gold-light"></i> 
-          <span id="checkoutBtnText">Agendar e Garantir Valores</span>
-        </button>
-
-        <!-- Selos de Confiança Médica -->
-        <div class="pt-2 border-t border-sage space-y-2 text-center">
-          <div class="flex items-center justify-center gap-4 text-[10px] text-muted uppercase tracking-wider font-semibold">
-            <span class="flex items-center gap-1"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-green-600"></i> SSL 256 Bits</span>
-            <span class="flex items-center gap-1"><i data-lucide="award" class="w-3.5 h-3.5 text-gold"></i> ISO 15189</span>
-            <span class="flex items-center gap-1"><i data-lucide="home" class="w-3.5 h-3.5 text-emerald"></i> Coleta Domiciliar</span>
-          </div>
-          <p class="text-[10px] text-muted font-light">
-            Seus dados de saúde e financeiros são protegidos com sigilo médico e criptografia de ponta.
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ===== MODAL DE VISUALIZAÇÃO RÁPIDA DE EXAME ===== -->
-  <div id="quickModal" class="fixed inset-0 bg-emerald-dark/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-linen rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative border border-gold/30 shadow-2xl max-h-[90vh] overflow-y-auto">
-      <button onclick="closeQuickModal()" class="absolute top-4 right-4 p-2 text-muted hover:text-emerald" aria-label="Fechar Janela">
+  <!-- ===== MODAL DE VISUALIZAÇÃO RÁPIDA DE EXAME (SEM PREÇO) ===== -->
+  <div id="quickModal" class="fixed inset-0 bg-navy-dark/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative border border-steelLight shadow-2xl max-h-[90vh] overflow-y-auto">
+      <button onclick="closeQuickModal()" class="absolute top-4 right-4 p-2 text-slate-400 hover:text-navy" aria-label="Fechar Janela">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
       <div id="modalContent" class="grid sm:grid-cols-2 gap-6 items-center">
@@ -761,9 +671,9 @@
   </div>
 
   <!-- ===== MODAL DE LEITURA COMPLETA DE ARTIGO ===== -->
-  <div id="postModal" class="fixed inset-0 bg-emerald-dark/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-linen rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative border border-gold/30 shadow-2xl max-h-[90vh] overflow-y-auto space-y-4">
-      <button onclick="closePostModal()" class="absolute top-4 right-4 p-2 text-muted hover:text-emerald" aria-label="Fechar Janela">
+  <div id="postModal" class="fixed inset-0 bg-navy-dark/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative border border-steelLight shadow-2xl max-h-[90vh] overflow-y-auto space-y-4">
+      <button onclick="closePostModal()" class="absolute top-4 right-4 p-2 text-slate-400 hover:text-navy" aria-label="Fechar Janela">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
       <div id="postModalContent">
@@ -772,33 +682,33 @@
     </div>
   </div>
 
-  <!-- ===== PAINEL ADMINISTRATIVO (ADMIN DR. SAMUEL BARRETO) ===== -->
-  <div id="adminModal" class="fixed inset-0 bg-emerald-dark/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-linen rounded-3xl max-w-4xl w-full p-6 sm:p-8 relative border border-gold/40 shadow-2xl max-h-[92vh] overflow-y-auto flex flex-col">
+  <!-- ===== PAINEL ADMINISTRATIVO (ADMIN DR. SAMUEL BARRETO COM IA) ===== -->
+  <div id="adminModal" class="fixed inset-0 bg-navy-dark/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-4xl w-full p-6 sm:p-8 relative border border-steelLight shadow-2xl max-h-[92vh] overflow-y-auto flex flex-col">
       
       <!-- Cabeçalho do Admin -->
-      <div class="flex items-center justify-between pb-4 border-b border-gold/30 mb-6">
+      <div class="flex items-center justify-between pb-4 border-b border-steelLight mb-6">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-gold/20 text-champagne flex items-center justify-center">
+          <div class="w-10 h-10 rounded-xl bg-navy text-cyanAccent flex items-center justify-center">
             <i data-lucide="shield" class="w-5 h-5"></i>
           </div>
           <div>
-            <h3 class="font-serif text-2xl font-bold text-emerald">Painel Clínico & Conteúdo</h3>
-            <p class="text-xs text-muted">Área exclusiva do Dr. Samuel Barreto para publicar artigos e gerenciar exames.</p>
+            <h3 class="font-heading text-xl font-extrabold text-navy uppercase">Painel de Conteúdo Médico</h3>
+            <p class="text-xs text-slate-500">Área exclusiva do Dr. Samuel Barreto para publicar artigos e gerenciar exames.</p>
           </div>
         </div>
-        <button onclick="closeAdminModal()" class="p-2 text-muted hover:text-emerald">
+        <button onclick="closeAdminModal()" class="p-2 text-slate-400 hover:text-navy">
           <i data-lucide="x" class="w-6 h-6"></i>
         </button>
       </div>
 
       <!-- Login do Admin -->
       <div id="adminLoginForm" class="py-8 max-w-sm mx-auto text-center space-y-4">
-        <i data-lucide="lock" class="w-12 h-12 text-gold mx-auto"></i>
-        <h4 class="font-serif text-xl font-bold">Digite sua Senha de Acesso Médico</h4>
-        <p class="text-xs text-muted">Senha padrão: <code class="bg-sage px-2 py-0.5 rounded font-mono font-bold">admin123</code></p>
-        <input type="password" id="adminPasswordInput" placeholder="Senha do painel" class="w-full px-4 py-3 rounded-xl border border-gold/40 bg-white text-sm outline-none focus:border-champagne text-center font-bold" />
-        <button onclick="loginAdmin()" class="w-full py-3 bg-emerald hover:bg-champagne text-white rounded-full text-xs font-bold uppercase tracking-wider transition-all">
+        <i data-lucide="lock" class="w-12 h-12 text-navy mx-auto"></i>
+        <h4 class="font-heading text-lg font-bold">Digite sua Senha de Acesso Médico</h4>
+        <p class="text-xs text-slate-500">Senha padrão: <code class="bg-slate-100 px-2 py-0.5 rounded font-mono font-bold">admin123</code></p>
+        <input type="password" id="adminPasswordInput" placeholder="Senha do painel" class="w-full px-4 py-3 rounded-xl border border-steelLight bg-slate-50 text-sm outline-none focus:border-cyanAccent text-center font-bold" />
+        <button onclick="loginAdmin()" class="w-full py-3.5 bg-navy hover:bg-cyanAccent text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all">
           Acessar Painel
         </button>
       </div>
@@ -807,75 +717,75 @@
       <div id="adminDashboard" class="hidden space-y-6">
         
         <!-- Abas do Admin -->
-        <div class="flex gap-2 border-b border-gold/20 pb-3 overflow-x-auto">
-          <button onclick="switchAdminTab('posts')" id="tabPostsBtn" class="px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-emerald text-white transition-all">
+        <div class="flex gap-2 border-b border-steelLight pb-3 overflow-x-auto">
+          <button onclick="switchAdminTab('posts')" id="tabPostsBtn" class="px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-navy text-white transition-all">
             📝 Artigos & Dicas de Saúde
           </button>
-          <button onclick="switchAdminTab('products')" id="tabProductsBtn" class="px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-sage text-emerald hover:bg-gold/20 transition-all">
+          <button onclick="switchAdminTab('products')" id="tabProductsBtn" class="px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">
             🧪 Gerenciar Check-ups & Exames
           </button>
-          <button onclick="switchAdminTab('settings')" id="tabSettingsBtn" class="px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-sage text-emerald hover:bg-gold/20 transition-all">
+          <button onclick="switchAdminTab('settings')" id="tabSettingsBtn" class="px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">
             ⚙️ Contatos & Informações
           </button>
         </div>
 
         <!-- ABA 1: GERENCIAR ARTIGOS COM IA -->
         <div id="adminTabPosts" class="space-y-6">
-          <div class="p-6 rounded-2xl bg-white border border-gold/30 shadow-sm space-y-5">
+          <div class="p-6 rounded-2xl bg-slate-50 border border-steelLight space-y-5">
             <div class="flex items-center justify-between">
-              <h4 class="font-serif text-lg font-bold text-emerald flex items-center gap-2">
-                <i data-lucide="plus-circle" class="w-4 h-4 text-champagne"></i>
+              <h4 class="font-heading text-base font-bold text-navy flex items-center gap-2 uppercase">
+                <i data-lucide="plus-circle" class="w-4 h-4 text-cyanAccent"></i>
                 <span id="postFormTitle">Publicar Novo Artigo Clínico</span>
               </h4>
-              <button type="button" onclick="suggestAiContent()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gold/20 hover:bg-gold/30 text-emerald text-[11px] font-bold transition">
-                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-champagne"></i>
+              <button type="button" onclick="suggestAiContent()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyanAccent-light hover:bg-cyanAccent hover:text-white text-navy text-[11px] font-bold transition">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
                 <span>Gerar Texto com IA</span>
               </button>
             </div>
 
             <!-- GERADOR DE IMAGENS MÉDICAS COM IA -->
-            <div class="p-4 rounded-2xl bg-gold/10 border border-gold/40 space-y-3">
+            <div class="p-4 rounded-xl bg-white border border-steelLight space-y-3 shadow-sm">
               <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2 text-emerald font-bold text-xs">
-                  <i data-lucide="sparkles" class="w-4 h-4 text-champagne"></i>
+                <div class="flex items-center gap-2 text-navy font-bold text-xs">
+                  <i data-lucide="sparkles" class="w-4 h-4 text-cyanAccent"></i>
                   <span>🎨 Gerador de Imagens com Inteligência Artificial</span>
                 </div>
-                <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald text-white font-bold uppercase tracking-wider">IA Integrada</span>
+                <span class="text-[10px] px-2.5 py-0.5 rounded bg-navy text-white font-bold uppercase tracking-wider">IA Integrada</span>
               </div>
               
-              <p class="text-[11px] text-muted">
+              <p class="text-[11px] text-slate-500">
                 Descreva a imagem que deseja ou use um dos temas médicos prontos:
               </p>
 
               <!-- Sugestões Rápidas Médicas -->
               <div class="flex flex-wrap gap-1.5">
-                <button type="button" onclick="setAiPrompt('Médico biomédico com jaleco examinando microscópio moderno em laboratório clínico de alta tecnologia')" class="px-2.5 py-1 rounded-lg bg-white border border-gold/30 text-[10px] hover:border-champagne transition">🔬 Laboratório & Microscopia</button>
-                <button type="button" onclick="setAiPrompt('Coleta de sangue humanizada, enfermeira atenciosa com paciente sorridente em clínica médica')" class="px-2.5 py-1 rounded-lg bg-white border border-gold/30 text-[10px] hover:border-champagne transition">🩸 Coleta Humanizada</button>
-                <button type="button" onclick="setAiPrompt('Ilustração médica elegante de coração saudável, alimentação equilibrada e longevidade')" class="px-2.5 py-1 rounded-lg bg-white border border-gold/30 text-[10px] hover:border-champagne transition">❤️ Saúde Cardiovascular</button>
-                <button type="button" onclick="setAiPrompt('Frasco de vacinas e imunologia com iluminação médica suave e sofisticada')" class="px-2.5 py-1 rounded-lg bg-white border border-gold/30 text-[10px] hover:border-champagne transition">💉 Imunidade & Vacinas</button>
-                <button type="button" onclick="setAiPrompt('Mulher grávida fazendo ultrassom e exames com médico atencioso, acolhimento')" class="px-2.5 py-1 rounded-lg bg-white border border-gold/30 text-[10px] hover:border-champagne transition">👶 Gestação & Sexagem</button>
+                <button type="button" onclick="setAiPrompt('Médico biomédico de jaleco examinando microscópio moderno em laboratório clínico de alta tecnologia')" class="px-2.5 py-1 rounded-lg bg-slate-50 border border-steelLight text-[10px] font-bold hover:border-cyanAccent transition">🔬 Laboratório & Microscopia</button>
+                <button type="button" onclick="setAiPrompt('Coleta de sangue humanizada, enfermeira atenciosa com paciente em clínica médica limpa')" class="px-2.5 py-1 rounded-lg bg-slate-50 border border-steelLight text-[10px] font-bold hover:border-cyanAccent transition">🩸 Coleta Humanizada</button>
+                <button type="button" onclick="setAiPrompt('Ilustração médica elegante de coração saudável, atividade física e longevidade')" class="px-2.5 py-1 rounded-lg bg-slate-50 border border-steelLight text-[10px] font-bold hover:border-cyanAccent transition">❤️ Saúde Cardiovascular</button>
+                <button type="button" onclick="setAiPrompt('Frasco de vacinas e imunologia com iluminação médica moderna e sofisticada')" class="px-2.5 py-1 rounded-lg bg-slate-50 border border-steelLight text-[10px] font-bold hover:border-cyanAccent transition">💉 Imunidade & Vacinas</button>
+                <button type="button" onclick="setAiPrompt('Mulher grávida fazendo exames preventivos com médico atencioso, acolhimento clínico')" class="px-2.5 py-1 rounded-lg bg-slate-50 border border-steelLight text-[10px] font-bold hover:border-cyanAccent transition">👶 Gestação & Sexagem</button>
               </div>
 
               <div class="flex gap-2">
-                <input type="text" id="aiImagePrompt" placeholder="Ex: Médico analisando exames em tablet no laboratório moderno..." class="flex-1 px-3 py-2.5 rounded-xl border border-sage bg-white focus:border-champagne outline-none text-xs" />
-                <button type="button" onclick="generateAiImage()" id="btnGenerateAi" class="px-4 py-2.5 rounded-xl bg-emerald hover:bg-champagne text-white font-bold text-xs uppercase tracking-wider transition flex items-center gap-1.5 shadow-sm">
-                  <i data-lucide="wand-2" class="w-3.5 h-3.5 text-gold"></i>
+                <input type="text" id="aiImagePrompt" placeholder="Ex: Médico analisando exames em tablet no laboratório moderno..." class="flex-1 px-3 py-2.5 rounded-xl border border-steelLight bg-slate-50 focus:border-cyanAccent outline-none text-xs" />
+                <button type="button" onclick="generateAiImage()" id="btnGenerateAi" class="px-4 py-2.5 rounded-xl bg-navy hover:bg-cyanAccent text-white font-bold text-xs uppercase tracking-wider transition flex items-center gap-1.5 shadow-sm">
+                  <i data-lucide="wand-2" class="w-3.5 h-3.5 text-cyan-300"></i>
                   <span id="btnGenerateAiText">Gerar Imagem</span>
                 </button>
               </div>
 
               <!-- Preview da Imagem Gerada -->
-              <div id="aiImagePreviewBox" class="hidden pt-3 border-t border-gold/20 flex flex-col sm:flex-row items-center gap-4">
-                <div class="relative w-40 aspect-[16/10] rounded-xl overflow-hidden bg-sage/40 border border-gold/30 flex-shrink-0">
+              <div id="aiImagePreviewBox" class="hidden pt-3 border-t border-slate-200 flex flex-col sm:flex-row items-center gap-4">
+                <div class="relative w-40 aspect-[16/10] rounded-xl overflow-hidden bg-slate-100 border border-steelLight flex-shrink-0">
                   <img id="aiPreviewImg" src="" alt="Imagem Gerada por IA" class="w-full h-full object-cover" />
-                  <div id="aiLoadingSpinner" class="hidden absolute inset-0 bg-emerald-dark/60 flex items-center justify-center text-white">
-                    <i data-lucide="loader-2" class="w-6 h-6 animate-spin text-gold"></i>
+                  <div id="aiLoadingSpinner" class="hidden absolute inset-0 bg-navy/60 flex items-center justify-center text-white">
+                    <i data-lucide="loader-2" class="w-6 h-6 animate-spin text-cyan-300"></i>
                   </div>
                 </div>
                 <div class="flex-1 space-y-1.5 text-left">
-                  <span class="text-[11px] font-bold text-emerald block">Imagem Renderizada com Sucesso!</span>
-                  <p class="text-[10px] text-muted">Pronta para ilustrar seu artigo clínico.</p>
-                  <button type="button" onclick="useGeneratedImage()" class="px-3 py-1.5 rounded-lg bg-champagne text-white text-[10px] font-bold uppercase tracking-wider hover:bg-champagne/90 transition flex items-center gap-1">
+                  <span class="text-[11px] font-bold text-navy block">Imagem Renderizada com Sucesso!</span>
+                  <p class="text-[10px] text-slate-500">Pronta para ilustrar seu artigo clínico.</p>
+                  <button type="button" onclick="useGeneratedImage()" class="px-3 py-1.5 rounded-lg bg-cyanAccent text-white text-[10px] font-bold uppercase tracking-wider hover:bg-cyanAccent-hover transition flex items-center gap-1">
                     <i data-lucide="check" class="w-3 h-3"></i> Aplicar Imagem no Artigo
                   </button>
                 </div>
@@ -886,12 +796,12 @@
               <input type="hidden" id="editPostId" value="" />
               <div class="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label class="block font-bold mb-1 uppercase">Título do Artigo *</label>
-                  <input type="text" id="postTitle" required placeholder="Ex: Como Interpretar seu Exame de Glicemia" class="w-full px-3 py-2.5 rounded-xl border border-sage bg-linen focus:border-champagne outline-none" />
+                  <label class="block font-bold mb-1 uppercase text-slate-700">Título do Artigo *</label>
+                  <input type="text" id="postTitle" required placeholder="Ex: Como Interpretar seu Exame de Glicemia" class="w-full px-3 py-2.5 rounded-xl border border-steelLight bg-white focus:border-cyanAccent outline-none" />
                 </div>
                 <div>
-                  <label class="block font-bold mb-1 uppercase">Categoria *</label>
-                  <select id="postCategory" class="w-full px-3 py-2.5 rounded-xl border border-sage bg-linen focus:border-champagne outline-none">
+                  <label class="block font-bold mb-1 uppercase text-slate-700">Categoria *</label>
+                  <select id="postCategory" class="w-full px-3 py-2.5 rounded-xl border border-steelLight bg-white focus:border-cyanAccent outline-none">
                     <option value="Prevenção & Longevidade">Prevenção & Longevidade</option>
                     <option value="Saúde Cardiovascular">Saúde Cardiovascular</option>
                     <option value="Saúde da Mulher">Saúde da Mulher & Gestante</option>
@@ -901,25 +811,25 @@
               </div>
 
               <div>
-                <label class="block font-bold mb-1 uppercase">Link da Imagem de Capa *</label>
-                <input type="url" id="postImage" required placeholder="https://exemplo.com/foto.jpg ou use o gerador de IA acima" class="w-full px-3 py-2.5 rounded-xl border border-sage bg-linen focus:border-champagne outline-none" />
+                <label class="block font-bold mb-1 uppercase text-slate-700">Link da Imagem de Capa *</label>
+                <input type="url" id="postImage" required placeholder="https://exemplo.com/foto.jpg ou use o gerador de IA acima" class="w-full px-3 py-2.5 rounded-xl border border-steelLight bg-white focus:border-cyanAccent outline-none" />
               </div>
 
               <div>
-                <label class="block font-bold mb-1 uppercase">Resumo Curto (Aparece no card) *</label>
-                <input type="text" id="postExcerpt" required placeholder="Resumo de 1 ou 2 linhas..." class="w-full px-3 py-2.5 rounded-xl border border-sage bg-linen focus:border-champagne outline-none" />
+                <label class="block font-bold mb-1 uppercase text-slate-700">Resumo Curto (Aparece no card) *</label>
+                <input type="text" id="postExcerpt" required placeholder="Resumo de 1 ou 2 linhas..." class="w-full px-3 py-2.5 rounded-xl border border-steelLight bg-white focus:border-cyanAccent outline-none" />
               </div>
 
               <div>
-                <label class="block font-bold mb-1 uppercase">Texto Completo do Artigo *</label>
-                <textarea id="postContent" required rows="5" placeholder="Escreva a orientação médica completa aqui..." class="w-full px-3 py-2.5 rounded-xl border border-sage bg-linen focus:border-champagne outline-none"></textarea>
+                <label class="block font-bold mb-1 uppercase text-slate-700">Texto Completo do Artigo *</label>
+                <textarea id="postContent" required rows="5" placeholder="Escreva a orientação médica completa aqui..." class="w-full px-3 py-2.5 rounded-xl border border-steelLight bg-white focus:border-cyanAccent outline-none"></textarea>
               </div>
 
               <div class="flex gap-3">
-                <button type="submit" class="px-6 py-3 rounded-full bg-emerald hover:bg-champagne text-white font-bold uppercase tracking-wider transition shadow-sm">
+                <button type="submit" class="px-6 py-3.5 rounded-xl bg-navy hover:bg-cyanAccent text-white font-bold uppercase tracking-wider transition shadow-sm">
                   Publicar Artigo no Site
                 </button>
-                <button type="button" onclick="resetPostForm()" class="px-6 py-3 rounded-full bg-sage text-emerald font-bold uppercase tracking-wider hover:bg-gold/20 transition">
+                <button type="button" onclick="resetPostForm()" class="px-6 py-3.5 rounded-xl bg-slate-200 text-slate-700 font-bold uppercase tracking-wider hover:bg-slate-300 transition">
                   Limpar
                 </button>
               </div>
@@ -928,7 +838,7 @@
 
           <!-- Lista de Artigos Cadastrados -->
           <div class="space-y-3">
-            <h4 class="font-serif text-lg font-bold text-emerald">Artigos Ativos no Portal</h4>
+            <h4 class="font-heading text-sm font-bold text-navy uppercase">Artigos Ativos no Portal</h4>
             <div id="adminPostsList" class="space-y-2">
               <!-- Renderizado via JS -->
             </div>
@@ -937,55 +847,51 @@
 
         <!-- ABA 2: GERENCIAR CHECK-UPS -->
         <div id="adminTabProducts" class="hidden space-y-6">
-          <div class="p-6 rounded-2xl bg-white border border-gold/30 shadow-sm space-y-4">
-            <h4 class="font-serif text-lg font-bold text-emerald flex items-center gap-2">
-              <i data-lucide="plus-circle" class="w-4 h-4 text-champagne"></i>
+          <div class="p-6 rounded-2xl bg-slate-50 border border-steelLight space-y-4">
+            <h4 class="font-heading text-base font-bold text-navy flex items-center gap-2 uppercase">
+              <i data-lucide="plus-circle" class="w-4 h-4 text-cyanAccent"></i>
               <span>Adicionar / Editar Check-up</span>
             </h4>
             <form onsubmit="handleSaveProduct(event)" class="space-y-4 text-xs">
               <input type="hidden" id="editProductId" value="" />
-              <div class="grid sm:grid-cols-3 gap-4">
+              <div class="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label class="block font-bold mb-1 uppercase">Nome do Check-up *</label>
-                  <input type="text" id="prodName" required placeholder="Ex: Check-up Cardiovascular Completo" class="w-full px-3 py-2.5 rounded-xl border border-sage bg-linen focus:border-champagne outline-none" />
+                  <label class="block font-bold mb-1 uppercase text-slate-700">Nome do Check-up *</label>
+                  <input type="text" id="prodName" required placeholder="Ex: Check-up Cardiovascular Completo" class="w-full px-3 py-2.5 rounded-xl border border-steelLight bg-white focus:border-cyanAccent outline-none" />
                 </div>
                 <div>
-                  <label class="block font-bold mb-1 uppercase">Valor Total (R$) *</label>
-                  <input type="number" step="0.01" id="prodPrice" required placeholder="189.00" class="w-full px-3 py-2.5 rounded-xl border border-sage bg-linen focus:border-champagne outline-none" />
-                </div>
-                <div>
-                  <label class="block font-bold mb-1 uppercase">Categoria *</label>
-                  <select id="prodCategory" class="w-full px-3 py-2.5 rounded-xl border border-sage bg-linen focus:border-champagne outline-none">
-                    <option value="checkups">Check-ups Gerais</option>
-                    <option value="mulher">Mulher & Gestante</option>
-                    <option value="homem">Homem 40+</option>
-                    <option value="especiais">Especiais & Genética</option>
+                  <label class="block font-bold mb-1 uppercase text-slate-700">Categoria *</label>
+                  <select id="prodCategory" class="w-full px-3 py-2.5 rounded-xl border border-steelLight bg-white focus:border-cyanAccent outline-none">
+                    <option value="homem">Saúde Masculina</option>
+                    <option value="mulher">Saúde Feminina</option>
+                    <option value="checkups">Rotina Geral</option>
+                    <option value="especiais">Especiais / DNA</option>
                   </select>
                 </div>
               </div>
 
               <div class="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label class="block font-bold mb-1 uppercase">Link da Imagem Principal *</label>
-                  <input type="url" id="prodImage" required placeholder="https://exemplo.com/foto.jpg" class="w-full px-3 py-2.5 rounded-xl border border-sage bg-linen focus:border-champagne outline-none" />
+                  <label class="block font-bold mb-1 uppercase text-slate-700">Link da Imagem Principal *</label>
+                  <input type="url" id="prodImage" required placeholder="https://exemplo.com/foto.jpg" class="w-full px-3 py-2.5 rounded-xl border border-steelLight bg-white focus:border-cyanAccent outline-none" />
                 </div>
                 <div>
-                  <label class="block font-bold mb-1 uppercase">Selo de Destaque</label>
-                  <input type="text" id="prodBadge" placeholder="Ex: Mais Solicitado, Completo" class="w-full px-3 py-2.5 rounded-xl border border-sage bg-linen focus:border-champagne outline-none" />
+                  <label class="block font-bold mb-1 uppercase text-slate-700">Selo de Destaque</label>
+                  <input type="text" id="prodBadge" placeholder="Ex: Mais Solicitado, Completo" class="w-full px-3 py-2.5 rounded-xl border border-steelLight bg-white focus:border-cyanAccent outline-none" />
                 </div>
               </div>
 
               <div>
-                <label class="block font-bold mb-1 uppercase">Resumo dos Exames Inclusos *</label>
-                <input type="text" id="prodShortDesc" required placeholder="Ex: Hemograma + Glicemia + Lipídico + TSH + Creatinina" class="w-full px-3 py-2.5 rounded-xl border border-sage bg-linen focus:border-champagne outline-none" />
+                <label class="block font-bold mb-1 uppercase text-slate-700">Resumo dos Exames Inclusos *</label>
+                <input type="text" id="prodShortDesc" required placeholder="Ex: Hemograma + Glicemia + Lipídico + TSH + Creatinina" class="w-full px-3 py-2.5 rounded-xl border border-steelLight bg-white focus:border-cyanAccent outline-none" />
               </div>
 
               <div>
-                <label class="block font-bold mb-1 uppercase">Orientações de Jejum & Preparo</label>
-                <input type="text" id="prodUsage" placeholder="Ex: Jejum de 8 a 12 horas. Água permitida com moderação." class="w-full px-3 py-2.5 rounded-xl border border-sage bg-linen focus:border-champagne outline-none" />
+                <label class="block font-bold mb-1 uppercase text-slate-700">Orientações de Jejum & Preparo</label>
+                <input type="text" id="prodUsage" placeholder="Ex: Jejum de 8 a 12 horas. Água permitida com moderação." class="w-full px-3 py-2.5 rounded-xl border border-steelLight bg-white focus:border-cyanAccent outline-none" />
               </div>
 
-              <button type="submit" class="px-6 py-3 rounded-full bg-emerald hover:bg-champagne text-white font-bold uppercase tracking-wider transition">
+              <button type="submit" class="px-6 py-3.5 rounded-xl bg-navy hover:bg-cyanAccent text-white font-bold uppercase tracking-wider transition">
                 Salvar Painel de Exames
               </button>
             </form>
@@ -993,35 +899,35 @@
 
           <!-- Lista de Check-ups Cadastrados -->
           <div class="space-y-3">
-            <h4 class="font-serif text-lg font-bold text-emerald">Painéis Ativos no Catálogo</h4>
+            <h4 class="font-heading text-sm font-bold text-navy uppercase">Painéis Ativos no Catálogo</h4>
             <div id="adminProductsList" class="space-y-2">
               <!-- Renderizado via JS -->
             </div>
           </div>
         </div>
 
-        <!-- ABA 3: CONFIGURAÇÕES DO LABORATÓRIO -->
+        <!-- ABA 3: CONFIGURAÇÕES -->
         <div id="adminTabSettings" class="hidden space-y-6">
-          <div class="p-6 rounded-2xl bg-white border border-gold/30 shadow-sm space-y-4">
-            <h4 class="font-serif text-lg font-bold text-emerald">Dados de Atendimento & WhatsApp</h4>
+          <div class="p-6 rounded-2xl bg-slate-50 border border-steelLight space-y-4">
+            <h4 class="font-heading text-base font-bold text-navy uppercase">Dados de Atendimento & WhatsApp</h4>
             <form onsubmit="handleSaveSettings(event)" class="space-y-4 text-xs">
               <div class="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label class="block font-bold mb-1 uppercase">Número do WhatsApp (com DDD) *</label>
-                  <input type="text" id="cfgWhatsapp" required placeholder="5500000000000" class="w-full px-3 py-2.5 rounded-xl border border-sage bg-linen focus:border-champagne outline-none" />
+                  <label class="block font-bold mb-1 uppercase text-slate-700">Número do WhatsApp (com DDD) *</label>
+                  <input type="text" id="cfgWhatsapp" required placeholder="5500000000000" class="w-full px-3 py-2.5 rounded-xl border border-steelLight bg-white focus:border-cyanAccent outline-none" />
                 </div>
                 <div>
-                  <label class="block font-bold mb-1 uppercase">Cidade / Unidade *</label>
-                  <input type="text" id="cfgCity" required value="Unidade Central" class="w-full px-3 py-2.5 rounded-xl border border-sage bg-linen focus:border-champagne outline-none" />
+                  <label class="block font-bold mb-1 uppercase text-slate-700">Unidade Principal *</label>
+                  <input type="text" id="cfgCity" required value="Unidade Central" class="w-full px-3 py-2.5 rounded-xl border border-steelLight bg-white focus:border-cyanAccent outline-none" />
                 </div>
               </div>
 
               <div>
-                <label class="block font-bold mb-1 uppercase">Texto da Barra Superior</label>
-                <input type="text" id="cfgAnnouncement" class="w-full px-3 py-2.5 rounded-xl border border-sage bg-linen focus:border-champagne outline-none" />
+                <label class="block font-bold mb-1 uppercase text-slate-700">Texto da Barra Superior</label>
+                <input type="text" id="cfgAnnouncement" class="w-full px-3 py-2.5 rounded-xl border border-steelLight bg-white focus:border-cyanAccent outline-none" />
               </div>
 
-              <button type="submit" class="px-6 py-3 rounded-full bg-emerald hover:bg-champagne text-white font-bold uppercase tracking-wider transition">
+              <button type="submit" class="px-6 py-3.5 rounded-xl bg-navy hover:bg-cyanAccent text-white font-bold uppercase tracking-wider transition">
                 Salvar Informações
               </button>
             </form>
@@ -1034,8 +940,8 @@
   </div>
 
   <!-- Notificação Flutuante (Toast) -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-emerald text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-gold/30 text-xs font-semibold">
-    <i data-lucide="check-circle" class="w-4 h-4 text-gold"></i>
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-navy text-white px-5 py-3.5 rounded-xl shadow-2xl flex items-center gap-3 border border-cyanAccent/40 text-xs font-bold">
+    <i data-lucide="check-circle" class="w-4 h-4 text-cyan-400"></i>
     <span id="toastMsg">Alterações salvas com sucesso!</span>
   </div>
 

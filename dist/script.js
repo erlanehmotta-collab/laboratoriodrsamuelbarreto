@@ -2,85 +2,75 @@
 const defaultSettings = {
   city: 'Unidade Central',
   whatsapp: '5500000000000',
-  announcement: '🔬 COLETA DOMICILIAR SEM TAXA PARA IDOSOS E GESTANTES | LAUDOS DE ALTA PRECISÃO',
+  announcement: '🔬 COLETA DOMICILIAR E CORPORATIVA | LAUDOS ÁGEIS COM RIGOR BIOMÉDICO',
   adminPass: 'admin123'
 };
 
 const defaultProducts = [
   {
-    id: 'checkup-geral',
-    name: 'Check-up Preventivo Essencial',
-    category: 'checkups',
-    badge: 'Mais Solicitado',
-    price: 149.00,
-    installments: '3x de R$ 49,66',
-    rating: 5.0,
-    reviewsCount: 148,
-    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80',
-    hoverImage: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=600&q=80',
-    shortDesc: 'Hemograma Completo + Glicemia + Colesterol Total e Frações + Triglicerídeos + Creatinina + TSH.',
-    fullDesc: 'Painel completo para avaliação geral do organismo, imunidade, perfil glicêmico e lipídico, além da função renal e tireoidiana básica.',
-    usage: 'Jejum obrigatório de 8 a 12 horas. Água pode ser ingerida com moderação.'
-  },
-  {
-    id: 'checkup-mulher',
-    name: 'Check-up Mulher Completo & Hormonal',
-    category: 'mulher',
-    badge: 'Saúde Feminina',
-    price: 269.00,
-    installments: '4x de R$ 67,25',
-    rating: 5.0,
-    reviewsCount: 116,
-    image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80',
-    hoverImage: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80',
-    shortDesc: 'Hemograma + TSH + T4 Livre + Ferritina + Vitamina D + Perfil Lipídico + Glicemia + Estradiol + Progesterona.',
-    fullDesc: 'Protocolo preventivo desenhado para a fisiologia feminina: investiga disposição, queda de cabelo, oscilações hormonais, tireoide e saúde óssea.',
-    usage: 'Jejum de 8 horas. Recomenda-se realizar entre o 3º e 5º dia do ciclo menstrual caso haja dosagem hormonal associada.'
-  },
-  {
     id: 'checkup-homem',
     name: 'Check-up Homem 40+ & Próstata (PSA)',
     category: 'homem',
     badge: 'Prevenção Masculina',
-    price: 249.00,
-    installments: '3x de R$ 83,00',
-    rating: 4.9,
-    reviewsCount: 92,
+    rating: 5.0,
+    reviewsCount: 192,
     image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&q=80',
     hoverImage: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=600&q=80',
-    shortDesc: 'PSA Total e Livre + Testosterona Total + Hemograma + Ácido Úrico + Glicemia + Perfil Lipídico + Ureia.',
-    fullDesc: 'Painel com foco na saúde da próstata, níveis de energia, metabolismo, função cardiovascular e rins.',
-    usage: 'Jejum de 8 horas. Evitar relações sexuais e ciclismo por 48h antes da coleta de PSA.'
+    shortDesc: 'PSA Total e Livre + Testosterona Total/Livre + Hemograma + Ácido Úrico + Glicemia + Perfil Lipídico + Creatinina.',
+    fullDesc: 'Painel completo desenvolvido especificamente para homens a partir dos 40 anos. Avalia a saúde prostática, função hormonal e cardiovascular, além de rins e fígado.',
+    usage: 'Jejum obrigatório de 8 horas. Evitar relações sexuais e ciclismo nas 48h anteriores à coleta de PSA.'
   },
   {
-    id: 'sexagem-fetal',
-    name: 'Sexagem Fetal Precoce (DNA no Sangue)',
-    category: 'especiais',
-    badge: '99.9% de Acerto',
-    price: 199.00,
-    installments: '3x de R$ 66,33',
+    id: 'checkup-geral',
+    name: 'Check-up Preventivo Executivo',
+    category: 'checkups',
+    badge: 'Mais Solicitado',
     rating: 5.0,
-    reviewsCount: 210,
-    image: 'https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=600&q=80',
+    reviewsCount: 248,
+    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80',
+    hoverImage: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=600&q=80',
+    shortDesc: 'Hemograma Completo + Glicemia + Colesterol Total e Frações + Triglicerídeos + Creatinina + Ureia + TSH + TGO/TGP.',
+    fullDesc: 'Painel amplo para avaliação anual do metabolismo, perfil cardíaco, função renal, hepática e tireoide.',
+    usage: 'Jejum obrigatório de 8 a 12 horas. Água pode ser consumida normalmente.'
+  },
+  {
+    id: 'checkup-mulher',
+    name: 'Check-up Mulher & Painel Hormonal',
+    category: 'mulher',
+    badge: 'Saúde Feminina',
+    rating: 5.0,
+    reviewsCount: 180,
+    image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80',
     hoverImage: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80',
-    shortDesc: 'Descubra se é Menino ou Menina a partir da 8ª semana de gestação.',
-    fullDesc: 'Análise molecular no plasma materno que identifica a presença do cromossomo Y com rigor laboratorial e entrega rápida do laudo.',
-    usage: 'Não necessita de jejum. Pode ser feito a partir da 8ª semana completa de gravidez.'
+    shortDesc: 'Hemograma + TSH + T4 Livre + Ferritina + Vitamina D + Perfil Lipídico + Glicemia + Estradiol + Progesterona.',
+    fullDesc: 'Protocolo completo desenhado para a fisiologia feminina: investiga disposição, queda de cabelo, oscilações hormonais, tireoide e saúde óssea.',
+    usage: 'Jejum de 8 horas. Recomenda-se realizar entre o 3º e 5º dia do ciclo menstrual caso haja dosagem hormonal associada.'
   },
   {
     id: 'toxicologico-cnh',
     name: 'Exame Toxicológico CNH & Concursos',
     category: 'especiais',
     badge: 'Credenciado Denatran',
-    price: 169.00,
-    installments: '3x de R$ 56,33',
     rating: 4.9,
-    reviewsCount: 185,
+    reviewsCount: 310,
     image: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=600&q=80',
     hoverImage: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80',
     shortDesc: 'Coleta de queratina (cabelo ou pelos) com resultado direto no sistema Renach.',
     fullDesc: 'Obrigatório para emissão e renovação de CNH nas categorias C, D e E, além de admissões CLT e concursos públicos.',
     usage: 'Não necessita de jejum. Apresentar documento oficial com foto e CNH.'
+  },
+  {
+    id: 'sexagem-fetal',
+    name: 'Sexagem Fetal Precoce (DNA no Sangue)',
+    category: 'especiais',
+    badge: '99.9% de Acerto',
+    rating: 5.0,
+    reviewsCount: 215,
+    image: 'https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=600&q=80',
+    hoverImage: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80',
+    shortDesc: 'Descubra se é Menino ou Menina a partir da 8ª semana de gestação.',
+    fullDesc: 'Análise molecular no plasma materno que identifica a presença do cromossomo Y com rigor laboratorial e entrega rápida do laudo.',
+    usage: 'Não necessita de jejum. Pode ser feito a partir da 8ª semana completa de gravidez.'
   }
 ];
 
@@ -105,12 +95,12 @@ const defaultPosts = [
   },
   {
     id: 'post-3',
-    title: 'Coleta Domiciliar: Segurança e Conforto para Idosos e Gestantes',
+    title: 'Coleta Domiciliar e Corporativa: Segurança e Praticidade',
     category: 'Prevenção & Longevidade',
     date: '12 de Agosto, 2026',
     image: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=80',
-    excerpt: 'Como nosso serviço móvel de enfermagem leva o padrão de excelência de cabine para sua casa.',
-    content: 'Evitar deslocamentos no trânsito, filas e a ansiedade da espera faz toda a diferença para pacientes idosos, gestantes e crianças. Nosso serviço de coleta em domicílio segue as mesmas normas rigorosas de esterilização e cadeia de frio para transporte das amostras biológicas, garantindo que o resultado seja 100% confiável e seguro.'
+    excerpt: 'Como nosso serviço móvel de enfermagem leva o padrão de excelência de cabine para sua casa ou empresa.',
+    content: 'Evitar deslocamentos no trânsito, filas e a ansiedade da espera faz toda a diferença para pacientes idosos, gestantes e profissionais com rotina intensa. Nosso serviço de coleta móvel segue as normas rigorosas de esterilização e cadeia de frio para transporte das amostras biológicas.'
   }
 ];
 
@@ -118,17 +108,14 @@ const defaultPosts = [
 let products = JSON.parse(localStorage.getItem('sb_products')) || defaultProducts;
 let posts = JSON.parse(localStorage.getItem('sb_posts')) || defaultPosts;
 let settings = JSON.parse(localStorage.getItem('sb_settings')) || defaultSettings;
-let cart = JSON.parse(localStorage.getItem('sb_cart')) || [];
 let activeCategory = 'todos';
 let isAdminLogged = false;
-let selectedPaymentMethod = 'pix';
 
 // ===== INICIALIZAÇÃO =====
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts();
   renderPosts();
   applySettings();
-  updateCartUI();
   lucide.createIcons();
 
   // Menu Mobile
@@ -139,22 +126,9 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileDrawer.classList.toggle('hidden');
     });
   }
-
-  // Sacola de Exames
-  const cartBtn = document.getElementById('cartBtn');
-  const closeCartBtn = document.getElementById('closeCartBtn');
-  const cartDrawerBackdrop = document.getElementById('cartDrawerBackdrop');
-
-  if (cartBtn) cartBtn.addEventListener('click', openCart);
-  if (closeCartBtn) closeCartBtn.addEventListener('click', closeCart);
-  if (cartDrawerBackdrop) {
-    cartDrawerBackdrop.addEventListener('click', (e) => {
-      if (e.target === cartDrawerBackdrop) closeCart();
-    });
-  }
 });
 
-// ===== RENDERIZAÇÃO DE PRODUTOS / CHECK-UPS =====
+// ===== RENDERIZAÇÃO DE CHECK-UPS =====
 function renderProducts() {
   const grid = document.getElementById('productsGrid');
   if (!grid) return;
@@ -164,40 +138,39 @@ function renderProducts() {
     : products.filter(p => p.category === activeCategory);
 
   grid.innerHTML = filtered.map(p => `
-    <div class="product-card rounded-2xl bg-white border border-gold/30 overflow-hidden flex flex-col justify-between group shadow-sm">
-      <div class="relative overflow-hidden aspect-[4/3] bg-sage/30 cursor-pointer" onclick="openQuickModal('${p.id}')">
+    <div class="product-card rounded-2xl bg-white border border-steelLight overflow-hidden flex flex-col justify-between group shadow-sm">
+      <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 cursor-pointer" onclick="openQuickModal('${p.id}')">
         <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0" />
         <img src="${p.hoverImage || p.image}" alt="${p.name}" class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
         
-        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-linen/95 border border-gold/30 text-[10px] uppercase font-bold tracking-wider text-champagne backdrop-blur-sm">
-          ${p.badge || 'Completo'}
+        <span class="absolute top-3 left-3 px-3 py-1 rounded-md bg-navy text-white text-[10px] uppercase font-extrabold tracking-wider">
+          ${p.badge || 'Protocolo Clínico'}
         </span>
 
-        <button onclick="event.stopPropagation(); openQuickModal('${p.id}')" class="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-white text-emerald shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" title="Visualização Rápida">
-          <i data-lucide="eye" class="w-4 h-4"></i>
+        <button onclick="event.stopPropagation(); openQuickModal('${p.id}')" class="absolute bottom-3 right-3 w-9 h-9 rounded-lg bg-white text-navy shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" title="Visualização Rápida">
+          <i data-lucide="eye" class="w-4 h-4 text-cyanAccent"></i>
         </button>
       </div>
 
-      <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+      <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
         <div>
-          <div class="flex items-center gap-1 text-gold text-xs mb-1">
+          <div class="flex items-center gap-1 text-amber-500 text-xs mb-1">
             <span>★★★★★</span>
-            <span class="text-muted text-[11px]">(${p.reviewsCount || 100} avaliações)</span>
+            <span class="text-slate-400 text-[11px] font-bold">(${p.reviewsCount || 100} avaliações)</span>
           </div>
-          <h3 class="font-serif text-lg font-bold text-emerald cursor-pointer hover:text-champagne transition" onclick="openQuickModal('${p.id}')">
+          <h3 class="font-heading text-lg font-bold text-navy uppercase cursor-pointer hover:text-cyanAccent transition" onclick="openQuickModal('${p.id}')">
             ${p.name}
           </h3>
-          <p class="text-xs text-muted font-light line-clamp-2 mt-1">${p.shortDesc}</p>
+          <p class="text-xs text-slate-600 font-normal line-clamp-2 mt-1.5 leading-relaxed">${p.shortDesc}</p>
         </div>
 
-        <div class="pt-4 border-t border-sage flex items-center justify-between">
-          <div>
-            <span class="block font-serif text-lg font-bold text-emerald">R$ ${Number(p.price).toFixed(2).replace('.', ',')}</span>
-            <span class="block text-[10px] text-muted">${p.installments || 'ou até 3x'}</span>
-          </div>
-          <button onclick="addToCart('${p.id}')" class="px-4 py-2.5 rounded-full bg-emerald hover:bg-champagne text-white text-[11px] font-bold uppercase tracking-wider transition-colors flex items-center gap-1.5 shadow-sm">
-            <i data-lucide="plus" class="w-3.5 h-3.5"></i> Selecionar
+        <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
+          <button onclick="openQuickModal('${p.id}')" class="text-xs font-bold uppercase tracking-wider text-slate-600 hover:text-navy transition flex items-center gap-1">
+            <i data-lucide="info" class="w-3.5 h-3.5 text-cyanAccent"></i> Ver Preparo
           </button>
+          <a href="https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20${encodeURIComponent(p.name)}." target="_blank" class="px-4 py-2.5 rounded-xl bg-navy hover:bg-cyanAccent text-white text-[11px] font-bold uppercase tracking-wider transition-colors flex items-center gap-1.5 shadow-sm">
+            <i data-lucide="calendar" class="w-3.5 h-3.5"></i> Agendar
+          </a>
         </div>
       </div>
     </div>
@@ -212,25 +185,25 @@ function renderPosts() {
   if (!grid) return;
 
   grid.innerHTML = posts.map(post => `
-    <article class="rounded-2xl bg-white border border-gold/30 overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition-all group">
-      <div class="aspect-[16/10] overflow-hidden bg-sage/40 relative cursor-pointer" onclick="openPostModal('${post.id}')">
+    <article class="rounded-2xl bg-white border border-steelLight overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition-all group">
+      <div class="aspect-[16/10] overflow-hidden bg-slate-100 relative cursor-pointer" onclick="openPostModal('${post.id}')">
         <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-linen/95 border border-gold/30 text-[10px] font-bold uppercase tracking-wider text-champagne backdrop-blur-sm">
+        <span class="absolute top-3 left-3 px-3 py-1 rounded-md bg-navy text-white text-[10px] font-extrabold uppercase tracking-wider">
           ${post.category}
         </span>
       </div>
 
       <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
         <div class="space-y-2">
-          <span class="text-[11px] text-muted block">${post.date}</span>
-          <h3 class="font-serif text-xl font-bold text-emerald group-hover:text-champagne transition cursor-pointer" onclick="openPostModal('${post.id}')">
+          <span class="text-[11px] text-slate-400 font-bold block">${post.date}</span>
+          <h3 class="font-heading text-lg font-bold text-navy group-hover:text-cyanAccent transition cursor-pointer leading-snug" onclick="openPostModal('${post.id}')">
             ${post.title}
           </h3>
-          <p class="text-xs text-muted font-light line-clamp-3 leading-relaxed">${post.excerpt}</p>
+          <p class="text-xs text-slate-600 font-normal line-clamp-3 leading-relaxed">${post.excerpt}</p>
         </div>
 
-        <div class="pt-4 border-t border-sage flex items-center justify-between">
-          <button onclick="openPostModal('${post.id}')" class="text-xs font-bold uppercase tracking-wider text-champagne hover:underline flex items-center gap-1">
+        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+          <button onclick="openPostModal('${post.id}')" class="text-xs font-bold uppercase tracking-wider text-cyanAccent hover:underline flex items-center gap-1">
             Ler Artigo Completo →
           </button>
         </div>
@@ -250,21 +223,21 @@ function openPostModal(postId) {
   const container = document.getElementById('postModalContent');
 
   container.innerHTML = `
-    <div class="aspect-[16/9] rounded-2xl overflow-hidden mb-4 bg-sage/30 border border-gold/20">
+    <div class="aspect-[16/9] rounded-xl overflow-hidden mb-4 bg-slate-100 border border-steelLight">
       <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover" />
     </div>
     <div class="space-y-3">
       <div class="flex items-center gap-3">
-        <span class="px-3 py-1 rounded-full bg-sage text-emerald text-[10px] uppercase font-bold tracking-wider">${post.category}</span>
-        <span class="text-xs text-muted">${post.date}</span>
+        <span class="px-3 py-1 rounded-md bg-navy text-white text-[10px] uppercase font-bold tracking-wider">${post.category}</span>
+        <span class="text-xs text-slate-400 font-semibold">${post.date}</span>
       </div>
-      <h3 class="font-serif text-2xl sm:text-3xl font-bold text-emerald">${post.title}</h3>
-      <div class="text-sm text-emerald/90 font-light leading-relaxed whitespace-pre-line pt-2 border-t border-gold/20">
+      <h3 class="font-heading text-2xl font-bold text-navy">${post.title}</h3>
+      <div class="text-sm text-slate-700 font-normal leading-relaxed whitespace-pre-line pt-3 border-t border-slate-200">
         ${post.content}
       </div>
       <div class="pt-4 flex justify-between items-center text-xs">
-        <span class="text-muted">Por <strong>Dr. Samuel Barreto (CRBM)</strong></span>
-        <button onclick="closePostModal()" class="px-5 py-2.5 rounded-full bg-emerald text-white font-bold uppercase tracking-wider">
+        <span class="text-slate-500">Por <strong>Dr. Samuel Barreto (CRBM)</strong></span>
+        <button onclick="closePostModal()" class="px-5 py-2.5 rounded-xl bg-navy hover:bg-cyanAccent text-white font-bold uppercase tracking-wider transition">
           Fechar
         </button>
       </div>
@@ -285,159 +258,14 @@ function filterCategory(cat, btn) {
   activeCategory = cat;
   document.querySelectorAll('.filter-pill').forEach(b => {
     b.classList.remove('active-pill');
-    b.classList.add('text-muted');
+    b.classList.add('text-slate-600');
   });
   btn.classList.add('active-pill');
-  btn.classList.remove('text-muted');
+  btn.classList.remove('text-slate-600');
   renderProducts();
 }
 
-// ===== GERENCIAMENTO DA SACOLA DE EXAMES =====
-function addToCart(productId, qty = 1) {
-  const prod = products.find(p => p.id === productId);
-  if (!prod) return;
-
-  const existing = cart.find(item => item.id === productId);
-  if (existing) {
-    existing.qty += qty;
-  } else {
-    cart.push({ ...prod, qty });
-  }
-
-  saveCart();
-  updateCartUI();
-  showToast(`"${prod.name}" adicionado à lista de exames!`);
-  openCart();
-}
-
-function updateQty(productId, delta) {
-  const item = cart.find(i => i.id === productId);
-  if (!item) return;
-
-  item.qty += delta;
-  if (item.qty <= 0) {
-    cart = cart.filter(i => i.id !== productId);
-  }
-
-  saveCart();
-  updateCartUI();
-}
-
-function saveCart() {
-  localStorage.setItem('sb_cart', JSON.stringify(cart));
-}
-
-function updatePaymentMethod() {
-  const methodRadio = document.querySelector('input[name="paymentMethod"]:checked');
-  if (methodRadio) {
-    selectedPaymentMethod = methodRadio.value;
-  }
-  updateCartUI();
-}
-
-function updateCartUI() {
-  const countBadge = document.getElementById('cartCount');
-  const itemsContainer = document.getElementById('cartItemsList');
-  const subtotalEl = document.getElementById('cartSubtotal');
-  const shippingText = document.getElementById('shippingText');
-  const shippingBar = document.getElementById('shippingBar');
-  const shippingPercent = document.getElementById('shippingPercent');
-
-  const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-  const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-
-  if (countBadge) countBadge.textContent = totalItems;
-  
-  // Cálculo de desconto no PIX
-  const isPix = selectedPaymentMethod === 'pix';
-  const discount = (isPix && subtotal > 0) ? subtotal * 0.05 : 0;
-  const finalTotal = subtotal - discount;
-
-  if (subtotalEl) {
-    if (isPix && subtotal > 0) {
-      subtotalEl.innerHTML = `<span class="line-through text-xs text-muted font-normal mr-2">R$ ${subtotal.toFixed(2).replace('.', ',')}</span> R$ ${finalTotal.toFixed(2).replace('.', ',')}`;
-    } else {
-      subtotalEl.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
-    }
-  }
-
-  const pixBox = document.getElementById('pixDiscountBox');
-  const pixVal = document.getElementById('pixDiscountValue');
-  const checkoutBtnText = document.getElementById('checkoutBtnText');
-
-  if (pixBox) {
-    if (isPix && subtotal > 0) {
-      pixBox.classList.remove('hidden');
-      if (pixVal) pixVal.textContent = `- R$ ${discount.toFixed(2).replace('.', ',')}`;
-    } else {
-      pixBox.classList.add('hidden');
-    }
-  }
-
-  if (checkoutBtnText) {
-    checkoutBtnText.textContent = subtotal > 0 
-      ? `Agendar (Total R$ ${finalTotal.toFixed(2).replace('.', ',')})` 
-      : 'Agendar e Garantir Valores';
-  }
-
-  const target = 190;
-  const progress = Math.min(100, Math.round((subtotal / target) * 100));
-  if (shippingBar) shippingBar.style.width = `${progress}%`;
-  if (shippingPercent) shippingPercent.textContent = `${progress}%`;
-  if (shippingText) {
-    if (subtotal >= target) {
-      shippingText.textContent = '🎉 Parabéns! Coleta Domiciliar Grátis desbloqueada!';
-    } else {
-      const remaining = target - subtotal;
-      shippingText.textContent = `Faltam R$ ${remaining.toFixed(2).replace('.', ',')} para Coleta Domiciliar Grátis`;
-    }
-  }
-
-  if (itemsContainer) {
-    if (cart.length === 0) {
-      itemsContainer.innerHTML = `
-        <div class="text-center py-12 space-y-3">
-          <i data-lucide="clipboard-list" class="w-10 h-10 text-gold mx-auto opacity-50"></i>
-          <p class="text-sm text-muted">Nenhum exame selecionado.</p>
-          <button onclick="closeCart()" class="text-xs uppercase font-bold tracking-wider text-champagne">
-            Ver Check-ups Disponíveis →
-          </button>
-        </div>
-      `;
-    } else {
-      itemsContainer.innerHTML = cart.map(item => `
-        <div class="flex items-center gap-4 p-3 rounded-xl bg-white border border-gold/20">
-          <img src="${item.image}" alt="${item.name}" class="w-14 h-14 object-cover rounded-lg bg-sage/40" />
-          <div class="flex-1 min-w-0">
-            <h4 class="font-serif font-semibold text-sm text-emerald truncate">${item.name}</h4>
-            <span class="text-xs text-muted">R$ ${item.price.toFixed(2).replace('.', ',')}</span>
-            <div class="flex items-center gap-2 mt-1">
-              <button onclick="updateQty('${item.id}', -1)" class="w-5 h-5 rounded bg-sage flex items-center justify-center text-xs font-bold" aria-label="Diminuir">-</button>
-              <span class="text-xs font-semibold">${item.qty}</span>
-              <button onclick="updateQty('${item.id}', 1)" class="w-5 h-5 rounded bg-sage flex items-center justify-center text-xs font-bold" aria-label="Aumentar">+</button>
-            </div>
-          </div>
-          <button onclick="updateQty('${item.id}', -${item.qty})" class="text-muted hover:text-red-500 p-1" aria-label="Remover">
-            <i data-lucide="trash-2" class="w-4 h-4"></i>
-          </button>
-        </div>
-      `).join('');
-    }
-    lucide.createIcons();
-  }
-}
-
-function openCart() {
-  const drawer = document.getElementById('cartDrawerBackdrop');
-  if (drawer) drawer.classList.remove('hidden');
-}
-
-function closeCart() {
-  const drawer = document.getElementById('cartDrawerBackdrop');
-  if (drawer) drawer.classList.add('hidden');
-}
-
-// ===== QUICK VIEW MODAL =====
+// ===== QUICK VIEW MODAL (PREPARO & JEJUM) =====
 function openQuickModal(productId) {
   const p = products.find(prod => prod.id === productId);
   if (!p) return;
@@ -446,22 +274,22 @@ function openQuickModal(productId) {
   const content = document.getElementById('modalContent');
 
   content.innerHTML = `
-    <div class="aspect-square rounded-2xl overflow-hidden bg-sage/30 border border-gold/20">
+    <div class="aspect-square rounded-xl overflow-hidden bg-slate-100 border border-steelLight">
       <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover" />
     </div>
     <div class="space-y-4">
-      <span class="px-3 py-1 rounded-full bg-sage text-emerald text-[10px] uppercase font-bold tracking-wider">${p.badge || 'Completo'}</span>
-      <h3 class="font-serif text-2xl font-bold text-emerald">${p.name}</h3>
-      <span class="font-serif text-2xl font-bold text-emerald block">R$ ${p.price.toFixed(2).replace('.', ',')}</span>
-      <p class="text-xs text-muted leading-relaxed">${p.fullDesc}</p>
+      <span class="px-3 py-1 rounded-md bg-navy text-white text-[10px] uppercase font-bold tracking-wider">${p.badge || 'Protocolo'}</span>
+      <h3 class="font-heading text-xl font-bold text-navy uppercase">${p.name}</h3>
+      <p class="text-xs text-slate-600 leading-relaxed">${p.fullDesc}</p>
       
-      <div class="p-3 rounded-xl bg-sage/40 border border-gold/20 text-xs text-emerald">
-        <strong>Preparo & Jejum:</strong> ${p.usage || 'Jejum de 8 a 12 horas.'}
+      <div class="p-3.5 rounded-xl bg-slate-50 border border-steelLight text-xs text-navy space-y-1">
+        <strong class="block text-cyanAccent uppercase tracking-wider text-[11px]">Orientações de Preparo:</strong>
+        <p class="text-slate-600">${p.usage || 'Jejum habitual de 8 a 12 horas.'}</p>
       </div>
 
-      <button onclick="addToCart('${p.id}'); closeQuickModal();" class="w-full py-4 bg-emerald hover:bg-champagne text-white rounded-full text-xs font-bold uppercase tracking-widest transition-colors shadow-lg">
-        Adicionar aos Meus Exames
-      </button>
+      <a href="https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20${encodeURIComponent(p.name)}." target="_blank" class="w-full py-4 bg-navy hover:bg-cyanAccent text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-colors shadow-lg flex items-center justify-center gap-2">
+        <i data-lucide="calendar" class="w-4 h-4"></i> Agendar Este Exame no WhatsApp
+      </a>
     </div>
   `;
 
@@ -476,60 +304,29 @@ function closeQuickModal() {
 
 // ===== ORIENTADOR INTERATIVO (QUIZ) =====
 function selectQuiz(step, option, btn) {
-  document.querySelectorAll('.quiz-btn').forEach(b => b.classList.remove('border-champagne', 'bg-gold/20'));
-  btn.classList.add('border-champagne', 'bg-gold/20');
+  document.querySelectorAll('.quiz-btn').forEach(b => b.classList.remove('border-cyanAccent', 'bg-cyanAccent-light/40'));
+  btn.classList.add('border-cyanAccent', 'bg-cyanAccent-light/40');
 
   const resultBox = document.getElementById('quizResult');
   const title = document.getElementById('quizResultTitle');
   const desc = document.getElementById('quizResultDesc');
   const addBtn = document.getElementById('quizAddBtn');
 
-  if (option === 'mulher') {
-    title.textContent = 'Check-up Mulher Completo & Hormonal';
+  if (option === 'homem') {
+    title.textContent = 'Check-up Homem 40+ & Próstata (PSA)';
+    desc.textContent = 'Painel com foco na saúde prostática, perfil cardiovascular, níveis hormonais de testosterona e avaliação metabólica integral.';
+    addBtn.onclick = () => { window.open(`https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20Check-up%20Homem%2040+.`, '_blank'); };
+  } else if (option === 'mulher') {
+    title.textContent = 'Check-up Mulher & Painel Hormonal';
     desc.textContent = 'Avaliação integrada de tireoide (TSH/T4), vitaminas, metabolismo e marcadores hormonais essenciais.';
-    addBtn.onclick = () => { addToCart('checkup-mulher'); };
-  } else if (option === 'homem') {
-    title.textContent = 'Check-up Homem 40+ & Próstata';
-    desc.textContent = 'PSA Total e Livre, Perfil Cardiovascular, Testosterona e avaliação renal/hepática.';
-    addBtn.onclick = () => { addToCart('checkup-homem'); };
+    addBtn.onclick = () => { window.open(`https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20Check-up%20Mulher.`, '_blank'); };
   } else {
-    title.textContent = 'Check-up Preventivo Essencial';
+    title.textContent = 'Check-up Preventivo Executivo';
     desc.textContent = 'Hemograma, Glicemia, Colesterol Total/Frações, Triglicerídeos e Creatinina para a rotina anual.';
-    addBtn.onclick = () => { addToCart('checkup-geral'); };
+    addBtn.onclick = () => { window.open(`https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20Check-up%20Preventivo%20Executivo.`, '_blank'); };
   }
 
   resultBox.classList.remove('hidden');
-}
-
-// ===== CHECKOUT SEGURO VIA WHATSAPP =====
-function checkoutWhatsApp() {
-  if (cart.length === 0) {
-    alert('Sua lista de exames está vazia!');
-    return;
-  }
-
-  const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-  const isPix = selectedPaymentMethod === 'pix';
-  const discount = isPix ? subtotal * 0.05 : 0;
-  const finalTotal = subtotal - discount;
-  const orderId = 'SB' + Math.floor(100000 + Math.random() * 900000);
-
-  const itemsList = cart.map(item => `  • ${item.qty}x ${item.name} - R$ ${(item.price * item.qty).toFixed(2).replace('.', ',')}`).join('%0A');
-  
-  const paymentText = isPix 
-    ? `⚡ *PIX Instantâneo (5% de Desconto)*%0A🎁 Desconto Aplicado: - R$ ${discount.toFixed(2).replace('.', ',')}` 
-    : `💳 *Cartão de Crédito (em até 6x)*%0A🔒 Link de Pagamento Oficial Criptografado`;
-
-  const message = `🏥 *SOLICITAÇÃO DE EXAMES - DR. SAMUEL BARRETO*%0A` +
-    `🔖 *Código de Identificação:* #${orderId}%0A%0A` +
-    `🧪 *Exames / Check-ups Solicitados:*%0A${itemsList}%0A%0A` +
-    `💰 *Valor Tabela:* R$ ${subtotal.toFixed(2).replace('.', ',')}%0A` +
-    `${paymentText}%0A` +
-    `💎 *VALOR FINAL:* R$ ${finalTotal.toFixed(2).replace('.', ',')}%0A%0A` +
-    `🔒 *Segurança:* Laudo Criptografado & Sigilo Médico Garantido.%0A` +
-    `Por favor, me informe as instruções de preparo/jejum e os horários para atendimento! ✨`;
-
-  window.open(`https://wa.me/${settings.whatsapp}?text=${message}`, '_blank');
 }
 
 // ===== PAINEL ADMINISTRATIVO (DR. SAMUEL BARRETO) =====
@@ -584,19 +381,19 @@ function switchAdminTab(tab) {
 
   [tabPosts, tabProducts, tabSettings].forEach(t => t.classList.add('hidden'));
   [btnPosts, btnProducts, btnSettings].forEach(b => {
-    b.classList.remove('bg-emerald', 'text-white');
-    b.classList.add('bg-sage', 'text-emerald');
+    b.classList.remove('bg-navy', 'text-white');
+    b.classList.add('bg-slate-100', 'text-slate-700');
   });
 
   if (tab === 'posts') {
     tabPosts.classList.remove('hidden');
-    btnPosts.classList.add('bg-emerald', 'text-white');
+    btnPosts.classList.add('bg-navy', 'text-white');
   } else if (tab === 'products') {
     tabProducts.classList.remove('hidden');
-    btnProducts.classList.add('bg-emerald', 'text-white');
+    btnProducts.classList.add('bg-navy', 'text-white');
   } else {
     tabSettings.classList.remove('hidden');
-    btnSettings.classList.add('bg-emerald', 'text-white');
+    btnSettings.classList.add('bg-navy', 'text-white');
     document.getElementById('cfgWhatsapp').value = settings.whatsapp;
     document.getElementById('cfgAnnouncement').value = settings.announcement;
   }
@@ -733,12 +530,12 @@ function renderAdminPostsList() {
   if (!list) return;
 
   list.innerHTML = posts.map(p => `
-    <div class="flex items-center justify-between p-3 rounded-xl bg-linen border border-sage text-xs">
+    <div class="flex items-center justify-between p-3 rounded-xl bg-white border border-steelLight text-xs">
       <div class="flex items-center gap-3">
         <img src="${p.image}" alt="${p.title}" class="w-10 h-10 object-cover rounded-lg" />
         <div>
-          <span class="font-bold block text-emerald truncate max-w-xs">${p.title}</span>
-          <span class="text-muted text-[10px]">${p.category} • ${p.date}</span>
+          <span class="font-bold block text-navy truncate max-w-xs">${p.title}</span>
+          <span class="text-slate-400 text-[10px] font-semibold">${p.category} • ${p.date}</span>
         </div>
       </div>
       <div class="flex gap-2">
@@ -772,24 +569,21 @@ function handleSaveProduct(e) {
   e.preventDefault();
   const id = document.getElementById('editProductId').value || 'prod-' + Date.now();
   const name = document.getElementById('prodName').value;
-  const price = parseFloat(document.getElementById('prodPrice').value);
   const category = document.getElementById('prodCategory').value;
   const image = document.getElementById('prodImage').value;
-  const badge = document.getElementById('prodBadge').value || 'Completo';
+  const badge = document.getElementById('prodBadge').value || 'Protocolo';
   const shortDesc = document.getElementById('prodShortDesc').value;
   const usage = document.getElementById('prodUsage').value;
 
   const prodObj = {
     id,
     name,
-    price,
     category,
     image,
     badge,
     shortDesc,
     fullDesc: shortDesc,
     usage,
-    installments: `3x de R$ ${(price / 3).toFixed(2).replace('.', ',')}`,
     reviewsCount: 75
   };
 
@@ -811,12 +605,12 @@ function renderAdminProductsList() {
   if (!list) return;
 
   list.innerHTML = products.map(p => `
-    <div class="flex items-center justify-between p-3 rounded-xl bg-linen border border-sage text-xs">
+    <div class="flex items-center justify-between p-3 rounded-xl bg-white border border-steelLight text-xs">
       <div class="flex items-center gap-3">
         <img src="${p.image}" alt="${p.name}" class="w-10 h-10 object-cover rounded-lg" />
         <div>
-          <span class="font-bold block text-emerald truncate max-w-xs">${p.name}</span>
-          <span class="text-muted text-[10px]">R$ ${Number(p.price).toFixed(2)} • ${p.category}</span>
+          <span class="font-bold block text-navy truncate max-w-xs">${p.name}</span>
+          <span class="text-slate-400 text-[10px] font-semibold">${p.category}</span>
         </div>
       </div>
       <div class="flex gap-2">

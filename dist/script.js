@@ -25,7 +25,7 @@ const defaultProducts = [
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
     hoverImage: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80',
     shortDesc: 'PSA Total e Livre + Testosterona Total/Livre + Hemograma + Ácido Úrico + Glicemia + Perfil Lipídico + Creatinina.',
-    fullDesc: 'Protocolo preventivo alinhado às diretrizes da Sociedade Brasileira de Urologia (SBU). Avalia marcadores prostáticos, saúde cardiovascular, metabolismo e função renal.',
+    fullDesc: 'Protocolo preventivo alinhado às diretrizes da Sociedade Brasileira de Urologia (SBU) e SBPC/ML. Avalia marcadores prostáticos, saúde cardiovascular, metabolismo e função renal e hepática.',
     usage: 'Jejum recomendado de 8 horas. Evitar relações sexuais, ejaculação e esforço físico intenso (como ciclismo) por 48 horas antes da dosagem do PSA.'
   },
   {
@@ -38,7 +38,7 @@ const defaultProducts = [
     image: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80',
     hoverImage: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=600&q=80',
     shortDesc: 'Hemograma Completo + Glicemia + Colesterol Total e Frações (HDL, LDL, VLDL) + Triglicerídeos + Creatinina + Ureia + TSH + TGO/TGP.',
-    fullDesc: 'Painel estruturado segundo as normas da Sociedade Brasileira de Patologia Clínica (SBPC/ML) para triagem metabólica, hepática, renal e tireoidiana.',
+    fullDesc: 'Painel estruturado segundo as normas da Sociedade Brasileira de Patologia Clínica (SBPC/ML) para triagem metabólica, hepática, renal e tireoidiana completa.',
     usage: 'Jejum obrigatório de 8 a 12 horas. Água pode ser consumida com moderação.'
   },
   {
@@ -51,8 +51,8 @@ const defaultProducts = [
     image: 'https://images.unsplash.com/photo-1594824813576-928f09043236?auto=format&fit=crop&w=600&q=80',
     hoverImage: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80',
     shortDesc: 'Hemograma + TSH + T4 Livre + Ferritina + Vitamina D + Perfil Lipídico + Glicemia + Estradiol + Progesterona.',
-    fullDesc: 'Mapeamento focado na saúde metabólica, tireoide, reserva de ferro e modulação hormonal da mulher em todas as fases da vida adulta.',
-    usage: 'Jejum de 8 horas. Para dosagens hormonais, recomenda-se realizar no início do ciclo (3º ao 5º dia) ou conforme orientação médica.'
+    fullDesc: 'Mapeamento focado na saúde metabólica, tireoide, reserva de ferro, densidade óssea e modulação hormonal da mulher em todas as fases da vida adulta.',
+    usage: 'Jejum de 8 horas. Para dosagens hormonais, recomenda-se realizar no início do ciclo (3º ao 5º dia) ou conforme orientação do médico assistente.'
   },
   {
     id: 'toxicologico-cnh',
@@ -64,8 +64,8 @@ const defaultProducts = [
     image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80',
     hoverImage: 'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=600&q=80',
     shortDesc: 'Coleta de queratina (cabelo ou pelos) para renovação de CNH (Categorias C, D e E) e admissional CLT com integração direta ao Renach.',
-    fullDesc: 'Realizado em parceria técnica oficial com redes acreditadas (Toxicologia Pardini), com ampla janela de detecção e validade jurídica nacional.',
-    usage: 'Não necessita de jejum. Apresentar documento oficial com foto e CNH.'
+    fullDesc: 'Realizado em parceria técnica oficial com redes acreditadas (Toxicologia Pardini), com ampla janela de detecção de 90 dias e validade jurídica nacional.',
+    usage: 'Não necessita de jejum nem agendamento prévio. Apresentar documento oficial com foto e CNH.'
   },
   {
     id: 'sexagem-fetal',
@@ -79,6 +79,32 @@ const defaultProducts = [
     shortDesc: 'Identificação precoce do sexo do bebê no sangue materno a partir da 8ª semana completa de gestação.',
     fullDesc: 'Exame baseado na técnica de PCR em tempo real para detecção de fragmentos de DNA livre do cromossomo Y circulantes no plasma materno.',
     usage: 'Não necessita de jejum. Recomenda-se idade gestacional mínima de 8 semanas comprovada por ultrassom.'
+  },
+  {
+    id: 'checkup-kids',
+    name: 'Check-up Pediátrico & Escolar (Kids)',
+    category: 'checkups',
+    badge: 'Saúde Infantil',
+    rating: 5.0,
+    reviewsCount: 164,
+    image: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=600&q=80',
+    hoverImage: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=600&q=80',
+    shortDesc: 'Hemograma Completo + Tipagem Sanguínea + Glicemia + Parasitológico de Fezes (EPF) + Urina Tipo 1 (EAS) + Ferro Sérico.',
+    fullDesc: 'Protocolo carinhoso e humanizado focado no desenvolvimento infantil, rastreio de anemias nutricionais, parasitoses e imunidade escolar.',
+    usage: 'Jejum de 4 a 8 horas (conforme a idade da criança). Coleta de urina e fezes em frasco estéril próprio.'
+  },
+  {
+    id: 'checkup-senior',
+    name: 'Check-up Sênior & Longevidade (60+)',
+    category: 'especiais',
+    badge: 'Melhor Idade & Vitalidade',
+    rating: 5.0,
+    reviewsCount: 198,
+    image: 'https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?auto=format&fit=crop&w=600&q=80',
+    hoverImage: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=600&q=80',
+    shortDesc: 'Hemograma + Glicemia + Hemoglobina Glicada + Função Renal (Creatinina/Ureia) + Perfil Lipídico + Vitamina D + Vitamina B12 + Cálcio Iônico + TSH.',
+    fullDesc: 'Avaliação multidimensional de saúde para a terceira idade, acompanhando metabolismo, prevenção cardiovascular, saúde óssea e vitalidade neurológica.',
+    usage: 'Jejum de 8 a 12 horas. Ingestão moderada de água liberada.'
   }
 ];
 
@@ -137,9 +163,41 @@ function sanitizeUrl(url) {
 let failedLoginAttempts = parseInt(sessionStorage.getItem('sb_failed_logins') || '0', 10);
 let lockoutUntil = parseInt(sessionStorage.getItem('sb_lockout_until') || '0', 10);
 
-// ===== ESTADO PERSISTENTE =====
-let products = JSON.parse(localStorage.getItem('sb_products')) || defaultProducts;
-let posts = JSON.parse(localStorage.getItem('sb_posts')) || defaultPosts;
+// ===== ESTADO PERSISTENTE COM AUTO-RECUPERAÇÃO BLINDADA =====
+function getValidStoredProducts() {
+  try {
+    const raw = localStorage.getItem('sb_products');
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
+    }
+  } catch (e) {
+    console.warn('Recuperando dados padrão de check-ups...');
+  }
+  localStorage.setItem('sb_products', JSON.stringify(defaultProducts));
+  return [...defaultProducts];
+}
+
+function getValidStoredPosts() {
+  try {
+    const raw = localStorage.getItem('sb_posts');
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
+    }
+  } catch (e) {
+    console.warn('Recuperando artigos padrão...');
+  }
+  localStorage.setItem('sb_posts', JSON.stringify(defaultPosts));
+  return [...defaultPosts];
+}
+
+let products = getValidStoredProducts();
+let posts = getValidStoredPosts();
 let settings = JSON.parse(localStorage.getItem('sb_settings')) || defaultSettings;
 
 // Migração e Atualização de Contato Oficial (55 3892051001 e @laboratoriodrsamuelbarreto)
@@ -158,7 +216,9 @@ document.addEventListener('DOMContentLoaded', () => {
   renderProducts();
   renderPosts();
   applySettings();
-  lucide.createIcons();
+  if (window.lucide && typeof window.lucide.createIcons === 'function') {
+    lucide.createIcons();
+  }
 
   // Menu Mobile
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -170,26 +230,34 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// ===== RENDERIZAÇÃO DE CHECK-UPS =====
+// ===== RENDERIZAÇÃO DE CHECK-UPS BLINDADA =====
 function renderProducts() {
   const grid = document.getElementById('productsGrid');
   if (!grid) return;
+
+  // Se o array de produtos estiver corrompido ou vazio, restaura imediatamente os padrões oficiais
+  if (!products || !Array.isArray(products) || products.length === 0) {
+    products = [...defaultProducts];
+    localStorage.setItem('sb_products', JSON.stringify(products));
+  }
 
   const filtered = activeCategory === 'todos' 
     ? products 
     : products.filter(p => p.category === activeCategory);
 
-  grid.innerHTML = filtered.map(p => `
+  const toRender = (filtered && filtered.length > 0) ? filtered : products;
+
+  grid.innerHTML = toRender.map(p => `
     <div class="product-card rounded-2xl bg-white border border-slate-200/80 overflow-hidden flex flex-col justify-between group shadow-sm hover:shadow-xl transition-all">
-      <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 cursor-pointer" onclick="openQuickModal('${p.id}')">
-        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0" />
-        <img src="${p.hoverImage || p.image}" alt="${p.name}" class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 cursor-pointer" onclick="openQuickModal('${escapeHTML(p.id)}')">
+        <img src="${sanitizeUrl(p.image)}" alt="${escapeHTML(p.name)}" class="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0" />
+        <img src="${sanitizeUrl(p.hoverImage || p.image)}" alt="${escapeHTML(p.name)}" class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
         
         <span class="absolute top-3.5 left-3.5 px-3.5 py-1.5 rounded-lg bg-petrol text-white text-xs uppercase font-extrabold tracking-wider shadow-md shadow-petrol/20">
-          ${p.badge || 'Protocolo Clínico'}
+          ${escapeHTML(p.badge || 'Protocolo Clínico')}
         </span>
 
-        <button onclick="event.stopPropagation(); openQuickModal('${p.id}')" class="absolute bottom-3 right-3 w-10 h-10 rounded-xl bg-white/95 text-slate-900 shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:text-petrol" title="Visualização Rápida">
+        <button onclick="event.stopPropagation(); openQuickModal('${escapeHTML(p.id)}')" class="absolute bottom-3 right-3 w-10 h-10 rounded-xl bg-white/95 text-slate-900 shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:text-petrol" title="Visualização Rápida">
           <i data-lucide="eye" class="w-5 h-5"></i>
         </button>
       </div>
@@ -198,16 +266,16 @@ function renderProducts() {
         <div>
           <div class="flex items-center gap-1.5 text-amber-500 text-sm mb-2">
             <span>★★★★★</span>
-            <span class="text-slate-500 text-xs font-semibold">(${p.reviewsCount || 100} avaliações)</span>
+            <span class="text-slate-500 text-xs font-semibold">(${p.reviewsCount || 120} avaliações)</span>
           </div>
-          <h3 class="font-heading text-xl font-bold text-slate-900 uppercase cursor-pointer hover:text-petrol transition leading-snug" onclick="openQuickModal('${p.id}')">
-            ${p.name}
+          <h3 class="font-heading text-xl font-bold text-slate-900 uppercase cursor-pointer hover:text-petrol transition leading-snug" onclick="openQuickModal('${escapeHTML(p.id)}')">
+            ${escapeHTML(p.name)}
           </h3>
-          <p class="text-sm text-slate-600 font-normal line-clamp-2 mt-2 leading-relaxed">${p.shortDesc}</p>
+          <p class="text-sm text-slate-600 font-normal line-clamp-3 mt-2 leading-relaxed">${escapeHTML(p.shortDesc)}</p>
         </div>
 
         <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
-          <button onclick="openQuickModal('${p.id}')" class="text-xs font-bold uppercase tracking-wider text-slate-600 hover:text-petrol transition flex items-center justify-center gap-1.5">
+          <button onclick="openQuickModal('${escapeHTML(p.id)}')" class="text-xs font-bold uppercase tracking-wider text-slate-600 hover:text-petrol transition flex items-center justify-center gap-1.5">
             <i data-lucide="info" class="w-4 h-4 text-petrol"></i> <span>Ver Preparo</span>
           </button>
           <a href="https://wa.me/${settings.whatsapp}?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20o%20${encodeURIComponent(p.name)}%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus." target="_blank" class="px-5 py-3 rounded-xl bg-petrol hover:bg-petrol-accent text-white text-xs font-black uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shadow-md shadow-petrol/20 text-center hover:scale-[1.02] active:scale-98">
@@ -218,7 +286,9 @@ function renderProducts() {
     </div>
   `).join('');
 
-  lucide.createIcons();
+  if (window.lucide && typeof window.lucide.createIcons === 'function') {
+    lucide.createIcons();
+  }
 }
 
 // ===== RENDERIZAÇÃO DE ARTIGOS (BLOG) =====
@@ -319,24 +389,28 @@ function filterCategory(cat, btn) {
 
 // ===== QUICK VIEW MODAL (PREPARO & JEJUM) =====
 function openQuickModal(productId) {
-  const p = products.find(prod => prod.id === productId);
+  let p = products.find(prod => prod.id === productId);
+  if (!p) {
+    p = defaultProducts.find(prod => prod.id === productId);
+  }
   if (!p) return;
 
   const modal = document.getElementById('quickModal');
   const content = document.getElementById('modalContent');
+  if (!modal || !content) return;
 
   content.innerHTML = `
     <div class="aspect-square rounded-2xl overflow-hidden bg-slate-100 border border-slate-200">
-      <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover" />
+      <img src="${sanitizeUrl(p.image)}" alt="${escapeHTML(p.name)}" class="w-full h-full object-cover" />
     </div>
     <div class="space-y-5">
-      <span class="inline-block px-3.5 py-1.5 rounded-lg bg-petrol text-white text-xs uppercase font-bold tracking-wider shadow-sm">${p.badge || 'Protocolo Clínico'}</span>
-      <h3 class="font-heading text-2xl font-bold text-slate-900 uppercase leading-snug">${p.name}</h3>
-      <p class="text-sm sm:text-base text-slate-600 leading-relaxed">${p.fullDesc}</p>
+      <span class="inline-block px-3.5 py-1.5 rounded-lg bg-petrol text-white text-xs uppercase font-bold tracking-wider shadow-sm">${escapeHTML(p.badge || 'Protocolo Clínico')}</span>
+      <h3 class="font-heading text-2xl font-bold text-slate-900 uppercase leading-snug">${escapeHTML(p.name)}</h3>
+      <p class="text-sm sm:text-base text-slate-600 leading-relaxed">${escapeHTML(p.fullDesc || p.shortDesc)}</p>
       
       <div class="p-5 rounded-2xl bg-orange-50/80 border border-orange-200/70 text-sm text-slate-900 space-y-1.5">
         <strong class="block text-petrol uppercase tracking-wider text-xs font-extrabold">Orientações Técnicas de Preparo:</strong>
-        <p class="text-slate-700">${p.usage || 'Jejum habitual de 8 a 12 horas.'}</p>
+        <p class="text-slate-700">${escapeHTML(p.usage || 'Jejum habitual de 8 a 12 horas. Água pode ser consumida com moderação.')}</p>
       </div>
 
       <a href="https://wa.me/${settings.whatsapp}?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20o%20${encodeURIComponent(p.name)}%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus." target="_blank" class="w-full py-4 px-6 bg-petrol hover:bg-petrol-accent text-white rounded-2xl text-xs sm:text-sm font-black uppercase tracking-wider transition-all shadow-lg shadow-petrol/20 flex items-center justify-center gap-2 text-center hover:scale-[1.02] active:scale-98">
@@ -346,7 +420,9 @@ function openQuickModal(productId) {
   `;
 
   modal.classList.remove('hidden');
-  lucide.createIcons();
+  if (window.lucide && typeof window.lucide.createIcons === 'function') {
+    lucide.createIcons();
+  }
 }
 
 function closeQuickModal() {
@@ -901,11 +977,31 @@ function renderAdminProductsList() {
 function deleteProduct(id) {
   if (confirm('Deseja remover este check-up do catálogo?')) {
     products = products.filter(p => p.id !== id);
+    if (products.length === 0) {
+      products = [...defaultProducts];
+    }
     localStorage.setItem('sb_products', JSON.stringify(products));
     renderProducts();
     renderAdminProductsList();
-    showToast('Check-up removido.');
+    showToast('Check-up atualizado.');
   }
+}
+
+function restoreOfficialCheckups() {
+  if (confirm('Deseja restaurar todos os 7 Check-ups e Painéis Clínicos Oficiais do Laboratório Dr. Samuel Barreto?')) {
+    products = [...defaultProducts];
+    localStorage.setItem('sb_products', JSON.stringify(products));
+    renderProducts();
+    renderAdminProductsList();
+    showToast('✓ Todos os 7 Check-ups Oficiais foram restaurados com sucesso!');
+  }
+}
+
+function resetProductForm() {
+  const form = document.querySelector('#adminTabProducts form');
+  if (form) form.reset();
+  const idInput = document.getElementById('editProductId');
+  if (idInput) idInput.value = '';
 }
 
 // Admin: Settings

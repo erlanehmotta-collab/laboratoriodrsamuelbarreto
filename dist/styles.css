@@ -103,3 +103,14 @@ div[id$="Modal"].hidden,
   opacity: 1 !important;
   z-index: 50 !important;
 }
+
+/* Header & Mobile Menu Safety */
+header#header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 40 !important;
+}
+
+#mobileDrawer:not(.hidden) {
+  display: block !important;
+}

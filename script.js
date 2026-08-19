@@ -207,10 +207,10 @@ function renderProducts() {
         </div>
 
         <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
-          <button onclick="openQuickModal('${p.id}')" class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-600 hover:text-petrol transition flex items-center justify-center gap-1.5">
+          <button onclick="openQuickModal('${p.id}')" class="text-xs font-bold uppercase tracking-wider text-slate-600 hover:text-petrol transition flex items-center justify-center gap-1.5">
             <i data-lucide="info" class="w-4 h-4 text-petrol"></i> <span>Ver Preparo</span>
           </button>
-          <a href="https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20${encodeURIComponent(p.name)}%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus." target="_blank" class="px-5 py-3 rounded-xl bg-petrol hover:bg-petrol-accent text-white text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-md shadow-petrol/20 text-center">
+          <a href="https://wa.me/${settings.whatsapp}?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20o%20${encodeURIComponent(p.name)}%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus." target="_blank" class="px-5 py-3 rounded-xl bg-petrol hover:bg-petrol-accent text-white text-xs font-black uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shadow-md shadow-petrol/20 text-center hover:scale-[1.02] active:scale-98">
             <i data-lucide="calendar" class="w-4 h-4"></i> <span>Agendar</span>
           </a>
         </div>
@@ -251,7 +251,7 @@ function renderPosts() {
         </div>
 
         <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-          <button onclick="openPostModal('${post.id}')" class="text-xs sm:text-sm font-bold uppercase tracking-wider text-petrol hover:text-petrol-accent flex items-center gap-1.5 transition">
+          <button onclick="openPostModal('${post.id}')" class="text-xs font-extrabold uppercase tracking-wider text-petrol hover:text-petrol-accent flex items-center gap-1.5 transition">
             <span>Ler Artigo Completo</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
           </button>
         </div>
@@ -288,7 +288,7 @@ function openPostModal(postId) {
         ${post.content}
       </div>
       <div class="pt-6 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-sm">
-        <span class="text-slate-500 font-medium">Responsabilidade Técnica: <strong class="text-slate-900">Dr. Samuel Barreto (CRBM)</strong> • Coração de Jesus - MG</span>
+        <span class="text-slate-500 font-medium">Elaboração Técnica: <strong class="text-slate-900">Corpo Técnico Biomédico • Laboratório Dr. Samuel Barreto</strong> • Coração de Jesus - MG</span>
         <button onclick="closePostModal()" class="px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold uppercase tracking-wider transition">
           Fechar Artigo
         </button>
@@ -339,8 +339,8 @@ function openQuickModal(productId) {
         <p class="text-slate-700">${p.usage || 'Jejum habitual de 8 a 12 horas.'}</p>
       </div>
 
-      <a href="https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20${encodeURIComponent(p.name)}%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus." target="_blank" class="w-full py-4 bg-petrol hover:bg-petrol-accent text-white rounded-2xl text-sm font-bold uppercase tracking-wider transition-colors shadow-lg shadow-petrol/20 flex items-center justify-center gap-2 text-center">
-        <i data-lucide="calendar" class="w-4 h-4"></i> Agendar Este Exame no WhatsApp
+      <a href="https://wa.me/${settings.whatsapp}?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20o%20${encodeURIComponent(p.name)}%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus." target="_blank" class="w-full py-4 px-6 bg-petrol hover:bg-petrol-accent text-white rounded-2xl text-xs sm:text-sm font-black uppercase tracking-wider transition-all shadow-lg shadow-petrol/20 flex items-center justify-center gap-2 text-center hover:scale-[1.02] active:scale-98">
+        <i data-lucide="calendar" class="w-4 h-4"></i> <span>Agendar Este Exame no WhatsApp</span>
       </a>
     </div>
   `;
@@ -367,17 +367,15 @@ function selectQuiz(step, option, btn) {
   if (option === 'homem') {
     title.textContent = 'Check-up Homem 40+ & Próstata (PSA)';
     desc.textContent = 'Protocolo preventivo baseado nas diretrizes da SBU e SBPC/ML para avaliação prostática, cardiovascular e hormonal.';
-    addBtn.onclick = () => { window.open(`https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20Check-up%20Homem%2040+%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus.`, '_blank'); };
+    addBtn.onclick = () => { window.open(`https://wa.me/${settings.whatsapp}?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20o%20Check-up%20Homem%2040+%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus.`, '_blank'); };
   } else if (option === 'mulher') {
     title.textContent = 'Check-up Mulher & Painel Hormonal';
     desc.textContent = 'Mapeamento tireoidiano, metabólico e hormonal estruturado segundo as diretrizes de medicina preventiva.';
-    addBtn.onclick = () => { window.open(`https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20Check-up%20Mulher%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus.`, '_blank'); };
+    addBtn.onclick = () => { window.open(`https://wa.me/${settings.whatsapp}?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20o%20Check-up%20Mulher%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus.`, '_blank'); };
   } else {
     title.textContent = 'Check-up Preventivo Executivo';
     desc.textContent = 'Triagem anual abrangente para monitoramento de glicemia, lipídios, função renal e hepática.';
-    addBtn.onclick = () => { window.open(`https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20Check-up%20Preventivo%20Executivo%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus.`, '_blank'); };
-  }
-
+    addBtn.onclick = () => { window.open(`https://wa.me/${settings.whatsapp}?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20o%20Check-up%20Preventivo%20Executivo%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus.`, '_blank'); };
   resultBox.classList.remove('hidden');
 }
 

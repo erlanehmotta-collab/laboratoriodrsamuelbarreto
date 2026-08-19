@@ -9,7 +9,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
-  <!-- Google Fonts: Plus Jakarta Sans + Outfit (Tipografia Masculina, Moderna e Robusta) -->
+  <!-- Google Fonts: Plus Jakarta Sans + Outfit (Tipografia Moderna, Robusta e Limpa) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -23,18 +23,24 @@
         extend: {
           colors: {
             slateBg: '#F8FAFC',
-            slateDark: '#071620',
+            slateDark: '#0F172A',
             petrol: {
-              DEFAULT: '#0B4F6C',
-              dark: '#06283D',
-              light: '#0E6E8F',
-              accent: '#088395',
-              surface: '#EAF4F6',
+              DEFAULT: '#EA580C', // Laranja Principal
+              dark: '#0F172A',    // Cinza Grafite Escuro
+              light: '#F97316',   // Laranja Vivo
+              accent: '#FB923C',  // Laranja Suave / Accent
+              surface: '#FFF7ED', // Branco / Laranja Claro
             },
             navy: {
-              DEFAULT: '#092635',
-              dark: '#04131B',
-              light: '#1B4242',
+              DEFAULT: '#1E293B', // Cinza Chumbo
+              dark: '#0F172A',    // Cinza Noite
+              light: '#334155',   // Cinza Médio
+            },
+            cyan: {
+              100: '#FFEDD5',
+              200: '#FED7AA',
+              300: '#FDBA74',
+              400: '#FB923C',
             },
             steel: '#475569',
             steelLight: '#E2E8F0',
@@ -57,7 +63,7 @@
 <body class="bg-slateBg text-slateDark font-sans antialiased selection:bg-petrol selection:text-white">
 
   <!-- ===== BARRA DE AVISOS SUPERIOR ===== -->
-  <div id="announcementBar" class="bg-petrol-dark text-cyan-100 text-xs tracking-wider font-semibold py-2.5 px-4 text-center border-b border-petrol/40 flex items-center justify-center gap-3">
+  <div id="announcementBar" class="bg-slate-900 text-orange-200 text-xs tracking-wider font-semibold py-2.5 px-4 text-center border-b border-orange-500/20 flex items-center justify-center gap-3">
     <span id="announcementText">🔬 ATENDIMENTO EM CORAÇÃO DE JESUS - MG | DESDE 1999 COM RIGOR CIENTÍFICO E QUALIDADE</span>
   </div>
 
@@ -126,20 +132,20 @@
     </div>
   </header>
 
-  <!-- ===== HERO SECTION (MONUMENTAL & HARMONIOSA) ===== -->
-  <section class="relative overflow-hidden bg-petrol-dark text-white pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-petrol/40 text-center">
-    <div class="absolute inset-0 bg-[radial-gradient(#0E6E8F_1px,transparent_1px)] [background-size:24px_24px] opacity-25"></div>
+  <!-- ===== HERO SECTION (MONUMENTAL & HARMONIOSA: BRANCO, LARANJA E CINZA) ===== -->
+  <section class="relative overflow-hidden bg-slate-900 text-white pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-orange-500/20 text-center">
+    <div class="absolute inset-0 bg-[radial-gradient(#EA580C_1px,transparent_1px)] [background-size:24px_24px] opacity-20"></div>
     <div class="max-w-[1400px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative z-10 space-y-9">
       
       <!-- Badge Superior Harmonioso -->
-      <div class="inline-flex items-center justify-center gap-2.5 px-5 py-2 rounded-full bg-petrol/70 border border-cyan-400/30 text-xs sm:text-sm font-bold tracking-wider uppercase text-cyan-200 mx-auto shadow-sm">
-        <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+      <div class="inline-flex items-center justify-center gap-2.5 px-5 py-2 rounded-full bg-slate-800/90 border border-orange-500/40 text-xs sm:text-sm font-bold tracking-wider uppercase text-orange-300 mx-auto shadow-sm">
+        <span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span>
         <span>Medicina Diagnóstica Avançada • Desde 1999 em Coração de Jesus - MG</span>
       </div>
       
       <!-- H1 Impactante e Maior com Letras Nobres -->
       <h1 class="font-heading text-4xl sm:text-6xl lg:text-7xl xl:text-[76px] leading-[1.04] font-black uppercase tracking-tight text-white text-center max-w-5xl mx-auto">
-        Precisão Absoluta em <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-teal-200 to-sky-100">Análises Clínicas</span>
+        Precisão Absoluta em <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-orange-100">Análises Clínicas</span>
       </h1>
       
       <!-- Subtítulo Perfeitamente Proporcional -->
@@ -149,29 +155,29 @@
 
       <!-- Botões de Ação Centralizados e Harmoniosos -->
       <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto">
-        <a href="#exames" class="w-full sm:w-auto px-9 py-4 sm:py-5 bg-petrol-light hover:bg-petrol-accent text-white rounded-2xl text-sm sm:text-base font-bold uppercase tracking-wider shadow-xl shadow-petrol/30 transition-all text-center flex items-center justify-center gap-2.5">
+        <a href="#exames" class="w-full sm:w-auto px-9 py-4 sm:py-5 bg-orange-600 hover:bg-orange-500 text-white rounded-2xl text-sm sm:text-base font-bold uppercase tracking-wider shadow-xl shadow-orange-600/30 transition-all text-center flex items-center justify-center gap-2.5">
           <i data-lucide="file-text" class="w-5 h-5"></i>
           <span>Consultar Exames & Preparo</span>
         </a>
-        <a href="#agendar" class="w-full sm:w-auto px-9 py-4 sm:py-5 bg-petrol-dark/90 hover:bg-petrol border border-petrol/60 text-white rounded-2xl text-sm sm:text-base font-bold uppercase tracking-wider transition-all text-center flex items-center justify-center gap-2.5 shadow-lg">
-          <i data-lucide="calendar" class="w-5 h-5 text-cyan-300"></i>
+        <a href="#agendar" class="w-full sm:w-auto px-9 py-4 sm:py-5 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white rounded-2xl text-sm sm:text-base font-bold uppercase tracking-wider transition-all text-center flex items-center justify-center gap-2.5 shadow-lg">
+          <i data-lucide="calendar" class="w-5 h-5 text-orange-400"></i>
           <span>Agendar Coleta no WhatsApp</span>
         </a>
       </div>
 
       <!-- Estatísticas Técnicas Centralizadas e Proporcionais -->
-      <div class="pt-10 border-t border-petrol/30 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center max-w-3xl mx-auto">
+      <div class="pt-10 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center max-w-3xl mx-auto">
         <div class="text-center space-y-1">
           <span class="block font-heading text-3xl sm:text-4xl lg:text-5xl text-white font-black text-center">Desde 1999</span>
-          <span class="text-xs sm:text-sm uppercase font-bold tracking-wider text-slate-300 text-center block">26+ Anos de Excelência</span>
+          <span class="text-xs sm:text-sm uppercase font-bold tracking-wider text-slate-400 text-center block">26+ Anos de Excelência</span>
         </div>
         <div class="text-center space-y-1">
-          <span class="block font-heading text-3xl sm:text-4xl lg:text-5xl text-cyan-300 font-black text-center">ISO 15189</span>
-          <span class="text-xs sm:text-sm uppercase font-bold tracking-wider text-slate-300 text-center block">Controle & Rigor Clínico</span>
+          <span class="block font-heading text-3xl sm:text-4xl lg:text-5xl text-orange-400 font-black text-center">ISO 15189</span>
+          <span class="text-xs sm:text-sm uppercase font-bold tracking-wider text-slate-400 text-center block">Controle & Rigor Clínico</span>
         </div>
         <div class="text-center space-y-1">
           <span class="block font-heading text-3xl sm:text-4xl lg:text-5xl text-white font-black text-center">99.8%</span>
-          <span class="text-xs sm:text-sm uppercase font-bold tracking-wider text-slate-300 text-center block">Confiabilidade em Laudos</span>
+          <span class="text-xs sm:text-sm uppercase font-bold tracking-wider text-slate-400 text-center block">Confiabilidade em Laudos</span>
         </div>
       </div>
 
@@ -603,11 +609,11 @@
         Envie a foto da sua guia médica ou solicite seu check-up preventivo diretamente pelo nosso WhatsApp oficial.
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
-        <a id="whatsappCtaLink" href="https://wa.me/553892051001" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-petrol-light hover:bg-petrol-accent text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-colors shadow-lg text-center">
+        <a id="whatsappCtaLink" href="https://wa.me/553892051001" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-orange-600 hover:bg-orange-500 text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-colors shadow-lg text-center">
           <i data-lucide="message-circle" class="w-4 h-4"></i> <span>WhatsApp: (38) 99205-1001</span>
         </a>
-        <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-purple-600 via-pink-600 to-amber-600 hover:opacity-95 text-white rounded-xl text-xs font-bold uppercase tracking-wider transition shadow-lg text-center">
-          <i data-lucide="instagram" class="w-4 h-4"></i> <span>Instagram Oficial</span>
+        <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 bg-rose-500/20 hover:bg-rose-500/30 border border-rose-400/40 text-rose-200 hover:text-white rounded-xl text-xs font-bold uppercase tracking-wider transition shadow text-center">
+          <i data-lucide="instagram" class="w-4 h-4 text-rose-300"></i> <span>Instagram Oficial</span>
         </a>
       </div>
     </div>
@@ -621,7 +627,7 @@
           <span class="font-heading text-2xl font-black uppercase text-white block">DR. SAMUEL BARRETO</span>
           <span class="text-[11px] tracking-wider uppercase text-cyan-300 font-bold">Análises Clínicas Gomes e Barreto Ltda. • Desde 1999</span>
           <span class="block text-xs text-slate-400 mt-1">Praça Ferreira Leal, 713 - Centro, Coração de Jesus - MG • Tel / WhatsApp: (38) 99205-1001</span>
-          <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-pink-400 hover:text-pink-300 font-bold mt-1 transition">
+          <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-rose-300 hover:text-rose-200 font-bold mt-1 transition">
             <i data-lucide="instagram" class="w-3.5 h-3.5"></i> @laboratoriodrsamuelbarreto
           </a>
         </div>
@@ -630,10 +636,10 @@
           <a href="#checkups" class="hover:text-white transition">Check-ups</a>
           <a href="#artigos" class="hover:text-white transition">Artigos Científicos</a>
           <a href="#sobre" class="hover:text-white transition">Dr. Samuel Barreto</a>
-          <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="text-pink-400 hover:text-pink-300 transition flex items-center gap-1">
+          <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="text-rose-300 hover:text-rose-200 transition flex items-center gap-1">
             <i data-lucide="instagram" class="w-3 h-3"></i> Instagram
           </a>
-          <button onclick="openAdminModal()" class="text-slate-400 hover:text-cyan-300 transition flex items-center gap-1 opacity-70 hover:opacity-100">
+          <button onclick="openAdminModal()" class="text-slate-400 hover:text-orange-400 transition flex items-center gap-1 opacity-70 hover:opacity-100">
             <i data-lucide="lock" class="w-3 h-3"></i> Admin
           </button>
         </div>
@@ -1034,10 +1040,10 @@
 
   <!-- BOTÕES DE AÇÃO RÁPIDA FLUTUANTES (WHATSAPP + INSTAGRAM) -->
   <aside aria-label="Atendimento Rápido e Redes Sociais" class="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3 pointer-events-auto">
-    <!-- Botão Flutuante Instagram Fixo -->
-    <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-3.5 bg-gradient-to-tr from-purple-600 via-pink-600 to-amber-500 text-white rounded-full shadow-2xl transition border border-white/20" title="Siga @laboratoriodrsamuelbarreto no Instagram">
-      <i data-lucide="instagram" class="w-5 h-5"></i>
-      <span class="text-xs font-bold px-1 hidden sm:inline-block">@laboratoriodrsamuelbarreto</span>
+    <!-- Botão Flutuante Instagram (Rosa Discreto & Elegante) -->
+    <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-3 bg-rose-500/85 hover:bg-rose-600 text-white rounded-full shadow-lg transition border border-rose-300/40 backdrop-blur-sm" title="Siga @laboratoriodrsamuelbarreto no Instagram">
+      <i data-lucide="instagram" class="w-4 h-4 text-rose-100"></i>
+      <span class="text-xs font-bold px-0.5 hidden sm:inline-block">@laboratoriodrsamuelbarreto</span>
     </a>
 
     <!-- Botão Flutuante WhatsApp Fixo -->

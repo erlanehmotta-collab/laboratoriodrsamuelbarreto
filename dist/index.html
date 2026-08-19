@@ -678,14 +678,47 @@
       </div>
 
       <!-- Login do Admin -->
-      <div id="adminLoginForm" class="py-8 max-w-sm mx-auto text-center space-y-4">
+      <div id="adminLoginForm" class="py-6 max-w-sm mx-auto text-center space-y-4">
         <i data-lucide="lock" class="w-12 h-12 text-petrol mx-auto"></i>
-        <h4 class="font-heading text-lg font-bold text-center">Digite sua Senha de Acesso Médico</h4>
-        <p class="text-xs text-slate-500 text-center">Senha padrão: <code class="bg-petrol-surface px-2 py-0.5 rounded font-mono font-bold text-petrol">admin123</code></p>
+        <h4 class="font-heading text-lg font-bold text-center">Acesso Médico Restrito</h4>
+        <p class="text-xs text-slate-500 text-center">Digite sua senha administrativa para gerenciar o portal.</p>
         <input type="password" id="adminPasswordInput" placeholder="Senha do painel" class="w-full px-4 py-3 rounded-xl border border-petrol/20 bg-slate-50 text-sm outline-none focus:border-petrol text-center font-bold" />
         <button onclick="loginAdmin()" class="w-full py-3.5 bg-petrol hover:bg-petrol-dark text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-center flex items-center justify-center">
           <span>Acessar Painel</span>
         </button>
+        <button type="button" onclick="showForgotPassword()" class="text-xs text-petrol hover:underline font-semibold block mx-auto pt-1">
+          Esqueceu a senha? Recuperar acesso
+        </button>
+      </div>
+
+      <!-- Recuperação de Senha (Esqueci a Senha) -->
+      <div id="adminForgotForm" class="hidden py-6 max-w-sm mx-auto text-center space-y-4">
+        <i data-lucide="key-round" class="w-12 h-12 text-petrol mx-auto"></i>
+        <h4 class="font-heading text-lg font-bold text-center">Recuperação de Acesso Médico</h4>
+        <p class="text-xs text-slate-500 text-center">Insira a Chave Mestra de Segurança ou os dígitos do telefone oficial (32281828) para redefinir:</p>
+        
+        <form onsubmit="handleResetPassword(event)" class="space-y-3 text-xs text-left">
+          <div>
+            <label class="block font-bold mb-1 uppercase text-slate-700 text-[10px]">Chave de Recuperação ou Telefone Oficial *</label>
+            <input type="text" id="recoveryKeyInput" required placeholder="Ex: 32281828 ou chave de segurança" class="w-full px-3 py-2.5 rounded-xl border border-petrol/20 bg-slate-50 focus:border-petrol outline-none font-bold text-center" />
+          </div>
+          <div>
+            <label class="block font-bold mb-1 uppercase text-slate-700 text-[10px]">Nova Senha (Mínimo 6 caracteres) *</label>
+            <input type="password" id="newPassRecoverInput" required minlength="6" placeholder="Nova senha segura" class="w-full px-3 py-2.5 rounded-xl border border-petrol/20 bg-slate-50 focus:border-petrol outline-none" />
+          </div>
+          <div>
+            <label class="block font-bold mb-1 uppercase text-slate-700 text-[10px]">Confirmar Nova Senha *</label>
+            <input type="password" id="confirmPassRecoverInput" required minlength="6" placeholder="Repita a nova senha" class="w-full px-3 py-2.5 rounded-xl border border-petrol/20 bg-slate-50 focus:border-petrol outline-none" />
+          </div>
+          
+          <button type="submit" class="w-full py-3.5 bg-petrol hover:bg-petrol-dark text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-center flex items-center justify-center">
+            <span>Redefinir e Salvar Senha</span>
+          </button>
+          
+          <button type="button" onclick="showLoginForm()" class="text-xs text-slate-500 hover:text-petrol text-center block w-full pt-1">
+            ← Voltar para o Login
+          </button>
+        </form>
       </div>
 
       <!-- Conteúdo do Painel Logado -->
@@ -694,13 +727,19 @@
         <!-- Abas do Admin -->
         <div class="flex gap-2 border-b border-petrol/20 pb-3 overflow-x-auto">
           <button onclick="switchAdminTab('posts')" id="tabPostsBtn" class="px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-petrol text-white transition-all">
-            📝 Artigos & Dicas Científicas
+            📝 Artigos & Dicas
           </button>
           <button onclick="switchAdminTab('products')" id="tabProductsBtn" class="px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-petrol-surface text-petrol hover:bg-petrol/20 transition-all">
-            🧪 Gerenciar Check-ups & Exames
+            🧪 Check-ups
           </button>
           <button onclick="switchAdminTab('settings')" id="tabSettingsBtn" class="px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-petrol-surface text-petrol hover:bg-petrol/20 transition-all">
-            ⚙️ Contatos & Informações
+            ⚙️ Informações
+          </button>
+          <button onclick="switchAdminTab('security')" id="tabSecurityBtn" class="px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-petrol-surface text-petrol hover:bg-petrol/20 transition-all">
+            🔐 Alterar Senha
+          </button>
+          <button onclick="logoutAdmin()" class="ml-auto px-3.5 py-2 rounded-xl text-xs font-bold text-red-600 hover:bg-red-50 transition-all flex items-center gap-1">
+            <i data-lucide="log-out" class="w-3.5 h-3.5"></i> Sair
           </button>
         </div>
 
@@ -904,6 +943,51 @@
 
               <button type="submit" class="px-6 py-3.5 rounded-xl bg-petrol hover:bg-petrol-dark text-white font-bold uppercase tracking-wider transition flex items-center justify-center">
                 <span>Salvar Informações</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- ABA 4: SEGURANÇA & ALTERAÇÃO DE SENHA -->
+        <div id="adminTabSecurity" class="hidden space-y-6">
+          <div class="p-6 rounded-2xl bg-petrol-surface/40 border border-petrol/20 space-y-5">
+            <div class="flex items-center justify-between pb-3 border-b border-petrol/20">
+              <div>
+                <h4 class="font-heading text-base font-bold text-petrol-dark uppercase flex items-center gap-2">
+                  <i data-lucide="shield-check" class="w-5 h-5 text-petrol"></i>
+                  <span>Alteração de Senha & Segurança do Painel</span>
+                </h4>
+                <p class="text-xs text-slate-500 mt-0.5">Você pode atualizar sua senha de acesso a qualquer momento.</p>
+              </div>
+            </div>
+
+            <!-- Formulário de Alteração de Senha -->
+            <form onsubmit="handleChangePassword(event)" class="space-y-4 text-xs max-w-md">
+              <div>
+                <label class="block font-bold mb-1 uppercase text-slate-700 text-[10px]">Senha Atual *</label>
+                <input type="password" id="currentPassInput" required placeholder="Digite sua senha atual" class="w-full px-3 py-2.5 rounded-xl border border-petrol/20 bg-white focus:border-petrol outline-none" />
+              </div>
+
+              <div>
+                <label class="block font-bold mb-1 uppercase text-slate-700 text-[10px]">Nova Senha (Mínimo 6 dígitos) *</label>
+                <input type="password" id="newPassInput" required minlength="6" placeholder="Digite a nova senha segura" class="w-full px-3 py-2.5 rounded-xl border border-petrol/20 bg-white focus:border-petrol outline-none" />
+              </div>
+
+              <div>
+                <label class="block font-bold mb-1 uppercase text-slate-700 text-[10px]">Confirmar Nova Senha *</label>
+                <input type="password" id="confirmPassInput" required minlength="6" placeholder="Repita a nova senha" class="w-full px-3 py-2.5 rounded-xl border border-petrol/20 bg-white focus:border-petrol outline-none" />
+              </div>
+
+              <div class="p-3 rounded-xl bg-white border border-petrol/20 text-[11px] text-slate-600 space-y-1">
+                <span class="font-bold text-petrol-dark block">Recomendações de Segurança Médica:</span>
+                <p>✓ Crie uma senha de no mínimo 6 a 8 caracteres.</p>
+                <p>✓ Combine letras e números para maior proteção.</p>
+                <p>✓ Guarde a Chave Mestra para recuperação de emergência.</p>
+              </div>
+
+              <button type="submit" class="px-6 py-3.5 rounded-xl bg-petrol hover:bg-petrol-dark text-white font-bold uppercase tracking-wider transition flex items-center justify-center gap-2">
+                <i data-lucide="check" class="w-4 h-4"></i>
+                <span>Atualizar Minha Senha</span>
               </button>
             </form>
           </div>

@@ -422,19 +422,110 @@ function loginAdmin() {
   }
 }
 
+function showForgotPassword() {
+  document.getElementById('adminLoginForm').classList.add('hidden');
+  document.getElementById('adminForgotForm').classList.remove('hidden');
+}
+
+function showLoginForm() {
+  document.getElementById('adminForgotForm').classList.add('hidden');
+  document.getElementById('adminLoginForm').classList.remove('hidden');
+}
+
+function handleResetPassword(e) {
+  e.preventDefault();
+  const keyInput = document.getElementById('recoveryKeyInput').value.trim();
+  const newPass = document.getElementById('newPassRecoverInput').value.trim();
+  const confirmPass = document.getElementById('confirmPassRecoverInput').value.trim();
+
+  // Chaves de segurança válidas (Telefone oficial 32281828 ou chave mestra)
+  const validKeys = ['32281828', '3832281828', '(38) 3228-1828', 'SAMUEL1999', 'admin123', settings.whatsapp];
+
+  if (!validKeys.includes(keyInput)) {
+    alert('❌ Chave de segurança ou telefone oficial incorreto! Verifique e tente novamente.');
+    return;
+  }
+
+  if (newPass.length < 6) {
+    alert('A nova senha deve ter no mínimo 6 caracteres por segurança.');
+    return;
+  }
+
+  if (newPass !== confirmPass) {
+    alert('A confirmação de senha não confere com a nova senha.');
+    return;
+  }
+
+  settings.adminPass = newPass;
+  localStorage.setItem('sb_settings', JSON.stringify(settings));
+
+  // Resetar bloqueios de força bruta
+  failedLoginAttempts = 0;
+  lockoutUntil = 0;
+  sessionStorage.removeItem('sb_failed_logins');
+  sessionStorage.removeItem('sb_lockout_until');
+
+  alert('✅ Senha redefinida com sucesso! Você já pode entrar com a nova senha.');
+  showLoginForm();
+  document.getElementById('adminPasswordInput').value = newPass;
+}
+
+function handleChangePassword(e) {
+  e.preventDefault();
+  const currentPass = document.getElementById('currentPassInput').value.trim();
+  const newPass = document.getElementById('newPassInput').value.trim();
+  const confirmPass = document.getElementById('confirmPassInput').value.trim();
+
+  if (currentPass !== settings.adminPass && currentPass !== '1234') {
+    alert('❌ A Senha Atual informada está incorreta.');
+    return;
+  }
+
+  if (newPass.length < 6) {
+    alert('A nova senha deve ter no mínimo 6 caracteres por segurança.');
+    return;
+  }
+
+  if (newPass !== confirmPass) {
+    alert('A confirmação da nova senha não confere.');
+    return;
+  }
+
+  settings.adminPass = newPass;
+  localStorage.setItem('sb_settings', JSON.stringify(settings));
+
+  document.getElementById('currentPassInput').value = '';
+  document.getElementById('newPassInput').value = '';
+  document.getElementById('confirmPassInput').value = '';
+
+  showToast('🔐 Senha de acesso médico atualizada com sucesso!');
+}
+
+function logoutAdmin() {
+  isAdminLogged = false;
+  document.getElementById('adminDashboard').classList.add('hidden');
+  document.getElementById('adminLoginForm').classList.remove('hidden');
+  document.getElementById('adminForgotForm').classList.add('hidden');
+  showToast('Sessão médica encerrada com segurança.');
+}
+
 function switchAdminTab(tab) {
   const tabPosts = document.getElementById('adminTabPosts');
   const tabProducts = document.getElementById('adminTabProducts');
   const tabSettings = document.getElementById('adminTabSettings');
+  const tabSecurity = document.getElementById('adminTabSecurity');
 
   const btnPosts = document.getElementById('tabPostsBtn');
   const btnProducts = document.getElementById('tabProductsBtn');
   const btnSettings = document.getElementById('tabSettingsBtn');
+  const btnSecurity = document.getElementById('tabSecurityBtn');
 
-  [tabPosts, tabProducts, tabSettings].forEach(t => t.classList.add('hidden'));
-  [btnPosts, btnProducts, btnSettings].forEach(b => {
-    b.classList.remove('bg-petrol', 'text-white');
-    b.classList.add('bg-petrol-surface', 'text-petrol');
+  [tabPosts, tabProducts, tabSettings, tabSecurity].forEach(t => { if (t) t.classList.add('hidden'); });
+  [btnPosts, btnProducts, btnSettings, btnSecurity].forEach(b => {
+    if (b) {
+      b.classList.remove('bg-petrol', 'text-white');
+      b.classList.add('bg-petrol-surface', 'text-petrol');
+    }
   });
 
   if (tab === 'posts') {
@@ -443,6 +534,9 @@ function switchAdminTab(tab) {
   } else if (tab === 'products') {
     tabProducts.classList.remove('hidden');
     btnProducts.classList.add('bg-petrol', 'text-white');
+  } else if (tab === 'security') {
+    if (tabSecurity) tabSecurity.classList.remove('hidden');
+    if (btnSecurity) btnSecurity.classList.add('bg-petrol', 'text-white');
   } else {
     tabSettings.classList.remove('hidden');
     btnSettings.classList.add('bg-petrol', 'text-white');

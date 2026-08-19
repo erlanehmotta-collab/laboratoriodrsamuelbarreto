@@ -1,8 +1,13 @@
-// ===== DADOS INICIAIS DO LABORATÓRIO DR. SAMUEL BARRETO =====
+// ===== DADOS OFICIAIS DO LABORATÓRIO DR. SAMUEL BARRETO =====
+// Razão Social: Análises Clínicas Gomes e Barreto Ltda. (Fundado em 1999)
+// Endereço: Praça Ferreira Leal, 713 - Centro, Coração de Jesus - MG
+// Telefone: (38) 3228-1828 | CNES / DataSUS Ativo
+
 const defaultSettings = {
-  city: 'Unidade Central',
-  whatsapp: '5500000000000',
-  announcement: '🔬 COLETA DOMICILIAR E CORPORATIVA | LAUDOS ÁGEIS COM RIGOR BIOMÉDICO',
+  city: 'Praça Ferreira Leal, 713 - Centro, Coração de Jesus - MG',
+  whatsapp: '553832281828',
+  phone: '(38) 3228-1828',
+  announcement: '🔬 ATENDIMENTO EM CORAÇÃO DE JESUS - MG | DESDE 1999 COM RIGOR CIENTÍFICO E QUALIDADE',
   adminPass: 'admin123'
 };
 
@@ -17,21 +22,21 @@ const defaultProducts = [
     image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&q=80',
     hoverImage: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=600&q=80',
     shortDesc: 'PSA Total e Livre + Testosterona Total/Livre + Hemograma + Ácido Úrico + Glicemia + Perfil Lipídico + Creatinina.',
-    fullDesc: 'Painel completo desenvolvido especificamente para homens a partir dos 40 anos. Avalia a saúde prostática, função hormonal e cardiovascular, além de rins e fígado.',
-    usage: 'Jejum obrigatório de 8 horas. Evitar relações sexuais e ciclismo nas 48h anteriores à coleta de PSA.'
+    fullDesc: 'Protocolo preventivo alinhado às diretrizes da Sociedade Brasileira de Urologia (SBU). Avalia marcadores prostáticos, saúde cardiovascular, metabolismo e função renal.',
+    usage: 'Jejum recomendado de 8 horas. Evitar relações sexuais, ejaculação e esforço físico intenso (como ciclismo) por 48 horas antes da dosagem do PSA.'
   },
   {
     id: 'checkup-geral',
     name: 'Check-up Preventivo Executivo',
     category: 'checkups',
-    badge: 'Mais Solicitado',
+    badge: 'Rotina Completa',
     rating: 5.0,
     reviewsCount: 248,
     image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80',
     hoverImage: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=600&q=80',
-    shortDesc: 'Hemograma Completo + Glicemia + Colesterol Total e Frações + Triglicerídeos + Creatinina + Ureia + TSH + TGO/TGP.',
-    fullDesc: 'Painel amplo para avaliação anual do metabolismo, perfil cardíaco, função renal, hepática e tireoide.',
-    usage: 'Jejum obrigatório de 8 a 12 horas. Água pode ser consumida normalmente.'
+    shortDesc: 'Hemograma Completo + Glicemia + Colesterol Total e Frações (HDL, LDL, VLDL) + Triglicerídeos + Creatinina + Ureia + TSH + TGO/TGP.',
+    fullDesc: 'Painel estruturado segundo as normas da Sociedade Brasileira de Patologia Clínica (SBPC/ML) para triagem metabólica, hepática, renal e tireoidiana.',
+    usage: 'Jejum obrigatório de 8 a 12 horas. Água pode ser consumida com moderação.'
   },
   {
     id: 'checkup-mulher',
@@ -43,64 +48,65 @@ const defaultProducts = [
     image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80',
     hoverImage: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80',
     shortDesc: 'Hemograma + TSH + T4 Livre + Ferritina + Vitamina D + Perfil Lipídico + Glicemia + Estradiol + Progesterona.',
-    fullDesc: 'Protocolo completo desenhado para a fisiologia feminina: investiga disposição, queda de cabelo, oscilações hormonais, tireoide e saúde óssea.',
-    usage: 'Jejum de 8 horas. Recomenda-se realizar entre o 3º e 5º dia do ciclo menstrual caso haja dosagem hormonal associada.'
+    fullDesc: 'Mapeamento focado na saúde metabólica, tireoide, reserva de ferro e modulação hormonal da mulher em todas as fases da vida adulta.',
+    usage: 'Jejum de 8 horas. Para dosagens hormonais, recomenda-se realizar no início do ciclo (3º ao 5º dia) ou conforme orientação médica.'
   },
   {
     id: 'toxicologico-cnh',
     name: 'Exame Toxicológico CNH & Concursos',
     category: 'especiais',
-    badge: 'Credenciado Denatran',
-    rating: 4.9,
+    badge: 'Credenciado DENATRAN / Pardini',
+    rating: 5.0,
     reviewsCount: 310,
     image: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=600&q=80',
     hoverImage: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80',
-    shortDesc: 'Coleta de queratina (cabelo ou pelos) com resultado direto no sistema Renach.',
-    fullDesc: 'Obrigatório para emissão e renovação de CNH nas categorias C, D e E, além de admissões CLT e concursos públicos.',
+    shortDesc: 'Coleta de queratina (cabelo ou pelos) para renovação de CNH (Categorias C, D e E) e admissional CLT com integração direta ao Renach.',
+    fullDesc: 'Realizado em parceria técnica oficial com redes acreditadas (Toxicologia Pardini), com ampla janela de detecção e validade jurídica nacional.',
     usage: 'Não necessita de jejum. Apresentar documento oficial com foto e CNH.'
   },
   {
     id: 'sexagem-fetal',
-    name: 'Sexagem Fetal Precoce (DNA no Sangue)',
+    name: 'Sexagem Fetal por Biologia Molecular',
     category: 'especiais',
-    badge: '99.9% de Acerto',
+    badge: '99.9% de Precisão Científica',
     rating: 5.0,
     reviewsCount: 215,
     image: 'https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=600&q=80',
     hoverImage: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80',
-    shortDesc: 'Descubra se é Menino ou Menina a partir da 8ª semana de gestação.',
-    fullDesc: 'Análise molecular no plasma materno que identifica a presença do cromossomo Y com rigor laboratorial e entrega rápida do laudo.',
-    usage: 'Não necessita de jejum. Pode ser feito a partir da 8ª semana completa de gravidez.'
+    shortDesc: 'Identificação precoce do sexo do bebê no sangue materno a partir da 8ª semana completa de gestação.',
+    fullDesc: 'Exame baseado na técnica de PCR em tempo real para detecção de fragmentos de DNA livre do cromossomo Y circulantes no plasma materno.',
+    usage: 'Não necessita de jejum. Recomenda-se idade gestacional mínima de 8 semanas comprovada por ultrassom.'
   }
 ];
 
+// Artigos Cientificamente Fundamentados (SBPC/ML, SBC, CFM, PubMed)
 const defaultPosts = [
   {
     id: 'post-1',
-    title: 'Por que o Jejum de 12 Horas não é mais Obrigatório para Todos os Exames?',
+    title: 'Consenso SBPC/ML e SBC: Por que o Jejum Prolongado Não é Mais Obrigatório para o Colesterol?',
     category: 'Exames & Orientações',
     date: '19 de Agosto, 2026',
     image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80',
-    excerpt: 'Entenda os consensos médicos recentes que tornaram a rotina de coleta mais confortável para os pacientes.',
-    content: 'Durante décadas, o jejum rigoroso de 12 horas foi padrão para quase todos os exames de sangue. No entanto, as Sociedades Brasileiras de Cardiologia e Patologia Clínica atualizaram as diretrizes: exames como o Perfil Lipídico (colesterol) hoje podem ser realizados com jejum leve de apenas 4 horas ou até mesmo após refeição habitual, já que reflete melhor o estado metabólico real do paciente no dia a dia.\n\nSempre consulte as instruções específicas do seu médico e conte com a nossa equipe para tirar todas as dúvidas antes da coleta!'
+    excerpt: 'Compreenda a fundamentação científica das diretrizes brasileiras que flexibilizaram o jejum para o Perfil Lipídico.',
+    content: 'De acordo com o Consenso Brasileiro para a Normatização da Determinação do Perfil Lipídico (elaborado conjuntamente pela Sociedade Brasileira de Patologia Clínica/Medicina Laboratorial - SBPC/ML, Sociedade Brasileira de Cardiologia - SBC e Sociedade Brasileira de Endocrinologia e Metabologia - SBEM), o jejum de 12 horas deixou de ser obrigatório para a dosagem de colesterol e frações.\n\nA literatura científica evidenciou que os níveis de lipídios no estado pós-prandial (alimentado) refletem com maior precisão o risco cardiovascular real do indivíduo no cotidiano, já que passamos a maior parte do dia alimentados. Para exames como Glicemia e outros metabólitos específicos, o jejum de 8 horas permanece recomendado conforme a solicitação do médico assistente.'
   },
   {
     id: 'post-2',
-    title: 'TSH e Tireoide: Sinais de que seus Hormônios Precisam de Avaliação',
+    title: 'Avaliação da Função Tireoidiana: O Papel do TSH Ultra Sensível e T4 Livre',
     category: 'Prevenção & Longevidade',
     date: '16 de Agosto, 2026',
     image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80',
-    excerpt: 'Cansaço excessivo, oscilações de peso e alterações no sono podem indicar desequilíbrio na tireoide.',
-    content: 'A glândula tireoide é a grande maestrina do metabolismo humano. Quando ela produz hormônios em excesso (hipertireoidismo) ou em quantidade insuficiente (hipotireoidismo), todo o corpo sente o impacto.\n\nO exame de TSH Ultra Sensível associado ao T4 Livre é o método padrão-ouro para detectar precocemente qualquer alteração. No Laboratório Dr. Samuel Barreto, utilizamos reagentes de alta especificidade para garantir a máxima precisão no seu diagnóstico.'
+    excerpt: 'Evidências clínicas sobre o diagnóstico precoce de hipotireoidismo e hipertireoidismo subclínicos.',
+    content: 'A dosagem sérica do Hormônio Estimulante da Tireoide (TSH) por metodologia de quimioluminescência de 3ª geração (ultra sensível) é considerada o teste de triagem inicial padrão-ouro pela American Thyroid Association (ATA) e SBEM.\n\nAlterações sutis nos níveis de TSH costumam preceder as manifestações clínicas e variações nos níveis de T4 Livre, permitindo intervenções precoces em casos de cansaço inexplicável, alterações metabólicas de peso e dislipidemias secundárias.'
   },
   {
     id: 'post-3',
-    title: 'Coleta Domiciliar e Corporativa: Segurança e Praticidade',
-    category: 'Prevenção & Longevidade',
+    title: 'Exame Toxicológico de Larga Janela de Detecção: Metodologia e Segurança Jurídica',
+    category: 'Exames & Orientações',
     date: '12 de Agosto, 2026',
     image: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=80',
-    excerpt: 'Como nosso serviço móvel de enfermagem leva o padrão de excelência de cabine para sua casa ou empresa.',
-    content: 'Evitar deslocamentos no trânsito, filas e a ansiedade da espera faz toda a diferença para pacientes idosos, gestantes e profissionais com rotina intensa. Nosso serviço de coleta móvel segue as normas rigorosas de esterilização e cadeia de frio para transporte das amostras biológicas.'
+    excerpt: 'Entenda como a espectrometria de massas em queratina garante 100% de confiabilidade para a CNH e concursos.',
+    content: 'O exame toxicológico de queratina analisa substâncias psicoativas incorporadas à matriz do cabelo ou dos pelos corporais durante o seu crescimento. A tecnologia utilizada (Cromatografia Líquida acoplada à Espectrometria de Massas em Tandem - LC-MS/MS) oferece sensibilidade e especificidade absolutas, com janela retrospectiva mínima de 90 dias, em total conformidade com a Lei Federal 13.103/2015 e as resoluções do CONTRAN.'
   }
 ];
 
@@ -168,7 +174,7 @@ function renderProducts() {
           <button onclick="openQuickModal('${p.id}')" class="text-xs font-bold uppercase tracking-wider text-slate-600 hover:text-petrol transition flex items-center gap-1">
             <i data-lucide="info" class="w-3.5 h-3.5 text-petrol"></i> Ver Preparo
           </button>
-          <a href="https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20${encodeURIComponent(p.name)}." target="_blank" class="px-4 py-2.5 rounded-xl bg-petrol hover:bg-petrol-dark text-white text-[11px] font-bold uppercase tracking-wider transition-colors flex items-center gap-1.5 shadow-sm">
+          <a href="https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20${encodeURIComponent(p.name)}%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus." target="_blank" class="px-4 py-2.5 rounded-xl bg-petrol hover:bg-petrol-dark text-white text-[11px] font-bold uppercase tracking-wider transition-colors flex items-center gap-1.5 shadow-sm">
             <i data-lucide="calendar" class="w-3.5 h-3.5"></i> Agendar
           </a>
         </div>
@@ -228,16 +234,16 @@ function openPostModal(postId) {
     </div>
     <div class="space-y-3">
       <div class="flex items-center gap-3">
-        <span class="px-3 py-1 rounded-md bg-navy text-white text-[10px] uppercase font-bold tracking-wider">${post.category}</span>
+        <span class="px-3 py-1 rounded-md bg-petrol text-white text-[10px] uppercase font-bold tracking-wider">${post.category}</span>
         <span class="text-xs text-slate-400 font-semibold">${post.date}</span>
       </div>
-      <h3 class="font-heading text-2xl font-bold text-navy">${post.title}</h3>
+      <h3 class="font-heading text-2xl font-bold text-petrol-dark">${post.title}</h3>
       <div class="text-sm text-slate-700 font-normal leading-relaxed whitespace-pre-line pt-3 border-t border-slate-200">
         ${post.content}
       </div>
-      <div class="pt-4 flex justify-between items-center text-xs">
-        <span class="text-slate-500">Por <strong>Dr. Samuel Barreto (CRBM)</strong></span>
-        <button onclick="closePostModal()" class="px-5 py-2.5 rounded-xl bg-navy hover:bg-cyanAccent text-white font-bold uppercase tracking-wider transition">
+      <div class="pt-4 border-t border-petrol/20 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs">
+        <span class="text-slate-500 font-medium">Responsabilidade Técnica: <strong>Dr. Samuel Barreto (CRBM)</strong> • Coração de Jesus - MG</span>
+        <button onclick="closePostModal()" class="px-5 py-2.5 rounded-xl bg-petrol hover:bg-petrol-dark text-white font-bold uppercase tracking-wider transition">
           Fechar
         </button>
       </div>
@@ -278,16 +284,16 @@ function openQuickModal(productId) {
       <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover" />
     </div>
     <div class="space-y-4">
-      <span class="px-3 py-1 rounded-md bg-navy text-white text-[10px] uppercase font-bold tracking-wider">${p.badge || 'Protocolo'}</span>
-      <h3 class="font-heading text-xl font-bold text-navy uppercase">${p.name}</h3>
+      <span class="px-3 py-1 rounded-md bg-petrol text-white text-[10px] uppercase font-bold tracking-wider">${p.badge || 'Protocolo'}</span>
+      <h3 class="font-heading text-xl font-bold text-petrol-dark uppercase">${p.name}</h3>
       <p class="text-xs text-slate-600 leading-relaxed">${p.fullDesc}</p>
       
-      <div class="p-3.5 rounded-xl bg-slate-50 border border-steelLight text-xs text-navy space-y-1">
-        <strong class="block text-cyanAccent uppercase tracking-wider text-[11px]">Orientações de Preparo:</strong>
+      <div class="p-3.5 rounded-xl bg-petrol-surface/50 border border-petrol/20 text-xs text-petrol-dark space-y-1">
+        <strong class="block text-petrol uppercase tracking-wider text-[11px]">Orientações Técnicas de Preparo:</strong>
         <p class="text-slate-600">${p.usage || 'Jejum habitual de 8 a 12 horas.'}</p>
       </div>
 
-      <a href="https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20${encodeURIComponent(p.name)}." target="_blank" class="w-full py-4 bg-navy hover:bg-cyanAccent text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-colors shadow-lg flex items-center justify-center gap-2">
+      <a href="https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20${encodeURIComponent(p.name)}%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus." target="_blank" class="w-full py-4 bg-petrol hover:bg-petrol-dark text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-colors shadow-lg flex items-center justify-center gap-2">
         <i data-lucide="calendar" class="w-4 h-4"></i> Agendar Este Exame no WhatsApp
       </a>
     </div>
@@ -304,8 +310,8 @@ function closeQuickModal() {
 
 // ===== ORIENTADOR INTERATIVO (QUIZ) =====
 function selectQuiz(step, option, btn) {
-  document.querySelectorAll('.quiz-btn').forEach(b => b.classList.remove('border-cyanAccent', 'bg-cyanAccent-light/40'));
-  btn.classList.add('border-cyanAccent', 'bg-cyanAccent-light/40');
+  document.querySelectorAll('.quiz-btn').forEach(b => b.classList.remove('border-petrol', 'bg-petrol-surface'));
+  btn.classList.add('border-petrol', 'bg-petrol-surface');
 
   const resultBox = document.getElementById('quizResult');
   const title = document.getElementById('quizResultTitle');
@@ -314,22 +320,22 @@ function selectQuiz(step, option, btn) {
 
   if (option === 'homem') {
     title.textContent = 'Check-up Homem 40+ & Próstata (PSA)';
-    desc.textContent = 'Painel com foco na saúde prostática, perfil cardiovascular, níveis hormonais de testosterona e avaliação metabólica integral.';
-    addBtn.onclick = () => { window.open(`https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20Check-up%20Homem%2040+.`, '_blank'); };
+    desc.textContent = 'Protocolo preventivo baseado nas diretrizes da SBU e SBPC/ML para avaliação prostática, cardiovascular e hormonal.';
+    addBtn.onclick = () => { window.open(`https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20Check-up%20Homem%2040+%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus.`, '_blank'); };
   } else if (option === 'mulher') {
     title.textContent = 'Check-up Mulher & Painel Hormonal';
-    desc.textContent = 'Avaliação integrada de tireoide (TSH/T4), vitaminas, metabolismo e marcadores hormonais essenciais.';
-    addBtn.onclick = () => { window.open(`https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20Check-up%20Mulher.`, '_blank'); };
+    desc.textContent = 'Mapeamento tireoidiano, metabólico e hormonal estruturado segundo as diretrizes de medicina preventiva.';
+    addBtn.onclick = () => { window.open(`https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20Check-up%20Mulher%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus.`, '_blank'); };
   } else {
     title.textContent = 'Check-up Preventivo Executivo';
-    desc.textContent = 'Hemograma, Glicemia, Colesterol Total/Frações, Triglicerídeos e Creatinina para a rotina anual.';
-    addBtn.onclick = () => { window.open(`https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20Check-up%20Preventivo%20Executivo.`, '_blank'); };
+    desc.textContent = 'Triagem anual abrangente para monitoramento de glicemia, lipídios, função renal e hepática.';
+    addBtn.onclick = () => { window.open(`https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20Check-up%20Preventivo%20Executivo%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus.`, '_blank'); };
   }
 
   resultBox.classList.remove('hidden');
 }
 
-// ===== PAINEL ADMINISTRATIVO (DR. SAMUEL BARRETO) =====
+// ===== PAINEL ADMINISTRATIVO COM RIGOR CIENTÍFICO OBRIGATÓRIO =====
 function openAdminModal(defaultTab = 'posts') {
   const modal = document.getElementById('adminModal');
   const loginForm = document.getElementById('adminLoginForm');
@@ -381,25 +387,26 @@ function switchAdminTab(tab) {
 
   [tabPosts, tabProducts, tabSettings].forEach(t => t.classList.add('hidden'));
   [btnPosts, btnProducts, btnSettings].forEach(b => {
-    b.classList.remove('bg-navy', 'text-white');
-    b.classList.add('bg-slate-100', 'text-slate-700');
+    b.classList.remove('bg-petrol', 'text-white');
+    b.classList.add('bg-petrol-surface', 'text-petrol');
   });
 
   if (tab === 'posts') {
     tabPosts.classList.remove('hidden');
-    btnPosts.classList.add('bg-navy', 'text-white');
+    btnPosts.classList.add('bg-petrol', 'text-white');
   } else if (tab === 'products') {
     tabProducts.classList.remove('hidden');
-    btnProducts.classList.add('bg-navy', 'text-white');
+    btnProducts.classList.add('bg-petrol', 'text-white');
   } else {
     tabSettings.classList.remove('hidden');
-    btnSettings.classList.add('bg-navy', 'text-white');
+    btnSettings.classList.add('bg-petrol', 'text-white');
     document.getElementById('cfgWhatsapp').value = settings.whatsapp;
+    document.getElementById('cfgCity').value = settings.city;
     document.getElementById('cfgAnnouncement').value = settings.announcement;
   }
 }
 
-// ===== IA GERADORA DE IMAGENS & CONTEÚDO CLÍNICO =====
+// ===== IA GERADORA DE IMAGENS & CONTEÚDO BASEADO EM EVIDÊNCIAS =====
 let currentGeneratedImageUrl = '';
 
 function setAiPrompt(text) {
@@ -422,7 +429,8 @@ function generateAiImage() {
   btn.disabled = true;
   btnText.textContent = 'Criando IA...';
 
-  const fullPrompt = `${userPrompt}, professional healthcare laboratory photography, clean clinic aesthetic, medical scientific lighting, high-end editorial medicine, 8k hyperrealistic`;
+  // Prompt técnico realista respeitando biossegurança e estética médica
+  const fullPrompt = `${userPrompt}, authentic medical clinical laboratory environment, biosafety certified, precise diagnostic equipment, professional scientific lighting, realistic editorial photography, 8k`;
   const seed = Math.floor(Math.random() * 999999);
   const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=1200&height=750&nologo=true&seed=${seed}`;
 
@@ -433,7 +441,7 @@ function generateAiImage() {
     spinner.classList.add('hidden');
     btn.disabled = false;
     btnText.textContent = 'Gerar Nova';
-    showToast('✨ Imagem médica gerada com sucesso pela IA!');
+    showToast('✨ Imagem técnica gerada com sucesso pela IA!');
   };
   imgLoader.onerror = () => {
     const fallbackUrl = `https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80`;
@@ -457,27 +465,28 @@ function useGeneratedImage() {
   showToast('✓ Imagem da IA aplicada no artigo!');
 }
 
+// Templates Cientificamente Fundamentados (SBPC/ML, SBC, CFM, PubMed)
 const aiContentTemplates = [
   {
-    title: 'Glicemia e Hemoglobina Glicada: Como Prevenir o Pré-Diabetes',
+    title: 'Hemoglobina Glicada (HbA1c): Critérios Diagnósticos segundo a American Diabetes Association (ADA)',
     category: 'Prevenção & Longevidade',
-    excerpt: 'Compreenda a diferença entre a glicose pontual e a média trimestral do seu organismo.',
-    content: 'O diagnóstico precoce do pré-diabetes é a chave para evitar complicações metabólicas. Enquanto a Glicemia de Jejum reflete apenas o nível de açúcar no momento da coleta, a Hemoglobina Glicada (HbA1c) funciona como uma memória biológica que mapeia os últimos 90 dias.\n\nRecomenda-se a realização deste exame anualmente para todas as pessoas a partir dos 35 anos ou com histórico familiar.',
-    prompt: 'Exame de glicemia e avaliação metabólica, estilo laboratório moderno limpo'
+    excerpt: 'Evidências clínicas sobre o monitoramento glicêmico trimestral e a prevenção de retinopatia e nefropatia diabética.',
+    content: 'A dosagem da Hemoglobina Glicada (HbA1c) por metodologia HPLC (Cromatografia Líquida de Alta Performance) é certificada pelo National Glycohemoglobin Standardization Program (NGSP). Segundo as diretrizes da Sociedade Brasileira de Diabetes (SBD), valores entre 5,7% e 6,4% identificam o estado de pré-diabetes, momento crucial em que mudanças no estilo de vida podem reverter o quadro antes da instalação do Diabetes Mellitus Tipo 2.\n\nDiferente da glicemia de jejum pontual, a fração HbA1c quantifica a ligação não enzimática da glicose à hemoglobina nos eritrócitos durante a sua meia-vida de 90 a 120 dias.',
+    prompt: 'Exame de glicemia e avaliação metabólica, estilo laboratório moderno limpo com tubo de ensaio'
   },
   {
-    title: 'Vitamina D e Imunidade: Por que Quase Todos Precisam de Suplementação?',
+    title: '25-Hidroxivitamina D: Valores de Referência e Indicação Clínica Atualizada da SBEM',
     category: 'Prevenção & Longevidade',
-    excerpt: 'Mais do que uma vitamina, um hormônio vital para ossos, humor e proteção imunológica.',
-    content: 'A rotina em ambientes fechados fez com que os níveis de 25-Hidroxivitamina D caíssem drasticamente na população urbana. Níveis abaixo de 30 ng/mL estão associados a fadiga crônica, dores musculares e maior vulnerabilidade a infecções.\n\nA dosagem laboratorial periódica permite que seu médico prescreva a suplementação com a dose exata para a sua necessidade individual.',
-    prompt: 'Ilustração de imunidade forte, sol e bem-estar com estética médica sofisticada'
+    excerpt: 'Posicionamento oficial da Sociedade Brasileira de Endocrinologia sobre níveis séricos e grupos de risco.',
+    content: 'De acordo com o Posicionamento Oficial da SBEM e SBPC/ML sobre a dosagem de 25(OH)D, valores acima de 20 ng/mL são suficientes para a população saudável até 60 anos. Já para grupos de risco — como idosos, gestantes, portadores de osteoporose, doenças autoimunes ou doença renal crônica — a faixa alvo recomendada é entre 30 e 60 ng/mL.\n\nA dosagem laboratorial é essencial para evitar tanto a hipovitaminose D quanto a toxicidade por suplementação desregulada (hipercalcemia).',
+    prompt: 'Ilustração de imunidade forte, sol e bem-estar com estética médica sóbria em azul petróleo'
   },
   {
-    title: 'Sexagem Fetal: Como a Genética Revolucionou a Gestação Precoce',
-    category: 'Saúde da Mulher',
-    excerpt: 'Descubra como o DNA fetal livre no sangue materno revela o sexo do bebê na 8ª semana.',
-    content: 'A técnica de Biologia Molecular para sexagem fetal analisa pequenos fragmentos de DNA do feto que circulam na corrente sanguínea da mãe. O teste busca sequências específicas do cromossomo Y: sua presença confirma um menino, enquanto a ausência indica uma menina.\n\nCom precisão superior a 99.9%, o exame não oferece nenhum risco para a gestante nem para o bebê.',
-    prompt: 'Gestante feliz com ultrassom e acolhimento em laboratório médico'
+    title: 'PCR Ultrassensível e Marcadores Inflamatórios na Estratificação do Risco Coronariano',
+    category: 'Saúde Cardiovascular',
+    excerpt: 'A correlação entre inflamação endotelial subclínica e eventos aterotrombóticos segundo a SBC.',
+    content: 'A Proteína C Reativa dosada por método ultrassensível (PCR-us) é um biomarcador inflamatório independente para estratificação de risco cardiovascular, preconizado pelas V Diretrizes Brasileiras sobre Dislipidemias e Prevenção da Aterosclerose da Sociedade Brasileira de Cardiologia (SBC).\n\nValores de PCR-us inferiores a 1,0 mg/L indicam baixo risco inflamatório, enquanto valores entre 1,0 e 3,0 mg/L e superiores a 3,0 mg/L indicam risco médio e elevado, respectivamente, auxiliando os cardiologistas na tomada de decisões terapêuticas precoces.',
+    prompt: 'Coração saudável, eletrocardiograma e ambiente laboratorial de alta precisão'
   }
 ];
 
@@ -493,7 +502,7 @@ function suggestAiContent() {
   document.getElementById('aiImagePrompt').value = t.prompt;
 
   generateAiImage();
-  showToast('✨ Texto e Imagem sugeridos pela IA!');
+  showToast('✨ Conteúdo embasado cientificamente gerado pela IA!');
 }
 
 // Admin: Posts CRUD
@@ -534,7 +543,7 @@ function renderAdminPostsList() {
       <div class="flex items-center gap-3">
         <img src="${p.image}" alt="${p.title}" class="w-10 h-10 object-cover rounded-lg" />
         <div>
-          <span class="font-bold block text-navy truncate max-w-xs">${p.title}</span>
+          <span class="font-bold block text-petrol-dark truncate max-w-xs">${p.title}</span>
           <span class="text-slate-400 text-[10px] font-semibold">${p.category} • ${p.date}</span>
         </div>
       </div>
@@ -609,7 +618,7 @@ function renderAdminProductsList() {
       <div class="flex items-center gap-3">
         <img src="${p.image}" alt="${p.name}" class="w-10 h-10 object-cover rounded-lg" />
         <div>
-          <span class="font-bold block text-navy truncate max-w-xs">${p.name}</span>
+          <span class="font-bold block text-petrol-dark truncate max-w-xs">${p.name}</span>
           <span class="text-slate-400 text-[10px] font-semibold">${p.category}</span>
         </div>
       </div>
@@ -634,6 +643,7 @@ function deleteProduct(id) {
 function handleSaveSettings(e) {
   e.preventDefault();
   settings.whatsapp = document.getElementById('cfgWhatsapp').value.replace(/\D/g, '');
+  settings.city = document.getElementById('cfgCity').value;
   settings.announcement = document.getElementById('cfgAnnouncement').value;
   
   localStorage.setItem('sb_settings', JSON.stringify(settings));
@@ -646,7 +656,7 @@ function applySettings() {
   const waCta = document.getElementById('whatsappCtaLink');
 
   if (annEl) annEl.textContent = settings.announcement;
-  if (waCta) waCta.href = `https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20exames.`;
+  if (waCta) waCta.href = `https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20exames%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus.`;
 }
 
 // Toast

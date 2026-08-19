@@ -342,7 +342,9 @@ function renderPosts() {
     </article>
   `}).join('');
 
-  lucide.createIcons();
+  if (window.lucide && typeof window.lucide.createIcons === 'function') {
+    lucide.createIcons();
+  }
 }
 
 // ===== LEITURA COMPLETA DE ARTIGO =====

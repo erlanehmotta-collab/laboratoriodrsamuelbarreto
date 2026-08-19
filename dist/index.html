@@ -89,6 +89,12 @@
   <header id="header" class="sticky top-0 z-40 bg-white border-b border-slate-200 transition-all duration-300 shadow-sm">
     <div class="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
       
+      <!-- Botão Menu Mobile Hambúrguer -->
+      <button id="mobileMenuBtn" class="md:hidden flex items-center gap-1.5 p-2 text-slate-900 hover:text-petrol font-bold uppercase text-xs rounded-lg border border-slate-200 hover:bg-slate-50 transition" aria-label="Menu de Navegação">
+        <i data-lucide="menu" class="w-5 h-5 text-petrol"></i>
+        <span>Menu</span>
+      </button>
+
       <!-- Logotipo Robusto em Laranja Âmbar -->
       <a href="#" class="flex items-center gap-2.5 sm:gap-3 group flex-shrink-0">
         <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-petrol flex items-center justify-center text-white shadow-md group-hover:bg-petrol-accent transition-colors flex-shrink-0">
@@ -104,8 +110,8 @@
         </div>
       </a>
 
-      <!-- Links de Navegação Desktop -->
-      <nav class="hidden lg:flex items-center gap-5 xl:gap-7 text-xs font-bold uppercase tracking-wider text-slate-700">
+      <!-- Links de Navegação Desktop & Tablet (Menu Escrito Principal) -->
+      <nav class="hidden md:flex items-center gap-4 lg:gap-7 text-xs font-bold uppercase tracking-wider text-slate-700">
         <a href="#exames" class="hover:text-petrol transition-colors">Exames</a>
         <a href="#checkups" class="hover:text-petrol transition-colors">Check-ups</a>
         <a href="#cartao-saude" class="text-petrol font-extrabold hover:text-petrol-accent transition-colors flex items-center gap-1 bg-orange-50 px-2.5 py-1 rounded-lg">
@@ -120,7 +126,7 @@
       <!-- Ações da Direita com Instagram Fixo e Botão Agendar -->
       <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
         <!-- Instagram Fixo Destacado -->
-        <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:text-rose-600 bg-slate-50 hover:bg-rose-50 border border-slate-200 transition" title="Instagram Oficial">
+        <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:text-rose-600 bg-slate-50 hover:bg-rose-50 border border-slate-200 transition" title="Instagram Oficial">
           <i data-lucide="instagram" class="w-4 h-4 text-rose-500"></i>
           <span>@laboratoriodrsamuelbarreto</span>
         </a>
@@ -140,9 +146,9 @@
 
     </div>
 
-    <!-- Barra de Navegação Horizontal Permanente (Sempre Visível em 100% dos Dispositivos) -->
-    <div class="bg-slate-50/95 border-t border-slate-200/80 px-4 py-2 overflow-x-auto scrollbar-none flex items-center lg:hidden">
-      <nav class="w-full flex items-center justify-start sm:justify-center gap-3 sm:gap-5 text-[11px] font-bold uppercase tracking-wider text-slate-700 whitespace-nowrap">
+    <!-- Barra de Navegação Horizontal Permanente para Dispositivos Móveis -->
+    <div class="bg-slate-50/95 border-t border-slate-200/80 px-4 py-2 overflow-x-auto scrollbar-none flex items-center md:hidden">
+      <nav class="w-full flex items-center justify-start gap-2.5 text-[11px] font-bold uppercase tracking-wider text-slate-700 whitespace-nowrap">
         <a href="#exames" class="hover:text-petrol transition-colors py-1 px-2 rounded-lg bg-white border border-slate-200 shadow-2xs">Exames</a>
         <a href="#checkups" class="hover:text-petrol transition-colors py-1 px-2 rounded-lg bg-white border border-slate-200 shadow-2xs">Check-ups</a>
         <a href="#cartao-saude" class="text-petrol font-extrabold hover:text-petrol-accent transition-colors py-1 px-2 rounded-lg bg-orange-100/80 border border-orange-200 shadow-2xs flex items-center gap-1">
@@ -150,9 +156,27 @@
         </a>
         <a href="#quiz" class="hover:text-petrol transition-colors py-1 px-2 rounded-lg bg-white border border-slate-200 shadow-2xs">Orientador</a>
         <a href="#artigos" class="hover:text-petrol transition-colors py-1 px-2 rounded-lg bg-white border border-slate-200 shadow-2xs">Artigos</a>
-        <a href="#sobre" class="hover:text-petrol transition-colors py-1 px-2 rounded-lg bg-white border border-slate-200 shadow-2xs">Nossa História</a>
+        <a href="#sobre" class="hover:text-petrol transition-colors py-1 px-2 rounded-lg bg-white border border-slate-200 shadow-2xs">História</a>
         <a href="#estrutura" class="hover:text-petrol transition-colors py-1 px-2 rounded-lg bg-white border border-slate-200 shadow-2xs">Tecnologia</a>
       </nav>
+    </div>
+
+    <!-- Gaveta / Drawer Mobile com Links Escritos Completos -->
+    <div id="mobileDrawer" class="hidden md:hidden bg-white border-t border-b border-slate-200 px-6 py-5 space-y-3 shadow-xl">
+      <a href="#exames" onclick="document.getElementById('mobileDrawer').classList.add('hidden')" class="block text-sm font-bold uppercase tracking-wider text-slate-800 py-2 border-b border-slate-100">🔬 Exames & Especialidades</a>
+      <a href="#checkups" onclick="document.getElementById('mobileDrawer').classList.add('hidden')" class="block text-sm font-bold uppercase tracking-wider text-slate-800 py-2 border-b border-slate-100">📋 Check-ups Preventivos</a>
+      <a href="#cartao-saude" onclick="document.getElementById('mobileDrawer').classList.add('hidden')" class="block text-sm font-black uppercase tracking-wider text-petrol py-2 border-b border-slate-100 bg-orange-50 px-3 rounded-xl">💳 Cartão Sistema de Saúde</a>
+      <a href="#quiz" onclick="document.getElementById('mobileDrawer').classList.add('hidden')" class="block text-sm font-bold uppercase tracking-wider text-slate-800 py-2 border-b border-slate-100">🧭 Orientador de Exames</a>
+      <a href="#artigos" onclick="document.getElementById('mobileDrawer').classList.add('hidden')" class="block text-sm font-bold uppercase tracking-wider text-slate-800 py-2 border-b border-slate-100">📰 Artigos & Dicas Médicas</a>
+      <a href="#sobre" onclick="document.getElementById('mobileDrawer').classList.add('hidden')" class="block text-sm font-bold uppercase tracking-wider text-slate-800 py-2 border-b border-slate-100">🏛️ Nossa História & Tradição</a>
+      <a href="#estrutura" onclick="document.getElementById('mobileDrawer').classList.add('hidden')" class="block text-sm font-bold uppercase tracking-wider text-slate-800 py-2 border-b border-slate-100">⚙️ Tecnologia & Estrutura</a>
+      <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="block text-sm font-bold uppercase tracking-wider text-rose-600 py-2 border-b border-slate-100 flex items-center gap-2">
+        <i data-lucide="instagram" class="w-4 h-4 text-rose-500"></i>
+        <span>@laboratoriodrsamuelbarreto</span>
+      </a>
+      <button onclick="document.getElementById('mobileDrawer').classList.add('hidden'); openAdminModal();" class="w-full text-center text-xs font-semibold text-slate-500 hover:text-petrol py-2.5 flex items-center justify-center gap-1.5 bg-slate-50 rounded-xl">
+        <i data-lucide="lock" class="w-3.5 h-3.5"></i> Acesso Administrativo
+      </button>
     </div>
   </header>
 

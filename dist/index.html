@@ -22,14 +22,14 @@
       theme: {
         extend: {
           colors: {
-            slateBg: '#F8FAFC',
+            slateBg: '#FAFAFA',
             slateDark: '#0F172A',
             petrol: {
-              DEFAULT: '#EA580C', // Laranja Principal
+              DEFAULT: '#D95D1E', // Laranja Âmbar Nobre e Elegante
               dark: '#0F172A',    // Cinza Grafite Escuro
-              light: '#F97316',   // Laranja Vivo
-              accent: '#FB923C',  // Laranja Suave / Accent
-              surface: '#FFF7ED', // Branco / Laranja Claro
+              light: '#E87032',   // Laranja Quente Refinado
+              accent: '#B44610',  // Âmbar Profundo
+              surface: '#FDF8F5', // Off-White Âmbar Suave
             },
             navy: {
               DEFAULT: '#1E293B', // Cinza Chumbo
@@ -68,24 +68,24 @@
   </div>
 
   <!-- ===== CABEÇALHO / NAVEGAÇÃO PRINCIPAL ===== -->
-  <header id="header" class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-petrol/20 transition-all duration-300 shadow-sm">
+  <header id="header" class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300 shadow-sm">
     <div class="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
       <!-- Botão Menu Mobile -->
-      <button id="mobileMenuBtn" class="lg:hidden p-2 text-petrol-dark hover:text-petrol" aria-label="Menu de Navegação">
+      <button id="mobileMenuBtn" class="lg:hidden p-2 text-slate-900 hover:text-petrol" aria-label="Menu de Navegação">
         <i data-lucide="menu" class="w-6 h-6"></i>
       </button>
 
-      <!-- Logotipo Robusto em Azul Petróleo -->
+      <!-- Logotipo Robusto em Laranja Âmbar -->
       <a href="#" class="flex items-center gap-3 group">
         <div class="w-11 h-11 rounded-xl bg-petrol flex items-center justify-center text-white shadow-md group-hover:bg-petrol-accent transition-colors">
           <i data-lucide="activity" class="w-6 h-6 text-white"></i>
         </div>
         <div>
-          <span class="block font-heading text-xl sm:text-2xl font-black uppercase tracking-tight text-petrol-dark">
+          <span class="block font-heading text-xl sm:text-2xl font-black uppercase tracking-tight text-slate-900">
             DR. SAMUEL BARRETO
           </span>
-          <span class="block text-[11px] tracking-[0.18em] uppercase text-petrol-accent font-bold -mt-0.5">
+          <span class="block text-[11px] tracking-[0.18em] uppercase text-petrol font-bold -mt-0.5">
             Laboratório & Medicina Diagnóstica
           </span>
         </div>
@@ -110,7 +110,7 @@
         </button>
 
         <!-- Botão de Agendamento Direto Centralizado -->
-        <a href="#agendar" class="hidden sm:inline-flex items-center justify-center gap-2 bg-petrol hover:bg-petrol-dark text-white text-xs sm:text-sm font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-md transition-all text-center">
+        <a href="#agendar" class="hidden sm:inline-flex items-center justify-center gap-2 bg-petrol hover:bg-petrol-accent text-white text-xs sm:text-sm font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-md shadow-petrol/20 transition-all text-center">
           <i data-lucide="calendar" class="w-4 h-4"></i>
           <span>Agendar Exame</span>
         </a>
@@ -132,52 +132,52 @@
     </div>
   </header>
 
-  <!-- ===== HERO SECTION (MONUMENTAL & HARMONIOSA: BRANCO, LARANJA E CINZA) ===== -->
-  <section class="relative overflow-hidden bg-slate-900 text-white pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-orange-500/20 text-center">
-    <div class="absolute inset-0 bg-[radial-gradient(#EA580C_1px,transparent_1px)] [background-size:24px_24px] opacity-20"></div>
+  <!-- ===== HERO SECTION (FUNDO BRANCO PURO & ELEGÂNCIA ÂMBAR NOBRE) ===== -->
+  <section class="relative overflow-hidden bg-white text-slate-900 pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-slate-200/80 text-center">
+    <div class="absolute inset-0 bg-[radial-gradient(#D95D1E_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.06]"></div>
     <div class="max-w-[1400px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative z-10 space-y-9">
       
-      <!-- Badge Superior Harmonioso -->
-      <div class="inline-flex items-center justify-center gap-2.5 px-5 py-2 rounded-full bg-slate-800/90 border border-orange-500/40 text-xs sm:text-sm font-bold tracking-wider uppercase text-orange-300 mx-auto shadow-sm">
-        <span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span>
+      <!-- Badge Superior Elegante -->
+      <div class="inline-flex items-center justify-center gap-2.5 px-5 py-2 rounded-full bg-orange-50/80 border border-orange-200/80 text-xs sm:text-sm font-bold tracking-wider uppercase text-orange-900 mx-auto shadow-sm">
+        <span class="w-2.5 h-2.5 rounded-full bg-petrol"></span>
         <span>Medicina Diagnóstica Avançada • Desde 1999 em Coração de Jesus - MG</span>
       </div>
       
-      <!-- H1 Impactante e Maior com Letras Nobres -->
-      <h1 class="font-heading text-4xl sm:text-6xl lg:text-7xl xl:text-[76px] leading-[1.04] font-black uppercase tracking-tight text-white text-center max-w-5xl mx-auto">
-        Precisão Absoluta em <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-orange-100">Análises Clínicas</span>
+      <!-- H1 Impactante e Maior em Fundo Branco -->
+      <h1 class="font-heading text-4xl sm:text-6xl lg:text-7xl xl:text-[76px] leading-[1.04] font-black uppercase tracking-tight text-slate-900 text-center max-w-5xl mx-auto">
+        Precisão Absoluta em <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#D95D1E] via-[#E87032] to-[#B44610]">Análises Clínicas</span>
       </h1>
       
       <!-- Subtítulo Perfeitamente Proporcional -->
-      <p class="text-lg sm:text-xl lg:text-2xl text-slate-200 max-w-3xl mx-auto font-normal leading-relaxed text-center">
+      <p class="text-lg sm:text-xl lg:text-2xl text-slate-600 max-w-3xl mx-auto font-normal leading-relaxed text-center">
         Automação laboratorial de última geração, rigor científico e atendimento técnico humanizado sob a direção do <strong>Dr. Samuel Barreto</strong>.
       </p>
 
       <!-- Botões de Ação Centralizados e Harmoniosos -->
       <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto">
-        <a href="#exames" class="w-full sm:w-auto px-9 py-4 sm:py-5 bg-orange-600 hover:bg-orange-500 text-white rounded-2xl text-sm sm:text-base font-bold uppercase tracking-wider shadow-xl shadow-orange-600/30 transition-all text-center flex items-center justify-center gap-2.5">
+        <a href="#exames" class="w-full sm:w-auto px-9 py-4 sm:py-5 bg-petrol hover:bg-petrol-accent text-white rounded-2xl text-sm sm:text-base font-bold uppercase tracking-wider shadow-xl shadow-petrol/25 transition-all text-center flex items-center justify-center gap-2.5">
           <i data-lucide="file-text" class="w-5 h-5"></i>
           <span>Consultar Exames & Preparo</span>
         </a>
-        <a href="#agendar" class="w-full sm:w-auto px-9 py-4 sm:py-5 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white rounded-2xl text-sm sm:text-base font-bold uppercase tracking-wider transition-all text-center flex items-center justify-center gap-2.5 shadow-lg">
+        <a href="#agendar" class="w-full sm:w-auto px-9 py-4 sm:py-5 bg-slate-900 hover:bg-slate-800 text-white rounded-2xl text-sm sm:text-base font-bold uppercase tracking-wider transition-all text-center flex items-center justify-center gap-2.5 shadow-lg">
           <i data-lucide="calendar" class="w-5 h-5 text-orange-400"></i>
           <span>Agendar Coleta no WhatsApp</span>
         </a>
       </div>
 
       <!-- Estatísticas Técnicas Centralizadas e Proporcionais -->
-      <div class="pt-10 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center max-w-3xl mx-auto">
+      <div class="pt-10 border-t border-slate-200/80 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center max-w-3xl mx-auto">
         <div class="text-center space-y-1">
-          <span class="block font-heading text-3xl sm:text-4xl lg:text-5xl text-white font-black text-center">Desde 1999</span>
-          <span class="text-xs sm:text-sm uppercase font-bold tracking-wider text-slate-400 text-center block">26+ Anos de Excelência</span>
+          <span class="block font-heading text-3xl sm:text-4xl lg:text-5xl text-slate-900 font-black text-center">Desde 1999</span>
+          <span class="text-xs sm:text-sm uppercase font-bold tracking-wider text-slate-500 text-center block">26+ Anos de Excelência</span>
         </div>
         <div class="text-center space-y-1">
-          <span class="block font-heading text-3xl sm:text-4xl lg:text-5xl text-orange-400 font-black text-center">ISO 15189</span>
-          <span class="text-xs sm:text-sm uppercase font-bold tracking-wider text-slate-400 text-center block">Controle & Rigor Clínico</span>
+          <span class="block font-heading text-3xl sm:text-4xl lg:text-5xl text-petrol font-black text-center">ISO 15189</span>
+          <span class="text-xs sm:text-sm uppercase font-bold tracking-wider text-slate-500 text-center block">Controle & Rigor Clínico</span>
         </div>
         <div class="text-center space-y-1">
-          <span class="block font-heading text-3xl sm:text-4xl lg:text-5xl text-white font-black text-center">99.8%</span>
-          <span class="text-xs sm:text-sm uppercase font-bold tracking-wider text-slate-400 text-center block">Confiabilidade em Laudos</span>
+          <span class="block font-heading text-3xl sm:text-4xl lg:text-5xl text-slate-900 font-black text-center">99.8%</span>
+          <span class="text-xs sm:text-sm uppercase font-bold tracking-wider text-slate-500 text-center block">Confiabilidade em Laudos</span>
         </div>
       </div>
 

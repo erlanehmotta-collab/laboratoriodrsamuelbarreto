@@ -1,4 +1,4 @@
-/* ===== ESTILOS: BRANCO, LARANJA E CINZA — LABORATÓRIO DR. SAMUEL BARRETO ===== */
+/* ===== ESTILOS ELEGANTES: BRANCO, LARANJA ÂMBAR NOBRE E CINZA — DR. SAMUEL BARRETO ===== */
 
 @keyframes fadeIn {
   from {
@@ -15,30 +15,31 @@
   animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Scrollbar em Cinza Escuro e Laranja */
+/* Scrollbar Refinada em Cinza e Laranja Âmbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0F172A;
+  background: #F8FAFC;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #EA580C;
+  background: #D95D1E;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #F97316;
+  background: #B44610;
 }
 
-/* Pílulas de Filtro Ativas em Laranja e Branco */
+/* Pílulas de Filtro Ativas em Laranja Âmbar Nobre */
 .active-pill {
-  background-color: #EA580C !important;
+  background-color: #D95D1E !important;
   color: #FFFFFF !important;
-  border-color: #EA580C !important;
+  border-color: #D95D1E !important;
+  box-shadow: 0 4px 12px -2px rgba(217, 93, 30, 0.25);
 }
 
 /* Estilização dos Detalhes / FAQ */
@@ -64,13 +65,13 @@ details > summary::-webkit-details-marker {
   overflow: hidden;
 }
 
-/* Cards com Sombra e Transição em Laranja */
+/* Cards com Sombra e Transição Refinada em Laranja Âmbar */
 .product-card {
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .product-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 16px 24px -6px rgba(234, 88, 12, 0.18);
-  border-color: #EA580C;
+  box-shadow: 0 16px 28px -6px rgba(217, 93, 30, 0.12);
+  border-color: #D95D1E;
 }

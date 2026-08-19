@@ -85,7 +85,7 @@
 
   <!-- ===== CABEÇALHO / NAVEGAÇÃO PRINCIPAL EM LINHA ÚNICA ===== -->
   <header id="header" class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300 shadow-sm">
-    <div class="max-w-[1700px] w-full mx-auto px-3 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-2 lg:gap-4">
+    <div class="max-w-[1700px] w-full mx-auto px-3 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
       
       <!-- Logotipo Robusto em Laranja Âmbar -->
       <a href="#" class="flex items-center gap-2 sm:gap-2.5 group flex-shrink-0">
@@ -93,45 +93,39 @@
           <i data-lucide="activity" class="w-5 h-5 sm:w-6 sm:h-6 text-white"></i>
         </div>
         <div>
-          <span class="block font-heading text-base sm:text-xl xl:text-2xl font-black uppercase tracking-tight text-slate-900 leading-tight">
+          <span class="block font-heading text-base sm:text-lg xl:text-xl font-black uppercase tracking-tight text-slate-900 leading-tight">
             DR. SAMUEL BARRETO
           </span>
-          <span class="block text-[9px] sm:text-[10px] xl:text-[11px] tracking-[0.16em] uppercase text-petrol font-bold -mt-0.5">
+          <span class="block text-[9px] sm:text-[10px] xl:text-[10.5px] tracking-[0.16em] uppercase text-petrol font-bold -mt-0.5">
             Laboratório & Medicina Diagnóstica
           </span>
         </div>
       </a>
 
-      <!-- Links de Navegação na Mesma Linha (Fonte Ajustada e Proporcional) -->
-      <nav id="mainNav" class="hidden md:flex items-center gap-2 lg:gap-3 xl:gap-5 text-[10.5px] lg:text-[11px] xl:text-xs font-extrabold uppercase tracking-wider text-slate-700 whitespace-nowrap">
-        <a href="#exames" class="hover:text-petrol transition-colors py-1.5 px-1.5 lg:px-2 rounded-lg hover:bg-slate-50">Exames</a>
-        <a href="#checkups" class="hover:text-petrol transition-colors py-1.5 px-1.5 lg:px-2 rounded-lg hover:bg-slate-50">Check-ups</a>
-        <a href="#cartao-saude" class="text-petrol font-black hover:text-petrol-accent transition-colors flex items-center gap-1 bg-orange-50 border border-orange-200/80 px-2 lg:px-2.5 py-1 rounded-lg">
-          <span class="w-1.5 h-1.5 rounded-full bg-petrol animate-pulse"></span> Cartão Saúde
-        </a>
-        <a href="#quiz" class="hover:text-petrol transition-colors py-1.5 px-1.5 lg:px-2 rounded-lg hover:bg-slate-50">Orientador</a>
-        <a href="#artigos" class="hover:text-petrol transition-colors py-1.5 px-1.5 lg:px-2 rounded-lg hover:bg-slate-50">Artigos</a>
-        <a href="#sobre" class="hover:text-petrol transition-colors py-1.5 px-1.5 lg:px-2 rounded-lg hover:bg-slate-50">Nossa História</a>
-        <a href="#estrutura" class="hover:text-petrol transition-colors py-1.5 px-1.5 lg:px-2 rounded-lg hover:bg-slate-50">Tecnologia</a>
-      </nav>
+      <!-- Bloco da Direita: Menu de Navegação Junto ao Admin e Agendamento -->
+      <div class="flex items-center gap-1.5 sm:gap-2 lg:gap-3 flex-shrink-0">
+        <!-- Links de Navegação Escritos Colados ao Admin -->
+        <nav id="mainNav" class="hidden md:flex items-center gap-1 lg:gap-1.5 xl:gap-2.5 text-[10px] xl:text-[11px] font-extrabold uppercase tracking-wider text-slate-700 whitespace-nowrap mr-1">
+          <a href="#exames" class="hover:text-petrol transition-colors py-1 px-1.5 xl:px-2 rounded-lg hover:bg-slate-50">Exames</a>
+          <a href="#checkups" class="hover:text-petrol transition-colors py-1 px-1.5 xl:px-2 rounded-lg hover:bg-slate-50">Check-ups</a>
+          <a href="#cartao-saude" class="text-petrol font-black hover:text-petrol-accent transition-colors flex items-center gap-1 bg-orange-50 border border-orange-200/80 px-1.5 xl:px-2.5 py-1 rounded-lg">
+            <span class="w-1.5 h-1.5 rounded-full bg-petrol animate-pulse"></span> Cartão Saúde
+          </a>
+          <a href="#quiz" class="hover:text-petrol transition-colors py-1 px-1.5 xl:px-2 rounded-lg hover:bg-slate-50">Orientador</a>
+          <a href="#artigos" class="hover:text-petrol transition-colors py-1 px-1.5 xl:px-2 rounded-lg hover:bg-slate-50">Artigos</a>
+          <a href="#sobre" class="hover:text-petrol transition-colors py-1 px-1.5 xl:px-2 rounded-lg hover:bg-slate-50">Nossa História</a>
+          <a href="#estrutura" class="hover:text-petrol transition-colors py-1 px-1.5 xl:px-2 rounded-lg hover:bg-slate-50">Tecnologia</a>
+        </nav>
 
-      <!-- Ações da Direita na Mesma Linha: Instagram, Admin e Agendamento -->
-      <div class="flex items-center gap-1.5 sm:gap-2.5 flex-shrink-0">
-        <!-- Instagram Fixo Destacado -->
-        <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="hidden 2xl:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-bold text-slate-700 hover:text-rose-600 bg-slate-50 hover:bg-rose-50 border border-slate-200 transition" title="Instagram Oficial">
-          <i data-lucide="instagram" class="w-3.5 h-3.5 text-rose-500"></i>
-          <span>@laboratoriodrsamuelbarreto</span>
-        </a>
-
-        <!-- Botão Admin na Mesma Linha -->
-        <button onclick="openAdminModal()" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold text-slate-600 hover:text-petrol bg-slate-100 hover:bg-orange-50 border border-slate-200 transition shadow-2xs" title="Área Administrativa">
+        <!-- Botão Admin ao Lado do Menu -->
+        <button onclick="openAdminModal()" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-[10.5px] xl:text-xs font-bold text-slate-600 hover:text-petrol bg-slate-100 hover:bg-orange-50 border border-slate-200 transition shadow-2xs" title="Área Administrativa">
           <i data-lucide="lock" class="w-3.5 h-3.5 text-petrol"></i>
           <span>Admin</span>
         </button>
 
-        <!-- Botão Agendar na Mesma Linha -->
-        <a href="https://wa.me/553892051001?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20exame%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 bg-petrol hover:bg-petrol-accent text-white text-[11px] sm:text-xs font-extrabold uppercase tracking-wider px-3.5 sm:px-5 py-2.5 sm:py-3 rounded-xl shadow-md shadow-petrol/20 transition-all text-center hover:scale-[1.02] active:scale-98 whitespace-nowrap">
-          <i data-lucide="calendar" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+        <!-- Botão Agendar -->
+        <a href="https://wa.me/553892051001?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20exame%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 bg-petrol hover:bg-petrol-accent text-white text-[10.5px] xl:text-xs font-extrabold uppercase tracking-wider px-3.5 xl:px-4 py-2 xl:py-2.5 rounded-xl shadow-md shadow-petrol/20 transition-all text-center hover:scale-[1.02] active:scale-98 whitespace-nowrap">
+          <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
           <span>Agendar Exame</span>
         </a>
 

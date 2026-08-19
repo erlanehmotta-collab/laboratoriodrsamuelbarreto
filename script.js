@@ -180,38 +180,38 @@ function renderProducts() {
     : products.filter(p => p.category === activeCategory);
 
   grid.innerHTML = filtered.map(p => `
-    <div class="product-card rounded-2xl bg-white border border-petrol/20 overflow-hidden flex flex-col justify-between group shadow-sm">
+    <div class="product-card rounded-2xl bg-white border border-petrol/20 overflow-hidden flex flex-col justify-between group shadow-sm hover:shadow-md transition-all">
       <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 cursor-pointer" onclick="openQuickModal('${p.id}')">
         <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0" />
         <img src="${p.hoverImage || p.image}" alt="${p.name}" class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
         
-        <span class="absolute top-3 left-3 px-3 py-1 rounded-md bg-petrol text-white text-[10px] uppercase font-extrabold tracking-wider">
+        <span class="absolute top-3.5 left-3.5 px-3 py-1.5 rounded-lg bg-petrol text-white text-xs uppercase font-extrabold tracking-wider shadow-sm">
           ${p.badge || 'Protocolo Clínico'}
         </span>
 
-        <button onclick="event.stopPropagation(); openQuickModal('${p.id}')" class="absolute bottom-3 right-3 w-9 h-9 rounded-lg bg-white text-petrol shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" title="Visualização Rápida">
-          <i data-lucide="eye" class="w-4 h-4 text-petrol"></i>
+        <button onclick="event.stopPropagation(); openQuickModal('${p.id}')" class="absolute bottom-3 right-3 w-10 h-10 rounded-xl bg-white text-petrol shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" title="Visualização Rápida">
+          <i data-lucide="eye" class="w-5 h-5 text-petrol"></i>
         </button>
       </div>
 
       <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
         <div>
-          <div class="flex items-center gap-1 text-amber-500 text-xs mb-1">
+          <div class="flex items-center gap-1.5 text-amber-500 text-sm mb-1.5">
             <span>★★★★★</span>
-            <span class="text-slate-400 text-[11px] font-bold">(${p.reviewsCount || 100} avaliações)</span>
+            <span class="text-slate-500 text-xs font-bold">(${p.reviewsCount || 100} avaliações)</span>
           </div>
-          <h3 class="font-heading text-lg font-bold text-petrol-dark uppercase cursor-pointer hover:text-petrol transition" onclick="openQuickModal('${p.id}')">
+          <h3 class="font-heading text-xl font-bold text-petrol-dark uppercase cursor-pointer hover:text-petrol transition leading-snug" onclick="openQuickModal('${p.id}')">
             ${p.name}
           </h3>
-          <p class="text-xs text-slate-600 font-normal line-clamp-2 mt-1.5 leading-relaxed">${p.shortDesc}</p>
+          <p class="text-sm text-slate-600 font-normal line-clamp-2 mt-2 leading-relaxed">${p.shortDesc}</p>
         </div>
 
         <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
-          <button onclick="openQuickModal('${p.id}')" class="text-xs font-bold uppercase tracking-wider text-slate-600 hover:text-petrol transition flex items-center justify-center gap-1">
-            <i data-lucide="info" class="w-3.5 h-3.5 text-petrol"></i> Ver Preparo
+          <button onclick="openQuickModal('${p.id}')" class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-600 hover:text-petrol transition flex items-center justify-center gap-1.5">
+            <i data-lucide="info" class="w-4 h-4 text-petrol"></i> <span>Ver Preparo</span>
           </button>
-          <a href="https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20${encodeURIComponent(p.name)}%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus." target="_blank" class="px-5 py-2.5 rounded-xl bg-petrol hover:bg-petrol-dark text-white text-[11px] font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 shadow-sm text-center">
-            <i data-lucide="calendar" class="w-3.5 h-3.5"></i> <span>Agendar</span>
+          <a href="https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20${encodeURIComponent(p.name)}%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus." target="_blank" class="px-5 py-3 rounded-xl bg-petrol hover:bg-petrol-dark text-white text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-sm text-center">
+            <i data-lucide="calendar" class="w-4 h-4"></i> <span>Agendar</span>
           </a>
         </div>
       </div>
@@ -233,26 +233,26 @@ function renderPosts() {
       <div class="aspect-[16/10] overflow-hidden bg-slate-100 relative cursor-pointer" onclick="openPostModal('${post.id}')">
         ${isVideo 
           ? `<video src="${post.image}" class="w-full h-full object-cover" muted></video>
-             <div class="absolute inset-0 bg-petrol-dark/30 flex items-center justify-center text-white"><i data-lucide="play-circle" class="w-10 h-10"></i></div>` 
+             <div class="absolute inset-0 bg-petrol-dark/30 flex items-center justify-center text-white"><i data-lucide="play-circle" class="w-12 h-12"></i></div>` 
           : `<img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />`
         }
-        <span class="absolute top-3 left-3 px-3 py-1 rounded-md bg-petrol text-white text-[10px] font-extrabold uppercase tracking-wider">
+        <span class="absolute top-3.5 left-3.5 px-3 py-1.5 rounded-lg bg-petrol text-white text-xs font-extrabold uppercase tracking-wider shadow-sm">
           ${post.category}
         </span>
       </div>
 
-      <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+      <div class="p-6 space-y-3.5 flex-1 flex flex-col justify-between">
         <div class="space-y-2">
-          <span class="text-[11px] text-slate-400 font-bold block">${post.date}</span>
-          <h3 class="font-heading text-lg font-bold text-petrol-dark group-hover:text-petrol transition cursor-pointer leading-snug" onclick="openPostModal('${post.id}')">
+          <span class="text-xs text-slate-400 font-semibold block">${post.date}</span>
+          <h3 class="font-heading text-xl font-bold text-petrol-dark group-hover:text-petrol transition cursor-pointer leading-snug" onclick="openPostModal('${post.id}')">
             ${post.title}
           </h3>
-          <p class="text-xs text-slate-600 font-normal line-clamp-3 leading-relaxed">${post.excerpt}</p>
+          <p class="text-sm text-slate-600 font-normal line-clamp-3 leading-relaxed">${post.excerpt}</p>
         </div>
 
         <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-          <button onclick="openPostModal('${post.id}')" class="text-xs font-bold uppercase tracking-wider text-petrol hover:underline flex items-center gap-1">
-            Ler Artigo Completo →
+          <button onclick="openPostModal('${post.id}')" class="text-xs sm:text-sm font-bold uppercase tracking-wider text-petrol hover:underline flex items-center gap-1.5">
+            <span>Ler Artigo Completo</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
           </button>
         </div>
       </div>
@@ -272,25 +272,25 @@ function openPostModal(postId) {
   const container = document.getElementById('postModalContent');
 
   container.innerHTML = `
-    <div class="aspect-[16/9] rounded-xl overflow-hidden mb-4 bg-slate-100 border border-steelLight">
+    <div class="aspect-[16/9] rounded-xl overflow-hidden mb-5 bg-slate-100 border border-steelLight">
       ${isVideo 
         ? `<video src="${post.image}" controls autoplay class="w-full h-full object-cover"></video>` 
         : `<img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover" />`
       }
     </div>
-    <div class="space-y-3">
+    <div class="space-y-4">
       <div class="flex items-center gap-3">
-        <span class="px-3 py-1 rounded-md bg-petrol text-white text-[10px] uppercase font-bold tracking-wider">${post.category}</span>
+        <span class="px-3 py-1.5 rounded-lg bg-petrol text-white text-xs uppercase font-bold tracking-wider">${post.category}</span>
         <span class="text-xs text-slate-400 font-semibold">${post.date}</span>
       </div>
-      <h3 class="font-heading text-2xl font-bold text-petrol-dark">${post.title}</h3>
-      <div class="text-sm text-slate-700 font-normal leading-relaxed whitespace-pre-line pt-3 border-t border-slate-200">
+      <h3 class="font-heading text-2xl sm:text-3xl font-bold text-petrol-dark leading-snug">${post.title}</h3>
+      <div class="text-base text-slate-700 font-normal leading-relaxed whitespace-pre-line pt-3 border-t border-slate-200">
         ${post.content}
       </div>
-      <div class="pt-4 border-t border-petrol/20 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs">
+      <div class="pt-5 border-t border-petrol/20 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-sm">
         <span class="text-slate-500 font-medium">Responsabilidade Técnica: <strong>Dr. Samuel Barreto (CRBM)</strong> • Coração de Jesus - MG</span>
-        <button onclick="closePostModal()" class="px-5 py-2.5 rounded-xl bg-petrol hover:bg-petrol-dark text-white font-bold uppercase tracking-wider transition">
-          Fechar
+        <button onclick="closePostModal()" class="px-6 py-3 rounded-xl bg-petrol hover:bg-petrol-dark text-white text-xs font-bold uppercase tracking-wider transition">
+          Fechar Artigo
         </button>
       </div>
     </div>
@@ -330,16 +330,16 @@ function openQuickModal(productId) {
       <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover" />
     </div>
     <div class="space-y-4">
-      <span class="px-3 py-1 rounded-md bg-petrol text-white text-[10px] uppercase font-bold tracking-wider">${p.badge || 'Protocolo'}</span>
-      <h3 class="font-heading text-xl font-bold text-petrol-dark uppercase">${p.name}</h3>
-      <p class="text-xs text-slate-600 leading-relaxed">${p.fullDesc}</p>
+      <span class="inline-block px-3 py-1.5 rounded-lg bg-petrol text-white text-xs uppercase font-bold tracking-wider">${p.badge || 'Protocolo Clínico'}</span>
+      <h3 class="font-heading text-2xl font-bold text-petrol-dark uppercase leading-snug">${p.name}</h3>
+      <p class="text-sm text-slate-600 leading-relaxed">${p.fullDesc}</p>
       
-      <div class="p-3.5 rounded-xl bg-petrol-surface/50 border border-petrol/20 text-xs text-petrol-dark space-y-1">
-        <strong class="block text-petrol uppercase tracking-wider text-[11px]">Orientações Técnicas de Preparo:</strong>
+      <div class="p-4 rounded-xl bg-petrol-surface/50 border border-petrol/20 text-sm text-petrol-dark space-y-1.5">
+        <strong class="block text-petrol uppercase tracking-wider text-xs font-extrabold">Orientações Técnicas de Preparo:</strong>
         <p class="text-slate-600">${p.usage || 'Jejum habitual de 8 a 12 horas.'}</p>
       </div>
 
-      <a href="https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20${encodeURIComponent(p.name)}%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus." target="_blank" class="w-full py-4 bg-petrol hover:bg-petrol-dark text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-colors shadow-lg flex items-center justify-center gap-2">
+      <a href="https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20${encodeURIComponent(p.name)}%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus." target="_blank" class="w-full py-4 bg-petrol hover:bg-petrol-dark text-white rounded-xl text-sm font-bold uppercase tracking-wider transition-colors shadow-lg flex items-center justify-center gap-2">
         <i data-lucide="calendar" class="w-4 h-4"></i> Agendar Este Exame no WhatsApp
       </a>
     </div>

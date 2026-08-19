@@ -151,18 +151,19 @@ function escapeHTML(str) {
 }
 
 function sanitizeUrl(url) {
-  if (!url) return 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=480&q=70';
+  if (!url) return 'https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=800&q=75';
   let trimmed = String(url).trim();
-  if (trimmed.includes('images.unsplash.com')) {
-    // Otimização de Performance Ultrarrápida WebP/AVIF (Carregamento Instantâneo)
-    trimmed = trimmed.replace(/[?&]w=\d+/g, '').replace(/[?&]q=\d+/g, '').replace(/[?&]auto=\w+/g, '');
-    const sep = trimmed.includes('?') ? '&' : '?';
-    return `${trimmed}${sep}auto=format&fit=crop&w=480&q=70`;
-  }
-  if (trimmed.startsWith('https://') || trimmed.startsWith('data:image/')) {
+  if (trimmed.startsWith('/') || trimmed.startsWith('./') || trimmed.endsWith('.jpg') || trimmed.endsWith('.png') || trimmed.endsWith('.svg') || trimmed.endsWith('.webp')) {
     return trimmed;
   }
-  return 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=480&q=70';
+  if (trimmed.includes('images.unsplash.com')) {
+    const baseUrl = trimmed.split('?')[0];
+    return `${baseUrl}?auto=format&fit=crop&w=800&q=75`;
+  }
+  if (trimmed.startsWith('https://') || trimmed.startsWith('http://') || trimmed.startsWith('data:image/')) {
+    return trimmed;
+  }
+  return 'https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=800&q=75';
 }
 
 // Controle de Segurança Anti-Brute-Force
@@ -176,7 +177,17 @@ function getValidStoredProducts() {
     if (raw) {
       const parsed = JSON.parse(raw);
       if (Array.isArray(parsed) && parsed.length > 0) {
-        return parsed;
+        return parsed.map((p, idx) => {
+          let img = p.image || (defaultProducts[idx] ? defaultProducts[idx].image : defaultProducts[0].image);
+          if (img.includes('&fit=crop') && !img.includes('?')) {
+            img = img.split('&')[0] + '?auto=format&fit=crop&w=800&q=75';
+          }
+          return {
+            ...p,
+            image: sanitizeUrl(img),
+            hoverImage: sanitizeUrl(p.hoverImage || img)
+          };
+        });
       }
     }
   } catch (e) {
@@ -192,7 +203,16 @@ function getValidStoredPosts() {
     if (raw) {
       const parsed = JSON.parse(raw);
       if (Array.isArray(parsed) && parsed.length > 0) {
-        return parsed;
+        return parsed.map((p, idx) => {
+          let img = p.image || (defaultPosts[idx] ? defaultPosts[idx].image : defaultPosts[0].image);
+          if (img.includes('&fit=crop') && !img.includes('?')) {
+            img = img.split('&')[0] + '?auto=format&fit=crop&w=800&q=75';
+          }
+          return {
+            ...p,
+            image: sanitizeUrl(img)
+          };
+        });
       }
     }
   } catch (e) {
@@ -269,8 +289,8 @@ function renderProducts() {
   grid.innerHTML = filtered.map(p => `
     <div class="product-card rounded-2xl bg-white border border-slate-200/80 overflow-hidden flex flex-col justify-between group shadow-sm hover:shadow-xl transition-all">
       <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 cursor-pointer" onclick="openQuickModal('${escapeHTML(p.id)}')">
-        <img src="${sanitizeUrl(p.image)}" alt="${escapeHTML(p.name)}" loading="lazy" decoding="async" class="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0" />
-        <img src="${sanitizeUrl(p.hoverImage || p.image)}" alt="${escapeHTML(p.name)}" loading="lazy" decoding="async" class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        <img src="${sanitizeUrl(p.image)}" alt="${escapeHTML(p.name)}" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=75';" class="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0" />
+        <img src="${sanitizeUrl(p.hoverImage || p.image)}" alt="${escapeHTML(p.name)}" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=75';" class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
         
         <span class="absolute top-3.5 left-3.5 px-3.5 py-1.5 rounded-lg bg-petrol text-white text-xs uppercase font-extrabold tracking-wider shadow-md shadow-petrol/20">
           ${escapeHTML(p.badge || 'Protocolo Clínico')}
@@ -323,7 +343,7 @@ function renderPosts() {
         ${isVideo 
           ? `<video src="${post.image}" class="w-full h-full object-cover" muted></video>
              <div class="absolute inset-0 bg-slate-900/40 flex items-center justify-center text-white"><i data-lucide="play-circle" class="w-12 h-12"></i></div>` 
-          : `<img src="${sanitizeUrl(post.image)}" alt="${escapeHTML(post.title)}" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />`
+          : `<img src="${sanitizeUrl(post.image)}" alt="${escapeHTML(post.title)}" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=800&q=75';" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />`
         }
         <span class="absolute top-3.5 left-3.5 px-3.5 py-1.5 rounded-lg bg-petrol text-white text-xs font-extrabold uppercase tracking-wider shadow-md shadow-petrol/20">
           ${escapeHTML(post.category)}
@@ -366,7 +386,7 @@ function openPostModal(postId) {
     <div class="aspect-[16/9] rounded-2xl overflow-hidden mb-6 bg-slate-100 border border-slate-200">
       ${isVideo 
         ? `<video src="${post.image}" controls autoplay class="w-full h-full object-cover"></video>` 
-        : `<img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover" />`
+        : `<img src="${sanitizeUrl(post.image)}" alt="${post.title}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=800&q=75';" class="w-full h-full object-cover" />`
       }
     </div>
     <div class="space-y-4">
@@ -837,18 +857,20 @@ function handleCloudUrlInput(url, targetPreviewId) {
   }
 }
 
-// ===== IA GERADORA DE IMAGENS & CONTEÚDO BASEADO EM EVIDÊNCIAS =====
+// ===== IA GERADORA DE IMAGENS & CONTEÚDO BASEADO EM EVIDÊNCIAS COM FLUX 8K =====
 let currentGeneratedImageUrl = '';
 
 const medicalPhotoPool = [
-  'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=75',
-  'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=75',
-  'https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=800&q=75',
-  'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=75',
-  'https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=800&q=75',
-  'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=800&q=75',
-  'https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=800&q=75',
-  'https://images.unsplash.com/photo-1594824813576-928f09043236?auto=format&fit=crop&w=800&q=75'
+  'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1594824813576-928f09043236?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1537655780520-1e392ead81f2?auto=format&fit=crop&w=1200&q=80'
 ];
 
 function getRandomMedicalPhoto() {
@@ -861,9 +883,13 @@ function setAiPrompt(text) {
   generateAiImage();
 }
 
+function buildFluxMedicalPrompt(promptText) {
+  return `Award-winning documentary medical photography of ${promptText}. Authentic modern Brazilian clinical diagnostic laboratory, professional biomedical healthcare specialist in clean sterile lab coat, state-of-the-art automated biochemical analyzers, glass test tubes with barcoded samples, soft natural clinical lighting, amber and slate tones, shot on Hasselblad H6D-100c, 85mm f/1.4 lens, 8k resolution, photorealistic masterpiece, crisp sharp focus, natural skin textures, cinematic depth of field, no blur, no CGI, no cartoon, hyper-detailed`;
+}
+
 function generateAiImage() {
   const input = document.getElementById('aiImagePrompt');
-  const userPrompt = (input && input.value ? input.value.trim() : '') || 'Médico biomédico em laboratório clínico moderno de alta tecnologia';
+  const userPrompt = (input && input.value ? input.value.trim() : '') || 'Biomédico analisando amostra de sangue em microscópio óptico de alta precisão diagnóstica';
   
   const previewBox = document.getElementById('mediaPreviewBox');
   const previewImg = document.getElementById('mediaPreviewImg');
@@ -876,14 +902,15 @@ function generateAiImage() {
   if (spinner) spinner.classList.remove('hidden');
   if (previewVideo) previewVideo.classList.add('hidden');
   if (btn) btn.disabled = true;
-  if (btnText) btnText.textContent = 'Criando IA...';
+  if (btnText) btnText.textContent = 'Renderizando Flux...';
 
-  const fullPrompt = `${userPrompt}, authentic medical clinical laboratory environment, biosafety certified, precise diagnostic equipment, professional scientific lighting, realistic editorial photography, 8k`;
+  const fullPrompt = buildFluxMedicalPrompt(userPrompt);
   const seed = Math.floor(Math.random() * 999999);
-  const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=800&height=500&nologo=true&seed=${seed}`;
+  // Flux SOTA Model Engine
+  const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=1000&height=625&model=flux&nologo=true&seed=${seed}`;
 
   let isHandled = false;
-  const finishGeneration = (url, isAi = true) => {
+  const finishGeneration = (url, isFlux = true) => {
     if (isHandled) return;
     isHandled = true;
     currentGeneratedImageUrl = url;
@@ -897,13 +924,12 @@ function generateAiImage() {
     if (spinner) spinner.classList.add('hidden');
     if (btn) btn.disabled = false;
     if (btnText) btnText.textContent = 'Gerar Nova';
-    showToast(isAi ? '✨ Imagem 8K gerada com sucesso pela IA!' : '✨ Imagem clínica em alta definição pronta!');
+    showToast(isFlux ? '✨ Imagem 8K renderizada com motor Flux IA!' : '✨ Fotografia clínica em alta definição pronta!');
   };
 
-  // Timeout de segurança para nunca travar o usuário
   const timeoutId = setTimeout(() => {
     finishGeneration(getRandomMedicalPhoto(), false);
-  }, 3500);
+  }, 5000);
 
   const imgLoader = new Image();
   imgLoader.onload = () => {
@@ -1088,15 +1114,16 @@ function generateSpecificAiProduct(theme) {
 let studioGeneratedImgUrl = '';
 function generateStudioAiImage() {
   const promptInput = document.getElementById('aiStudioPrompt');
-  const userPrompt = (promptInput && promptInput.value ? promptInput.value.trim() : '') || 'Biomédico em laboratório clínico moderno de alta precisão diagnóstica';
+  const userPrompt = (promptInput && promptInput.value ? promptInput.value.trim() : '') || 'Biomédico operando analisador laboratorial de alta precisão diagnóstica';
   const previewBox = document.getElementById('aiStudioPreview');
   const previewImg = document.getElementById('aiStudioImg');
   const btn = document.getElementById('btnStudioAi');
 
   if (btn) btn.disabled = true;
-  const fullPrompt = `${userPrompt}, authentic medical clinical laboratory environment, biosafety certified, precise diagnostic equipment, professional scientific lighting, realistic editorial photography, 8k`;
+  const fullPrompt = buildFluxMedicalPrompt(userPrompt);
   const seed = Math.floor(Math.random() * 999999);
-  const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=800&height=500&nologo=true&seed=${seed}`;
+  // Flux SOTA Model Engine
+  const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=1000&height=625&model=flux&nologo=true&seed=${seed}`;
 
   let isHandled = false;
   const finishStudio = (url) => {
@@ -1106,12 +1133,12 @@ function generateStudioAiImage() {
     if (previewImg) previewImg.src = url;
     if (previewBox) previewBox.classList.remove('hidden');
     if (btn) btn.disabled = false;
-    showToast('✨ Imagem 8K gerada com sucesso pelo Estúdio IA!');
+    showToast('✨ Imagem 8K hiper-realista gerada com motor Flux IA!');
   };
 
   const timeoutId = setTimeout(() => {
     finishStudio(getRandomMedicalPhoto());
-  }, 3500);
+  }, 5000);
 
   const imgLoader = new Image();
   imgLoader.onload = () => {

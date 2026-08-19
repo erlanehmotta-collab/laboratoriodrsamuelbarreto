@@ -85,7 +85,8 @@
 
   <!-- ===== CABEÇALHO / NAVEGAÇÃO PRINCIPAL FIXO E PERFEITO ===== -->
   <header id="header" class="sticky top-0 z-40 bg-white border-b border-slate-200 transition-all duration-300 shadow-sm">
-    <div class="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+    <!-- Linha 1: Logotipo, Redes e Ações -->
+    <div class="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
       
       <!-- Logotipo Robusto em Laranja Âmbar -->
       <a href="#" class="flex items-center gap-2.5 sm:gap-3 group flex-shrink-0">
@@ -102,35 +103,22 @@
         </div>
       </a>
 
-      <!-- Links de Navegação Escritos Desktop & Notebook (Sempre Visíveis) -->
-      <nav id="mainNav" class="hidden md:flex items-center gap-4 lg:gap-6 text-[11px] lg:text-xs font-extrabold uppercase tracking-wider text-slate-700">
-        <a href="#exames" class="hover:text-petrol transition-colors py-1.5 px-2 rounded-lg hover:bg-slate-50">Exames</a>
-        <a href="#checkups" class="hover:text-petrol transition-colors py-1.5 px-2 rounded-lg hover:bg-slate-50">Check-ups</a>
-        <a href="#cartao-saude" class="text-petrol font-black hover:text-petrol-accent transition-colors flex items-center gap-1 bg-orange-50 border border-orange-200/80 px-2.5 py-1 rounded-lg">
-          <span class="w-1.5 h-1.5 rounded-full bg-petrol"></span> Cartão Saúde
-        </a>
-        <a href="#quiz" class="hover:text-petrol transition-colors py-1.5 px-2 rounded-lg hover:bg-slate-50">Orientador</a>
-        <a href="#artigos" class="hover:text-petrol transition-colors py-1.5 px-2 rounded-lg hover:bg-slate-50">Artigos</a>
-        <a href="#sobre" class="hover:text-petrol transition-colors py-1.5 px-2 rounded-lg hover:bg-slate-50">Nossa História</a>
-        <a href="#estrutura" class="hover:text-petrol transition-colors py-1.5 px-2 rounded-lg hover:bg-slate-50">Tecnologia</a>
-      </nav>
-
-      <!-- Ações da Direita -->
+      <!-- Ações da Direita (Instagram, Admin e Agendamento) -->
       <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
         <!-- Instagram Fixo Destacado -->
-        <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:text-rose-600 bg-slate-50 hover:bg-rose-50 border border-slate-200 transition" title="Instagram Oficial">
+        <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:text-rose-600 bg-slate-50 hover:bg-rose-50 border border-slate-200 transition" title="Instagram Oficial">
           <i data-lucide="instagram" class="w-4 h-4 text-rose-500"></i>
           <span>@laboratoriodrsamuelbarreto</span>
         </a>
 
         <!-- Botão Admin -->
-        <button onclick="openAdminModal()" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-petrol opacity-80 hover:opacity-100 transition-all" title="Área Administrativa">
-          <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+        <button onclick="openAdminModal()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-petrol bg-slate-100 hover:bg-orange-50 border border-slate-200 transition" title="Área Administrativa">
+          <i data-lucide="lock" class="w-3.5 h-3.5 text-petrol"></i>
           <span>Admin</span>
         </button>
 
         <!-- Botão Agendar -->
-        <a href="https://wa.me/553892051001?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20exame%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-petrol hover:bg-petrol-accent text-white text-xs font-extrabold uppercase tracking-wider px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl shadow-md shadow-petrol/20 transition-all text-center hover:scale-[1.02] active:scale-98">
+        <a href="https://wa.me/553892051001?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20exame%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-petrol hover:bg-petrol-accent text-white text-xs font-extrabold uppercase tracking-wider px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl shadow-md shadow-petrol/20 transition-all text-center hover:scale-[1.02] active:scale-98">
           <i data-lucide="calendar" class="w-4 h-4"></i>
           <span>Agendar Exame</span>
         </a>
@@ -138,18 +126,18 @@
 
     </div>
 
-    <!-- Barra de Navegação Horizontal Permanente para Mobile (Mostra Cartão Saúde, Orientador, etc.) -->
-    <div class="bg-slate-50/95 border-t border-slate-200 px-4 py-2 overflow-x-auto scrollbar-none flex items-center md:hidden">
-      <nav class="w-full flex items-center justify-start gap-2 text-[11px] font-bold uppercase tracking-wider text-slate-700 whitespace-nowrap">
-        <a href="#exames" class="hover:text-petrol py-1 px-2 rounded-lg bg-white border border-slate-200 shadow-2xs">Exames</a>
-        <a href="#checkups" class="hover:text-petrol py-1 px-2 rounded-lg bg-white border border-slate-200 shadow-2xs">Check-ups</a>
-        <a href="#cartao-saude" class="text-petrol font-black py-1 px-2.5 rounded-lg bg-orange-100/90 border border-orange-200 shadow-2xs flex items-center gap-1">
-          <span class="w-1.5 h-1.5 rounded-full bg-petrol"></span> Cartão Saúde
+    <!-- Linha 2: Barra de Navegação Escrita Completa e Permanente (Sem Esconder Nada) -->
+    <div class="bg-slate-50 border-t border-slate-200 px-4 py-2 overflow-x-auto scrollbar-none">
+      <nav id="mainNav" class="max-w-[1600px] w-full mx-auto flex items-center justify-center gap-2 sm:gap-4 md:gap-6 text-xs font-extrabold uppercase tracking-wider text-slate-800 whitespace-nowrap">
+        <a href="#exames" class="hover:text-petrol transition-colors py-1 px-2.5 rounded-lg hover:bg-white">Exames</a>
+        <a href="#checkups" class="hover:text-petrol transition-colors py-1 px-2.5 rounded-lg hover:bg-white">Check-ups</a>
+        <a href="#cartao-saude" class="text-petrol font-black hover:text-petrol-accent transition-colors flex items-center gap-1.5 bg-orange-100/80 border border-orange-200 px-3 py-1 rounded-lg shadow-2xs">
+          <span class="w-2 h-2 rounded-full bg-petrol animate-pulse"></span> Cartão Saúde
         </a>
-        <a href="#quiz" class="hover:text-petrol py-1 px-2.5 rounded-lg bg-white border border-slate-200 shadow-2xs">Orientador</a>
-        <a href="#artigos" class="hover:text-petrol py-1 px-2 rounded-lg bg-white border border-slate-200 shadow-2xs">Artigos</a>
-        <a href="#sobre" class="hover:text-petrol py-1 px-2 rounded-lg bg-white border border-slate-200 shadow-2xs">Nossa História</a>
-        <a href="#estrutura" class="hover:text-petrol py-1 px-2 rounded-lg bg-white border border-slate-200 shadow-2xs">Tecnologia</a>
+        <a href="#quiz" class="hover:text-petrol transition-colors py-1 px-2.5 rounded-lg hover:bg-white">Orientador</a>
+        <a href="#artigos" class="hover:text-petrol transition-colors py-1 px-2.5 rounded-lg hover:bg-white">Artigos</a>
+        <a href="#sobre" class="hover:text-petrol transition-colors py-1 px-2.5 rounded-lg hover:bg-white">Nossa História</a>
+        <a href="#estrutura" class="hover:text-petrol transition-colors py-1 px-2.5 rounded-lg hover:bg-white">Tecnologia</a>
       </nav>
     </div>
   </header>

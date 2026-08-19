@@ -697,16 +697,18 @@ function logoutAdmin() {
 function switchAdminTab(tab) {
   const tabPosts = document.getElementById('adminTabPosts');
   const tabProducts = document.getElementById('adminTabProducts');
+  const tabAi = document.getElementById('adminTabAi');
   const tabSettings = document.getElementById('adminTabSettings');
   const tabSecurity = document.getElementById('adminTabSecurity');
 
   const btnPosts = document.getElementById('tabPostsBtn');
   const btnProducts = document.getElementById('tabProductsBtn');
+  const btnAi = document.getElementById('tabAiBtn');
   const btnSettings = document.getElementById('tabSettingsBtn');
   const btnSecurity = document.getElementById('tabSecurityBtn');
 
-  [tabPosts, tabProducts, tabSettings, tabSecurity].forEach(t => { if (t) t.classList.add('hidden'); });
-  [btnPosts, btnProducts, btnSettings, btnSecurity].forEach(b => {
+  [tabPosts, tabProducts, tabAi, tabSettings, tabSecurity].forEach(t => { if (t) t.classList.add('hidden'); });
+  [btnPosts, btnProducts, btnAi, btnSettings, btnSecurity].forEach(b => {
     if (b) {
       b.classList.remove('bg-petrol', 'text-white');
       b.classList.add('bg-petrol-surface', 'text-petrol');
@@ -719,6 +721,9 @@ function switchAdminTab(tab) {
   } else if (tab === 'products') {
     tabProducts.classList.remove('hidden');
     btnProducts.classList.add('bg-petrol', 'text-white');
+  } else if (tab === 'ai') {
+    if (tabAi) tabAi.classList.remove('hidden');
+    if (btnAi) btnAi.classList.add('bg-petrol', 'text-white');
   } else if (tab === 'security') {
     if (tabSecurity) tabSecurity.classList.remove('hidden');
     if (btnSecurity) btnSecurity.classList.add('bg-petrol', 'text-white');
@@ -937,6 +942,157 @@ function suggestAiContent() {
 
   generateAiImage();
   showToast('✨ Conteúdo embasado cientificamente gerado pela IA!');
+}
+
+// ===== IA GERADORA DE CHECK-UPS E PROTOCOLOS =====
+const aiProductTemplates = [
+  {
+    name: 'Check-up Mulher 40+ Vitalidade & Hormônios',
+    category: 'mulher',
+    badge: 'Completo 40+',
+    shortDesc: 'Hemograma + Perfil Lipídico + Glicemia + TSH + T4 Livre + Estradiol + Progesterona + Vitamina D + Ferritina + Cálcio Iônico',
+    image: 'https://images.unsplash.com/photo-1594824813689-565b9319e64e?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    name: 'Check-up Homem 50+ Saúde Prostática & Cardiovascular',
+    category: 'homem',
+    badge: 'Essencial 50+',
+    shortDesc: 'PSA Total e Livre + Hemograma + Creatinina + Ácido Úrico + Colesterol Total e Frações + Glicemia + Testosterona Total',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    name: 'Check-up Esportivo & Performance Atlética',
+    category: 'especiais',
+    badge: 'Alta Performance',
+    shortDesc: 'Hemograma + CPK + Ureia + Creatinina + Perfil Eletrolítico + Vitamina B12 + Cortisol + TSH + Magnésio Sérico',
+    image: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    name: 'Check-up Pré-Natal Seguro (1º Trimestre)',
+    category: 'mulher',
+    badge: 'Gestação Segura',
+    shortDesc: 'Tipagem Sanguínea / Fator Rh + Coombs Indireto + Sorologias (Toxoplasmose, Rubéola, Citomegalovírus, HIV, VDRL, HBsAg) + Hemograma + Urina I',
+    image: 'https://images.unsplash.com/photo-1537655780520-1e392ead81f2?auto=format&fit=crop&w=600&q=80'
+  }
+];
+
+let prodTemplateIndex = 0;
+function suggestAiProduct() {
+  const t = aiProductTemplates[prodTemplateIndex % aiProductTemplates.length];
+  prodTemplateIndex++;
+
+  document.getElementById('prodName').value = t.name;
+  document.getElementById('prodCategory').value = t.category;
+  document.getElementById('prodBadge').value = t.badge;
+  document.getElementById('prodShortDesc').value = t.shortDesc;
+  document.getElementById('prodImage').value = t.image;
+
+  showToast('✨ Check-up clínico gerado pela IA!');
+}
+
+function generateSpecificAiPost(theme) {
+  switchAdminTab('posts');
+  if (theme === 'glicada') {
+    document.getElementById('postTitle').value = 'Hemoglobina Glicada (HbA1c): Critérios Diagnósticos da SBD e ADA';
+    document.getElementById('postCategory').value = 'Prevenção & Longevidade';
+    document.getElementById('postExcerpt').value = 'Monitoramento glicêmico trimestral para diagnóstico precoce e prevenção de complicações vasculares.';
+    document.getElementById('postContent').value = 'A dosagem da fração HbA1c por HPLC fornece a média glicêmica dos últimos 90 a 120 dias, sendo o padrão-ouro no controle do Diabetes Mellitus. Segundo a Sociedade Brasileira de Diabetes, o valor de referência em jejum ideal para não diabéticos situa-se abaixo de 5,7%.\n\nNo Laboratório Dr. Samuel Barreto, o exame é realizado em analisadores automáticos calibrados segundo as normas do NGSP com liberação rápida do laudo.';
+    document.getElementById('aiImagePrompt').value = 'Exame de sangue para glicose e controle metabólico em laboratório tecnológico moderno';
+  } else if (theme === 'vitaminad') {
+    document.getElementById('postTitle').value = '25-Hidroxivitamina D: Importância Imunológica e Valores de Referência';
+    document.getElementById('postCategory').value = 'Prevenção & Longevidade';
+    document.getElementById('postExcerpt').value = 'Recomendações da SBEM para manutenção de níveis séricos ideais e saúde óssea.';
+    document.getElementById('postContent').value = 'A vitamina D é um pré-hormônio esteroide fundamental para a absorção de cálcio, modulação da resposta imunológica e prevenção de doenças osteometabólicas.\n\nRecomenda-se a dosagem periódica para estratificação da faixa terapêutica, garantindo suplementação segura e eficaz.';
+    document.getElementById('aiImagePrompt').value = 'Ilustração de bem-estar, sol e imunidade com estética médica em tons de âmbar e azul';
+  } else if (theme === 'tireoide') {
+    document.getElementById('postTitle').value = 'Painel da Tireoide (TSH Ultrassensível e T4 Livre): Como Interpretar';
+    document.getElementById('postCategory').value = 'Saúde da Mulher';
+    document.getElementById('postExcerpt').value = 'Diagnóstico laboratorial de hipotireoidismo e hipertireoidismo com precisão analítica.';
+    document.getElementById('postContent').value = 'O TSH ultrassensível por quimioluminescência é o biomarcador de triagem mais sensível para avaliação do eixo hipotálamo-hipófise-tireoide.\n\nAlterações sutis permitem o diagnóstico precoce de hipotireoidismo subclínico, prevenindo sintomas de fadiga crônica, alteração ponderal e dislipidemias.';
+    document.getElementById('aiImagePrompt').value = 'Glândula tireoide anatômica com gráficos hormonais em ambiente clínico avançado';
+  } else if (theme === 'sexagem') {
+    document.getElementById('postTitle').value = 'Sexagem Fetal por Biologia Molecular: DNA Fetal Livre no Sangue Materno';
+    document.getElementById('postCategory').value = 'Saúde da Mulher';
+    document.getElementById('postExcerpt').value = 'Identificação do sexo do bebê a partir da 8ª semana com mais de 99% de acurácia.';
+    document.getElementById('postContent').value = 'O teste de sexagem fetal pesquisa fragmentos do cromossomo Y no plasma materno através de Real-Time PCR (Reação em Cadeia da Polimerase em Tempo Real).\n\nO procedimento é 100% não invasivo, seguro para a mãe e para o bebê, dispensando jejum obrigatório.';
+    document.getElementById('aiImagePrompt').value = 'Gravidez saudável e teste de DNA molecular em laboratório humanizado';
+  }
+  generateAiImage();
+  showToast('✨ Artigo preenchido e gerado pela IA!');
+}
+
+function generateSpecificAiProduct(theme) {
+  switchAdminTab('products');
+  if (theme === 'mulher40') {
+    document.getElementById('prodName').value = 'Check-up Mulher 40+ Vitalidade & Hormônios';
+    document.getElementById('prodCategory').value = 'mulher';
+    document.getElementById('prodBadge').value = 'Mais Solicitado';
+    document.getElementById('prodShortDesc').value = 'Hemograma Completo + Glicemia + Perfil Lipídico + TSH + T4 Livre + Estradiol + Progesterona + Vitamina D + Ferritina + Cálcio Iônico';
+    document.getElementById('prodImage').value = 'https://images.unsplash.com/photo-1594824813689-565b9319e64e?auto=format&fit=crop&w=600&q=80';
+  } else if (theme === 'homem50') {
+    document.getElementById('prodName').value = 'Check-up Homem 50+ Saúde Prostática & Cardiovascular';
+    document.getElementById('prodCategory').value = 'homem';
+    document.getElementById('prodBadge').value = 'Essencial 50+';
+    document.getElementById('prodShortDesc').value = 'PSA Total e Livre + Hemograma + Creatinina + Ácido Úrico + Colesterol Total e Frações + Glicemia + Testosterona Total';
+    document.getElementById('prodImage').value = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80';
+  } else if (theme === 'atleta') {
+    document.getElementById('prodName').value = 'Check-up Esportivo & Performance Atlética';
+    document.getElementById('prodCategory').value = 'especiais';
+    document.getElementById('prodBadge').value = 'Alta Performance';
+    document.getElementById('prodShortDesc').value = 'Hemograma + CPK + Ureia + Creatinina + Perfil Eletrolítico + Vitamina B12 + Cortisol + TSH + Magnésio Sérico';
+    document.getElementById('prodImage').value = 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80';
+  } else if (theme === 'gestante') {
+    document.getElementById('prodName').value = 'Check-up Pré-Natal Seguro (1º Trimestre)';
+    document.getElementById('prodCategory').value = 'mulher';
+    document.getElementById('prodBadge').value = 'Gestação Segura';
+    document.getElementById('prodShortDesc').value = 'Tipagem Sanguínea / Fator Rh + Coombs Indireto + Sorologias (Toxoplasmose, Rubéola, Citomegalovírus, HIV, VDRL, HBsAg) + Hemograma + Urina I';
+    document.getElementById('prodImage').value = 'https://images.unsplash.com/photo-1537655780520-1e392ead81f2?auto=format&fit=crop&w=600&q=80';
+  }
+  showToast('✨ Check-up clínico preenchido pela IA!');
+}
+
+let studioGeneratedImgUrl = '';
+function generateStudioAiImage() {
+  const promptInput = document.getElementById('aiStudioPrompt');
+  const userPrompt = promptInput.value.trim() || 'Biomédico em laboratório clínico moderno de alta precisão diagnóstica';
+  const previewBox = document.getElementById('aiStudioPreview');
+  const previewImg = document.getElementById('aiStudioImg');
+  const btn = document.getElementById('btnStudioAi');
+
+  if (btn) btn.disabled = true;
+  const fullPrompt = `${userPrompt}, authentic medical clinical laboratory environment, biosafety certified, precise diagnostic equipment, professional scientific lighting, realistic editorial photography, 8k`;
+  const seed = Math.floor(Math.random() * 999999);
+  const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=1200&height=750&nologo=true&seed=${seed}`;
+
+  const imgLoader = new Image();
+  imgLoader.onload = () => {
+    studioGeneratedImgUrl = imageUrl;
+    if (previewImg) previewImg.src = imageUrl;
+    if (previewBox) previewBox.classList.remove('hidden');
+    if (btn) btn.disabled = false;
+    showToast('✨ Imagem 8K gerada com sucesso pelo Estúdio IA!');
+  };
+  imgLoader.onerror = () => {
+    const fallback = 'https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=1000&q=85';
+    studioGeneratedImgUrl = fallback;
+    if (previewImg) previewImg.src = fallback;
+    if (previewBox) previewBox.classList.remove('hidden');
+    if (btn) btn.disabled = false;
+    showToast('Imagem pronta!');
+  };
+  imgLoader.src = imageUrl;
+}
+
+function applyStudioImageToArticle() {
+  if (!studioGeneratedImgUrl) return;
+  switchAdminTab('posts');
+  const imgInput = document.getElementById('postImage');
+  if (imgInput) imgInput.value = studioGeneratedImgUrl;
+  const previewBox = document.getElementById('mediaPreviewBox');
+  const previewImg = document.getElementById('mediaPreviewImg');
+  if (previewImg) previewImg.src = studioGeneratedImgUrl;
+  if (previewBox) previewBox.classList.remove('hidden');
+  showToast('✓ Imagem aplicada no formulário do artigo!');
 }
 
 // Admin: Posts CRUD

@@ -138,17 +138,17 @@ function renderProducts() {
     : products.filter(p => p.category === activeCategory);
 
   grid.innerHTML = filtered.map(p => `
-    <div class="product-card rounded-2xl bg-white border border-steelLight overflow-hidden flex flex-col justify-between group shadow-sm">
+    <div class="product-card rounded-2xl bg-white border border-petrol/20 overflow-hidden flex flex-col justify-between group shadow-sm">
       <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 cursor-pointer" onclick="openQuickModal('${p.id}')">
         <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0" />
         <img src="${p.hoverImage || p.image}" alt="${p.name}" class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
         
-        <span class="absolute top-3 left-3 px-3 py-1 rounded-md bg-navy text-white text-[10px] uppercase font-extrabold tracking-wider">
+        <span class="absolute top-3 left-3 px-3 py-1 rounded-md bg-petrol text-white text-[10px] uppercase font-extrabold tracking-wider">
           ${p.badge || 'Protocolo Clínico'}
         </span>
 
-        <button onclick="event.stopPropagation(); openQuickModal('${p.id}')" class="absolute bottom-3 right-3 w-9 h-9 rounded-lg bg-white text-navy shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" title="Visualização Rápida">
-          <i data-lucide="eye" class="w-4 h-4 text-cyanAccent"></i>
+        <button onclick="event.stopPropagation(); openQuickModal('${p.id}')" class="absolute bottom-3 right-3 w-9 h-9 rounded-lg bg-white text-petrol shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" title="Visualização Rápida">
+          <i data-lucide="eye" class="w-4 h-4 text-petrol"></i>
         </button>
       </div>
 
@@ -158,17 +158,17 @@ function renderProducts() {
             <span>★★★★★</span>
             <span class="text-slate-400 text-[11px] font-bold">(${p.reviewsCount || 100} avaliações)</span>
           </div>
-          <h3 class="font-heading text-lg font-bold text-navy uppercase cursor-pointer hover:text-cyanAccent transition" onclick="openQuickModal('${p.id}')">
+          <h3 class="font-heading text-lg font-bold text-petrol-dark uppercase cursor-pointer hover:text-petrol transition" onclick="openQuickModal('${p.id}')">
             ${p.name}
           </h3>
           <p class="text-xs text-slate-600 font-normal line-clamp-2 mt-1.5 leading-relaxed">${p.shortDesc}</p>
         </div>
 
         <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
-          <button onclick="openQuickModal('${p.id}')" class="text-xs font-bold uppercase tracking-wider text-slate-600 hover:text-navy transition flex items-center gap-1">
-            <i data-lucide="info" class="w-3.5 h-3.5 text-cyanAccent"></i> Ver Preparo
+          <button onclick="openQuickModal('${p.id}')" class="text-xs font-bold uppercase tracking-wider text-slate-600 hover:text-petrol transition flex items-center gap-1">
+            <i data-lucide="info" class="w-3.5 h-3.5 text-petrol"></i> Ver Preparo
           </button>
-          <a href="https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20${encodeURIComponent(p.name)}." target="_blank" class="px-4 py-2.5 rounded-xl bg-navy hover:bg-cyanAccent text-white text-[11px] font-bold uppercase tracking-wider transition-colors flex items-center gap-1.5 shadow-sm">
+          <a href="https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20${encodeURIComponent(p.name)}." target="_blank" class="px-4 py-2.5 rounded-xl bg-petrol hover:bg-petrol-dark text-white text-[11px] font-bold uppercase tracking-wider transition-colors flex items-center gap-1.5 shadow-sm">
             <i data-lucide="calendar" class="w-3.5 h-3.5"></i> Agendar
           </a>
         </div>
@@ -185,10 +185,10 @@ function renderPosts() {
   if (!grid) return;
 
   grid.innerHTML = posts.map(post => `
-    <article class="rounded-2xl bg-white border border-steelLight overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition-all group">
+    <article class="rounded-2xl bg-white border border-petrol/20 overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition-all group">
       <div class="aspect-[16/10] overflow-hidden bg-slate-100 relative cursor-pointer" onclick="openPostModal('${post.id}')">
         <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-        <span class="absolute top-3 left-3 px-3 py-1 rounded-md bg-navy text-white text-[10px] font-extrabold uppercase tracking-wider">
+        <span class="absolute top-3 left-3 px-3 py-1 rounded-md bg-petrol text-white text-[10px] font-extrabold uppercase tracking-wider">
           ${post.category}
         </span>
       </div>
@@ -196,14 +196,14 @@ function renderPosts() {
       <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
         <div class="space-y-2">
           <span class="text-[11px] text-slate-400 font-bold block">${post.date}</span>
-          <h3 class="font-heading text-lg font-bold text-navy group-hover:text-cyanAccent transition cursor-pointer leading-snug" onclick="openPostModal('${post.id}')">
+          <h3 class="font-heading text-lg font-bold text-petrol-dark group-hover:text-petrol transition cursor-pointer leading-snug" onclick="openPostModal('${post.id}')">
             ${post.title}
           </h3>
           <p class="text-xs text-slate-600 font-normal line-clamp-3 leading-relaxed">${post.excerpt}</p>
         </div>
 
         <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-          <button onclick="openPostModal('${post.id}')" class="text-xs font-bold uppercase tracking-wider text-cyanAccent hover:underline flex items-center gap-1">
+          <button onclick="openPostModal('${post.id}')" class="text-xs font-bold uppercase tracking-wider text-petrol hover:underline flex items-center gap-1">
             Ler Artigo Completo →
           </button>
         </div>

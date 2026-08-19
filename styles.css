@@ -1,4 +1,4 @@
-/* ===== ESTILOS MASCULINOS & MODERNOS — LABORATÓRIO DR. SAMUEL BARRETO ===== */
+/* ===== ESTILOS MASCULINOS EM AZUL PETRÓLEO — LABORATÓRIO DR. SAMUEL BARRETO ===== */
 
 @keyframes fadeIn {
   from {
@@ -15,30 +15,30 @@
   animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Scrollbar Robusta & Minimalista */
+/* Scrollbar Robusta em Azul Petróleo */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0B1523;
+  background: #06283D;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #0284C7;
+  background: #0B4F6C;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #0369A1;
+  background: #088395;
 }
 
-/* Pílulas de Filtro Ativas */
+/* Pílulas de Filtro Ativas em Azul Petróleo */
 .active-pill {
-  background-color: #0A2540 !important;
+  background-color: #0B4F6C !important;
   color: #FFFFFF !important;
-  border-color: #0A2540 !important;
+  border-color: #0B4F6C !important;
 }
 
 /* Estilização dos Detalhes / FAQ */
@@ -64,13 +64,13 @@ details > summary::-webkit-details-marker {
   overflow: hidden;
 }
 
-/* Cards com Sombra e Transição Precisa */
+/* Cards com Sombra e Transição em Azul Petróleo */
 .product-card {
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .product-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 16px 24px -6px rgba(10, 37, 64, 0.12);
-  border-color: #0284C7;
+  box-shadow: 0 16px 24px -6px rgba(11, 79, 108, 0.15);
+  border-color: #0B4F6C;
 }

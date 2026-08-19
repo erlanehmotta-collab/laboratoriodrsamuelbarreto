@@ -367,12 +367,20 @@ function openPostModal(postId) {
   `;
 
   modal.classList.remove('hidden');
-  lucide.createIcons();
+  modal.classList.add('flex');
+  document.body.style.overflow = 'hidden';
+  if (window.lucide && typeof window.lucide.createIcons === 'function') {
+    lucide.createIcons();
+  }
 }
 
 function closePostModal() {
   const modal = document.getElementById('postModal');
-  if (modal) modal.classList.add('hidden');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
 }
 
 // ===== FILTRAGEM POR CATEGORIA =====
@@ -420,6 +428,8 @@ function openQuickModal(productId) {
   `;
 
   modal.classList.remove('hidden');
+  modal.classList.add('flex');
+  document.body.style.overflow = 'hidden';
   if (window.lucide && typeof window.lucide.createIcons === 'function') {
     lucide.createIcons();
   }
@@ -427,7 +437,11 @@ function openQuickModal(productId) {
 
 function closeQuickModal() {
   const modal = document.getElementById('quickModal');
-  if (modal) modal.classList.add('hidden');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
 }
 
 // ===== ORIENTADOR INTERATIVO (QUIZ) =====
@@ -452,6 +466,7 @@ function selectQuiz(step, option, btn) {
     title.textContent = 'Check-up Preventivo Executivo';
     desc.textContent = 'Triagem anual abrangente para monitoramento de glicemia, lipídios, função renal e hepática.';
     addBtn.onclick = () => { window.open(`https://wa.me/${settings.whatsapp}?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20o%20Check-up%20Preventivo%20Executivo%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus.`, '_blank'); };
+  }
   resultBox.classList.remove('hidden');
 }
 
@@ -473,12 +488,20 @@ function openAdminModal(defaultTab = 'posts') {
   }
 
   modal.classList.remove('hidden');
-  lucide.createIcons();
+  modal.classList.add('flex');
+  document.body.style.overflow = 'hidden';
+  if (window.lucide && typeof window.lucide.createIcons === 'function') {
+    lucide.createIcons();
+  }
 }
 
 function closeAdminModal() {
   const modal = document.getElementById('adminModal');
-  if (modal) modal.classList.add('hidden');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
 }
 
 function loginAdmin(e) {

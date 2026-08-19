@@ -75,3 +75,31 @@ details > summary::-webkit-details-marker {
   box-shadow: 0 16px 28px -6px rgba(217, 93, 30, 0.12);
   border-color: #D95D1E;
 }
+
+/* ===== BLINDAGEM ABSOLUTA DE CLIQUES, MODAIS E OVERLAYS (ZERO BLOQUEIO DE CLIQUES) ===== */
+.hidden {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+#quickModal.hidden,
+#postModal.hidden,
+#adminModal.hidden,
+div[id$="Modal"].hidden,
+.modal-backdrop.hidden {
+  display: none !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+  z-index: -9999 !important;
+  opacity: 0 !important;
+}
+
+#quickModal:not(.hidden),
+#postModal:not(.hidden),
+#adminModal:not(.hidden) {
+  display: flex !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 50 !important;
+}

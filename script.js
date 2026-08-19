@@ -171,11 +171,11 @@ function renderProducts() {
         </div>
 
         <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
-          <button onclick="openQuickModal('${p.id}')" class="text-xs font-bold uppercase tracking-wider text-slate-600 hover:text-petrol transition flex items-center gap-1">
+          <button onclick="openQuickModal('${p.id}')" class="text-xs font-bold uppercase tracking-wider text-slate-600 hover:text-petrol transition flex items-center justify-center gap-1">
             <i data-lucide="info" class="w-3.5 h-3.5 text-petrol"></i> Ver Preparo
           </button>
-          <a href="https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20${encodeURIComponent(p.name)}%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus." target="_blank" class="px-4 py-2.5 rounded-xl bg-petrol hover:bg-petrol-dark text-white text-[11px] font-bold uppercase tracking-wider transition-colors flex items-center gap-1.5 shadow-sm">
-            <i data-lucide="calendar" class="w-3.5 h-3.5"></i> Agendar
+          <a href="https://wa.me/${settings.whatsapp}?text=Ol%C3%A1%20Dr.%20Samuel%20Barreto!%20Gostaria%20de%20agendar%20o%20${encodeURIComponent(p.name)}%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus." target="_blank" class="px-5 py-2.5 rounded-xl bg-petrol hover:bg-petrol-dark text-white text-[11px] font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 shadow-sm text-center">
+            <i data-lucide="calendar" class="w-3.5 h-3.5"></i> <span>Agendar</span>
           </a>
         </div>
       </div>

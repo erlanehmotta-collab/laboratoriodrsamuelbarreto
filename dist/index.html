@@ -86,31 +86,32 @@
   </div>
 
   <!-- ===== CABEÇALHO / NAVEGAÇÃO PRINCIPAL FIXO E PERFEITO ===== -->
-  <header id="header" class="sticky top-0 z-40 bg-white/98 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300 shadow-sm">
+  <header id="header" class="sticky top-0 z-40 bg-white border-b border-slate-200 transition-all duration-300 shadow-sm">
     <div class="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
       <!-- Botão Menu Mobile -->
-      <button id="mobileMenuBtn" class="lg:hidden p-2 text-slate-900 hover:text-petrol" aria-label="Menu de Navegação">
-        <i data-lucide="menu" class="w-6 h-6"></i>
+      <button id="mobileMenuBtn" class="md:hidden flex items-center gap-1.5 p-2 text-slate-900 hover:text-petrol font-bold uppercase text-xs rounded-lg border border-slate-200" aria-label="Menu de Navegação">
+        <i data-lucide="menu" class="w-5 h-5 text-petrol"></i>
+        <span>Menu</span>
       </button>
 
       <!-- Logotipo Robusto em Laranja Âmbar -->
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-11 h-11 rounded-xl bg-petrol flex items-center justify-center text-white shadow-md group-hover:bg-petrol-accent transition-colors">
-          <i data-lucide="activity" class="w-6 h-6 text-white"></i>
+      <a href="#" class="flex items-center gap-2.5 sm:gap-3 group">
+        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-petrol flex items-center justify-center text-white shadow-md group-hover:bg-petrol-accent transition-colors flex-shrink-0">
+          <i data-lucide="activity" class="w-5 h-5 sm:w-6 sm:h-6 text-white"></i>
         </div>
         <div>
-          <span class="block font-heading text-xl sm:text-2xl font-black uppercase tracking-tight text-slate-900">
+          <span class="block font-heading text-lg sm:text-2xl font-black uppercase tracking-tight text-slate-900">
             DR. SAMUEL BARRETO
           </span>
-          <span class="block text-[11px] tracking-[0.18em] uppercase text-petrol font-bold -mt-0.5">
+          <span class="block text-[10px] sm:text-[11px] tracking-[0.18em] uppercase text-petrol font-bold -mt-0.5">
             Laboratório & Medicina Diagnóstica
           </span>
         </div>
       </a>
 
-      <!-- Links de Navegação Desktop -->
-      <nav class="hidden lg:flex items-center gap-6 text-xs font-bold uppercase tracking-wider text-slate-700">
+      <!-- Links de Navegação Desktop & Tablet -->
+      <nav class="hidden md:flex items-center gap-4 lg:gap-6 text-[11px] lg:text-xs font-bold uppercase tracking-wider text-slate-700">
         <a href="#exames" class="hover:text-petrol transition-colors">Exames</a>
         <a href="#checkups" class="hover:text-petrol transition-colors">Check-ups</a>
         <a href="#cartao-saude" class="text-petrol font-extrabold hover:text-petrol-accent transition-colors flex items-center gap-1">
@@ -123,7 +124,7 @@
       </nav>
 
       <!-- Ações da Direita com Instagram Fixo e Botão Agendar -->
-      <div class="flex items-center gap-3 sm:gap-4">
+      <div class="flex items-center gap-2 sm:gap-4">
         <!-- Instagram Fixo Destacado -->
         <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:text-rose-600 bg-slate-50 hover:bg-rose-50 border border-slate-200 transition" title="Instagram Oficial">
           <i data-lucide="instagram" class="w-4 h-4 text-rose-500"></i>
@@ -131,22 +132,22 @@
         </a>
 
         <!-- Botão Admin Mais Discreto -->
-        <button onclick="openAdminModal()" class="hidden md:flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-petrol opacity-70 hover:opacity-100 transition-all" title="Área Administrativa">
+        <button onclick="openAdminModal()" class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-petrol opacity-70 hover:opacity-100 transition-all" title="Área Administrativa">
           <i data-lucide="lock" class="w-3.5 h-3.5"></i>
           <span>Admin</span>
         </button>
 
         <!-- Botão de Agendamento Direto Centralizado e Harmônico -->
-        <a href="https://wa.me/553892051001?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20exame%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-petrol hover:bg-petrol-accent text-white text-xs font-extrabold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl shadow-md shadow-petrol/20 transition-all text-center hover:scale-[1.02] active:scale-98">
+        <a href="https://wa.me/553892051001?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20exame%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-petrol hover:bg-petrol-accent text-white text-[11px] sm:text-xs font-extrabold uppercase tracking-wider px-3.5 sm:px-6 py-2.5 sm:py-3.5 rounded-xl shadow-md shadow-petrol/20 transition-all text-center hover:scale-[1.02] active:scale-98">
           <i data-lucide="calendar" class="w-4 h-4"></i>
-          <span>Agendar Exame</span>
+          <span>Agendar</span>
         </a>
       </div>
 
     </div>
 
     <!-- Menu Lateral Mobile -->
-    <div id="mobileDrawer" class="hidden lg:hidden bg-white border-b border-steelLight px-6 py-6 space-y-3 shadow-lg">
+    <div id="mobileDrawer" class="hidden md:hidden bg-white border-b border-steelLight px-6 py-6 space-y-3 shadow-lg">
       <a href="#exames" onclick="document.getElementById('mobileDrawer').classList.add('hidden')" class="block text-sm font-bold uppercase tracking-wider text-petrol-dark py-2 border-b border-slate-100 text-center">Exames & Especialidades</a>
       <a href="#checkups" onclick="document.getElementById('mobileDrawer').classList.add('hidden')" class="block text-sm font-bold uppercase tracking-wider text-petrol-dark py-2 border-b border-slate-100 text-center">Check-ups Preventivos</a>
       <a href="#cartao-saude" onclick="document.getElementById('mobileDrawer').classList.add('hidden')" class="block text-sm font-black uppercase tracking-wider text-petrol py-2 border-b border-slate-100 text-center bg-orange-50/50 rounded-xl">💳 Cartão Sistema de Saúde</a>

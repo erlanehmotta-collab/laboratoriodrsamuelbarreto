@@ -230,12 +230,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// ===== RENDERIZAÇÃO DE CHECK-UPS BLINDADA =====
+// ===== RENDERIZAÇÃO DE CHECK-UPS DINÂMICA E REATIVA =====
 function renderProducts() {
   const grid = document.getElementById('productsGrid');
   if (!grid) return;
 
-  // Se o array de produtos estiver corrompido ou vazio, restaura imediatamente os padrões oficiais
   if (!products || !Array.isArray(products) || products.length === 0) {
     products = [...defaultProducts];
     localStorage.setItem('sb_products', JSON.stringify(products));
@@ -245,9 +244,23 @@ function renderProducts() {
     ? products 
     : products.filter(p => p.category === activeCategory);
 
-  const toRender = (filtered && filtered.length > 0) ? filtered : products;
+  if (!filtered || filtered.length === 0) {
+    grid.innerHTML = `
+      <div class="col-span-full py-12 text-center text-slate-500 bg-white rounded-2xl border border-slate-200 p-8">
+        <i data-lucide="search-x" class="w-10 h-10 text-slate-400 mx-auto mb-2"></i>
+        <p class="text-sm font-semibold">Nenhum exame encontrado nesta categoria no momento.</p>
+        <button onclick="filterCategory('todos', document.querySelector('.filter-pill'))" class="mt-4 px-5 py-2.5 rounded-xl bg-petrol text-white text-xs font-bold uppercase tracking-wider hover:bg-petrol-dark transition">
+          Ver Todos os Check-ups
+        </button>
+      </div>
+    `;
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+      lucide.createIcons();
+    }
+    return;
+  }
 
-  grid.innerHTML = toRender.map(p => `
+  grid.innerHTML = filtered.map(p => `
     <div class="product-card rounded-2xl bg-white border border-slate-200/80 overflow-hidden flex flex-col justify-between group shadow-sm hover:shadow-xl transition-all">
       <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 cursor-pointer" onclick="openQuickModal('${escapeHTML(p.id)}')">
         <img src="${sanitizeUrl(p.image)}" alt="${escapeHTML(p.name)}" class="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0" />

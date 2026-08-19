@@ -151,12 +151,18 @@ function escapeHTML(str) {
 }
 
 function sanitizeUrl(url) {
-  if (!url) return 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80';
-  const trimmed = String(url).trim();
+  if (!url) return 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=480&q=70';
+  let trimmed = String(url).trim();
+  if (trimmed.includes('images.unsplash.com')) {
+    // Otimização de Performance Ultrarrápida WebP/AVIF (Carregamento Instantâneo)
+    trimmed = trimmed.replace(/[?&]w=\d+/g, '').replace(/[?&]q=\d+/g, '').replace(/[?&]auto=\w+/g, '');
+    const sep = trimmed.includes('?') ? '&' : '?';
+    return `${trimmed}${sep}auto=format&fit=crop&w=480&q=70`;
+  }
   if (trimmed.startsWith('https://') || trimmed.startsWith('data:image/')) {
     return trimmed;
   }
-  return 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80';
+  return 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=480&q=70';
 }
 
 // Controle de Segurança Anti-Brute-Force
@@ -263,8 +269,8 @@ function renderProducts() {
   grid.innerHTML = filtered.map(p => `
     <div class="product-card rounded-2xl bg-white border border-slate-200/80 overflow-hidden flex flex-col justify-between group shadow-sm hover:shadow-xl transition-all">
       <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 cursor-pointer" onclick="openQuickModal('${escapeHTML(p.id)}')">
-        <img src="${sanitizeUrl(p.image)}" alt="${escapeHTML(p.name)}" class="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0" />
-        <img src="${sanitizeUrl(p.hoverImage || p.image)}" alt="${escapeHTML(p.name)}" class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        <img src="${sanitizeUrl(p.image)}" alt="${escapeHTML(p.name)}" loading="lazy" decoding="async" class="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0" />
+        <img src="${sanitizeUrl(p.hoverImage || p.image)}" alt="${escapeHTML(p.name)}" loading="lazy" decoding="async" class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
         
         <span class="absolute top-3.5 left-3.5 px-3.5 py-1.5 rounded-lg bg-petrol text-white text-xs uppercase font-extrabold tracking-wider shadow-md shadow-petrol/20">
           ${escapeHTML(p.badge || 'Protocolo Clínico')}
@@ -317,10 +323,10 @@ function renderPosts() {
         ${isVideo 
           ? `<video src="${post.image}" class="w-full h-full object-cover" muted></video>
              <div class="absolute inset-0 bg-slate-900/40 flex items-center justify-center text-white"><i data-lucide="play-circle" class="w-12 h-12"></i></div>` 
-          : `<img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />`
+          : `<img src="${sanitizeUrl(post.image)}" alt="${escapeHTML(post.title)}" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />`
         }
         <span class="absolute top-3.5 left-3.5 px-3.5 py-1.5 rounded-lg bg-petrol text-white text-xs font-extrabold uppercase tracking-wider shadow-md shadow-petrol/20">
-          ${post.category}
+          ${escapeHTML(post.category)}
         </span>
       </div>
 

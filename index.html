@@ -9,6 +9,10 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
+  <!-- Preconnect para Carregamento Ultrarrápido de Imagens -->
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <link rel="dns-prefetch" href="https://images.unsplash.com">
+
   <!-- Google Fonts: Plus Jakarta Sans + Outfit (Tipografia Moderna, Robusta e Limpa) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -444,189 +448,9 @@
         </div>
       </div>
 
-      <!-- Grade Dinâmica de Check-ups (Com Pré-renderização Estática de Segurança) -->
+      <!-- Grade Dinâmica de Check-ups (Renderizada instantaneamente com WebP Otimizado e Lazy Loading) -->
       <div id="productsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
-        
-        <!-- 1: Check-up Homem 40+ -->
-        <div class="product-card rounded-2xl bg-white border border-slate-200/80 overflow-hidden flex flex-col justify-between group shadow-sm hover:shadow-xl transition-all">
-          <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 cursor-pointer" onclick="openQuickModal('checkup-homem')">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Check-up Homem 40+ & Próstata (PSA)" class="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0" />
-            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80" alt="Check-up Homem 40+ & Próstata (PSA)" class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-            <span class="absolute top-3.5 left-3.5 px-3.5 py-1.5 rounded-lg bg-petrol text-white text-xs uppercase font-extrabold tracking-wider shadow-md shadow-petrol/20">
-              Prevenção Masculina
-            </span>
-            <button onclick="event.stopPropagation(); openQuickModal('checkup-homem')" class="absolute bottom-3 right-3 w-10 h-10 rounded-xl bg-white/95 text-slate-900 shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:text-petrol" title="Visualização Rápida">
-              <i data-lucide="eye" class="w-5 h-5"></i>
-            </button>
-          </div>
-          <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-1.5 text-amber-500 text-sm mb-2">
-                <span>★★★★★</span>
-                <span class="text-slate-500 text-xs font-semibold">(192 avaliações)</span>
-              </div>
-              <h3 class="font-heading text-xl font-bold text-slate-900 uppercase cursor-pointer hover:text-petrol transition leading-snug" onclick="openQuickModal('checkup-homem')">
-                Check-up Homem 40+ & Próstata (PSA)
-              </h3>
-              <p class="text-sm text-slate-600 font-normal line-clamp-3 mt-2 leading-relaxed">
-                PSA Total e Livre + Testosterona Total/Livre + Hemograma + Ácido Úrico + Glicemia + Perfil Lipídico + Creatinina.
-              </p>
-            </div>
-            <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
-              <button onclick="openQuickModal('checkup-homem')" class="text-xs font-bold uppercase tracking-wider text-slate-600 hover:text-petrol transition flex items-center justify-center gap-1.5">
-                <i data-lucide="info" class="w-4 h-4 text-petrol"></i> <span>Ver Preparo</span>
-              </button>
-              <a href="https://wa.me/553892051001?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20o%20Check-up%20Homem%2040+%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus." target="_blank" class="px-5 py-3 rounded-xl bg-petrol hover:bg-petrol-accent text-white text-xs font-black uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shadow-md shadow-petrol/20 text-center hover:scale-[1.02] active:scale-98">
-                <i data-lucide="calendar" class="w-4 h-4"></i> <span>Agendar</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2: Check-up Geral -->
-        <div class="product-card rounded-2xl bg-white border border-slate-200/80 overflow-hidden flex flex-col justify-between group shadow-sm hover:shadow-xl transition-all">
-          <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 cursor-pointer" onclick="openQuickModal('checkup-geral')">
-            <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80" alt="Check-up Preventivo Executivo" class="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0" />
-            <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=600&q=80" alt="Check-up Preventivo Executivo" class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-            <span class="absolute top-3.5 left-3.5 px-3.5 py-1.5 rounded-lg bg-petrol text-white text-xs uppercase font-extrabold tracking-wider shadow-md shadow-petrol/20">
-              Rotina Completa
-            </span>
-            <button onclick="event.stopPropagation(); openQuickModal('checkup-geral')" class="absolute bottom-3 right-3 w-10 h-10 rounded-xl bg-white/95 text-slate-900 shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:text-petrol" title="Visualização Rápida">
-              <i data-lucide="eye" class="w-5 h-5"></i>
-            </button>
-          </div>
-          <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-1.5 text-amber-500 text-sm mb-2">
-                <span>★★★★★</span>
-                <span class="text-slate-500 text-xs font-semibold">(248 avaliações)</span>
-              </div>
-              <h3 class="font-heading text-xl font-bold text-slate-900 uppercase cursor-pointer hover:text-petrol transition leading-snug" onclick="openQuickModal('checkup-geral')">
-                Check-up Preventivo Executivo
-              </h3>
-              <p class="text-sm text-slate-600 font-normal line-clamp-3 mt-2 leading-relaxed">
-                Hemograma Completo + Glicemia + Colesterol Total e Frações (HDL, LDL, VLDL) + Triglicerídeos + Creatinina + Ureia + TSH + TGO/TGP.
-              </p>
-            </div>
-            <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
-              <button onclick="openQuickModal('checkup-geral')" class="text-xs font-bold uppercase tracking-wider text-slate-600 hover:text-petrol transition flex items-center justify-center gap-1.5">
-                <i data-lucide="info" class="w-4 h-4 text-petrol"></i> <span>Ver Preparo</span>
-              </button>
-              <a href="https://wa.me/553892051001?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20o%20Check-up%20Preventivo%20Executivo%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus." target="_blank" class="px-5 py-3 rounded-xl bg-petrol hover:bg-petrol-accent text-white text-xs font-black uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shadow-md shadow-petrol/20 text-center hover:scale-[1.02] active:scale-98">
-                <i data-lucide="calendar" class="w-4 h-4"></i> <span>Agendar</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3: Check-up Mulher -->
-        <div class="product-card rounded-2xl bg-white border border-slate-200/80 overflow-hidden flex flex-col justify-between group shadow-sm hover:shadow-xl transition-all">
-          <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 cursor-pointer" onclick="openQuickModal('checkup-mulher')">
-            <img src="https://images.unsplash.com/photo-1594824813576-928f09043236?auto=format&fit=crop&w=600&q=80" alt="Check-up Mulher & Painel Hormonal" class="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0" />
-            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80" alt="Check-up Mulher & Painel Hormonal" class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-            <span class="absolute top-3.5 left-3.5 px-3.5 py-1.5 rounded-lg bg-petrol text-white text-xs uppercase font-extrabold tracking-wider shadow-md shadow-petrol/20">
-              Saúde Feminina
-            </span>
-            <button onclick="event.stopPropagation(); openQuickModal('checkup-mulher')" class="absolute bottom-3 right-3 w-10 h-10 rounded-xl bg-white/95 text-slate-900 shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:text-petrol" title="Visualização Rápida">
-              <i data-lucide="eye" class="w-5 h-5"></i>
-            </button>
-          </div>
-          <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-1.5 text-amber-500 text-sm mb-2">
-                <span>★★★★★</span>
-                <span class="text-slate-500 text-xs font-semibold">(180 avaliações)</span>
-              </div>
-              <h3 class="font-heading text-xl font-bold text-slate-900 uppercase cursor-pointer hover:text-petrol transition leading-snug" onclick="openQuickModal('checkup-mulher')">
-                Check-up Mulher & Painel Hormonal
-              </h3>
-              <p class="text-sm text-slate-600 font-normal line-clamp-3 mt-2 leading-relaxed">
-                Hemograma + TSH + T4 Livre + Ferritina + Vitamina D + Perfil Lipídico + Glicemia + Estradiol + Progesterona.
-              </p>
-            </div>
-            <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
-              <button onclick="openQuickModal('checkup-mulher')" class="text-xs font-bold uppercase tracking-wider text-slate-600 hover:text-petrol transition flex items-center justify-center gap-1.5">
-                <i data-lucide="info" class="w-4 h-4 text-petrol"></i> <span>Ver Preparo</span>
-              </button>
-              <a href="https://wa.me/553892051001?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20o%20Check-up%20Mulher%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus." target="_blank" class="px-5 py-3 rounded-xl bg-petrol hover:bg-petrol-accent text-white text-xs font-black uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shadow-md shadow-petrol/20 text-center hover:scale-[1.02] active:scale-98">
-                <i data-lucide="calendar" class="w-4 h-4"></i> <span>Agendar</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- 4: Toxicológico CNH -->
-        <div class="product-card rounded-2xl bg-white border border-slate-200/80 overflow-hidden flex flex-col justify-between group shadow-sm hover:shadow-xl transition-all">
-          <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 cursor-pointer" onclick="openQuickModal('toxicologico-cnh')">
-            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80" alt="Exame Toxicológico CNH & Concursos" class="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0" />
-            <img src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=600&q=80" alt="Exame Toxicológico CNH & Concursos" class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-            <span class="absolute top-3.5 left-3.5 px-3.5 py-1.5 rounded-lg bg-petrol text-white text-xs uppercase font-extrabold tracking-wider shadow-md shadow-petrol/20">
-              Credenciado DENATRAN / Pardini
-            </span>
-            <button onclick="event.stopPropagation(); openQuickModal('toxicologico-cnh')" class="absolute bottom-3 right-3 w-10 h-10 rounded-xl bg-white/95 text-slate-900 shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:text-petrol" title="Visualização Rápida">
-              <i data-lucide="eye" class="w-5 h-5"></i>
-            </button>
-          </div>
-          <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-1.5 text-amber-500 text-sm mb-2">
-                <span>★★★★★</span>
-                <span class="text-slate-500 text-xs font-semibold">(310 avaliações)</span>
-              </div>
-              <h3 class="font-heading text-xl font-bold text-slate-900 uppercase cursor-pointer hover:text-petrol transition leading-snug" onclick="openQuickModal('toxicologico-cnh')">
-                Exame Toxicológico CNH & Concursos
-              </h3>
-              <p class="text-sm text-slate-600 font-normal line-clamp-3 mt-2 leading-relaxed">
-                Coleta de queratina (cabelo ou pelos) para renovação de CNH (Categorias C, D e E) e admissional CLT com integração direta ao Renach.
-              </p>
-            </div>
-            <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
-              <button onclick="openQuickModal('toxicologico-cnh')" class="text-xs font-bold uppercase tracking-wider text-slate-600 hover:text-petrol transition flex items-center justify-center gap-1.5">
-                <i data-lucide="info" class="w-4 h-4 text-petrol"></i> <span>Ver Preparo</span>
-              </button>
-              <a href="https://wa.me/553892051001?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20o%20Exame%20Toxicol%C3%B3gico%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus." target="_blank" class="px-5 py-3 rounded-xl bg-petrol hover:bg-petrol-accent text-white text-xs font-black uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shadow-md shadow-petrol/20 text-center hover:scale-[1.02] active:scale-98">
-                <i data-lucide="calendar" class="w-4 h-4"></i> <span>Agendar</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- 5: Sexagem Fetal -->
-        <div class="product-card rounded-2xl bg-white border border-slate-200/80 overflow-hidden flex flex-col justify-between group shadow-sm hover:shadow-xl transition-all">
-          <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 cursor-pointer" onclick="openQuickModal('sexagem-fetal')">
-            <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=600&q=80" alt="Sexagem Fetal por Biologia Molecular" class="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0" />
-            <img src="https://images.unsplash.com/photo-1537655780520-1e392ead81f2?auto=format&fit=crop&w=600&q=80" alt="Sexagem Fetal por Biologia Molecular" class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-            <span class="absolute top-3.5 left-3.5 px-3.5 py-1.5 rounded-lg bg-petrol text-white text-xs uppercase font-extrabold tracking-wider shadow-md shadow-petrol/20">
-              99.9% de Precisão Científica
-            </span>
-            <button onclick="event.stopPropagation(); openQuickModal('sexagem-fetal')" class="absolute bottom-3 right-3 w-10 h-10 rounded-xl bg-white/95 text-slate-900 shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:text-petrol" title="Visualização Rápida">
-              <i data-lucide="eye" class="w-5 h-5"></i>
-            </button>
-          </div>
-          <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-1.5 text-amber-500 text-sm mb-2">
-                <span>★★★★★</span>
-                <span class="text-slate-500 text-xs font-semibold">(215 avaliações)</span>
-              </div>
-              <h3 class="font-heading text-xl font-bold text-slate-900 uppercase cursor-pointer hover:text-petrol transition leading-snug" onclick="openQuickModal('sexagem-fetal')">
-                Sexagem Fetal por Biologia Molecular
-              </h3>
-              <p class="text-sm text-slate-600 font-normal line-clamp-3 mt-2 leading-relaxed">
-                Identificação precoce do sexo do bebê no sangue materno a partir da 8ª semana completa de gestação.
-              </p>
-            </div>
-            <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
-              <button onclick="openQuickModal('sexagem-fetal')" class="text-xs font-bold uppercase tracking-wider text-slate-600 hover:text-petrol transition flex items-center justify-center gap-1.5">
-                <i data-lucide="info" class="w-4 h-4 text-petrol"></i> <span>Ver Preparo</span>
-              </button>
-              <a href="https://wa.me/553892051001?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20Sexagem%20Fetal%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto%20em%20Cora%C3%A7%C3%A3o%20de%20Jesus." target="_blank" class="px-5 py-3 rounded-xl bg-petrol hover:bg-petrol-accent text-white text-xs font-black uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shadow-md shadow-petrol/20 text-center hover:scale-[1.02] active:scale-98">
-                <i data-lucide="calendar" class="w-4 h-4"></i> <span>Agendar</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
+        <!-- Preenchido dinamicamente via script.js -->
       </div>
 
     </div>
@@ -655,7 +479,7 @@
         <!-- Imagem Oficial em Alta Definição -->
         <div class="lg:col-span-5 relative group">
           <div class="rounded-3xl overflow-hidden shadow-2xl border border-orange-200/80 bg-white aspect-[3/4] max-w-md mx-auto">
-            <img src="cartao-saude-lsb.jpg" alt="Cartão Sistema de Saúde Laboratório Dr. Samuel Barreto" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <img src="cartao-saude-lsb.jpg" alt="Cartão Sistema de Saúde Laboratório Dr. Samuel Barreto" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           </div>
           <div class="absolute -bottom-4 -right-2 sm:right-6 bg-slate-900 text-white p-4 sm:p-5 rounded-2xl border border-orange-500/30 shadow-2xl hidden sm:flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-petrol flex items-center justify-center text-white">
@@ -926,7 +750,7 @@
         
         <div class="lg:col-span-5 relative">
           <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-xl aspect-[4/5] bg-slate-100">
-            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80" alt="Equipe Técnica Laboratorial" class="w-full h-full object-cover" />
+            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=480&q=70" alt="Equipe Técnica Laboratorial" loading="lazy" decoding="async" class="w-full h-full object-cover" />
           </div>
           <div class="absolute -bottom-6 -right-6 p-6 rounded-2xl bg-slate-900 text-white border border-orange-500/30 shadow-2xl hidden sm:block text-center">
             <span class="font-heading text-3xl font-extrabold text-orange-400 block text-center">Desde 1999</span>

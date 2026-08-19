@@ -79,14 +79,14 @@ const defaultProducts = [
   }
 ];
 
-// Artigos Cientificamente Fundamentados (SBPC/ML, SBC, CFM, PubMed)
+// Artigos Cientificamente Fundamentados (SBPC/ML, SBC, CFM, PubMed) com Fotos Novas e Exclusivas em Alta Definição
 const defaultPosts = [
   {
     id: 'post-1',
     title: 'Consenso SBPC/ML e SBC: Por que o Jejum Prolongado Não é Mais Obrigatório para o Colesterol?',
     category: 'Exames & Orientações',
     date: '19 de Agosto, 2026',
-    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=1000&q=85',
     excerpt: 'Compreenda a fundamentação científica das diretrizes brasileiras que flexibilizaram o jejum para o Perfil Lipídico.',
     content: 'De acordo com o Consenso Brasileiro para a Normatização da Determinação do Perfil Lipídico (elaborado conjuntamente pela Sociedade Brasileira de Patologia Clínica/Medicina Laboratorial - SBPC/ML, Sociedade Brasileira de Cardiologia - SBC e Sociedade Brasileira de Endocrinologia e Metabologia - SBEM), o jejum de 12 horas deixou de ser obrigatório para a dosagem de colesterol e frações.\n\nA literatura científica evidenciou que os níveis de lipídios no estado pós-prandial (alimentado) refletem com maior precisão o risco cardiovascular real do indivíduo no cotidiano, já que passamos a maior parte do dia alimentados. Para exames como Glicemia e outros metabólitos específicos, o jejum de 8 horas permanece recomendado conforme a solicitação do médico assistente.'
   },
@@ -95,7 +95,7 @@ const defaultPosts = [
     title: 'Avaliação da Função Tireoidiana: O Papel do TSH Ultra Sensível e T4 Livre',
     category: 'Prevenção & Longevidade',
     date: '16 de Agosto, 2026',
-    image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=1000&q=85',
     excerpt: 'Evidências clínicas sobre o diagnóstico precoce de hipotireoidismo e hipertireoidismo subclínicos.',
     content: 'A dosagem sérica do Hormônio Estimulante da Tireoide (TSH) por metodologia de quimioluminescência de 3ª geração (ultra sensível) é considerada o teste de triagem inicial padrão-ouro pela American Thyroid Association (ATA) e SBEM.\n\nAlterações sutis nos níveis de TSH costumam preceder as manifestações clínicas e variações nos níveis de T4 Livre, permitindo intervenções precoces em casos de cansaço inexplicável, alterações metabólicas de peso e dislipidemias secundárias.'
   },
@@ -104,7 +104,7 @@ const defaultPosts = [
     title: 'Exame Toxicológico de Larga Janela de Detecção: Metodologia e Segurança Jurídica',
     category: 'Exames & Orientações',
     date: '12 de Agosto, 2026',
-    image: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=1000&q=85',
     excerpt: 'Entenda como a espectrometria de massas em queratina garante 100% de confiabilidade para a CNH e concursos.',
     content: 'O exame toxicológico de queratina analisa substâncias psicoativas incorporadas à matriz do cabelo ou dos pelos corporais durante o seu crescimento. A tecnologia utilizada (Cromatografia Líquida acoplada à Espectrometria de Massas em Tandem - LC-MS/MS) oferece sensibilidade e especificidade absolutas, com janela retrospectiva mínima de 90 dias, em total conformidade com a Lei Federal 13.103/2015 e as resoluções do CONTRAN.'
   }
@@ -214,10 +214,16 @@ function renderPosts() {
   const grid = document.getElementById('postsGrid');
   if (!grid) return;
 
-  grid.innerHTML = posts.map(post => `
+  grid.innerHTML = posts.map(post => {
+    const isVideo = post.image && (post.image.endsWith('.mp4') || post.image.endsWith('.webm') || post.image.startsWith('data:video'));
+    return `
     <article class="rounded-2xl bg-white border border-petrol/20 overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition-all group">
       <div class="aspect-[16/10] overflow-hidden bg-slate-100 relative cursor-pointer" onclick="openPostModal('${post.id}')">
-        <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        ${isVideo 
+          ? `<video src="${post.image}" class="w-full h-full object-cover" muted></video>
+             <div class="absolute inset-0 bg-petrol-dark/30 flex items-center justify-center text-white"><i data-lucide="play-circle" class="w-10 h-10"></i></div>` 
+          : `<img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />`
+        }
         <span class="absolute top-3 left-3 px-3 py-1 rounded-md bg-petrol text-white text-[10px] font-extrabold uppercase tracking-wider">
           ${post.category}
         </span>
@@ -239,7 +245,7 @@ function renderPosts() {
         </div>
       </div>
     </article>
-  `).join('');
+  `}).join('');
 
   lucide.createIcons();
 }
@@ -249,12 +255,16 @@ function openPostModal(postId) {
   const post = posts.find(p => p.id === postId);
   if (!post) return;
 
+  const isVideo = post.image && (post.image.endsWith('.mp4') || post.image.endsWith('.webm') || post.image.startsWith('data:video'));
   const modal = document.getElementById('postModal');
   const container = document.getElementById('postModalContent');
 
   container.innerHTML = `
     <div class="aspect-[16/9] rounded-xl overflow-hidden mb-4 bg-slate-100 border border-steelLight">
-      <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover" />
+      ${isVideo 
+        ? `<video src="${post.image}" controls autoplay class="w-full h-full object-cover"></video>` 
+        : `<img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover" />`
+      }
     </div>
     <div class="space-y-3">
       <div class="flex items-center gap-3">
@@ -546,6 +556,101 @@ function switchAdminTab(tab) {
   }
 }
 
+// ===== CONVERSOR DE LINKS DE NUVEM & DRIVE (GOOGLE DRIVE, DROPBOX, ONEDRIVE, WEB) =====
+function convertCloudLink(url) {
+  if (!url) return '';
+  let cleanUrl = url.trim();
+
+  // Google Drive: https://drive.google.com/file/d/FILE_ID/view... -> https://lh3.googleusercontent.com/d/FILE_ID
+  const gDriveMatch = cleanUrl.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/) || cleanUrl.match(/drive\.google\.com\/open\?id=([a-zA-Z0-9_-]+)/);
+  if (gDriveMatch && gDriveMatch[1]) {
+    return `https://lh3.googleusercontent.com/d/${gDriveMatch[1]}`;
+  }
+
+  // Dropbox: dl=0 -> raw=1
+  if (cleanUrl.includes('dropbox.com')) {
+    return cleanUrl.replace('?dl=0', '?raw=1').replace('&dl=0', '&raw=1');
+  }
+
+  return cleanUrl;
+}
+
+// ===== UPLOAD DIRETO DO DISPOSITIVO (FOTOS E VÍDEOS) =====
+function handleMediaUpload(event, targetInputId) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const isVideo = file.type.startsWith('video/');
+  const reader = new FileReader();
+
+  const previewBox = document.getElementById('mediaPreviewBox');
+  const previewImg = document.getElementById('mediaPreviewImg');
+  const previewVideo = document.getElementById('mediaPreviewVideo');
+  const previewStatus = document.getElementById('mediaPreviewStatus');
+  const previewInfo = document.getElementById('mediaPreviewInfo');
+
+  if (previewBox) previewBox.classList.remove('hidden');
+
+  reader.onload = function(e) {
+    const mediaData = e.target.result;
+    const input = document.getElementById(targetInputId);
+    if (input) input.value = mediaData;
+
+    if (isVideo) {
+      if (previewVideo) {
+        previewVideo.src = mediaData;
+        previewVideo.classList.remove('hidden');
+      }
+      if (previewImg) previewImg.classList.add('hidden');
+      if (previewStatus) previewStatus.textContent = `🎬 Vídeo carregado do dispositivo (${file.name})`;
+      if (previewInfo) previewInfo.textContent = `Tamanho: ${(file.size / (1024*1024)).toFixed(2)} MB • Pronto para publicação.`;
+    } else {
+      if (previewImg) {
+        previewImg.src = mediaData;
+        previewImg.classList.remove('hidden');
+      }
+      if (previewVideo) previewVideo.classList.add('hidden');
+      if (previewStatus) previewStatus.textContent = `📸 Foto carregada do dispositivo (${file.name})`;
+      if (previewInfo) previewInfo.textContent = `Alta resolução preservada.`;
+    }
+    showToast('✓ Mídia do dispositivo carregada com sucesso!');
+  };
+
+  reader.readAsDataURL(file);
+}
+
+function handleCloudUrlInput(url, targetPreviewId) {
+  const converted = convertCloudLink(url);
+  const input = document.getElementById('postImage');
+  if (input && converted !== url) input.value = converted;
+
+  const previewBox = document.getElementById('mediaPreviewBox');
+  const previewImg = document.getElementById('mediaPreviewImg');
+  const previewVideo = document.getElementById('mediaPreviewVideo');
+
+  if (!converted) {
+    if (previewBox) previewBox.classList.add('hidden');
+    return;
+  }
+
+  if (previewBox) previewBox.classList.remove('hidden');
+  const isVideo = converted.endsWith('.mp4') || converted.endsWith('.webm') || converted.startsWith('data:video');
+
+  if (isVideo) {
+    if (previewVideo) {
+      previewVideo.src = converted;
+      previewVideo.classList.remove('hidden');
+    }
+    if (previewImg) previewImg.classList.add('hidden');
+  } else {
+    if (previewImg) {
+      previewImg.src = converted;
+      previewImg.classList.remove('hidden');
+    }
+    if (previewVideo) previewVideo.classList.add('hidden');
+  }
+}
+
 // ===== IA GERADORA DE IMAGENS & CONTEÚDO BASEADO EM EVIDÊNCIAS =====
 let currentGeneratedImageUrl = '';
 
@@ -558,16 +663,18 @@ function generateAiImage() {
   const input = document.getElementById('aiImagePrompt');
   const userPrompt = input.value.trim() || 'Médico biomédico em laboratório clínico moderno de alta tecnologia';
   
-  const previewBox = document.getElementById('aiImagePreviewBox');
-  const previewImg = document.getElementById('aiPreviewImg');
+  const previewBox = document.getElementById('mediaPreviewBox');
+  const previewImg = document.getElementById('mediaPreviewImg');
+  const previewVideo = document.getElementById('mediaPreviewVideo');
   const spinner = document.getElementById('aiLoadingSpinner');
   const btn = document.getElementById('btnGenerateAi');
   const btnText = document.getElementById('btnGenerateAiText');
 
-  previewBox.classList.remove('hidden');
-  spinner.classList.remove('hidden');
-  btn.disabled = true;
-  btnText.textContent = 'Criando IA...';
+  if (previewBox) previewBox.classList.remove('hidden');
+  if (spinner) spinner.classList.remove('hidden');
+  if (previewVideo) previewVideo.classList.add('hidden');
+  if (btn) btn.disabled = true;
+  if (btnText) btnText.textContent = 'Criando IA...';
 
   // Prompt técnico realista respeitando biossegurança e estética médica
   const fullPrompt = `${userPrompt}, authentic medical clinical laboratory environment, biosafety certified, precise diagnostic equipment, professional scientific lighting, realistic editorial photography, 8k`;
@@ -577,19 +684,31 @@ function generateAiImage() {
   const imgLoader = new Image();
   imgLoader.onload = () => {
     currentGeneratedImageUrl = imageUrl;
-    previewImg.src = imageUrl;
-    spinner.classList.add('hidden');
-    btn.disabled = false;
-    btnText.textContent = 'Gerar Nova';
+    const postImgInput = document.getElementById('postImage');
+    if (postImgInput) postImgInput.value = imageUrl;
+
+    if (previewImg) {
+      previewImg.src = imageUrl;
+      previewImg.classList.remove('hidden');
+    }
+    if (spinner) spinner.classList.add('hidden');
+    if (btn) btn.disabled = false;
+    if (btnText) btnText.textContent = 'Gerar Nova';
     showToast('✨ Imagem técnica gerada com sucesso pela IA!');
   };
   imgLoader.onerror = () => {
-    const fallbackUrl = `https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80`;
+    const fallbackUrl = `https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=1000&q=85`;
     currentGeneratedImageUrl = fallbackUrl;
-    previewImg.src = fallbackUrl;
-    spinner.classList.add('hidden');
-    btn.disabled = false;
-    btnText.textContent = 'Gerar Imagem';
+    const postImgInput = document.getElementById('postImage');
+    if (postImgInput) postImgInput.value = fallbackUrl;
+
+    if (previewImg) {
+      previewImg.src = fallbackUrl;
+      previewImg.classList.remove('hidden');
+    }
+    if (spinner) spinner.classList.add('hidden');
+    if (btn) btn.disabled = false;
+    if (btnText) btnText.textContent = 'Gerar Imagem';
     showToast('Imagem pronta!');
   };
 

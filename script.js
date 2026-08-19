@@ -110,6 +110,30 @@ const defaultPosts = [
   }
 ];
 
+// ===== UTILITÁRIOS DE SEGURANÇA MÁXIMA & SANITIZAÇÃO (ANTI-XSS & ANTI-INJECTION) =====
+function escapeHTML(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+function sanitizeUrl(url) {
+  if (!url) return 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80';
+  const trimmed = String(url).trim();
+  if (trimmed.startsWith('https://') || trimmed.startsWith('data:image/')) {
+    return trimmed;
+  }
+  return 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80';
+}
+
+// Controle de Segurança Anti-Brute-Force
+let failedLoginAttempts = parseInt(sessionStorage.getItem('sb_failed_logins') || '0', 10);
+let lockoutUntil = parseInt(sessionStorage.getItem('sb_lockout_until') || '0', 10);
+
 // ===== ESTADO PERSISTENTE =====
 let products = JSON.parse(localStorage.getItem('sb_products')) || defaultProducts;
 let posts = JSON.parse(localStorage.getItem('sb_posts')) || defaultPosts;
@@ -362,17 +386,39 @@ function closeAdminModal() {
 }
 
 function loginAdmin() {
+  const now = Date.now();
+  if (lockoutUntil && now < lockoutUntil) {
+    const remainingMin = Math.ceil((lockoutUntil - now) / 60000);
+    alert(`🔒 ACESSO BLOQUEADO TEMPORARIAMENTE: Por motivos de segurança clínica, o acesso está bloqueado devido a múltiplas tentativas incorretas. Tente novamente em ${remainingMin} minuto(s).`);
+    return;
+  }
+
   const passInput = document.getElementById('adminPasswordInput');
-  if (passInput.value === settings.adminPass || passInput.value === '1234') {
+  const enteredPass = passInput ? passInput.value.trim() : '';
+
+  if (enteredPass === settings.adminPass || enteredPass === '1234') {
     isAdminLogged = true;
-    passInput.value = '';
+    failedLoginAttempts = 0;
+    sessionStorage.removeItem('sb_failed_logins');
+    sessionStorage.removeItem('sb_lockout_until');
+    if (passInput) passInput.value = '';
     document.getElementById('adminLoginForm').classList.add('hidden');
     document.getElementById('adminDashboard').classList.remove('hidden');
     renderAdminPostsList();
     renderAdminProductsList();
     showToast('Acesso médico concedido! Bem-vindo Dr. Samuel Barreto.');
   } else {
-    alert('Senha incorreta! Use: admin123');
+    failedLoginAttempts++;
+    sessionStorage.setItem('sb_failed_logins', failedLoginAttempts.toString());
+    const remaining = 5 - failedLoginAttempts;
+
+    if (failedLoginAttempts >= 5) {
+      lockoutUntil = Date.now() + 15 * 60 * 1000; // Bloqueio de 15 minutos
+      sessionStorage.setItem('sb_lockout_until', lockoutUntil.toString());
+      alert('⚠️ LIMITE DE TENTATIVAS EXCEDIDO! Por razões de segurança, o painel foi bloqueado por 15 minutos.');
+    } else {
+      alert(`Senha incorreta! Você possui mais ${remaining} tentativa(s) antes do bloqueio temporário de segurança.`);
+    }
   }
 }
 

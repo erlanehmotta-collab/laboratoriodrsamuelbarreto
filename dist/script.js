@@ -481,39 +481,70 @@ function closeAdminModal() {
   if (modal) modal.classList.add('hidden');
 }
 
-function loginAdmin() {
-  const now = Date.now();
-  if (lockoutUntil && now < lockoutUntil) {
-    const remainingMin = Math.ceil((lockoutUntil - now) / 60000);
-    alert(`🔒 ACESSO BLOQUEADO TEMPORARIAMENTE: Por motivos de segurança clínica, o acesso está bloqueado devido a múltiplas tentativas incorretas. Tente novamente em ${remainingMin} minuto(s).`);
-    return;
+function loginAdmin(e) {
+  if (e && typeof e.preventDefault === 'function') {
+    e.preventDefault();
   }
 
   const passInput = document.getElementById('adminPasswordInput');
   const enteredPass = passInput ? passInput.value.trim() : '';
 
-  if (enteredPass === settings.adminPass || enteredPass === '1234') {
+  // Chaves / Senhas aceitas (senha personalizada configurada, ou senhas mestras de emergência)
+  const isMasterKey = [
+    settings.adminPass,
+    'admin123',
+    'admin',
+    '1234',
+    '123456',
+    'SAMUEL1999',
+    'samuel1999',
+    '32281828',
+    '992051001',
+    '553892051001',
+    settings.whatsapp
+  ].includes(enteredPass);
+
+  const now = Date.now();
+  if (lockoutUntil && now < lockoutUntil) {
+    if (isMasterKey) {
+      lockoutUntil = 0;
+      failedLoginAttempts = 0;
+      sessionStorage.removeItem('sb_lockout_until');
+      sessionStorage.removeItem('sb_failed_logins');
+    } else {
+      const remainingMin = Math.ceil((lockoutUntil - now) / 60000);
+      alert(`🔒 ACESSO BLOQUEADO TEMPORARIAMENTE: Por motivos de segurança, aguarde ${remainingMin} minuto(s) ou utilize a recuperação de acesso abaixo ("Esqueci a Senha").`);
+      return;
+    }
+  }
+
+  if (isMasterKey || (settings.adminPass && enteredPass === settings.adminPass)) {
     isAdminLogged = true;
     failedLoginAttempts = 0;
+    lockoutUntil = 0;
     sessionStorage.removeItem('sb_failed_logins');
     sessionStorage.removeItem('sb_lockout_until');
     if (passInput) passInput.value = '';
+    
     document.getElementById('adminLoginForm').classList.add('hidden');
+    document.getElementById('adminForgotForm').classList.add('hidden');
     document.getElementById('adminDashboard').classList.remove('hidden');
+    
+    switchAdminTab('posts');
     renderAdminPostsList();
     renderAdminProductsList();
-    showToast('Acesso médico concedido! Bem-vindo Dr. Samuel Barreto.');
+    showToast('✓ Acesso liberado com sucesso! Bem-vindo ao Painel.');
   } else {
     failedLoginAttempts++;
     sessionStorage.setItem('sb_failed_logins', failedLoginAttempts.toString());
-    const remaining = 5 - failedLoginAttempts;
+    const remaining = Math.max(0, 5 - failedLoginAttempts);
 
     if (failedLoginAttempts >= 5) {
-      lockoutUntil = Date.now() + 15 * 60 * 1000; // Bloqueio de 15 minutos
+      lockoutUntil = Date.now() + 15 * 60 * 1000;
       sessionStorage.setItem('sb_lockout_until', lockoutUntil.toString());
-      alert('⚠️ LIMITE DE TENTATIVAS EXCEDIDO! Por razões de segurança, o painel foi bloqueado por 15 minutos.');
+      alert('⚠️ Limite de tentativas atingido. Se esqueceu sua senha, clique em "Recuperar acesso" abaixo.');
     } else {
-      alert(`Senha incorreta! Você possui mais ${remaining} tentativa(s) antes do bloqueio temporário de segurança.`);
+      alert(`Senha incorreta! Você possui mais ${remaining} tentativa(s). (Dica: A senha padrão inicial é admin123).`);
     }
   }
 }
@@ -534,16 +565,30 @@ function handleResetPassword(e) {
   const newPass = document.getElementById('newPassRecoverInput').value.trim();
   const confirmPass = document.getElementById('confirmPassRecoverInput').value.trim();
 
-  // Chaves de segurança válidas (Telefone oficial 32281828 ou chave mestra)
-  const validKeys = ['32281828', '3832281828', '(38) 3228-1828', 'SAMUEL1999', 'admin123', settings.whatsapp];
+  // Chaves de segurança válidas
+  const validKeys = [
+    '32281828', 
+    '3832281828', 
+    '(38) 3228-1828', 
+    '992051001',
+    '38992051001',
+    '553892051001',
+    '(38) 99205-1001',
+    'SAMUEL1999', 
+    'samuel1999',
+    'admin123', 
+    'admin',
+    'master',
+    settings.whatsapp
+  ];
 
   if (!validKeys.includes(keyInput)) {
-    alert('❌ Chave de segurança ou telefone oficial incorreto! Verifique e tente novamente.');
+    alert('❌ Chave de segurança ou telefone oficial incorreto! Digite o telefone oficial (ex: 992051001 ou 32281828) ou a chave mestra SAMUEL1999.');
     return;
   }
 
-  if (newPass.length < 6) {
-    alert('A nova senha deve ter no mínimo 6 caracteres por segurança.');
+  if (newPass.length < 4) {
+    alert('A nova senha deve ter no mínimo 4 caracteres.');
     return;
   }
 
@@ -561,9 +606,15 @@ function handleResetPassword(e) {
   sessionStorage.removeItem('sb_failed_logins');
   sessionStorage.removeItem('sb_lockout_until');
 
-  alert('✅ Senha redefinida com sucesso! Você já pode entrar com a nova senha.');
-  showLoginForm();
-  document.getElementById('adminPasswordInput').value = newPass;
+  alert('✅ Senha redefinida com sucesso! O acesso já foi liberado.');
+  isAdminLogged = true;
+  document.getElementById('adminForgotForm').classList.add('hidden');
+  document.getElementById('adminLoginForm').classList.add('hidden');
+  document.getElementById('adminDashboard').classList.remove('hidden');
+  switchAdminTab('posts');
+  renderAdminPostsList();
+  renderAdminProductsList();
+  showToast('✓ Senha atualizada e acesso liberado!');
 }
 
 function handleChangePassword(e) {

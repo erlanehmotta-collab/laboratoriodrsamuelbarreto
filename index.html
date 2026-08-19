@@ -1167,10 +1167,14 @@
         <i data-lucide="lock" class="w-12 h-12 text-petrol mx-auto"></i>
         <h4 class="font-heading text-lg font-bold text-center">Acesso Médico Restrito</h4>
         <p class="text-xs text-slate-500 text-center">Digite sua senha administrativa para gerenciar o portal.</p>
-        <input type="password" id="adminPasswordInput" placeholder="Senha do painel" class="w-full px-4 py-3 rounded-xl border border-petrol/20 bg-slate-50 text-sm outline-none focus:border-petrol text-center font-bold" />
-        <button onclick="loginAdmin()" class="w-full py-3.5 bg-petrol hover:bg-petrol-dark text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-center flex items-center justify-center">
-          <span>Acessar Painel</span>
-        </button>
+        
+        <form onsubmit="loginAdmin(event)" class="space-y-3">
+          <input type="password" id="adminPasswordInput" placeholder="Senha do painel (ex: admin123)" required class="w-full px-4 py-3 rounded-xl border border-petrol/20 bg-slate-50 text-sm outline-none focus:border-petrol text-center font-bold" />
+          <button type="submit" class="w-full py-3.5 bg-petrol hover:bg-petrol-dark text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-center flex items-center justify-center shadow-md">
+            <span>Acessar Painel</span>
+          </button>
+        </form>
+
         <button type="button" onclick="showForgotPassword()" class="text-xs text-petrol hover:underline font-semibold block mx-auto pt-1">
           Esqueceu a senha? Recuperar acesso
         </button>

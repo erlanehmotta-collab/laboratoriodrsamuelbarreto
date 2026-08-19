@@ -92,9 +92,12 @@
       </a>
 
       <!-- Links de Navegação Desktop -->
-      <nav class="hidden lg:flex items-center gap-7 text-xs font-bold uppercase tracking-wider text-slate-700">
+      <nav class="hidden lg:flex items-center gap-6 text-xs font-bold uppercase tracking-wider text-slate-700">
         <a href="#exames" class="hover:text-petrol transition-colors">Exames</a>
         <a href="#checkups" class="hover:text-petrol transition-colors">Check-ups</a>
+        <a href="#cartao-saude" class="text-petrol font-extrabold hover:text-petrol-accent transition-colors flex items-center gap-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-petrol"></span> Cartão Saúde
+        </a>
         <a href="#quiz" class="hover:text-petrol transition-colors">Orientador</a>
         <a href="#artigos" class="hover:text-petrol transition-colors">Artigos</a>
         <a href="#sobre" class="hover:text-petrol transition-colors">Nossa História</a>
@@ -122,6 +125,7 @@
     <div id="mobileDrawer" class="hidden lg:hidden bg-white border-b border-steelLight px-6 py-6 space-y-4 shadow-lg">
       <a href="#exames" class="block text-sm font-bold uppercase tracking-wider text-petrol-dark py-2 border-b border-slate-100 text-center">Exames & Especialidades</a>
       <a href="#checkups" class="block text-sm font-bold uppercase tracking-wider text-petrol-dark py-2 border-b border-slate-100 text-center">Check-ups Preventivos</a>
+      <a href="#cartao-saude" class="block text-sm font-black uppercase tracking-wider text-petrol py-2 border-b border-slate-100 text-center bg-orange-50/50 rounded-xl">💳 Cartão Sistema de Saúde</a>
       <a href="#quiz" class="block text-sm font-bold uppercase tracking-wider text-petrol-dark py-2 border-b border-slate-100 text-center">Orientador de Exames</a>
       <a href="#artigos" class="block text-sm font-bold uppercase tracking-wider text-petrol-dark py-2 border-b border-slate-100 text-center">Artigos & Dicas Médicas</a>
       <a href="#sobre" class="block text-sm font-bold uppercase tracking-wider text-petrol-dark py-2 border-b border-slate-100 text-center">Nossa História & Tradição</a>
@@ -436,6 +440,263 @@
     </div>
   </section>
 
+  <!-- ===== CARTÃO SISTEMA DE SAÚDE SAMUEL BARRETO (LSB + SAÚDE + BENEFÍCIOS) ===== -->
+  <section id="cartao-saude" class="py-20 lg:py-28 bg-[#FDF8F5] border-b border-[#F5DCD0] relative overflow-hidden">
+    <div class="max-w-[1600px] w-full mx-auto px-4 sm:px-8 lg:px-12">
+      
+      <!-- Cabeçalho de Seção Harmônico -->
+      <div class="text-center max-w-3xl mx-auto space-y-3 mb-16">
+        <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-petrol block text-center">
+          🌿 Rede Credenciada • Saúde + Benefícios
+        </span>
+        <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-slate-900 text-center">
+          Cartão Sistema de Saúde <span class="text-petrol">Samuel Barreto</span>
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 text-center max-w-2xl mx-auto leading-relaxed">
+          Cuide da sua saúde com mais economia. Descontos exclusivos em consultas, exames laboratoriais, diagnósticos por imagem e terapias para você e toda a sua família.
+        </p>
+      </div>
+
+      <!-- Bloco Principal: Imagem do Cartão + Benefícios & Rede Conveniada -->
+      <div class="grid lg:grid-cols-12 gap-10 items-center mb-16">
+        
+        <!-- Imagem Oficial em Alta Definição -->
+        <div class="lg:col-span-5 relative group">
+          <div class="rounded-3xl overflow-hidden shadow-2xl border border-orange-200/80 bg-white aspect-[3/4] max-w-md mx-auto">
+            <img src="cartao-saude-lsb.jpg" alt="Cartão Sistema de Saúde Laboratório Dr. Samuel Barreto" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="absolute -bottom-4 -right-2 sm:right-6 bg-slate-900 text-white p-4 sm:p-5 rounded-2xl border border-orange-500/30 shadow-2xl hidden sm:flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-petrol flex items-center justify-center text-white">
+              <i data-lucide="shield-check" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <span class="block text-xs uppercase font-extrabold tracking-wider text-orange-400">Sua Saúde,</span>
+              <span class="block text-sm font-bold text-white">Nosso Compromisso!</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coberturas & Rede Conveniada -->
+        <div class="lg:col-span-7 space-y-8 lg:pl-4">
+          
+          <!-- 4 Pilares de Benefícios -->
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="p-5 rounded-2xl bg-white border border-orange-100 shadow-sm flex items-start gap-4 hover:border-petrol transition-all">
+              <div class="w-12 h-12 rounded-xl bg-orange-50 text-petrol flex items-center justify-center flex-shrink-0 border border-orange-200/60 shadow-sm">
+                <i data-lucide="flask-conical" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h4 class="font-heading font-extrabold text-base text-slate-900 uppercase">Exames Laboratoriais</h4>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">Descontos especiais em análises clínicas completas no LSB.</p>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white border border-orange-100 shadow-sm flex items-start gap-4 hover:border-petrol transition-all">
+              <div class="w-12 h-12 rounded-xl bg-orange-50 text-petrol flex items-center justify-center flex-shrink-0 border border-orange-200/60 shadow-sm">
+                <i data-lucide="stethoscope" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h4 class="font-heading font-extrabold text-base text-slate-900 uppercase">Consultas & Especialidades</h4>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">Acesso facilitado a médicos especialistas credenciados.</p>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white border border-orange-100 shadow-sm flex items-start gap-4 hover:border-petrol transition-all">
+              <div class="w-12 h-12 rounded-xl bg-orange-50 text-petrol flex items-center justify-center flex-shrink-0 border border-orange-200/60 shadow-sm">
+                <i data-lucide="heart-pulse" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h4 class="font-heading font-extrabold text-base text-slate-900 uppercase">Diagnóstico por Imagem</h4>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">Valores reduzidos em ultrassonografia e exames de imagem.</p>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white border border-orange-100 shadow-sm flex items-start gap-4 hover:border-petrol transition-all">
+              <div class="w-12 h-12 rounded-xl bg-orange-50 text-petrol flex items-center justify-center flex-shrink-0 border border-orange-200/60 shadow-sm">
+                <i data-lucide="activity" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h4 class="font-heading font-extrabold text-base text-slate-900 uppercase">Fisioterapia & Terapias</h4>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">Reabilitação, bem-estar e cuidados integrados com economia.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rede Conveniada Credenciada -->
+          <div class="p-6 sm:p-8 rounded-3xl bg-slate-900 text-white border border-orange-500/20 shadow-xl space-y-4">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-orange-400"></span>
+              <h3 class="font-heading text-lg sm:text-xl font-black uppercase tracking-wider text-orange-200">
+                🏥 Rede Conveniada Credenciada
+              </h3>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Atendimento com descontos exclusivos nos melhores centros de saúde e profissionais parceiros da região:
+            </p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+              <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700/80 text-center">
+                <span class="block text-xs font-black uppercase text-white">🔸 MED</span>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700/80 text-center">
+                <span class="block text-xs font-black uppercase text-white">🔸 Clínica Simbiose</span>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700/80 text-center">
+                <span class="block text-xs font-black uppercase text-white">🔸 Ortocenter</span>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700/80 text-center">
+                <span class="block text-xs font-black uppercase text-white">🔸 Bem Estar</span>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700/80 text-center col-span-2 sm:col-span-1">
+                <span class="block text-xs font-black uppercase text-orange-300">🔶 Dr. Hudson</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Tabela de Categorias e Valores dos Planos -->
+      <div class="space-y-6">
+        <div class="text-center space-y-2 max-w-2xl mx-auto">
+          <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-petrol block text-center">Transparência & Acessibilidade</span>
+          <h3 class="font-heading text-2xl sm:text-3xl font-black uppercase text-slate-900 text-center">
+            Categorias & <span class="text-petrol">Valores Mensais</span>
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 text-center">Sem carência para diversos procedimentos e adesão simplificada.</p>
+        </div>
+
+        <!-- Grade de 5 Planos -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          
+          <!-- Plano 1: Individual -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200/80 hover:border-petrol shadow-sm hover:shadow-xl transition-all flex flex-col justify-between space-y-5 group">
+            <div class="space-y-3">
+              <div class="w-10 h-10 rounded-xl bg-orange-50 text-petrol flex items-center justify-center border border-orange-200/60">
+                <i data-lucide="user" class="w-5 h-5"></i>
+              </div>
+              <h4 class="font-heading text-lg font-extrabold text-slate-900 uppercase">Individual</h4>
+              <p class="text-xs text-slate-500 font-medium">Titular</p>
+              <div class="pt-2 border-t border-slate-100">
+                <span class="text-2xl sm:text-3xl font-black text-slate-900">R$ 29,90</span>
+                <span class="text-xs font-bold text-slate-500">/mês</span>
+              </div>
+              <ul class="text-xs text-slate-600 space-y-2 pt-2">
+                <li class="flex items-center gap-1.5"><span class="text-petrol font-bold">✓</span> 1 Titular Incluso</li>
+                <li class="flex items-center gap-1.5"><span class="text-petrol font-bold">✓</span> Descontos em Toda a Rede</li>
+              </ul>
+            </div>
+            <a href="https://wa.me/553892051001?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20a%20ades%C3%A3o%20do%20Cart%C3%A3o%20Sa%C3%BAde%20Plano%20Individual%20(R$%2029,90/m%C3%AAs)%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto." target="_blank" rel="noopener noreferrer" class="w-full py-3 px-3 rounded-xl bg-slate-900 hover:bg-petrol text-white text-xs font-black uppercase tracking-wider text-center transition-all flex items-center justify-center gap-1.5 shadow-sm hover:scale-[1.02] active:scale-98">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i> <span>Solicitar</span>
+            </a>
+          </div>
+
+          <!-- Plano 2: Casal -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200/80 hover:border-petrol shadow-sm hover:shadow-xl transition-all flex flex-col justify-between space-y-5 group">
+            <div class="space-y-3">
+              <div class="w-10 h-10 rounded-xl bg-orange-50 text-petrol flex items-center justify-center border border-orange-200/60">
+                <i data-lucide="users" class="w-5 h-5"></i>
+              </div>
+              <h4 class="font-heading text-lg font-extrabold text-slate-900 uppercase">Casal</h4>
+              <p class="text-xs text-slate-500 font-medium">Titular + Cônjuge</p>
+              <div class="pt-2 border-t border-slate-100">
+                <span class="text-2xl sm:text-3xl font-black text-slate-900">R$ 39,90</span>
+                <span class="text-xs font-bold text-slate-500">/mês</span>
+              </div>
+              <ul class="text-xs text-slate-600 space-y-2 pt-2">
+                <li class="flex items-center gap-1.5"><span class="text-petrol font-bold">✓</span> Titular + Cônjuge</li>
+                <li class="flex items-center gap-1.5"><span class="text-petrol font-bold">✓</span> Descontos em Toda a Rede</li>
+              </ul>
+            </div>
+            <a href="https://wa.me/553892051001?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20a%20ades%C3%A3o%20do%20Cart%C3%A3o%20Sa%C3%BAde%20Plano%20Casal%20(R$%2039,90/m%C3%AAs)%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto." target="_blank" rel="noopener noreferrer" class="w-full py-3 px-3 rounded-xl bg-slate-900 hover:bg-petrol text-white text-xs font-black uppercase tracking-wider text-center transition-all flex items-center justify-center gap-1.5 shadow-sm hover:scale-[1.02] active:scale-98">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i> <span>Solicitar</span>
+            </a>
+          </div>
+
+          <!-- Plano 3: Familiar (Destaque) -->
+          <div class="p-6 rounded-2xl bg-white border-2 border-petrol shadow-xl flex flex-col justify-between space-y-5 relative transform lg:-translate-y-2">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-petrol text-white text-[10px] font-black uppercase tracking-wider shadow-md">
+              Mais Escolhido
+            </div>
+            <div class="space-y-3">
+              <div class="w-10 h-10 rounded-xl bg-petrol text-white flex items-center justify-center shadow-md shadow-petrol/25">
+                <i data-lucide="home" class="w-5 h-5"></i>
+              </div>
+              <h4 class="font-heading text-lg font-black text-slate-900 uppercase">Familiar</h4>
+              <p class="text-xs text-petrol font-bold">Titular + Cônjuge + Filhos</p>
+              <div class="pt-2 border-t border-slate-100">
+                <span class="text-2xl sm:text-3xl font-black text-petrol">R$ 49,90</span>
+                <span class="text-xs font-bold text-slate-500">/mês</span>
+              </div>
+              <ul class="text-xs text-slate-700 font-medium space-y-2 pt-2">
+                <li class="flex items-center gap-1.5"><span class="text-petrol font-bold">✓</span> Titular + Cônjuge + Filhos</li>
+                <li class="flex items-center gap-1.5"><span class="text-petrol font-bold">✓</span> Economia Máxima em Exames</li>
+              </ul>
+            </div>
+            <a href="https://wa.me/553892051001?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20a%20ades%C3%A3o%20do%20Cart%C3%A3o%20Sa%C3%BAde%20Plano%20Familiar%20(R$%2049,90/m%C3%AAs)%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto." target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-3 rounded-xl bg-petrol hover:bg-petrol-accent text-white text-xs font-black uppercase tracking-wider text-center transition-all flex items-center justify-center gap-1.5 shadow-md shadow-petrol/25 hover:scale-[1.02] active:scale-98">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i> <span>Solicitar Familiar</span>
+            </a>
+          </div>
+
+          <!-- Plano 4: Familiar Extra -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200/80 hover:border-petrol shadow-sm hover:shadow-xl transition-all flex flex-col justify-between space-y-5 group">
+            <div class="space-y-3">
+              <div class="w-10 h-10 rounded-xl bg-orange-50 text-petrol flex items-center justify-center border border-orange-200/60">
+                <i data-lucide="heart-handshake" class="w-5 h-5"></i>
+              </div>
+              <h4 class="font-heading text-lg font-extrabold text-slate-900 uppercase">Familiar Extra</h4>
+              <p class="text-xs text-slate-500 font-medium">+ Pais & Sogros</p>
+              <div class="pt-2 border-t border-slate-100">
+                <span class="text-2xl sm:text-3xl font-black text-slate-900">R$ 59,90</span>
+                <span class="text-xs font-bold text-slate-500">/mês</span>
+              </div>
+              <ul class="text-xs text-slate-600 space-y-2 pt-2">
+                <li class="flex items-center gap-1.5"><span class="text-petrol font-bold">✓</span> Titular, Cônjuge, Filhos</li>
+                <li class="flex items-center gap-1.5"><span class="text-petrol font-bold">✓</span> Pais + Sogros do Titular</li>
+              </ul>
+            </div>
+            <a href="https://wa.me/553892051001?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20a%20ades%C3%A3o%20do%20Cart%C3%A3o%20Sa%C3%BAde%20Plano%20Familiar%20Extra%20(R$%2059,90/m%C3%AAs)%20no%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto." target="_blank" rel="noopener noreferrer" class="w-full py-3 px-3 rounded-xl bg-slate-900 hover:bg-petrol text-white text-xs font-black uppercase tracking-wider text-center transition-all flex items-center justify-center gap-1.5 shadow-sm hover:scale-[1.02] active:scale-98">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i> <span>Solicitar</span>
+            </a>
+          </div>
+
+          <!-- Plano 5: Beneficiário Extra -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200/80 hover:border-petrol shadow-sm hover:shadow-xl transition-all flex flex-col justify-between space-y-5 group">
+            <div class="space-y-3">
+              <div class="w-10 h-10 rounded-xl bg-orange-50 text-petrol flex items-center justify-center border border-orange-200/60">
+                <i data-lucide="user-plus" class="w-5 h-5"></i>
+              </div>
+              <h4 class="font-heading text-lg font-extrabold text-slate-900 uppercase">Beneficiário Extra</h4>
+              <p class="text-xs text-slate-500 font-medium">Pessoa Indicada</p>
+              <div class="pt-2 border-t border-slate-100">
+                <span class="text-2xl sm:text-3xl font-black text-slate-900">R$ 15,90</span>
+                <span class="text-xs font-bold text-slate-500">/mês cada</span>
+              </div>
+              <ul class="text-xs text-slate-600 space-y-2 pt-2">
+                <li class="flex items-center gap-1.5"><span class="text-petrol font-bold">✓</span> Pessoa Indicada no Cadastro</li>
+                <li class="flex items-center gap-1.5"><span class="text-petrol font-bold">✓</span> Mesmos Descontos Exclusivos</li>
+              </ul>
+            </div>
+            <a href="https://wa.me/553892051001?text=Ol%C3%A1!%20Gostaria%20de%20adicionar%20um%20Benefici%C3%A1rio%20Extra%20(R$%2015,90/m%C3%AAs)%20ao%20meu%20Cart%C3%A3o%20Sa%C3%BAde%20do%20Laborat%C3%B3rio%20Dr.%20Samuel%20Barreto." target="_blank" rel="noopener noreferrer" class="w-full py-3 px-3 rounded-xl bg-slate-900 hover:bg-petrol text-white text-xs font-black uppercase tracking-wider text-center transition-all flex items-center justify-center gap-1.5 shadow-sm hover:scale-[1.02] active:scale-98">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i> <span>Adicionar</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Banner de Contato Rápido para Escolha do Cartão -->
+        <div class="pt-6 text-center">
+          <a href="https://wa.me/553892051001?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20d%C3%BAvidas%20e%20escolher%20a%20categoria%20ideal%20do%20Cart%C3%A3o%20Sistema%20de%20Sa%C3%BAde%20Samuel%20Barreto." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-petrol hover:bg-petrol-accent text-white rounded-2xl text-xs sm:text-sm font-black uppercase tracking-wider shadow-lg shadow-petrol/25 transition-all hover:scale-[1.02] active:scale-98">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            <span>Falar com Atendente sobre o Cartão Saúde</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
   <!-- ===== BLOG / ARTIGOS MÉDICOS & DICAS (FUNDO BRANCO) ===== -->
   <section id="artigos" class="py-20 lg:py-28 bg-white border-b border-slate-200/80">
     <div class="max-w-[1600px] w-full mx-auto px-4 sm:px-8 lg:px-12">
@@ -655,6 +916,7 @@
         <div class="flex flex-wrap justify-center gap-6 text-xs uppercase font-bold tracking-wider">
           <a href="#exames" class="hover:text-white transition">Exames</a>
           <a href="#checkups" class="hover:text-white transition">Check-ups</a>
+          <a href="#cartao-saude" class="text-orange-400 hover:text-white transition">Cartão Saúde</a>
           <a href="#artigos" class="hover:text-white transition">Artigos Científicos</a>
           <a href="#sobre" class="hover:text-white transition">Nossa História</a>
           <a href="https://www.instagram.com/laboratoriodrsamuelbarreto/" target="_blank" rel="noopener noreferrer" class="text-rose-300 hover:text-rose-200 transition flex items-center gap-1">

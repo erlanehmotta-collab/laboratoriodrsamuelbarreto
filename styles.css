@@ -76,15 +76,11 @@ details > summary::-webkit-details-marker {
   border-color: #D95D1E;
 }
 
-/* ===== BLINDAGEM ABSOLUTA DE CLIQUES, MODAIS E OVERLAYS (ZERO BLOQUEIO DE CLIQUES) ===== */
-.hidden {
-  display: none !important;
-  pointer-events: none !important;
-}
-
+/* ===== BLINDAGEM ABSOLUTA DE MODAIS E OVERLAYS ===== */
 #quickModal.hidden,
 #postModal.hidden,
 #adminModal.hidden,
+#mobileDrawer.hidden,
 div[id$="Modal"].hidden,
 .modal-backdrop.hidden {
   display: none !important;

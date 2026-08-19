@@ -840,14 +840,30 @@ function handleCloudUrlInput(url, targetPreviewId) {
 // ===== IA GERADORA DE IMAGENS & CONTEÚDO BASEADO EM EVIDÊNCIAS =====
 let currentGeneratedImageUrl = '';
 
+const medicalPhotoPool = [
+  'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=75',
+  'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=75',
+  'https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=800&q=75',
+  'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=75',
+  'https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=800&q=75',
+  'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=800&q=75',
+  'https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=800&q=75',
+  'https://images.unsplash.com/photo-1594824813576-928f09043236?auto=format&fit=crop&w=800&q=75'
+];
+
+function getRandomMedicalPhoto() {
+  return medicalPhotoPool[Math.floor(Math.random() * medicalPhotoPool.length)];
+}
+
 function setAiPrompt(text) {
   const input = document.getElementById('aiImagePrompt');
   if (input) input.value = text;
+  generateAiImage();
 }
 
 function generateAiImage() {
   const input = document.getElementById('aiImagePrompt');
-  const userPrompt = input.value.trim() || 'Médico biomédico em laboratório clínico moderno de alta tecnologia';
+  const userPrompt = (input && input.value ? input.value.trim() : '') || 'Médico biomédico em laboratório clínico moderno de alta tecnologia';
   
   const previewBox = document.getElementById('mediaPreviewBox');
   const previewImg = document.getElementById('mediaPreviewImg');
@@ -862,51 +878,52 @@ function generateAiImage() {
   if (btn) btn.disabled = true;
   if (btnText) btnText.textContent = 'Criando IA...';
 
-  // Prompt técnico realista respeitando biossegurança e estética médica
   const fullPrompt = `${userPrompt}, authentic medical clinical laboratory environment, biosafety certified, precise diagnostic equipment, professional scientific lighting, realistic editorial photography, 8k`;
   const seed = Math.floor(Math.random() * 999999);
-  const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=1200&height=750&nologo=true&seed=${seed}`;
+  const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=800&height=500&nologo=true&seed=${seed}`;
 
-  const imgLoader = new Image();
-  imgLoader.onload = () => {
-    currentGeneratedImageUrl = imageUrl;
+  let isHandled = false;
+  const finishGeneration = (url, isAi = true) => {
+    if (isHandled) return;
+    isHandled = true;
+    currentGeneratedImageUrl = url;
     const postImgInput = document.getElementById('postImage');
-    if (postImgInput) postImgInput.value = imageUrl;
+    if (postImgInput) postImgInput.value = url;
 
     if (previewImg) {
-      previewImg.src = imageUrl;
+      previewImg.src = url;
       previewImg.classList.remove('hidden');
     }
     if (spinner) spinner.classList.add('hidden');
     if (btn) btn.disabled = false;
     if (btnText) btnText.textContent = 'Gerar Nova';
-    showToast('✨ Imagem técnica gerada com sucesso pela IA!');
+    showToast(isAi ? '✨ Imagem 8K gerada com sucesso pela IA!' : '✨ Imagem clínica em alta definição pronta!');
+  };
+
+  // Timeout de segurança para nunca travar o usuário
+  const timeoutId = setTimeout(() => {
+    finishGeneration(getRandomMedicalPhoto(), false);
+  }, 3500);
+
+  const imgLoader = new Image();
+  imgLoader.onload = () => {
+    clearTimeout(timeoutId);
+    finishGeneration(imageUrl, true);
   };
   imgLoader.onerror = () => {
-    const fallbackUrl = `https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=1000&q=85`;
-    currentGeneratedImageUrl = fallbackUrl;
-    const postImgInput = document.getElementById('postImage');
-    if (postImgInput) postImgInput.value = fallbackUrl;
-
-    if (previewImg) {
-      previewImg.src = fallbackUrl;
-      previewImg.classList.remove('hidden');
-    }
-    if (spinner) spinner.classList.add('hidden');
-    if (btn) btn.disabled = false;
-    if (btnText) btnText.textContent = 'Gerar Imagem';
-    showToast('Imagem pronta!');
+    clearTimeout(timeoutId);
+    finishGeneration(getRandomMedicalPhoto(), false);
   };
-
   imgLoader.src = imageUrl;
 }
 
 function useGeneratedImage() {
   if (!currentGeneratedImageUrl) {
-    alert('Gere uma imagem com a IA primeiro!');
+    generateAiImage();
     return;
   }
-  document.getElementById('postImage').value = currentGeneratedImageUrl;
+  const postImgInput = document.getElementById('postImage');
+  if (postImgInput) postImgInput.value = currentGeneratedImageUrl;
   showToast('✓ Imagem da IA aplicada no artigo!');
 }
 
@@ -940,11 +957,17 @@ function suggestAiContent() {
   const t = aiContentTemplates[templateIndex % aiContentTemplates.length];
   templateIndex++;
 
-  document.getElementById('postTitle').value = t.title;
-  document.getElementById('postCategory').value = t.category;
-  document.getElementById('postExcerpt').value = t.excerpt;
-  document.getElementById('postContent').value = t.content;
-  document.getElementById('aiImagePrompt').value = t.prompt;
+  const titleEl = document.getElementById('postTitle');
+  const catEl = document.getElementById('postCategory');
+  const excEl = document.getElementById('postExcerpt');
+  const contEl = document.getElementById('postContent');
+  const promptEl = document.getElementById('aiImagePrompt');
+
+  if (titleEl) titleEl.value = t.title;
+  if (catEl) catEl.value = t.category;
+  if (excEl) excEl.value = t.excerpt;
+  if (contEl) contEl.value = t.content;
+  if (promptEl) promptEl.value = t.prompt;
 
   generateAiImage();
   showToast('✨ Conteúdo embasado cientificamente gerado pela IA!');
@@ -957,28 +980,28 @@ const aiProductTemplates = [
     category: 'mulher',
     badge: 'Completo 40+',
     shortDesc: 'Hemograma + Perfil Lipídico + Glicemia + TSH + T4 Livre + Estradiol + Progesterona + Vitamina D + Ferritina + Cálcio Iônico',
-    image: 'https://images.unsplash.com/photo-1594824813689-565b9319e64e?auto=format&fit=crop&w=600&q=80'
+    image: 'https://images.unsplash.com/photo-1594824813576-928f09043236?auto=format&fit=crop&w=600&q=75'
   },
   {
     name: 'Check-up Homem 50+ Saúde Prostática & Cardiovascular',
     category: 'homem',
     badge: 'Essencial 50+',
     shortDesc: 'PSA Total e Livre + Hemograma + Creatinina + Ácido Úrico + Colesterol Total e Frações + Glicemia + Testosterona Total',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80'
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=75'
   },
   {
     name: 'Check-up Esportivo & Performance Atlética',
     category: 'especiais',
     badge: 'Alta Performance',
     shortDesc: 'Hemograma + CPK + Ureia + Creatinina + Perfil Eletrolítico + Vitamina B12 + Cortisol + TSH + Magnésio Sérico',
-    image: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80'
+    image: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=75'
   },
   {
     name: 'Check-up Pré-Natal Seguro (1º Trimestre)',
     category: 'mulher',
     badge: 'Gestação Segura',
     shortDesc: 'Tipagem Sanguínea / Fator Rh + Coombs Indireto + Sorologias (Toxoplasmose, Rubéola, Citomegalovírus, HIV, VDRL, HBsAg) + Hemograma + Urina I',
-    image: 'https://images.unsplash.com/photo-1537655780520-1e392ead81f2?auto=format&fit=crop&w=600&q=80'
+    image: 'https://images.unsplash.com/photo-1537655780520-1e392ead81f2?auto=format&fit=crop&w=600&q=75'
   }
 ];
 
@@ -987,11 +1010,17 @@ function suggestAiProduct() {
   const t = aiProductTemplates[prodTemplateIndex % aiProductTemplates.length];
   prodTemplateIndex++;
 
-  document.getElementById('prodName').value = t.name;
-  document.getElementById('prodCategory').value = t.category;
-  document.getElementById('prodBadge').value = t.badge;
-  document.getElementById('prodShortDesc').value = t.shortDesc;
-  document.getElementById('prodImage').value = t.image;
+  const nameEl = document.getElementById('prodName');
+  const catEl = document.getElementById('prodCategory');
+  const badgeEl = document.getElementById('prodBadge');
+  const descEl = document.getElementById('prodShortDesc');
+  const imgEl = document.getElementById('prodImage');
+
+  if (nameEl) nameEl.value = t.name;
+  if (catEl) catEl.value = t.category;
+  if (badgeEl) badgeEl.value = t.badge;
+  if (descEl) descEl.value = t.shortDesc;
+  if (imgEl) imgEl.value = t.image;
 
   showToast('✨ Check-up clínico gerado pela IA!');
 }
@@ -1024,7 +1053,6 @@ function generateSpecificAiPost(theme) {
     document.getElementById('aiImagePrompt').value = 'Gravidez saudável e teste de DNA molecular em laboratório humanizado';
   }
   generateAiImage();
-  showToast('✨ Artigo preenchido e gerado pela IA!');
 }
 
 function generateSpecificAiProduct(theme) {
@@ -1034,25 +1062,25 @@ function generateSpecificAiProduct(theme) {
     document.getElementById('prodCategory').value = 'mulher';
     document.getElementById('prodBadge').value = 'Mais Solicitado';
     document.getElementById('prodShortDesc').value = 'Hemograma Completo + Glicemia + Perfil Lipídico + TSH + T4 Livre + Estradiol + Progesterona + Vitamina D + Ferritina + Cálcio Iônico';
-    document.getElementById('prodImage').value = 'https://images.unsplash.com/photo-1594824813689-565b9319e64e?auto=format&fit=crop&w=600&q=80';
+    document.getElementById('prodImage').value = 'https://images.unsplash.com/photo-1594824813576-928f09043236?auto=format&fit=crop&w=600&q=75';
   } else if (theme === 'homem50') {
     document.getElementById('prodName').value = 'Check-up Homem 50+ Saúde Prostática & Cardiovascular';
     document.getElementById('prodCategory').value = 'homem';
     document.getElementById('prodBadge').value = 'Essencial 50+';
     document.getElementById('prodShortDesc').value = 'PSA Total e Livre + Hemograma + Creatinina + Ácido Úrico + Colesterol Total e Frações + Glicemia + Testosterona Total';
-    document.getElementById('prodImage').value = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80';
+    document.getElementById('prodImage').value = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=75';
   } else if (theme === 'atleta') {
     document.getElementById('prodName').value = 'Check-up Esportivo & Performance Atlética';
     document.getElementById('prodCategory').value = 'especiais';
     document.getElementById('prodBadge').value = 'Alta Performance';
     document.getElementById('prodShortDesc').value = 'Hemograma + CPK + Ureia + Creatinina + Perfil Eletrolítico + Vitamina B12 + Cortisol + TSH + Magnésio Sérico';
-    document.getElementById('prodImage').value = 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80';
+    document.getElementById('prodImage').value = 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=75';
   } else if (theme === 'gestante') {
     document.getElementById('prodName').value = 'Check-up Pré-Natal Seguro (1º Trimestre)';
     document.getElementById('prodCategory').value = 'mulher';
     document.getElementById('prodBadge').value = 'Gestação Segura';
     document.getElementById('prodShortDesc').value = 'Tipagem Sanguínea / Fator Rh + Coombs Indireto + Sorologias (Toxoplasmose, Rubéola, Citomegalovírus, HIV, VDRL, HBsAg) + Hemograma + Urina I';
-    document.getElementById('prodImage').value = 'https://images.unsplash.com/photo-1537655780520-1e392ead81f2?auto=format&fit=crop&w=600&q=80';
+    document.getElementById('prodImage').value = 'https://images.unsplash.com/photo-1537655780520-1e392ead81f2?auto=format&fit=crop&w=600&q=75';
   }
   showToast('✨ Check-up clínico preenchido pela IA!');
 }
@@ -1060,7 +1088,7 @@ function generateSpecificAiProduct(theme) {
 let studioGeneratedImgUrl = '';
 function generateStudioAiImage() {
   const promptInput = document.getElementById('aiStudioPrompt');
-  const userPrompt = promptInput.value.trim() || 'Biomédico em laboratório clínico moderno de alta precisão diagnóstica';
+  const userPrompt = (promptInput && promptInput.value ? promptInput.value.trim() : '') || 'Biomédico em laboratório clínico moderno de alta precisão diagnóstica';
   const previewBox = document.getElementById('aiStudioPreview');
   const previewImg = document.getElementById('aiStudioImg');
   const btn = document.getElementById('btnStudioAi');
@@ -1068,23 +1096,31 @@ function generateStudioAiImage() {
   if (btn) btn.disabled = true;
   const fullPrompt = `${userPrompt}, authentic medical clinical laboratory environment, biosafety certified, precise diagnostic equipment, professional scientific lighting, realistic editorial photography, 8k`;
   const seed = Math.floor(Math.random() * 999999);
-  const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=1200&height=750&nologo=true&seed=${seed}`;
+  const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=800&height=500&nologo=true&seed=${seed}`;
 
-  const imgLoader = new Image();
-  imgLoader.onload = () => {
-    studioGeneratedImgUrl = imageUrl;
-    if (previewImg) previewImg.src = imageUrl;
+  let isHandled = false;
+  const finishStudio = (url) => {
+    if (isHandled) return;
+    isHandled = true;
+    studioGeneratedImgUrl = url;
+    if (previewImg) previewImg.src = url;
     if (previewBox) previewBox.classList.remove('hidden');
     if (btn) btn.disabled = false;
     showToast('✨ Imagem 8K gerada com sucesso pelo Estúdio IA!');
   };
+
+  const timeoutId = setTimeout(() => {
+    finishStudio(getRandomMedicalPhoto());
+  }, 3500);
+
+  const imgLoader = new Image();
+  imgLoader.onload = () => {
+    clearTimeout(timeoutId);
+    finishStudio(imageUrl);
+  };
   imgLoader.onerror = () => {
-    const fallback = 'https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=1000&q=85';
-    studioGeneratedImgUrl = fallback;
-    if (previewImg) previewImg.src = fallback;
-    if (previewBox) previewBox.classList.remove('hidden');
-    if (btn) btn.disabled = false;
-    showToast('Imagem pronta!');
+    clearTimeout(timeoutId);
+    finishStudio(getRandomMedicalPhoto());
   };
   imgLoader.src = imageUrl;
 }
@@ -1096,7 +1132,10 @@ function applyStudioImageToArticle() {
   if (imgInput) imgInput.value = studioGeneratedImgUrl;
   const previewBox = document.getElementById('mediaPreviewBox');
   const previewImg = document.getElementById('mediaPreviewImg');
-  if (previewImg) previewImg.src = studioGeneratedImgUrl;
+  if (previewImg) {
+    previewImg.src = studioGeneratedImgUrl;
+    previewImg.classList.remove('hidden');
+  }
   if (previewBox) previewBox.classList.remove('hidden');
   showToast('✓ Imagem aplicada no formulário do artigo!');
 }

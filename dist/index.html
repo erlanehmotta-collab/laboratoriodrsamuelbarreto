@@ -1155,7 +1155,7 @@
               <!-- Preview da Mídia Selecionada (Imagem ou Vídeo) + Botão de Regeneração -->
               <div id="mediaPreviewBox" class="hidden pt-3 border-t border-petrol/10 flex flex-col sm:flex-row items-center gap-4">
                 <div class="relative w-48 aspect-[16/10] rounded-xl overflow-hidden bg-slate-100 border border-petrol/20 flex-shrink-0 flex items-center justify-center">
-                  <img id="mediaPreviewImg" src="" alt="Prévia da Mídia" class="w-full h-full object-cover hidden" />
+                  <img id="mediaPreviewImg" src="" alt="Prévia da Mídia" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=75';" class="w-full h-full object-cover hidden" />
                   <video id="mediaPreviewVideo" src="" controls class="w-full h-full object-cover hidden"></video>
                   <div id="aiLoadingSpinner" class="hidden absolute inset-0 bg-petrol-dark/60 flex items-center justify-center text-white">
                     <i data-lucide="loader-2" class="w-6 h-6 animate-spin text-cyan-300"></i>
@@ -1304,7 +1304,7 @@
                 </button>
               </div>
               <div id="aiStudioPreview" class="hidden p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-center gap-4">
-                <img id="aiStudioImg" src="" alt="Imagem IA" class="w-48 aspect-[16/10] object-cover rounded-lg border border-slate-200 shadow-sm" />
+                <img id="aiStudioImg" src="" alt="Imagem IA" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=75';" class="w-48 aspect-[16/10] object-cover rounded-lg border border-slate-200 shadow-sm" />
                 <div class="space-y-2 text-left">
                   <span class="text-xs font-bold text-slate-900 block">Imagem Médica Gerada com Sucesso!</span>
                   <p class="text-[11px] text-slate-500">Você pode copiar a URL ou aplicá-la diretamente no artigo.</p>

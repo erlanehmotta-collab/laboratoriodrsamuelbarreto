@@ -1054,15 +1054,9 @@
           <button onclick="switchAdminTab('posts')" id="tabPostsBtn" class="px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-petrol text-white transition-all">
             📝 Artigos & Dicas
           </button>
-          <button onclick="switchAdminTab('products')" id="tabProductsBtn" class="px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-petrol-surface text-petrol hover:bg-petrol/20 transition-all">
-            🧪 Check-ups
-          </button>
           <button onclick="switchAdminTab('ai')" id="tabAiBtn" class="px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-petrol-surface text-petrol hover:bg-petrol/20 transition-all flex items-center gap-1.5">
             <i data-lucide="sparkles" class="w-4 h-4 text-orange-500 animate-pulse"></i>
             <span>🤖 Estúdio IA</span>
-          </button>
-          <button onclick="switchAdminTab('settings')" id="tabSettingsBtn" class="px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-petrol-surface text-petrol hover:bg-petrol/20 transition-all">
-            ⚙️ Informações
           </button>
           <button onclick="switchAdminTab('security')" id="tabSecurityBtn" class="px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-petrol-surface text-petrol hover:bg-petrol/20 transition-all">
             🔐 Alterar Senha
@@ -1228,83 +1222,7 @@
           </div>
         </div>
 
-        <!-- ABA 2: GERENCIAR CHECK-UPS -->
-        <div id="adminTabProducts" class="hidden space-y-6">
-          <div class="p-6 rounded-2xl bg-petrol-surface/40 border border-petrol/20 space-y-4">
-            <div class="flex items-center justify-between">
-              <h4 class="font-heading text-base font-bold text-petrol-dark flex items-center gap-2 uppercase">
-                <i data-lucide="plus-circle" class="w-4 h-4 text-petrol"></i>
-                <span>Adicionar / Editar Check-up</span>
-              </h4>
-              <button type="button" onclick="suggestAiProduct()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-petrol text-white hover:bg-petrol-dark text-[11px] font-bold transition shadow-sm">
-                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-cyan-300"></i>
-                <span>Gerar Check-up com IA</span>
-              </button>
-            </div>
-            <form onsubmit="handleSaveProduct(event)" class="space-y-4 text-xs">
-              <input type="hidden" id="editProductId" value="" />
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label class="block font-bold mb-1 uppercase text-slate-700">Nome do Check-up *</label>
-                  <input type="text" id="prodName" required placeholder="Ex: Check-up Cardiovascular Completo" class="w-full px-3 py-2.5 rounded-xl border border-petrol/20 bg-white focus:border-petrol outline-none" />
-                </div>
-                <div>
-                  <label class="block font-bold mb-1 uppercase text-slate-700">Categoria *</label>
-                  <select id="prodCategory" class="w-full px-3 py-2.5 rounded-xl border border-petrol/20 bg-white focus:border-petrol outline-none">
-                    <option value="homem">Saúde Masculina</option>
-                    <option value="mulher">Saúde Feminina</option>
-                    <option value="checkups">Rotina Geral</option>
-                    <option value="especiais">Especiais / DNA</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label class="block font-bold mb-1 uppercase text-slate-700">Link da Imagem Principal *</label>
-                  <input type="url" id="prodImage" required placeholder="https://exemplo.com/foto.jpg" class="w-full px-3 py-2.5 rounded-xl border border-petrol/20 bg-white focus:border-petrol outline-none" />
-                </div>
-                <div>
-                  <label class="block font-bold mb-1 uppercase text-slate-700">Selo de Destaque</label>
-                  <input type="text" id="prodBadge" placeholder="Ex: Mais Solicitado, Completo" class="w-full px-3 py-2.5 rounded-xl border border-petrol/20 bg-white focus:border-petrol outline-none" />
-                </div>
-              </div>
-
-              <div>
-                <label class="block font-bold mb-1 uppercase text-slate-700">Resumo dos Exames Inclusos *</label>
-                <input type="text" id="prodShortDesc" required placeholder="Ex: Hemograma + Glicemia + Lipídico + TSH + Creatinina" class="w-full px-3 py-2.5 rounded-xl border border-petrol/20 bg-white focus:border-petrol outline-none" />
-              </div>
-
-              <div class="flex flex-wrap gap-3 pt-2">
-                <button type="submit" class="px-6 py-3.5 rounded-xl bg-petrol hover:bg-petrol-dark text-white font-bold uppercase tracking-wider transition flex items-center justify-center">
-                  <span>Salvar Painel de Exames</span>
-                </button>
-                <button type="button" onclick="resetProductForm()" class="px-6 py-3.5 rounded-xl bg-slate-200 text-slate-700 font-bold uppercase tracking-wider hover:bg-slate-300 transition">
-                  Limpar
-                </button>
-                <button type="button" onclick="restoreOfficialCheckups()" class="px-6 py-3.5 rounded-xl bg-orange-100 text-orange-900 font-bold uppercase tracking-wider hover:bg-orange-200 transition ml-auto flex items-center gap-1.5">
-                  <i data-lucide="refresh-cw" class="w-4 h-4"></i>
-                  <span>Restaurar 7 Check-ups Oficiais</span>
-                </button>
-              </div>
-            </form>
-          </div>
-
-          <!-- Lista de Check-ups Cadastrados -->
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <h4 class="font-heading text-sm font-bold text-petrol-dark uppercase">Painéis Ativos no Catálogo</h4>
-              <button type="button" onclick="restoreOfficialCheckups()" class="text-xs text-petrol hover:underline font-bold flex items-center gap-1">
-                <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> Restaurar Padrões
-              </button>
-            </div>
-            <div id="adminProductsList" class="space-y-2">
-              <!-- Renderizado via JS -->
-            </div>
-          </div>
-        </div>
-
-        <!-- ABA 5: ESTÚDIO DE CRIAÇÃO IA MÉDICA -->
+        <!-- ABA 2: ESTÚDIO DE CRIAÇÃO IA MÉDICA -->
         <div id="adminTabAi" class="hidden space-y-6">
           <div class="p-6 rounded-2xl bg-gradient-to-br from-orange-50/80 via-white to-slate-50 border border-orange-200 space-y-6">
             <div class="flex items-center justify-between pb-3 border-b border-orange-200">
@@ -1314,7 +1232,7 @@
                 </div>
                 <div>
                   <h4 class="font-heading text-base font-black text-slate-900 uppercase">Estúdio de Inteligência Artificial Médica</h4>
-                  <p class="text-xs text-slate-500">Criação instantânea de artigos científicos, pacotes de check-ups e imagens 8K.</p>
+                  <p class="text-xs text-slate-500">Criação instantânea de artigos científicos e fotografias clínicas 8K.</p>
                 </div>
               </div>
             </div>
@@ -1326,7 +1244,7 @@
               <div class="p-5 rounded-2xl bg-white border border-slate-200 space-y-4 shadow-sm">
                 <div class="flex items-center gap-2 text-slate-900 font-black text-xs uppercase">
                   <i data-lucide="file-text" class="w-4 h-4 text-petrol"></i>
-                  <span>1. Gerar Artigos Clínicos com 1 Clique</span>
+                  <span>1. Artigos de Rotina Diagnóstica (1 Clique)</span>
                 </div>
                 <p class="text-xs text-slate-600">Selecione o tema para preencher e publicar automaticamente:</p>
                 <div class="grid grid-cols-2 gap-2">
@@ -1345,25 +1263,25 @@
                 </div>
               </div>
 
-              <!-- Ferramenta 2: Gerador de Check-ups Clínicos -->
+              <!-- Ferramenta 2: Tópicos Especializados -->
               <div class="p-5 rounded-2xl bg-white border border-slate-200 space-y-4 shadow-sm">
                 <div class="flex items-center gap-2 text-slate-900 font-black text-xs uppercase">
                   <i data-lucide="flask-conical" class="w-4 h-4 text-petrol"></i>
-                  <span>2. Gerar Painéis de Check-up com 1 Clique</span>
+                  <span>2. Especialidades & Medicina Preventiva</span>
                 </div>
-                <p class="text-xs text-slate-600">Gere painéis de rotina diagnóstica completos com exames e imagem:</p>
+                <p class="text-xs text-slate-600">Artigos aprofundados baseados nas diretrizes SBPC/ML:</p>
                 <div class="grid grid-cols-2 gap-2">
-                  <button type="button" onclick="generateSpecificAiProduct('mulher40')" class="p-2.5 rounded-xl border border-slate-200 hover:border-petrol text-left text-xs font-bold hover:bg-orange-50 transition">
-                    🌸 Mulher 40+ Vitalidade
+                  <button type="button" onclick="generateSpecificAiPost('colesterol')" class="p-2.5 rounded-xl border border-slate-200 hover:border-petrol text-left text-xs font-bold hover:bg-orange-50 transition">
+                    ❤️ Perfil Lipídico
                   </button>
-                  <button type="button" onclick="generateSpecificAiProduct('homem50')" class="p-2.5 rounded-xl border border-slate-200 hover:border-petrol text-left text-xs font-bold hover:bg-orange-50 transition">
-                    👔 Homem 50+ Completo
+                  <button type="button" onclick="generateSpecificAiPost('dengue')" class="p-2.5 rounded-xl border border-slate-200 hover:border-petrol text-left text-xs font-bold hover:bg-orange-50 transition">
+                    🦟 Dengue NS1 & Sorologia
                   </button>
-                  <button type="button" onclick="generateSpecificAiProduct('atleta')" class="p-2.5 rounded-xl border border-slate-200 hover:border-petrol text-left text-xs font-bold hover:bg-orange-50 transition">
-                    ⚡ Perfil Esportivo & Atleta
+                  <button type="button" onclick="generateSpecificAiPost('renal')" class="p-2.5 rounded-xl border border-slate-200 hover:border-petrol text-left text-xs font-bold hover:bg-orange-50 transition">
+                    💧 Creatinina & Função Renal
                   </button>
-                  <button type="button" onclick="generateSpecificAiProduct('gestante')" class="p-2.5 rounded-xl border border-slate-200 hover:border-petrol text-left text-xs font-bold hover:bg-orange-50 transition">
-                    🤰 Pré-Natal Seguro
+                  <button type="button" onclick="generateSpecificAiPost('ferritina')" class="p-2.5 rounded-xl border border-slate-200 hover:border-petrol text-left text-xs font-bold hover:bg-orange-50 transition">
+                    🔬 Ferritina & Ferro Sérico
                   </button>
                 </div>
               </div>
@@ -1375,7 +1293,7 @@
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2 text-slate-900 font-black text-xs uppercase">
                   <i data-lucide="camera" class="w-4 h-4 text-petrol"></i>
-                  <span>3. Gerador de Imagens Médicas 8K</span>
+                  <span>3. Gerador de Imagens Médicas 8K (Flux Engine)</span>
                 </div>
               </div>
               <div class="flex flex-col sm:flex-row gap-3">
@@ -1389,7 +1307,7 @@
                 <img id="aiStudioImg" src="" alt="Imagem IA" class="w-48 aspect-[16/10] object-cover rounded-lg border border-slate-200 shadow-sm" />
                 <div class="space-y-2 text-left">
                   <span class="text-xs font-bold text-slate-900 block">Imagem Médica Gerada com Sucesso!</span>
-                  <p class="text-[11px] text-slate-500">Você pode copiar a URL ou aplicá-la diretamente no artigo ou check-up.</p>
+                  <p class="text-[11px] text-slate-500">Você pode copiar a URL ou aplicá-la diretamente no artigo.</p>
                   <button type="button" onclick="applyStudioImageToArticle()" class="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold uppercase transition">
                     Usar no Artigo Atual
                   </button>
@@ -1397,34 +1315,6 @@
               </div>
             </div>
 
-          </div>
-        </div>
-
-        <!-- ABA 3: CONFIGURAÇÕES -->
-        <div id="adminTabSettings" class="hidden space-y-6">
-          <div class="p-6 rounded-2xl bg-petrol-surface/40 border border-petrol/20 space-y-4">
-            <h4 class="font-heading text-base font-bold text-petrol-dark uppercase">Dados de Atendimento & WhatsApp</h4>
-            <form onsubmit="handleSaveSettings(event)" class="space-y-4 text-xs">
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label class="block font-bold mb-1 uppercase text-slate-700">Número do WhatsApp (com DDD) *</label>
-                  <input type="text" id="cfgWhatsapp" required placeholder="553832281828" class="w-full px-3 py-2.5 rounded-xl border border-petrol/20 bg-white focus:border-petrol outline-none" />
-                </div>
-                <div>
-                  <label class="block font-bold mb-1 uppercase text-slate-700">Unidade Principal / Cidade *</label>
-                  <input type="text" id="cfgCity" required value="Praça Ferreira Leal, 713 - Centro, Coração de Jesus - MG" class="w-full px-3 py-2.5 rounded-xl border border-petrol/20 bg-white focus:border-petrol outline-none" />
-                </div>
-              </div>
-
-              <div>
-                <label class="block font-bold mb-1 uppercase text-slate-700">Texto da Barra Superior</label>
-                <input type="text" id="cfgAnnouncement" class="w-full px-3 py-2.5 rounded-xl border border-petrol/20 bg-white focus:border-petrol outline-none" />
-              </div>
-
-              <button type="submit" class="px-6 py-3.5 rounded-xl bg-petrol hover:bg-petrol-dark text-white font-bold uppercase tracking-wider transition flex items-center justify-center">
-                <span>Salvar Informações</span>
-              </button>
-            </form>
           </div>
         </div>
 

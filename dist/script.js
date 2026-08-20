@@ -722,43 +722,30 @@ function logoutAdmin() {
 
 function switchAdminTab(tab) {
   const tabPosts = document.getElementById('adminTabPosts');
-  const tabProducts = document.getElementById('adminTabProducts');
   const tabAi = document.getElementById('adminTabAi');
-  const tabSettings = document.getElementById('adminTabSettings');
   const tabSecurity = document.getElementById('adminTabSecurity');
 
   const btnPosts = document.getElementById('tabPostsBtn');
-  const btnProducts = document.getElementById('tabProductsBtn');
   const btnAi = document.getElementById('tabAiBtn');
-  const btnSettings = document.getElementById('tabSettingsBtn');
   const btnSecurity = document.getElementById('tabSecurityBtn');
 
-  [tabPosts, tabProducts, tabAi, tabSettings, tabSecurity].forEach(t => { if (t) t.classList.add('hidden'); });
-  [btnPosts, btnProducts, btnAi, btnSettings, btnSecurity].forEach(b => {
+  [tabPosts, tabAi, tabSecurity].forEach(t => { if (t) t.classList.add('hidden'); });
+  [btnPosts, btnAi, btnSecurity].forEach(b => {
     if (b) {
       b.classList.remove('bg-petrol', 'text-white');
       b.classList.add('bg-petrol-surface', 'text-petrol');
     }
   });
 
-  if (tab === 'posts') {
-    tabPosts.classList.remove('hidden');
-    btnPosts.classList.add('bg-petrol', 'text-white');
-  } else if (tab === 'products') {
-    tabProducts.classList.remove('hidden');
-    btnProducts.classList.add('bg-petrol', 'text-white');
-  } else if (tab === 'ai') {
+  if (tab === 'ai') {
     if (tabAi) tabAi.classList.remove('hidden');
     if (btnAi) btnAi.classList.add('bg-petrol', 'text-white');
   } else if (tab === 'security') {
     if (tabSecurity) tabSecurity.classList.remove('hidden');
     if (btnSecurity) btnSecurity.classList.add('bg-petrol', 'text-white');
   } else {
-    tabSettings.classList.remove('hidden');
-    btnSettings.classList.add('bg-petrol', 'text-white');
-    document.getElementById('cfgWhatsapp').value = settings.whatsapp;
-    document.getElementById('cfgCity').value = settings.city;
-    document.getElementById('cfgAnnouncement').value = settings.announcement;
+    if (tabPosts) tabPosts.classList.remove('hidden');
+    if (btnPosts) btnPosts.classList.add('bg-petrol', 'text-white');
   }
 }
 

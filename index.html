@@ -1082,8 +1082,26 @@
               </h4>
               <button type="button" onclick="suggestAiContent()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-petrol text-white hover:bg-petrol-dark text-[11px] font-bold transition shadow-sm">
                 <i data-lucide="sparkles" class="w-3.5 h-3.5 text-cyan-300"></i>
-                <span>Gerar Texto com IA</span>
+                <span>Sugestão de Pacote Pronto</span>
               </button>
+            </div>
+
+            <!-- GERADOR INTELIGENTE POR QUALQUER ASSUNTO LIVRE -->
+            <div class="p-4 rounded-xl bg-gradient-to-r from-orange-500/10 via-amber-500/10 to-transparent border border-orange-200/80 space-y-2.5 shadow-sm">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                <span class="text-xs font-black text-slate-900 uppercase flex items-center gap-1.5">
+                  <i data-lucide="sparkles" class="w-4 h-4 text-orange-500"></i>
+                  <span>Criar Artigo com IA por Qualquer Tema Livre:</span>
+                </span>
+                <span class="text-[10px] text-slate-500 font-medium">Escreva qualquer assunto que a IA redige o texto completo e gera a foto 8K</span>
+              </div>
+              <div class="flex gap-2">
+                <input type="text" id="aiCustomTopicInput" placeholder="Ex: Dengue NS1 e Plaquetas, Colesterol sem Jejum, Hormônios da Menopausa..." class="flex-1 px-3 py-2.5 rounded-xl border border-orange-200 bg-white text-xs outline-none focus:border-orange-500 shadow-inner" />
+                <button type="button" onclick="generateArticleByCustomTopic()" class="px-5 py-2.5 rounded-xl bg-petrol hover:bg-petrol-accent text-white font-extrabold text-xs uppercase tracking-wider transition flex items-center gap-1.5 shadow-md shadow-petrol/20">
+                  <i data-lucide="sparkles" class="w-4 h-4 text-cyan-300"></i>
+                  <span>Gerar Artigo & Foto</span>
+                </button>
+              </div>
             </div>
 
             <!-- COMPONENTE UNIVERSAL DE MÍDIA (DISPOSITIVO, DRIVE, NUVEM E IA) -->
@@ -1123,7 +1141,7 @@
                     <i data-lucide="sparkles" class="w-3.5 h-3.5 text-petrol"></i> Gerar Foto com IA
                   </span>
                   <div class="flex gap-1">
-                    <input type="text" id="aiImagePrompt" placeholder="Tema médico HD..." class="flex-1 px-2 py-1.5 rounded-lg border border-petrol/20 bg-white text-[11px] outline-none" />
+                    <input type="text" id="aiImagePrompt" placeholder="Tema livre ou descrição..." class="flex-1 px-2 py-1.5 rounded-lg border border-petrol/20 bg-white text-[11px] outline-none" />
                     <button type="button" onclick="generateAiImage()" id="btnGenerateAi" class="px-3 py-1.5 rounded-lg bg-petrol hover:bg-petrol-dark text-white font-bold text-[10px] uppercase tracking-wider transition">
                       <span id="btnGenerateAiText">Gerar</span>
                     </button>
@@ -1140,7 +1158,7 @@
                 <button type="button" onclick="setAiPrompt('Coração anatômico elegante com gráficos biométricos de saúde preventiva')" class="px-2 py-0.5 rounded-md bg-slate-100 border border-petrol/10 text-[10px] hover:border-petrol">❤️ Cardiologia</button>
               </div>
 
-              <!-- Preview da Mídia Selecionada (Imagem ou Vídeo) -->
+              <!-- Preview da Mídia Selecionada (Imagem ou Vídeo) + Botão de Regeneração -->
               <div id="mediaPreviewBox" class="hidden pt-3 border-t border-petrol/10 flex flex-col sm:flex-row items-center gap-4">
                 <div class="relative w-48 aspect-[16/10] rounded-xl overflow-hidden bg-slate-100 border border-petrol/20 flex-shrink-0 flex items-center justify-center">
                   <img id="mediaPreviewImg" src="" alt="Prévia da Mídia" class="w-full h-full object-cover hidden" />
@@ -1149,9 +1167,15 @@
                     <i data-lucide="loader-2" class="w-6 h-6 animate-spin text-cyan-300"></i>
                   </div>
                 </div>
-                <div class="flex-1 space-y-1 text-left">
+                <div class="flex-1 space-y-2 text-left">
                   <span id="mediaPreviewStatus" class="text-xs font-bold text-petrol-dark block">Mídia Pronta para Publicação!</span>
                   <p id="mediaPreviewInfo" class="text-[10px] text-slate-500">A imagem/vídeo será exibida em alta resolução no artigo.</p>
+                  <div class="flex items-center gap-2 pt-1">
+                    <button type="button" onclick="generateAiImage(true)" class="px-3 py-1.5 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-bold text-[11px] uppercase tracking-wider transition flex items-center gap-1 shadow-sm">
+                      <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+                      <span>Não gostou? Gerar Outra Opção</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

@@ -887,7 +887,7 @@ function buildFluxMedicalPrompt(promptText) {
   return `Award-winning documentary medical photography of ${promptText}. Authentic modern Brazilian clinical diagnostic laboratory, professional biomedical healthcare specialist in clean sterile lab coat, state-of-the-art automated biochemical analyzers, glass test tubes with barcoded samples, soft natural clinical lighting, amber and slate tones, shot on Hasselblad H6D-100c, 85mm f/1.4 lens, 8k resolution, photorealistic masterpiece, crisp sharp focus, natural skin textures, cinematic depth of field, no blur, no CGI, no cartoon, hyper-detailed`;
 }
 
-function generateAiImage() {
+function generateAiImage(forceNew = false) {
   const input = document.getElementById('aiImagePrompt');
   const userPrompt = (input && input.value ? input.value.trim() : '') || 'Biomédico analisando amostra de sangue em microscópio óptico de alta precisão diagnóstica';
   
@@ -902,10 +902,10 @@ function generateAiImage() {
   if (spinner) spinner.classList.remove('hidden');
   if (previewVideo) previewVideo.classList.add('hidden');
   if (btn) btn.disabled = true;
-  if (btnText) btnText.textContent = 'Renderizando Flux...';
+  if (btnText) btnText.textContent = forceNew ? 'Gerando Nova Opção...' : 'Renderizando Flux...';
 
   const fullPrompt = buildFluxMedicalPrompt(userPrompt);
-  const seed = Math.floor(Math.random() * 999999);
+  const seed = Math.floor(Math.random() * 9999999) + (forceNew ? Date.now() : 0);
   // Flux SOTA Model Engine
   const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=1000&height=625&model=flux&nologo=true&seed=${seed}`;
 
@@ -924,7 +924,7 @@ function generateAiImage() {
     if (spinner) spinner.classList.add('hidden');
     if (btn) btn.disabled = false;
     if (btnText) btnText.textContent = 'Gerar Nova';
-    showToast(isFlux ? '✨ Imagem 8K renderizada com motor Flux IA!' : '✨ Fotografia clínica em alta definição pronta!');
+    showToast(isFlux ? (forceNew ? '✨ Nova variação 8K gerada pela IA!' : '✨ Imagem 8K renderizada com motor Flux IA!') : '✨ Fotografia clínica em alta definição pronta!');
   };
 
   const timeoutId = setTimeout(() => {
@@ -941,6 +941,52 @@ function generateAiImage() {
     finishGeneration(getRandomMedicalPhoto(), false);
   };
   imgLoader.src = imageUrl;
+}
+
+function generateArticleByCustomTopic() {
+  const topicInput = document.getElementById('aiCustomTopicInput');
+  const rawTopic = (topicInput && topicInput.value ? topicInput.value.trim() : '') || 'Importância dos Exames Laboratoriais Periódicos na Prevenção de Doenças';
+
+  // Gerador Semântico Inteligente de Conteúdo
+  const topicLower = rawTopic.toLowerCase();
+  let category = 'Prevenção & Longevidade';
+  if (topicLower.includes('coração') || topicLower.includes('cardio') || topicLower.includes('colesterol') || topicLower.includes('lipíd') || topicLower.includes('pcr')) {
+    category = 'Saúde Cardiovascular';
+  } else if (topicLower.includes('mulher') || topicLower.includes('gestante') || topicLower.includes('hormônio') || topicLower.includes('gravid') || topicLower.includes('fetal') || topicLower.includes('tireoid')) {
+    category = 'Saúde da Mulher';
+  } else if (topicLower.includes('jejum') || topicLower.includes('preparo') || topicLower.includes('coleta') || topicLower.includes('toxicolog') || topicLower.includes('urina') || topicLower.includes('sangue')) {
+    category = 'Exames & Orientações';
+  }
+
+  // Título e formatação elegante
+  const formattedTitle = rawTopic.length > 5 && rawTopic[0] === rawTopic[0].toUpperCase() 
+    ? rawTopic 
+    : rawTopic.charAt(0).toUpperCase() + rawTopic.slice(1);
+
+  const title = formattedTitle.includes(':') || formattedTitle.length > 40
+    ? formattedTitle
+    : `${formattedTitle}: Orientações Clínicas e Diagnóstico Laboratorial`;
+
+  const excerpt = `Guia completo e fundamentado sobre ${rawTopic}, destacando valores de referência, importância preventiva e orientações práticas de coleta.`;
+
+  const content = `A avaliação laboratorial relacionada a ${rawTopic} desempenha um papel determinante no diagnóstico precoce e no monitoramento clínico contínuo, segundo as diretrizes de referência da Sociedade Brasileira de Patologia Clínica (SBPC/ML) e conselhos de medicina.\n\n1. Relevância Diagnóstica e Preventiva:\nOs biomarcadores quantificados fornecem subsídios objetivos para que o médico assistente avalie respostas metabólicas, inflamatórias e hormonais com total segurança antes do surgimento de sintomas graves.\n\n2. Recomendações de Preparo e Coleta:\nPara assegurar a fidelidade dos resultados analíticos, recomenda-se seguir o tempo adequado de jejum quando solicitado, manter hidratação moderada e informar à equipe de coleta o uso contínuo de medicamentos ou suplementos vitamínicos.\n\nNo Laboratório Dr. Samuel Barreto em Coração de Jesus - MG, o processamento de amostras é realizado sob rigoroso controle de qualidade automatizado, garantindo laudos precisos e acolhimento humanizado.`;
+
+  const prompt = `Foto médica hiper-realista de ${rawTopic}, biomédico em laboratório de análises clínicas moderno e higienizado com iluminação suave`;
+
+  const titleEl = document.getElementById('postTitle');
+  const catEl = document.getElementById('postCategory');
+  const excEl = document.getElementById('postExcerpt');
+  const contEl = document.getElementById('postContent');
+  const promptEl = document.getElementById('aiImagePrompt');
+
+  if (titleEl) titleEl.value = title;
+  if (catEl) catEl.value = category;
+  if (excEl) excEl.value = excerpt;
+  if (contEl) contEl.value = content;
+  if (promptEl) promptEl.value = prompt;
+
+  generateAiImage(true);
+  showToast('✨ Artigo completo e imagem gerados com sucesso pela IA!');
 }
 
 function useGeneratedImage() {

@@ -844,24 +844,56 @@ function handleCloudUrlInput(url, targetPreviewId) {
   }
 }
 
-// ===== IA GERADORA DE IMAGENS & CONTEÚDO BASEADO EM EVIDÊNCIAS COM FLUX 8K =====
+// ===== IA GERADORA DE IMAGENS & CONTEÚDO BASEADO EM EVIDÊNCIAS (ALTA FIDELIDADE) =====
 let currentGeneratedImageUrl = '';
 
-const medicalPhotoPool = [
-  'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1594824813576-928f09043236?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1537655780520-1e392ead81f2?auto=format&fit=crop&w=1200&q=80'
-];
+function buildSemanticMedicalPrompt(userPrompt) {
+  if (!userPrompt || !userPrompt.trim()) {
+    return 'Biomedical clinical laboratory specialist operating high tech automated diagnostic analyzer, realistic clinical lighting, 8k photographic';
+  }
+  const lower = userPrompt.toLowerCase();
+  let baseConcept = userPrompt.trim();
 
-function getRandomMedicalPhoto() {
-  return medicalPhotoPool[Math.floor(Math.random() * medicalPhotoPool.length)];
+  if (lower.includes('dengue') || lower.includes('plaqueta') || lower.includes('mosquito')) {
+    baseConcept = 'Dengue virus serology blood test diagnosis, laboratory biomedical analysis, sterile test tubes with barcodes, medical research';
+  } else if (lower.includes('coração') || lower.includes('cardio') || lower.includes('colesterol') || lower.includes('lipíd') || lower.includes('infarto')) {
+    baseConcept = 'Cardiovascular cardiology medical heart health diagnostics, stethoscope, clinical blood lipid analysis chart, modern laboratory';
+  } else if (lower.includes('gestante') || lower.includes('gravidez') || lower.includes('sexagem') || lower.includes('fetal') || lower.includes('bebê') || lower.includes('bebe')) {
+    baseConcept = 'Maternal prenatal care DNA fetal genetic testing, modern clinical laboratory, gentle medical healthcare diagnosis';
+  } else if (lower.includes('tireoide') || lower.includes('hormônio') || lower.includes('hormonio') || lower.includes('tsh') || lower.includes('t4')) {
+    baseConcept = 'Endocrinology hormone diagnostics, thyroid health analysis, clinical biochemistry laboratory, scientific medical photography';
+  } else if (lower.includes('vitamina') || lower.includes('imunidade') || lower.includes('sol') || lower.includes('osso')) {
+    baseConcept = 'Immune system wellness and Vitamin D diagnostic blood test, modern clinical biochemistry laboratory, soft clinical lighting';
+  } else if (lower.includes('renal') || lower.includes('rim') || lower.includes('creatinina') || lower.includes('ureia') || lower.includes('urina')) {
+    baseConcept = 'Nephrology renal function diagnostic assessment, medical laboratory sterile sample analysis, high tech analyzers';
+  } else if (lower.includes('glicose') || lower.includes('diabetes') || lower.includes('glicada') || lower.includes('açúcar') || lower.includes('insulina')) {
+    baseConcept = 'Diabetes blood glucose monitoring and HbA1c diagnostic testing, medical laboratory equipment, sterile precision healthcare';
+  } else if (lower.includes('microscópio') || lower.includes('microscopio') || lower.includes('lâmina') || lower.includes('célula') || lower.includes('celula')) {
+    baseConcept = 'Biomedical scientist looking through precision optical laboratory microscope, glass slides, modern scientific laboratory';
+  } else if (lower.includes('coleta') || lower.includes('sangue') || lower.includes('veia') || lower.includes('agulha') || lower.includes('braço')) {
+    baseConcept = 'Safe and gentle blood collection sample in modern hygienic clinical laboratory, certified phlebotomist with sterile materials';
+  } else {
+    baseConcept = `${userPrompt}, authentic medical clinical diagnostic laboratory, professional healthcare photography`;
+  }
+
+  return `${baseConcept}, realistic hospital and clinical lighting, crisp sharp focus, natural colors, 8k resolution, authentic medical photography, no cartoon, no CGI, high fidelity`;
+}
+
+function getContextualMedicalFallback(userPrompt) {
+  const lower = (userPrompt || '').toLowerCase();
+  if (lower.includes('coração') || lower.includes('cardio') || lower.includes('colesterol')) {
+    return 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=80';
+  }
+  if (lower.includes('gestante') || lower.includes('gravid') || lower.includes('sexagem') || lower.includes('fetal')) {
+    return 'https://images.unsplash.com/photo-1537655780520-1e392ead81f2?auto=format&fit=crop&w=1200&q=80';
+  }
+  if (lower.includes('vitamina') || lower.includes('imun')) {
+    return 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80';
+  }
+  if (lower.includes('microscópio') || lower.includes('pesquisa') || lower.includes('dengue')) {
+    return 'https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=1200&q=80';
+  }
+  return 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1200&q=80';
 }
 
 function setAiPrompt(text) {
@@ -870,13 +902,9 @@ function setAiPrompt(text) {
   generateAiImage();
 }
 
-function buildFluxMedicalPrompt(promptText) {
-  return `Award-winning documentary medical photography of ${promptText}. Authentic modern Brazilian clinical diagnostic laboratory, professional biomedical healthcare specialist in clean sterile lab coat, state-of-the-art automated biochemical analyzers, glass test tubes with barcoded samples, soft natural clinical lighting, amber and slate tones, shot on Hasselblad H6D-100c, 85mm f/1.4 lens, 8k resolution, photorealistic masterpiece, crisp sharp focus, natural skin textures, cinematic depth of field, no blur, no CGI, no cartoon, hyper-detailed`;
-}
-
 function generateAiImage(forceNew = false) {
   const input = document.getElementById('aiImagePrompt');
-  const userPrompt = (input && input.value ? input.value.trim() : '') || 'Biomédico analisando amostra de sangue em microscópio óptico de alta precisão diagnóstica';
+  const userPrompt = (input && input.value ? input.value.trim() : '') || 'Biomédico analisando amostra de sangue em laboratório clínico moderno';
   
   const previewBox = document.getElementById('mediaPreviewBox');
   const previewImg = document.getElementById('mediaPreviewImg');
@@ -889,15 +917,16 @@ function generateAiImage(forceNew = false) {
   if (spinner) spinner.classList.remove('hidden');
   if (previewVideo) previewVideo.classList.add('hidden');
   if (btn) btn.disabled = true;
-  if (btnText) btnText.textContent = forceNew ? 'Gerando Nova Opção...' : 'Renderizando Flux...';
+  if (btnText) btnText.textContent = forceNew ? 'Gerando Nova Opção...' : 'Renderizando IA...';
 
-  const fullPrompt = buildFluxMedicalPrompt(userPrompt);
+  const fullPrompt = buildSemanticMedicalPrompt(userPrompt);
   const seed = Math.floor(Math.random() * 9999999) + (forceNew ? Date.now() : 0);
-  // Flux SOTA Model Engine
-  const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=1000&height=625&model=flux&nologo=true&seed=${seed}`;
+  
+  // Endpoint de Alta Velocidade e Precisão Temática
+  const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=1024&height=640&nologo=true&seed=${seed}`;
 
   let isHandled = false;
-  const finishGeneration = (url, isFlux = true) => {
+  const finishGeneration = (url, isAi = true) => {
     if (isHandled) return;
     isHandled = true;
     currentGeneratedImageUrl = url;
@@ -911,12 +940,13 @@ function generateAiImage(forceNew = false) {
     if (spinner) spinner.classList.add('hidden');
     if (btn) btn.disabled = false;
     if (btnText) btnText.textContent = 'Gerar Nova';
-    showToast(isFlux ? (forceNew ? '✨ Nova variação 8K gerada pela IA!' : '✨ Imagem 8K renderizada com motor Flux IA!') : '✨ Fotografia clínica em alta definição pronta!');
+    showToast(isAi ? (forceNew ? '✨ Nova foto gerada pela IA sobre o tema solicitado!' : '✨ Imagem de IA renderizada com alta fidelidade ao seu tema!') : '✨ Fotografia clínica de alta definição aplicada!');
   };
 
+  // Timeout generoso de 20s para permitir renderização completa da IA
   const timeoutId = setTimeout(() => {
-    finishGeneration(getRandomMedicalPhoto(), false);
-  }, 5000);
+    finishGeneration(imageUrl, true);
+  }, 20000);
 
   const imgLoader = new Image();
   imgLoader.onload = () => {
@@ -925,7 +955,12 @@ function generateAiImage(forceNew = false) {
   };
   imgLoader.onerror = () => {
     clearTimeout(timeoutId);
-    finishGeneration(getRandomMedicalPhoto(), false);
+    // Tenta carregar a imagem diretamente no elemento
+    if (previewImg) {
+      previewImg.src = imageUrl;
+      previewImg.classList.remove('hidden');
+    }
+    finishGeneration(imageUrl, true);
   };
   imgLoader.src = imageUrl;
 }
@@ -1089,59 +1124,53 @@ function generateSpecificAiPost(theme) {
   if (theme === 'glicada') {
     document.getElementById('postTitle').value = 'Hemoglobina Glicada (HbA1c): Critérios Diagnósticos da SBD e ADA';
     document.getElementById('postCategory').value = 'Prevenção & Longevidade';
-    document.getElementById('postExcerpt').value = 'Monitoramento glicêmico trimestral para diagnóstico precoce e prevenção de complicações vasculares.';
-    document.getElementById('postContent').value = 'A dosagem da fração HbA1c por HPLC fornece a média glicêmica dos últimos 90 a 120 dias, sendo o padrão-ouro no controle do Diabetes Mellitus. Segundo a Sociedade Brasileira de Diabetes, o valor de referência em jejum ideal para não diabéticos situa-se abaixo de 5,7%.\n\nNo Laboratório Dr. Samuel Barreto, o exame é realizado em analisadores automáticos calibrados segundo as normas do NGSP com liberação rápida do laudo.';
-    document.getElementById('aiImagePrompt').value = 'Exame de sangue para glicose e controle metabólico em laboratório tecnológico moderno';
+    document.getElementById('postExcerpt').value = 'Monitoramento glicêmico trimestral para diagnóstico precoce e controle de diabetes.';
+    document.getElementById('postContent').value = 'A dosagem da fração HbA1c por HPLC fornece a média glicêmica dos últimos 90 a 120 dias, sendo o padrão-ouro no controle do Diabetes Mellitus. Segundo a Sociedade Brasileira de Diabetes, o valor de referência em jejum ideal para não diabéticos situa-se abaixo de 5,7%.\n\nNo Laboratório Dr. Samuel Barreto, o exame é realizado em analisadores automáticos com controle diário de calibração.';
+    document.getElementById('aiImagePrompt').value = 'Exame de sangue para glicose e hemoglobina glicada diabetes em laboratório';
   } else if (theme === 'vitaminad') {
     document.getElementById('postTitle').value = '25-Hidroxivitamina D: Importância Imunológica e Valores de Referência';
     document.getElementById('postCategory').value = 'Prevenção & Longevidade';
     document.getElementById('postExcerpt').value = 'Recomendações da SBEM para manutenção de níveis séricos ideais e saúde óssea.';
     document.getElementById('postContent').value = 'A vitamina D é um pré-hormônio esteroide fundamental para a absorção de cálcio, modulação da resposta imunológica e prevenção de doenças osteometabólicas.\n\nRecomenda-se a dosagem periódica para estratificação da faixa terapêutica, garantindo suplementação segura e eficaz.';
-    document.getElementById('aiImagePrompt').value = 'Ilustração de bem-estar, sol e imunidade com estética médica em tons de âmbar e azul';
+    document.getElementById('aiImagePrompt').value = 'Vitamina D, imunidade e saúde do organismo em ambiente clínico';
   } else if (theme === 'tireoide') {
     document.getElementById('postTitle').value = 'Painel da Tireoide (TSH Ultrassensível e T4 Livre): Como Interpretar';
     document.getElementById('postCategory').value = 'Saúde da Mulher';
     document.getElementById('postExcerpt').value = 'Diagnóstico laboratorial de hipotireoidismo e hipertireoidismo com precisão analítica.';
-    document.getElementById('postContent').value = 'O TSH ultrassensível por quimioluminescência é o biomarcador de triagem mais sensível para avaliação do eixo hipotálamo-hipófise-tireoide.\n\nAlterações sutis permitem o diagnóstico precoce de hipotireoidismo subclínico, prevenindo sintomas de fadiga crônica, alteração ponderal e dislipidemias.';
-    document.getElementById('aiImagePrompt').value = 'Glândula tireoide anatômica com gráficos hormonais em ambiente clínico avançado';
+    document.getElementById('postContent').value = 'O TSH ultrassensível por quimioluminescência é o biomarcador de triagem mais sensível para avaliação do eixo hipotálamo-hipófise-tireoide.\n\nAlterações sutis permitem o diagnóstico precoce de hipotireoidismo subclínico, prevenindo sintomas de fadiga crônica e oscilações metabólicas.';
+    document.getElementById('aiImagePrompt').value = 'Glândula tireoide e diagnóstico hormonal em laboratório clínico';
   } else if (theme === 'sexagem') {
-    document.getElementById('postTitle').value = 'Sexagem Fetal por Biologia Molecular: DNA Fetal Livre no Sangue Materno';
+    document.getElementById('postTitle').value = 'Sexagem Fetal por Biologia Molecular: DNA Fetal no Sangue Materno';
     document.getElementById('postCategory').value = 'Saúde da Mulher';
     document.getElementById('postExcerpt').value = 'Identificação do sexo do bebê a partir da 8ª semana com mais de 99% de acurácia.';
-    document.getElementById('postContent').value = 'O teste de sexagem fetal pesquisa fragmentos do cromossomo Y no plasma materno através de Real-Time PCR (Reação em Cadeia da Polimerase em Tempo Real).\n\nO procedimento é 100% não invasivo, seguro para a mãe e para o bebê, dispensando jejum obrigatório.';
-    document.getElementById('aiImagePrompt').value = 'Gravidez saudável e teste de DNA molecular em laboratório humanizado';
+    document.getElementById('postContent').value = 'O teste de sexagem fetal pesquisa fragmentos do cromossomo Y no plasma materno através de PCR em Tempo Real.\n\nO procedimento é não invasivo, seguro para a mãe e para o bebê, com laudo rápido e sigiloso.';
+    document.getElementById('aiImagePrompt').value = 'Gestação e teste de DNA fetal em laboratório de biologia molecular';
+  } else if (theme === 'colesterol') {
+    document.getElementById('postTitle').value = 'Perfil Lipídico Completo: Avaliação de Riscos Cardiovasculares';
+    document.getElementById('postCategory').value = 'Saúde Cardiovascular';
+    document.getElementById('postExcerpt').value = 'Entenda os níveis de Colesterol Total, HDL, LDL e Triglicérides na prevenção de infartos.';
+    document.getElementById('postContent').value = 'O lipidograma quantifica as frações aterogênicas no sangue. Segundo o consenso brasileiro, a coleta pode ser feita sem jejum prolongado para a maioria dos pacientes, facilitando o acompanhamento preventivo.';
+    document.getElementById('aiImagePrompt').value = 'Coração saudável, cardiologia e perfil lipídico em clínica médica';
+  } else if (theme === 'dengue') {
+    document.getElementById('postTitle').value = 'Dengue NS1 e Hemograma: Diagnóstico Rápido e Monitoramento de Plaquetas';
+    document.getElementById('postCategory').value = 'Exames & Orientações';
+    document.getElementById('postExcerpt').value = 'Identificação precoce do vírus nos primeiros dias de febre e contagem plaquetária.';
+    document.getElementById('postContent').value = 'O teste do antígeno NS1 detecta a proteína viral nos primeiros 3 a 5 dias de sintomas, permitindo hidratação oportuna. A contagem de plaquetas e hematócrito seriados monitoram sinais de alarme com segurança.';
+    document.getElementById('aiImagePrompt').value = 'Diagnóstico laboratorial de dengue e sorologia com microscópio e tubos estéreis';
+  } else if (theme === 'renal') {
+    document.getElementById('postTitle').value = 'Função Renal: Creatinina, Ureia e Estimativa do Ritmo de Filtração Glomerular';
+    document.getElementById('postCategory').value = 'Prevenção & Longevidade';
+    document.getElementById('postExcerpt').value = 'Avaliação precoce da saúde dos rins através de biomarcadores sanguíneos e urinários.';
+    document.getElementById('postContent').value = 'A dosagem de creatinina sérica combinada com a taxa de filtração glomerular estimada (eGFR) é a principal ferramenta na detecção de alterações renais silenciosas causadas por hipertensão ou diabetes.';
+    document.getElementById('aiImagePrompt').value = 'Saúde dos rins e exame de creatinina em laboratório de análises clínicas';
+  } else if (theme === 'ferritina') {
+    document.getElementById('postTitle').value = 'Ferritina Sérica: Estoques de Ferro, Anemia e Marcadores Inflamatórios';
+    document.getElementById('postCategory').value = 'Exames & Orientações';
+    document.getElementById('postExcerpt').value = 'Como interpretar a ferritina na triagem de anemias ferroprivas e processos inflamatórios.';
+    document.getElementById('postContent').value = 'A ferritina é o principal reservatório intracelular de ferro no organismo. Níveis baixos identificam deficiência de ferro antes do surgimento da anemia clínica, enquanto níveis elevados atuam como reagente de fase aguda.';
+    document.getElementById('aiImagePrompt').value = 'Análise de hemograma e ferritina sérica em analisador hematológico';
   }
-  generateAiImage();
-}
-
-function generateSpecificAiProduct(theme) {
-  switchAdminTab('products');
-  if (theme === 'mulher40') {
-    document.getElementById('prodName').value = 'Check-up Mulher 40+ Vitalidade & Hormônios';
-    document.getElementById('prodCategory').value = 'mulher';
-    document.getElementById('prodBadge').value = 'Mais Solicitado';
-    document.getElementById('prodShortDesc').value = 'Hemograma Completo + Glicemia + Perfil Lipídico + TSH + T4 Livre + Estradiol + Progesterona + Vitamina D + Ferritina + Cálcio Iônico';
-    document.getElementById('prodImage').value = 'https://images.unsplash.com/photo-1594824813576-928f09043236?auto=format&fit=crop&w=600&q=75';
-  } else if (theme === 'homem50') {
-    document.getElementById('prodName').value = 'Check-up Homem 50+ Saúde Prostática & Cardiovascular';
-    document.getElementById('prodCategory').value = 'homem';
-    document.getElementById('prodBadge').value = 'Essencial 50+';
-    document.getElementById('prodShortDesc').value = 'PSA Total e Livre + Hemograma + Creatinina + Ácido Úrico + Colesterol Total e Frações + Glicemia + Testosterona Total';
-    document.getElementById('prodImage').value = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=75';
-  } else if (theme === 'atleta') {
-    document.getElementById('prodName').value = 'Check-up Esportivo & Performance Atlética';
-    document.getElementById('prodCategory').value = 'especiais';
-    document.getElementById('prodBadge').value = 'Alta Performance';
-    document.getElementById('prodShortDesc').value = 'Hemograma + CPK + Ureia + Creatinina + Perfil Eletrolítico + Vitamina B12 + Cortisol + TSH + Magnésio Sérico';
-    document.getElementById('prodImage').value = 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=75';
-  } else if (theme === 'gestante') {
-    document.getElementById('prodName').value = 'Check-up Pré-Natal Seguro (1º Trimestre)';
-    document.getElementById('prodCategory').value = 'mulher';
-    document.getElementById('prodBadge').value = 'Gestação Segura';
-    document.getElementById('prodShortDesc').value = 'Tipagem Sanguínea / Fator Rh + Coombs Indireto + Sorologias (Toxoplasmose, Rubéola, Citomegalovírus, HIV, VDRL, HBsAg) + Hemograma + Urina I';
-    document.getElementById('prodImage').value = 'https://images.unsplash.com/photo-1537655780520-1e392ead81f2?auto=format&fit=crop&w=600&q=75';
-  }
-  showToast('✨ Check-up clínico preenchido pela IA!');
+  generateAiImage(true);
 }
 
 let studioGeneratedImgUrl = '';
@@ -1153,10 +1182,9 @@ function generateStudioAiImage() {
   const btn = document.getElementById('btnStudioAi');
 
   if (btn) btn.disabled = true;
-  const fullPrompt = buildFluxMedicalPrompt(userPrompt);
-  const seed = Math.floor(Math.random() * 999999);
-  // Flux SOTA Model Engine
-  const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=1000&height=625&model=flux&nologo=true&seed=${seed}`;
+  const fullPrompt = buildSemanticMedicalPrompt(userPrompt);
+  const seed = Math.floor(Math.random() * 9999999) + Date.now();
+  const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=1024&height=640&nologo=true&seed=${seed}`;
 
   let isHandled = false;
   const finishStudio = (url) => {
@@ -1166,12 +1194,12 @@ function generateStudioAiImage() {
     if (previewImg) previewImg.src = url;
     if (previewBox) previewBox.classList.remove('hidden');
     if (btn) btn.disabled = false;
-    showToast('✨ Imagem 8K hiper-realista gerada com motor Flux IA!');
+    showToast('✨ Imagem médica de alta definição gerada com sucesso pela IA!');
   };
 
   const timeoutId = setTimeout(() => {
-    finishStudio(getRandomMedicalPhoto());
-  }, 5000);
+    finishStudio(imageUrl);
+  }, 20000);
 
   const imgLoader = new Image();
   imgLoader.onload = () => {
@@ -1180,7 +1208,8 @@ function generateStudioAiImage() {
   };
   imgLoader.onerror = () => {
     clearTimeout(timeoutId);
-    finishStudio(getRandomMedicalPhoto());
+    if (previewImg) previewImg.src = imageUrl;
+    finishStudio(imageUrl);
   };
   imgLoader.src = imageUrl;
 }

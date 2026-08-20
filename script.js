@@ -844,8 +844,15 @@ function handleCloudUrlInput(url, targetPreviewId) {
   }
 }
 
-// ===== IA GERADORA DE IMAGENS & CONTEÚDO BASEADO EM EVIDÊNCIAS (ALTA FIDELIDADE) =====
+// ===== IA GERADORA DE IMAGENS & CONTEÚDO SINCRONIZADA COM O TÍTULO =====
 let currentGeneratedImageUrl = '';
+
+function syncPostTitleWithAi(title) {
+  const promptInput = document.getElementById('aiImagePrompt');
+  if (promptInput && !promptInput.dataset.userEdited) {
+    promptInput.value = title || '';
+  }
+}
 
 function buildSemanticMedicalPrompt(userPrompt) {
   if (!userPrompt || !userPrompt.trim()) {
@@ -856,9 +863,9 @@ function buildSemanticMedicalPrompt(userPrompt) {
 
   if (lower.includes('dengue') || lower.includes('plaqueta') || lower.includes('mosquito')) {
     baseConcept = 'Dengue virus serology blood test diagnosis, laboratory biomedical analysis, sterile test tubes with barcodes, medical research';
-  } else if (lower.includes('coração') || lower.includes('cardio') || lower.includes('colesterol') || lower.includes('lipíd') || lower.includes('infarto')) {
+  } else if (lower.includes('coração') || lower.includes('cardio') || lower.includes('colesterol') || lower.includes('lipíd') || lower.includes('infarto') || lower.includes('pcr')) {
     baseConcept = 'Cardiovascular cardiology medical heart health diagnostics, stethoscope, clinical blood lipid analysis chart, modern laboratory';
-  } else if (lower.includes('gestante') || lower.includes('gravidez') || lower.includes('sexagem') || lower.includes('fetal') || lower.includes('bebê') || lower.includes('bebe')) {
+  } else if (lower.includes('gestante') || lower.includes('gravidez') || lower.includes('sexagem') || lower.includes('fetal') || lower.includes('bebê') || lower.includes('bebe') || lower.includes('pré-natal') || lower.includes('prenatal')) {
     baseConcept = 'Maternal prenatal care DNA fetal genetic testing, modern clinical laboratory, gentle medical healthcare diagnosis';
   } else if (lower.includes('tireoide') || lower.includes('hormônio') || lower.includes('hormonio') || lower.includes('tsh') || lower.includes('t4')) {
     baseConcept = 'Endocrinology hormone diagnostics, thyroid health analysis, clinical biochemistry laboratory, scientific medical photography';
@@ -866,8 +873,10 @@ function buildSemanticMedicalPrompt(userPrompt) {
     baseConcept = 'Immune system wellness and Vitamin D diagnostic blood test, modern clinical biochemistry laboratory, soft clinical lighting';
   } else if (lower.includes('renal') || lower.includes('rim') || lower.includes('creatinina') || lower.includes('ureia') || lower.includes('urina')) {
     baseConcept = 'Nephrology renal function diagnostic assessment, medical laboratory sterile sample analysis, high tech analyzers';
-  } else if (lower.includes('glicose') || lower.includes('diabetes') || lower.includes('glicada') || lower.includes('açúcar') || lower.includes('insulina')) {
+  } else if (lower.includes('glicose') || lower.includes('diabetes') || lower.includes('glicada') || lower.includes('açúcar') || lower.includes('insulina') || lower.includes('hba1c')) {
     baseConcept = 'Diabetes blood glucose monitoring and HbA1c diagnostic testing, medical laboratory equipment, sterile precision healthcare';
+  } else if (lower.includes('ferritina') || lower.includes('anemia') || lower.includes('ferro') || lower.includes('hemograma')) {
+    baseConcept = 'Hematology blood test analysis, complete blood count, ferritin diagnostic sample in modern laboratory';
   } else if (lower.includes('microscópio') || lower.includes('microscopio') || lower.includes('lâmina') || lower.includes('célula') || lower.includes('celula')) {
     baseConcept = 'Biomedical scientist looking through precision optical laboratory microscope, glass slides, modern scientific laboratory';
   } else if (lower.includes('coleta') || lower.includes('sangue') || lower.includes('veia') || lower.includes('agulha') || lower.includes('braço')) {
@@ -879,32 +888,24 @@ function buildSemanticMedicalPrompt(userPrompt) {
   return `${baseConcept}, realistic hospital and clinical lighting, crisp sharp focus, natural colors, 8k resolution, authentic medical photography, no cartoon, no CGI, high fidelity`;
 }
 
-function getContextualMedicalFallback(userPrompt) {
-  const lower = (userPrompt || '').toLowerCase();
-  if (lower.includes('coração') || lower.includes('cardio') || lower.includes('colesterol')) {
-    return 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=80';
-  }
-  if (lower.includes('gestante') || lower.includes('gravid') || lower.includes('sexagem') || lower.includes('fetal')) {
-    return 'https://images.unsplash.com/photo-1537655780520-1e392ead81f2?auto=format&fit=crop&w=1200&q=80';
-  }
-  if (lower.includes('vitamina') || lower.includes('imun')) {
-    return 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80';
-  }
-  if (lower.includes('microscópio') || lower.includes('pesquisa') || lower.includes('dengue')) {
-    return 'https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=1200&q=80';
-  }
-  return 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1200&q=80';
-}
-
-function setAiPrompt(text) {
-  const input = document.getElementById('aiImagePrompt');
-  if (input) input.value = text;
-  generateAiImage();
-}
-
 function generateAiImage(forceNew = false) {
-  const input = document.getElementById('aiImagePrompt');
-  const userPrompt = (input && input.value ? input.value.trim() : '') || 'Biomédico analisando amostra de sangue em laboratório clínico moderno';
+  const promptInput = document.getElementById('aiImagePrompt');
+  const titleInput = document.getElementById('postTitle');
+  const customTopicInput = document.getElementById('aiCustomTopicInput');
+
+  // Sincronização direta com o Título do Artigo
+  let userPrompt = (promptInput && promptInput.value ? promptInput.value.trim() : '');
+  if (!userPrompt && titleInput && titleInput.value.trim()) {
+    userPrompt = titleInput.value.trim();
+    if (promptInput) promptInput.value = userPrompt;
+  }
+  if (!userPrompt && customTopicInput && customTopicInput.value.trim()) {
+    userPrompt = customTopicInput.value.trim();
+    if (promptInput) promptInput.value = userPrompt;
+  }
+  if (!userPrompt) {
+    userPrompt = 'Biomédico analisando amostra em laboratório clínico moderno';
+  }
   
   const previewBox = document.getElementById('mediaPreviewBox');
   const previewImg = document.getElementById('mediaPreviewImg');
@@ -922,7 +923,7 @@ function generateAiImage(forceNew = false) {
   const fullPrompt = buildSemanticMedicalPrompt(userPrompt);
   const seed = Math.floor(Math.random() * 9999999) + (forceNew ? Date.now() : 0);
   
-  // Endpoint de Alta Velocidade e Precisão Temática
+  // Endpoint de Alta Velocidade e Precisão Temática Sincronizado
   const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=1024&height=640&nologo=true&seed=${seed}`;
 
   let isHandled = false;
@@ -940,7 +941,7 @@ function generateAiImage(forceNew = false) {
     if (spinner) spinner.classList.add('hidden');
     if (btn) btn.disabled = false;
     if (btnText) btnText.textContent = 'Gerar Nova';
-    showToast(isAi ? (forceNew ? '✨ Nova foto gerada pela IA sobre o tema solicitado!' : '✨ Imagem de IA renderizada com alta fidelidade ao seu tema!') : '✨ Fotografia clínica de alta definição aplicada!');
+    showToast(isAi ? (forceNew ? '✨ Nova foto gerada pela IA sobre o tema do artigo!' : '✨ Imagem de IA sincronizada com o título do artigo!') : '✨ Fotografia clínica de alta definição aplicada!');
   };
 
   // Timeout generoso de 20s para permitir renderização completa da IA
@@ -955,7 +956,6 @@ function generateAiImage(forceNew = false) {
   };
   imgLoader.onerror = () => {
     clearTimeout(timeoutId);
-    // Tenta carregar a imagem diretamente no elemento
     if (previewImg) {
       previewImg.src = imageUrl;
       previewImg.classList.remove('hidden');
